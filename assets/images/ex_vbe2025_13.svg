@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380">
+  <defs>
+    <marker id="arrow13" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L7,3 z" fill="black" />
+    </marker>
+  </defs>
+
+  <!-- Graph A: Top Left -->
+  <g transform="translate(10, 10)">
+    <rect x="0" y="0" width="250" height="160" fill="white" stroke="#aaa" rx="5" />
+    <!-- Axes -->
+    <line x1="20" y1="140" x2="20" y2="20" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <line x1="20" y1="140" x2="230" y2="140" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <text x="5" y="25" font-size="14" font-style="italic">s</text>
+    <text x="225" y="155" font-size="14" font-style="italic">t</text>
+    <text x="10" y="155" font-size="14">0</text>
+    <!-- Plot -->
+    <polyline points="20,140 125,30 230,140" fill="none" stroke="green" stroke-width="2.5" />
+    <text x="125" y="175" font-size="16" font-weight="bold" text-anchor="middle">A</text>
+  </g>
+
+  <!-- Graph B: Top Right -->
+  <g transform="translate(280, 10)">
+    <rect x="0" y="0" width="250" height="160" fill="white" stroke="#aaa" rx="5" />
+    <!-- Axes -->
+    <line x1="20" y1="140" x2="20" y2="20" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <line x1="20" y1="140" x2="230" y2="140" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <text x="5" y="25" font-size="14" font-style="italic">s</text>
+    <text x="225" y="155" font-size="14" font-style="italic">t</text>
+    <text x="10" y="155" font-size="14">0</text>
+    <!-- Plot: Bell-like -->
+    <path d="M20,140 C80,140 80,30 125,30 C170,30 170,140 230,140" fill="none" stroke="brown" stroke-width="2.5" />
+    <text x="125" y="175" font-size="16" font-weight="bold" text-anchor="middle">B</text>
+  </g>
+
+  <!-- Graph C: Bottom Left -->
+  <g transform="translate(10, 200)">
+    <rect x="0" y="0" width="250" height="160" fill="white" stroke="#aaa" rx="5" />
+    <!-- Axes -->
+    <line x1="20" y1="140" x2="20" y2="20" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <line x1="20" y1="140" x2="230" y2="140" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <text x="5" y="25" font-size="14" font-style="italic">s</text>
+    <text x="225" y="155" font-size="14" font-style="italic">t</text>
+    <text x="10" y="155" font-size="14">0</text>
+    <!-- Plot -->
+    <line x1="20" y1="140" x2="230" y2="30" stroke="blue" stroke-width="2.5" />
+    <text x="125" y="175" font-size="16" font-weight="bold" text-anchor="middle">C</text>
+  </g>
+
+  <!-- Graph D: Bottom Right (Correct) -->
+  <g transform="translate(280, 200)">
+    <rect x="0" y="0" width="250" height="160" fill="white" stroke="#aaa" rx="5" />
+    <!-- Axes -->
+    <line x1="20" y1="140" x2="20" y2="20" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <line x1="20" y1="140" x2="230" y2="140" stroke="black" stroke-width="1.5" marker-end="url(#arrow13)" />
+    <text x="5" y="25" font-size="14" font-style="italic">s</text>
+    <text x="225" y="155" font-size="14" font-style="italic">t</text>
+    <text x="10" y="155" font-size="14">0</text>
+    <!-- Plot: Sine half-wave -->
+    <path d="M20,140 Q125,-20 230,140" fill="none" stroke="brown" stroke-width="2.5" />
+    <text x="125" y="175" font-size="16" font-weight="bold" text-anchor="middle">D</text>
+  </g>
+
+</svg>

@@ -1,0 +1,17 @@
+{
+    "id": "ex_vbe2025_12",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Energija",
+    "type": "multiple_choice",
+    "question": "Šiuolaikiniame pasaulyje vis svarbesni tampa atsinaujinantys energijos ištekliai. Hidroelektrinėse vandens srauto energija paverčiama elektros energija. Kuri iš šių hidroelektrinių pagamins daugiausia elektros energijos, jeigu visų jų techninės sąlygos yra vienodos?<br><br><table border='1' style='border-collapse: collapse; width: 100%;'><tr><th>Hidroelektrinė</th><th>Aukščio skirtumas (m)</th><th>Vandens nuotėkis (m³/s)</th></tr><tr><td>Biržuvėnų</td><td>3,0</td><td>3,15</td></tr><tr><td>Kavarsko</td><td>4,1</td><td>31,4</td></tr><tr><td>Netičkampio</td><td>4,8</td><td>2,94</td></tr><tr><td>Puskelnių</td><td>3,2</td><td>8,52</td></tr></table>",
+    "image": null,
+    "options": [
+        "Biržuvėnų hidroelektrinė",
+        "Kavarsko hidroelektrinė",
+        "Netičkampio hidroelektrinė",
+        "Puskelnių hidroelektrinė"
+    ],
+    "correctAnswer": "Kavarsko hidroelektrinė",
+    "solution": "Hidroelektrinės galia priklauso nuo vandens srauto energijos, kuri yra proporcinga aukščio skirtumui (h) ir vandens nuotėkiui (Q): \\[ P \\sim h \\cdot Q \\] Apskaičiuojame sandaugas: <br> Biržuvėnų: \\( 3,0 \\cdot 3,15 = 9,45 \\) <br> Kavarsko: \\( 4,1 \\cdot 31,4 \\approx 128,7 \\) <br> Netičkampio: \\( 4,8 \\cdot 2,94 \\approx 14,1 \\) <br> Puskelnių: \\( 3,2 \\cdot 8,52 \\approx 27,3 \\) <br> Didžiausia reikšmė – Kavarsko hidroelektrinės."
+}

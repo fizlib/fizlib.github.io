@@ -1,0 +1,17 @@
+{
+    "id": "ex_vbe2025_13",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Kinematika",
+    "type": "multiple_choice",
+    "question": "Sportininkas bėga apskritimo formos trasa pastoviu greičiu. Pažymėkite grafiką, kuriame teisingai pavaizduota sportininko poslinkio nuo pradinės padėties \\( s \\) priklausomybė nuo laiko \\( t \\), trasa bėgant vieną ratą.",
+    "image": "assets/images/ex_vbe2025_13.svg",
+    "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+    ],
+    "correctAnswer": "D",
+    "solution": "Poslinkis \\( s \\) yra vektorius, jungiantis pradinį tašką su galiniu. Judant apskritimu, poslinkio modulis didėja, kol pasiekia diametrą (pusė rato), o vėliau mažėja iki nulio (pilnas ratas). Priklausomybė nėra tiesinė (tai būtų C arba A), o sinusoidinė (kreivė). Teisingas grafikas yra D, vaizduojantis tolygų didėjimą ir mažėjimą lanku."
+}

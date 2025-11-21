@@ -1,0 +1,30 @@
+{
+    "id": "ex_vbe2025_14",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Elektra",
+    "subtopic": "Elektrostatika",
+    "type": "matching",
+    "question": "Neigiamai įelektrinta sfera priartinama prie įžeminto kūno X, kaip parodyta paveiksle. Įžeminimas nutraukiamas jungikliu, o įelektrinta sfera patraukiama. Yra žinoma, kad kūnas X tapo teigiamai įelektrintas. Iš kokios medžiagos pagamintas kūnas X ir koks yra neigiamojo elektros krūvio judėjimas tarp kūno X ir žemės šio eksperimento pradžioje?",
+    "image": "assets/images/ex_vbe2025_14.svg",
+    "matchItems": [
+        {
+            "question": "Kūnas X pagamintas iš",
+            "options": [
+                "izoliatoriaus",
+                "laidininko"
+            ],
+            "correctAnswer": "laidininko"
+        },
+        {
+            "question": "Neigiamasis elektros krūvis juda",
+            "options": [
+                "iš X į žemę",
+                "iš žemės į X"
+            ],
+            "correctAnswer": "iš X į žemę"
+        }
+    ],
+    "correctAnswer": null,
+    "solution": "Elektrostatinė indukcija vyksta tik laidininkuose, nes juose yra laisvųjų krūvininkų. Todėl kūnas X turi būti laidininkas. <br> Priartinus neigiamai įelektrintą sferą, ji stumia laisvuosius elektronus (neigiamą krūvį) tolyn į žemę. Todėl elektronai juda iš kūno X į žemę, o kūne X lieka teigiamas krūvis."
+}

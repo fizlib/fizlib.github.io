@@ -1,0 +1,13 @@
+{
+    "id": "ex_vbe2025_11",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Termodinamika",
+    "type": "numerical",
+    "question": "Paveiksle pavaizduotas idealiųjų dujų būsenos kitimo grafikas. Remdamiesi juo, apskaičiuokite, koks darbas atliekamas, suspaudžiant dujas iš būsenos R į būseną P. Užrašykite atsakymą (absoliučiąją vertę).",
+    "image": "assets/images/ex_vbe2025_11.svg",
+    "options": null,
+    "correctAnswer": "3",
+    "unit": "$\\cdot 10^5 \\text{ J}$",
+    "solution": "Darbas izobarinio proceso metu (R -> P) apskaičiuojamas pagal formulę: \\[ A = p \\Delta V \\] Iš grafiko matome: \\[ p = 1 \\cdot 10^5 \\text{ Pa} \\] \\[ V_R = 5 \\text{ m}^3, \\quad V_P = 2 \\text{ m}^3 \\] \\[ A = 1 \\cdot 10^5 \\cdot (2 - 5) = -3 \\cdot 10^5 \\text{ J} \\] Darbo modulis: \\[ |A| = 3 \\cdot 10^5 \\text{ J} \\]"
+}

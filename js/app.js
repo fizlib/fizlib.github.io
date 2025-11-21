@@ -212,23 +212,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 <input type="hidden" class="user-answer" value="">
             `;
         } else if (ex.type === 'matching') {
-            // Shuffle values for dropdowns
-            const keys = Object.keys(ex.pairs);
-            const values = Object.values(ex.pairs).sort(() => Math.random() - 0.5);
+            if (ex.matchItems) {
+                // New structure with specific options
+                inputArea = `
+                    <div class="matching-container">
+                        ${ex.matchItems.map((item, index) => `
+                            <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                <div style="flex: 1; font-weight: 500;">${item.question}</div>
+                                <select class="matching-select text-input" data-index="${index}" style="flex: 1;">
+                                    <option value="">Pasirinkite...</option>
+                                    ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                // Legacy structure (pairs)
+                // Shuffle values for dropdowns
+                const keys = Object.keys(ex.pairs);
+                const values = Object.values(ex.pairs).sort(() => Math.random() - 0.5);
 
-            inputArea = `
-                <div class="matching-container">
-                    ${keys.map((key, index) => `
-                        <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                            <div style="flex: 1; font-weight: 500;">${key}</div>
-                            <select class="matching-select text-input" data-key="${key}" style="flex: 1;">
-                                <option value="">Pasirinkite...</option>
-                                ${values.map(val => `<option value="${val}">${val}</option>`).join('')}
-                            </select>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
+                inputArea = `
+                    <div class="matching-container">
+                        ${keys.map((key, index) => `
+                            <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                <div style="flex: 1; font-weight: 500;">${key}</div>
+                                <select class="matching-select text-input" data-key="${key}" style="flex: 1;">
+                                    <option value="">Pasirinkite...</option>
+                                    ${values.map(val => `<option value="${val}">${val}</option>`).join('')}
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
         } else {
             inputArea = `
                 <div class="input-group" style="display: flex; align-items: center; gap: 0.5rem;">
@@ -246,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <button class="expand-btn" aria-label="Išskleisti">⤢</button>
                     <span class="badge">${ex.topic}</span>
+                    ${ex.subtopic ? `<span class="badge" style="background-color: var(--secondary-color); color: var(--text-primary);">${ex.subtopic}</span>` : ''}
                 </div>
             </div>
             <div class="card-question">${ex.question}</div>
@@ -394,8 +413,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 selects.forEach(select => {
                     if (!select.value) allSelected = false;
-                    if (ex.pairs[select.dataset.key] !== select.value) {
-                        allCorrect = false;
+
+                    if (ex.matchItems) {
+                        const index = parseInt(select.dataset.index);
+                        if (ex.matchItems[index].correctAnswer !== select.value) {
+                            allCorrect = false;
+                        }
+                    } else {
+                        if (ex.pairs[select.dataset.key] !== select.value) {
+                            allCorrect = false;
+                        }
                     }
                 });
 
@@ -482,7 +509,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Fill in the correct values in dropdowns
             const selects = card.querySelectorAll('.matching-select');
             selects.forEach(select => {
-                const correctValue = ex.pairs[select.dataset.key];
+                let correctValue;
+                if (ex.matchItems) {
+                    const index = parseInt(select.dataset.index);
+                    correctValue = ex.matchItems[index].correctAnswer;
+                } else {
+                    correctValue = ex.pairs[select.dataset.key];
+                }
                 select.value = correctValue;
                 select.classList.add('showing-answer');
             });

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Ground Plane -->
+  <line x1="50" y1="150" x2="350" y2="150" stroke="black" stroke-width="1" />
+  <path d="M50,150 L350,150" stroke="black" stroke-width="1" stroke-dasharray="4,4" transform="translate(0, 3)" opacity="0.5"/> <!-- Hatching hint -->
+  <!-- Hatching lines for ground -->
+  <g stroke="black" stroke-width="0.5">
+    <line x1="50" y1="150" x2="45" y2="155" />
+    <line x1="60" y1="150" x2="55" y2="155" />
+    <line x1="70" y1="150" x2="65" y2="155" />
+    <line x1="80" y1="150" x2="75" y2="155" />
+    <line x1="90" y1="150" x2="85" y2="155" />
+    <line x1="100" y1="150" x2="95" y2="155" />
+    <line x1="110" y1="150" x2="105" y2="155" />
+    <line x1="120" y1="150" x2="115" y2="155" />
+    <line x1="130" y1="150" x2="125" y2="155" />
+    <line x1="140" y1="150" x2="135" y2="155" />
+    <line x1="150" y1="150" x2="145" y2="155" />
+    <line x1="160" y1="150" x2="155" y2="155" />
+    <line x1="170" y1="150" x2="165" y2="155" />
+    <line x1="180" y1="150" x2="175" y2="155" />
+    <line x1="190" y1="150" x2="185" y2="155" />
+    <line x1="200" y1="150" x2="195" y2="155" />
+    <line x1="210" y1="150" x2="205" y2="155" />
+    <line x1="220" y1="150" x2="215" y2="155" />
+    <line x1="230" y1="150" x2="225" y2="155" />
+    <line x1="240" y1="150" x2="235" y2="155" />
+    <line x1="250" y1="150" x2="245" y2="155" />
+    <line x1="260" y1="150" x2="255" y2="155" />
+    <line x1="270" y1="150" x2="265" y2="155" />
+    <line x1="280" y1="150" x2="275" y2="155" />
+    <line x1="290" y1="150" x2="285" y2="155" />
+    <line x1="300" y1="150" x2="295" y2="155" />
+    <line x1="310" y1="150" x2="305" y2="155" />
+    <line x1="320" y1="150" x2="315" y2="155" />
+    <line x1="330" y1="150" x2="325" y2="155" />
+    <line x1="340" y1="150" x2="335" y2="155" />
+    <line x1="350" y1="150" x2="345" y2="155" />
+  </g>
+
+  <!-- Charged Sphere (Left) -->
+  <line x1="100" y1="50" x2="100" y2="80" stroke="black" stroke-width="1" /> <!-- String -->
+  <line x1="80" y1="50" x2="120" y2="50" stroke="black" stroke-width="1" /> <!-- Ceiling -->
+  <g stroke="black" stroke-width="0.5"> <!-- Ceiling hatching -->
+      <line x1="80" y1="50" x2="85" y2="45" />
+      <line x1="90" y1="50" x2="95" y2="45" />
+      <line x1="100" y1="50" x2="105" y2="45" />
+      <line x1="110" y1="50" x2="115" y2="45" />
+      <line x1="120" y1="50" x2="125" y2="45" />
+  </g>
+  
+  <circle cx="100" cy="100" r="20" fill="#e0f7fa" stroke="#00bcd4" stroke-width="2" />
+  <!-- Minus signs -->
+  <text x="90" y="105" font-family="monospace" font-size="16" fill="black">-</text>
+  <text x="105" y="105" font-family="monospace" font-size="16" fill="black">-</text>
+  <text x="97" y="95" font-family="monospace" font-size="16" fill="black">-</text>
+  <text x="97" y="115" font-family="monospace" font-size="16" fill="black">-</text>
+
+  <!-- Body X (Right) -->
+  <rect x="180" y="80" width="40" height="40" fill="#7986cb" stroke="#3f51b5" stroke-width="2" />
+  <text x="195" y="105" font-family="Arial" font-size="16" font-weight="bold" fill="black">X</text>
+  
+  <!-- Insulating Stand -->
+  <rect x="195" y="120" width="10" height="30" fill="#5d4037" stroke="black" stroke-width="1" />
+
+  <!-- Ground Connection -->
+  <line x1="220" y1="100" x2="260" y2="100" stroke="black" stroke-width="1" /> <!-- Wire from X -->
+  
+  <!-- Switch -->
+  <circle cx="260" cy="100" r="2" fill="black" />
+  <line x1="260" y1="100" x2="280" y2="90" stroke="black" stroke-width="1" /> <!-- Open switch arm -->
+  <circle cx="280" cy="100" r="2" fill="black" /> <!-- Contact point -->
+  
+  <line x1="280" y1="100" x2="300" y2="100" stroke="black" stroke-width="1" /> <!-- Wire to ground -->
+  <line x1="300" y1="100" x2="300" y2="130" stroke="black" stroke-width="1" /> <!-- Vertical to ground symbol -->
+
+  <!-- Ground Symbol -->
+  <line x1="290" y1="130" x2="310" y2="130" stroke="black" stroke-width="1" />
+  <line x1="293" y1="134" x2="307" y2="134" stroke="black" stroke-width="1" />
+  <line x1="296" y1="138" x2="304" y2="138" stroke="black" stroke-width="1" />
+
+</svg>
