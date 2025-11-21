@@ -718,258 +718,276 @@ body {
     cursor: pointer;
     color: var(--text-secondary);
     padding: 0.25rem;
+    line-height: 1;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .exercise-card.expanded .card-image {
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
+flex-direction: column;
+gap: 1rem;
+}
+}
 
-    .exercise-card.hidden-card {
-        display: none;
-    }
+/* Expanded State */
+.exercise-card.expanded {
+    grid-column: 1 / -1;
+    z-index: 10;
+}
 
-    .expand-btn {
-        background: none;
-        border: none;
-        font-size: 1.2rem;
-        cursor: pointer;
-        color: var(--text-secondary);
-        padding: 0.25rem;
-        line-height: 1;
-        border-radius: 4px;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.exercise-card.expanded .card-image {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
-    .expand-btn:hover {
-        color: var(--primary-color);
-        background-color: rgba(79, 70, 229, 0.1);
-    }
+.exercise-card.hidden-card {
+    display: none;
+}
 
-    .exercise-card .card-content,
-    .exercise-card .card-actions,
-    .exercise-card input,
-    .exercise-card button,
-    .exercise-card select,
-    .exercise-card .option-btn {
-        cursor: auto;
-    }
+.expand-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.25rem;
+    line-height: 1;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    /* Active Filters */
-    .active-filters-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-        min-height: 0;
-    }
+.expand-btn:hover {
+    color: var(--primary-color);
+    background-color: rgba(79, 70, 229, 0.1);
+}
 
-    .active-filters-container:not(:empty) {
-        min-height: 2rem;
-    }
+.exercise-card .card-content,
+.exercise-card .card-actions,
+.exercise-card input,
+.exercise-card button,
+.exercise-card select,
+.exercise-card .option-btn {
+    cursor: auto;
+}
 
-    .active-filter-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background-color: rgba(79, 70, 229, 0.1);
-        color: var(--primary-color);
-        padding: 0.375rem 0.75rem;
-        border-radius: 2rem;
-        font-size: 0.9rem;
-        font-weight: 500;
-        border: 1px solid rgba(79, 70, 229, 0.2);
-        transition: all 0.2s;
-        animation: fadeIn 0.2s ease-out;
-    }
+/* Active Filters */
+.active-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 0;
+}
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-5px);
-        }
+.active-filters-container:not(:empty) {
+    min-height: 2rem;
+}
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+.active-filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+    padding: 0.375rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    transition: all 0.2s;
+    animation: fadeIn 0.2s ease-out;
+}
 
-    .active-filter-tag:hover {
-        background-color: rgba(79, 70, 229, 0.15);
-    }
-
-    .remove-filter-btn {
-        background: none;
-        border: none;
-        color: var(--primary-color);
-        cursor: pointer;
-        font-size: 1.1rem;
-        line-height: 1;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0.7;
-        transition: opacity 0.2s;
-    }
-
-    .remove-filter-btn:hover {
-        opacity: 1;
-    }
-
-    .clear-all-filters-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        font-size: 0.85rem;
-        cursor: pointer;
-        padding: 0.375rem 0.75rem;
-        border-radius: 2rem;
-        transition: all 0.2s;
-        text-decoration: underline;
-        margin-left: auto;
-    }
-
-    .clear-all-filters-btn:hover {
-        color: var(--error-color);
-    }
-
-    /* Image Zoom */
-    .exercise-card.expanded .card-image {
-        cursor: zoom-in;
-        transition: transform 0.2s ease;
-    }
-
-    .exercise-card.expanded .card-image:hover {
-        transform: scale(1.02);
-    }
-
-    .image-zoom-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: zoom-out;
-        animation: fadeIn 0.2s ease-out;
-        padding: 2rem;
-    }
-
-    .image-zoom-overlay img {
-        max-width: 90vw;
-        max-height: 90vh;
-        object-fit: contain;
-        border-radius: var(--radius-md);
-        background-color: white;
-        padding: 1rem;
-        animation: zoomIn 0.3s ease-out;
-    }
-
-    @keyframes zoomIn {
-        from {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    /* Share Button */
-    .share-btn {
-        background: none;
-        border: none;
-        font-size: 1.2rem;
-        cursor: pointer;
-        color: var(--text-secondary);
-        padding: 0.25rem;
-        line-height: 1;
-        border-radius: 4px;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .share-btn:hover {
-        color: var(--primary-color);
-        background-color: rgba(79, 70, 229, 0.1);
-    }
-
-    /* Toast Notification */
-    .toast-notification {
-        position: fixed;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%) translateY(20px);
-        background-color: #333;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 2rem;
-        font-size: 0.9rem;
+@keyframes fadeIn {
+    from {
         opacity: 0;
-        transition: all 0.3s ease;
-        z-index: 2000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
     }
 
-    .toast-notification.show {
+    to {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translateY(0);
+    }
+}
+
+.active-filter-tag:hover {
+    background-color: rgba(79, 70, 229, 0.15);
+}
+
+.remove-filter-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.remove-filter-btn:hover {
+    opacity: 1;
+}
+
+.clear-all-filters-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.375rem 0.75rem;
+    border-radius: 2rem;
+    transition: all 0.2s;
+    text-decoration: underline;
+    margin-left: auto;
+}
+
+.clear-all-filters-btn:hover {
+    color: var(--error-color);
+}
+
+/* Image Zoom */
+.exercise-card.expanded .card-image {
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+
+.exercise-card.expanded .card-image:hover {
+    transform: scale(1.02);
+}
+
+.image-zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    animation: fadeIn 0.2s ease-out;
+    padding: 2rem;
+}
+
+.image-zoom-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    background-color: white;
+    padding: 1rem;
+    animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
     }
 
-    /* Topic Badge Dropdown */
-    .topic-badge-container {
-        position: relative;
-        display: inline-block;
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
+}
 
-    .topic-badge {
-        cursor: pointer;
-        user-select: none;
-        transition: all 0.2s;
-    }
+/* Share Button */
+.share-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.25rem;
+    line-height: 1;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .topic-badge:hover {
-        background-color: rgba(79, 70, 229, 0.1);
-        color: var(--primary-color);
-    }
+.share-btn:hover {
+    color: var(--primary-color);
+    background-color: rgba(79, 70, 229, 0.1);
+}
 
-    .subtopic-dropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        margin-top: 0.25rem;
-        background-color: var(--bg-card);
-        box-shadow: var(--shadow-lg);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--border-color);
-        z-index: 100;
-        min-width: 120px;
-        animation: fadeIn 0.2s ease-out;
-    }
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background-color: #333;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 2000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .subtopic-dropdown.show {
-        display: block;
-    }
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
 
-    .subtopic-badge {
-        display: block;
-        padding: 0.5rem;
-        white-space: nowrap;
-        background-color: #9CA3AF;
-        color: white;
-    }
+/* Topic Badge Dropdown */
+.topic-badge-container {
+    position: relative;
+    display: inline-block;
+}
+
+.topic-badge {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.topic-badge:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+}
+
+.subtopic-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.25rem;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    z-index: 100;
+    min-width: 120px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.subtopic-dropdown.show {
+    display: block;
+}
+
+.subtopic-badge {
+    display: block;
+    padding: 0.5rem;
+    white-space: nowrap;
+    background-color: #9CA3AF;
+    color: white;
+}

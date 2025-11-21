@@ -1,0 +1,43 @@
+/* Topic Badge Dropdown */
+.topic-badge-container {
+    position: relative;
+    display: inline-block;
+}
+
+.topic-badge {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.topic-badge:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+}
+
+.subtopic-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.25rem;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    z-index: 100;
+    min-width: 120px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.subtopic-dropdown.show {
+    display: block;
+}
+
+.subtopic-badge {
+    display: block;
+    padding: 0.5rem;
+    white-space: nowrap;
+    background-color: #9CA3AF;
+    color: white;
+}

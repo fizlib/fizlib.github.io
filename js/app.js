@@ -298,8 +298,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                     <button class="expand-btn" aria-label="Išskleisti">⤢</button>
-                    <span class="badge">${ex.topic}</span>
-                    ${ex.subtopic ? `<span class="badge">${ex.subtopic}</span>` : ''}
+                    ${ex.subtopic ? `
+                        <div class="topic-badge-container">
+                            <span class="badge topic-badge">${ex.topic} ▾</span>
+                            <div class="subtopic-dropdown">
+                                <span class="badge subtopic-badge">${ex.subtopic}</span>
+                            </div>
+                        </div>
+                    ` : `<span class="badge">${ex.topic}</span>`}
                 </div>
             </div>
             <div class="card-question">${ex.question}</div>
@@ -387,6 +393,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        // Topic Badge Dropdown Logic
+        const topicBadge = card.querySelector('.topic-badge');
+        if (topicBadge) {
+            topicBadge.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const dropdown = card.querySelector('.subtopic-dropdown');
+                if (dropdown) {
+                    dropdown.classList.toggle('show');
+                }
+            });
+        }
+
 
         // Handle Option Selection for Multiple Choice
         if (ex.type === 'multiple_choice') {
