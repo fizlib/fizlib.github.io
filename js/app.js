@@ -30,7 +30,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initApp() {
         setupFilters();
-        renderExercises(allExercises);
+
+        // Check for deep link
+        const urlParams = new URLSearchParams(window.location.search);
+        const exerciseId = urlParams.get('id');
+
+        if (exerciseId) {
+            const specificExercise = allExercises.filter(ex => ex.id === exerciseId);
+            if (specificExercise.length > 0) {
+                renderExercises(specificExercise);
+
+                // Add a "Show All" button
+                const showAllBtn = document.createElement('button');
+                showAllBtn.className = 'btn btn-outline';
+                showAllBtn.textContent = '← Rodyti visas užduotis';
+                showAllBtn.style.marginBottom = '1rem';
+                showAllBtn.onclick = () => {
+                    window.history.pushState({}, document.title, window.location.pathname);
+                    renderExercises(allExercises);
+                    showAllBtn.remove();
+                };
+                exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
+
+                // Auto-expand the exercise
+                setTimeout(() => {
+                    const expandBtn = exercisesContainer.querySelector('.expand-btn');
+                    if (expandBtn) {
+                        expandBtn.click();
+                    }
+                }, 100);
+            } else {
+                exercisesContainer.innerHTML = '<div class="loading">Užduotis nerasta.</div>';
+            }
+        } else {
+            renderExercises(allExercises);
+        }
     }
 
     function setupFilters() {
@@ -262,6 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="card-header">
                 <span class="badge">${ex.grade} klasė</span>
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                     <button class="expand-btn" aria-label="Išskleisti">⤢</button>
                     <span class="badge">${ex.topic}</span>
                     ${ex.subtopic ? `<span class="badge">${ex.subtopic}</span>` : ''}
@@ -284,6 +319,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const submitBtn = card.querySelector('.submit-btn');
         const solutionBtn = card.querySelector('.solution-btn');
         const feedbackEl = card.querySelector('.feedback');
+
+        // Share Button Logic
+        const shareBtn = card.querySelector('.share-btn');
+        shareBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const url = `${window.location.origin}${window.location.pathname}?id=${ex.id}`;
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('Nuoroda nukopijuota!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
 
         // Card Expansion Logic
         const expandBtn = card.querySelector('.expand-btn');
@@ -551,5 +598,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 textInput.classList.remove('showing-answer');
             }
         }
+    }
+
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        // Trigger reflow
+        toast.offsetHeight;
+
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 2000);
     }
 });

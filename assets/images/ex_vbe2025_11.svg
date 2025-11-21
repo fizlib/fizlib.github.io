@@ -1,14 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 350 250">
-  <!-- Axes -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 400 300">
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="black" />
     </marker>
   </defs>
   
-  <!-- Grid -->
   <g stroke="#ddd" stroke-width="1">
-    <!-- Vertical lines -->
     <line x1="40" y1="20" x2="40" y2="220" />
     <line x1="60" y1="20" x2="60" y2="220" />
     <line x1="80" y1="20" x2="80" y2="220" />
@@ -23,7 +20,6 @@
     <line x1="260" y1="20" x2="260" y2="220" />
     <line x1="280" y1="20" x2="280" y2="220" />
     
-    <!-- Horizontal lines -->
     <line x1="40" y1="20" x2="280" y2="20" />
     <line x1="40" y1="40" x2="280" y2="40" />
     <line x1="40" y1="60" x2="280" y2="60" />
@@ -36,13 +32,11 @@
     <line x1="40" y1="200" x2="280" y2="200" />
   </g>
 
-  <!-- Axis Lines -->
   <line x1="40" y1="220" x2="40" y2="10" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
   <line x1="40" y1="220" x2="300" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
 
-  <!-- Labels -->
-  <text x="25" y="20" font-family="Arial" font-size="14" text-anchor="end">p, 10⁵ Pa</text>
-  <text x="300" y="240" font-family="Arial" font-size="14" text-anchor="middle">V, m³</text>
+  <text x="10" y="0" font-family="Arial" font-size="14" text-anchor="start">p, 10⁵ Pa</text>
+  <text x="330" y="240" font-family="Arial" font-size="14" text-anchor="middle">V, m³</text>
   
   <text x="30" y="225" font-family="Arial" font-size="12" text-anchor="middle">0</text>
   <text x="80" y="235" font-family="Arial" font-size="12" text-anchor="middle">1</text>
@@ -58,26 +52,12 @@
   <text x="30" y="60" font-family="Arial" font-size="12" text-anchor="end">4</text>
   <text x="30" y="20" font-family="Arial" font-size="12" text-anchor="end">5</text>
 
-  <!-- Triangle P(2,1) -> O(5,4) -> R(5,1) -> P -->
-  <!-- Coordinates mapping:
-       x: 40 + val * 40
-       y: 220 - val * 40
-       P(2,1): x=120, y=180
-       O(5,4): x=240, y=60
-       R(5,1): x=240, y=180
-  -->
-  
   <path d="M120,180 L240,60 L240,180 Z" fill="none" stroke="black" stroke-width="2" />
   
-  <!-- Arrows on path -->
-  <!-- P->O -->
   <path d="M175,125 L185,115" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
-  <!-- O->R -->
   <path d="M240,110 L240,130" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
-  <!-- R->P -->
   <path d="M190,180 L170,180" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
 
-  <!-- Point Labels -->
   <text x="110" y="185" font-family="Arial" font-size="16" font-weight="bold">P</text>
   <text x="250" y="60" font-family="Arial" font-size="16" font-weight="bold">O</text>
   <text x="250" y="185" font-family="Arial" font-size="16" font-weight="bold">R</text>
