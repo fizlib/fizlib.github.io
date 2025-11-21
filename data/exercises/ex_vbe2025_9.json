@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2025_9",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Termodinamika",
+    "type": "multiple_choice",
+    "question": "Mokiniai, analizuodami grafiką, kuriame parodyta, kiek vidutinė metinė Žemės paviršiaus temperatūra 1880–2023 m. skyrėsi nuo XX a. vidurkio (1901–2000 m.), padaro išvadas. Kuri išvada suformuluota tiksliausiai?",
+    "image": "assets/images/ex_vbe2025_9.png",
+    "options": [
+        "Vidutinės metinės temperatūros kilimas prasidėjo apie 1980 m.",
+        "Vidutinė metinė temperatūra 1880–1940 m. mažėjo, 1940–1978 m. beveik nekito, o nuo 1980 m. ėmė didėti.",
+        "Vidutinės metinės temperatūros kilimas prasidėjo apie 1940 m.",
+        "Vidutinė metinė temperatūra XX amžiuje nuolat didėjo, didžiausias augimas stebimas nuo 1980 m."
+    ],
+    "correctAnswer": "Vidutinės metinės temperatūros kilimas prasidėjo apie 1980 m.",
+    "unit": null,
+    "solution": "Analizuojant grafiką matyti, kad ryškus ir nuolatinis temperatūros kilimas (raudoni stulpeliai, didėjantys) prasideda būtent nuo maždaug 1980 metų. Iki tol temperatūra svyravo (buvo ir šiltesnių, ir šaltesnių laikotarpių), bet nuolatinė kilimo tendencija išryškėjo apie 1980 m."
+}

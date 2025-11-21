@@ -1,0 +1,17 @@
+{
+    "id": "ex2",
+    "category": "NVBE",
+    "grade": 10,
+    "topic": "Dinamika",
+    "type": "multiple_choice",
+    "question": "Kuris fizikinis dydis matuojamas niutonais (N)?",
+    "image": null,
+    "options": [
+        "Masė",
+        "Jėga",
+        "Energija",
+        "Galia"
+    ],
+    "correctAnswer": "Jėga",
+    "solution": "Niutonas (N) yra jėgos matavimo vienetas SI sistemoje."
+}

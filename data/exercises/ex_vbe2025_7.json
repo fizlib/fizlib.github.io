@@ -1,0 +1,13 @@
+{
+    "id": "ex_vbe2025_7",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Elektra",
+    "type": "numerical",
+    "question": "Energiją taupančios liuminescencinės lemputės vardinė galia yra 11 W. Lemputės skleidžiamos šviesos galia 9 W, o šilumos galia 2 W. Apskaičiuokite šios lemputės naudingumo koeficientą procentais. Užrašykite atsakymą, suapvalintą iki sveikojo skaičiaus.",
+    "image": "assets/images/ex_vbe2025_7.svg",
+    "options": null,
+    "correctAnswer": "82",
+    "unit": "%",
+    "solution": "Naudingumo koeficientas \\( \\eta \\) apskaičiuojamas pagal formulę: \\( \\eta = \\frac{P_{naudinga}}{P_{visa}} \\cdot 100\\% \\). Čia naudinga galia yra šviesos galia \\( P_{naudinga} = 9 \\text{ W} \\), o visa galia yra vardinė galia \\( P_{visa} = 11 \\text{ W} \\). \\( \\eta = \\frac{9}{11} \\cdot 100\\% \\approx 81,8\\% \\approx 82\\% \\)."
+}

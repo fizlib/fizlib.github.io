@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2025_10",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Termodinamika",
+    "type": "multiple_choice",
+    "question": "Atliekant eksperimentą, į dvi vienodas stiklines įpilama karšto vandens. Viena stiklinė apvyniojama karštame vandenyje sudrėkintu popieriumi. Stebima, kad šlapiu popieriumi apvyniotoje stiklinėje vanduo atvėsta greičiau negu kitoje stiklinėje. Dėl kurio fizikinio reiškinio vanduo šlapiu popieriumi apvyniotoje stiklinėje atvėso greičiau?",
+    "image": "assets/images/ex_vbe2025_10.svg",
+    "options": [
+        "Šiluminės spinduliuotės",
+        "Konvekcijos",
+        "Šiluminio plėtimosi",
+        "Vandens garavimo"
+    ],
+    "correctAnswer": "Vandens garavimo",
+    "unit": null,
+    "solution": "Vanduo, garuodamas iš drėgno popieriaus, sunaudoja energiją (garavimo šilumą). Ši energija paimama iš popieriaus ir stiklinės, todėl stiklinė ir joje esantis vanduo vėsta greičiau. Tai yra tas pats principas, kodėl žmogui šalta, kai jis yra šlapias."
+}

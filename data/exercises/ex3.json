@@ -1,0 +1,13 @@
+{
+    "id": "ex3",
+    "category": "NVBE",
+    "grade": 9,
+    "topic": "Kinematika",
+    "type": "numerical",
+    "question": "Automobilis važiuoja pastoviu 72 km/h greičiu. Kokį atstumą (metrais) jis nuvažiuos per 10 sekundžių?",
+    "image": null,
+    "options": null,
+    "correctAnswer": "200",
+    "unit": "m",
+    "solution": "Pirmiausia paverčiame greitį į m/s: \\( 72 \\text{ km/h} = \\frac{72 \\cdot 1000}{3600} = 20 \\text{ m/s} \\). Tada \\( s = v \\cdot t = 20 \\cdot 10 = 200 \\text{ m} \\)."
+}

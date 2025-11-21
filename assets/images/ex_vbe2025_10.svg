@@ -1,0 +1,27 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Table -->
+  <line x1="50" y1="250" x2="350" y2="250" stroke="#888" stroke-width="2"/>
+
+  <!-- Glass 1 (Normal) -->
+  <path d="M100,100 L110,250 L170,250 L180,100 Z" fill="#e0f7fa" stroke="#000" stroke-width="2"/>
+  <ellipse cx="140" cy="100" rx="40" ry="10" fill="#e0f7fa" stroke="#000" stroke-width="2"/>
+  <ellipse cx="140" cy="110" rx="35" ry="8" fill="none" stroke="#4fc3f7" stroke-width="2"/> <!-- Water level -->
+  <text x="140" y="280" font-family="Arial" font-size="14" text-anchor="middle">Įprasta stiklinė</text>
+
+  <!-- Glass 2 (Wrapped) -->
+  <path d="M220,100 L230,250 L290,250 L300,100 Z" fill="#e0f7fa" stroke="#000" stroke-width="2"/>
+  <!-- Paper Wrap -->
+  <path d="M222,120 L228,240 L292,240 L298,120 Z" fill="#fff3e0" stroke="#d35400" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="260" y="180" font-family="Arial" font-size="12" fill="#d35400" text-anchor="middle">Drėgnas popierius</text>
+  
+  <ellipse cx="260" cy="100" rx="40" ry="10" fill="#e0f7fa" stroke="#000" stroke-width="2"/>
+  <ellipse cx="260" cy="110" rx="35" ry="8" fill="none" stroke="#4fc3f7" stroke-width="2"/> <!-- Water level -->
+  
+  <!-- Evaporation lines -->
+  <path d="M230,150 Q220,140 210,150" stroke="#aaa" stroke-width="1" fill="none"/>
+  <path d="M290,150 Q300,140 310,150" stroke="#aaa" stroke-width="1" fill="none"/>
+  <path d="M230,200 Q220,190 210,200" stroke="#aaa" stroke-width="1" fill="none"/>
+  <path d="M290,200 Q300,190 310,200" stroke="#aaa" stroke-width="1" fill="none"/>
+  
+  <text x="260" y="280" font-family="Arial" font-size="14" text-anchor="middle">Su drėgnu popieriumi</text>
+</svg>

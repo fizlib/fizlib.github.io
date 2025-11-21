@@ -1,0 +1,175 @@
+<svg width="900" height="450" viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg" font-family="Times New Roman, serif">
+
+  <defs>
+    <style>
+      .axis-line { stroke: #e0e0e0; stroke-width: 1; }
+      .axis-text { font-size: 18px; fill: #222; }
+      .title-text { font-size: 20px; fill: #000; }
+      .bar-pos { fill: #b22222; shape-rendering: crispEdges; } /* Red */
+      .bar-neg { fill: #3b5998; shape-rendering: crispEdges; } /* Blue */
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="white" />
+
+  <g stroke="#f0f0f0" stroke-width="1.5">
+    <line x1="80" y1="50" x2="880" y2="50" />  <line x1="80" y1="108" x2="880" y2="108" /> <line x1="80" y1="166" x2="880" y2="166" /> <line x1="80" y1="224" x2="880" y2="224" /> <line x1="80" y1="282" x2="880" y2="282" /> <line x1="80" y1="340" x2="880" y2="340" /> </g>
+
+  <g stroke="#f0f0f0" stroke-width="1.5">
+    <line x1="140" y1="30" x2="140" y2="380" /> <line x1="245" y1="30" x2="245" y2="380" /> <line x1="350" y1="30" x2="350" y2="380" /> <line x1="455" y1="30" x2="455" y2="380" /> <line x1="560" y1="30" x2="560" y2="380" /> <line x1="665" y1="30" x2="665" y2="380" /> <line x1="770" y1="30" x2="770" y2="380" /> <line x1="875" y1="30" x2="875" y2="380" /> </g>
+
+  <g>
+    <rect x="140" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="145" y="224" width="4" height="15" class="bar-neg" />
+    <rect x="150" y="224" width="4" height="30" class="bar-neg" />
+    <rect x="155" y="224" width="4" height="35" class="bar-neg" />
+    <rect x="160" y="224" width="4" height="45" class="bar-neg" /> <rect x="165" y="224" width="4" height="42" class="bar-neg" />
+    <rect x="170" y="224" width="4" height="40" class="bar-neg" />
+    <rect x="175" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="180" y="224" width="4" height="40" class="bar-neg" />
+    <rect x="185" y="224" width="4" height="30" class="bar-neg" />
+    <rect x="190" y="224" width="4" height="35" class="bar-neg" />
+    <rect x="195" y="224" width="4" height="20" class="bar-neg" />
+    <rect x="200" y="224" width="4" height="15" class="bar-neg" />
+    <rect x="205" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="210" y="224" width="4" height="10" class="bar-neg" />
+    <rect x="215" y="224" width="4" height="35" class="bar-neg" />
+    <rect x="220" y="224" width="4" height="20" class="bar-neg" />
+    <rect x="225" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="230" y="224" width="4" height="15" class="bar-neg" />
+
+    <rect x="235" y="224" width="4" height="10" class="bar-neg" />
+    <rect x="240" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="245" y="224" width="4" height="15" class="bar-neg" />
+    <rect x="250" y="224" width="4" height="40" class="bar-neg" />
+    <rect x="255" y="224" width="4" height="60" class="bar-neg" /> <rect x="260" y="224" width="4" height="45" class="bar-neg" />
+    <rect x="265" y="224" width="4" height="50" class="bar-neg" />
+    <rect x="270" y="224" width="4" height="65" class="bar-neg" />
+    <rect x="275" y="224" width="4" height="60" class="bar-neg" />
+    <rect x="280" y="224" width="4" height="55" class="bar-neg" />
+    <rect x="285" y="224" width="4" height="50" class="bar-neg" />
+    <rect x="290" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="295" y="224" width="4" height="35" class="bar-neg" />
+    <rect x="300" y="224" width="4" height="50" class="bar-neg" />
+    <rect x="305" y="224" width="4" height="20" class="bar-neg" />
+    <rect x="310" y="224" width="4" height="30" class="bar-neg" />
+    <rect x="315" y="224" width="4" height="35" class="bar-neg" />
+    <rect x="320" y="224" width="4" height="32" class="bar-neg" />
+    <rect x="325" y="224" width="4" height="30" class="bar-neg" />
+    
+    <rect x="330" y="224" width="4" height="28" class="bar-neg" />
+    <rect x="335" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="340" y="224" width="4" height="10" class="bar-neg" />
+    <rect x="345" y="224" width="4" height="20" class="bar-neg" />
+    <rect x="350" y="224" width="4" height="15" class="bar-neg" />
+    <rect x="355" y="224" width="4" height="5" class="bar-neg" />
+    <rect x="360" y="224" width="4" height="35" class="bar-neg" />
+    <rect x="365" y="224" width="4" height="15" class="bar-neg" />
+    <rect x="370" y="224" width="4" height="10" class="bar-neg" />
+    <rect x="375" y="224" width="4" height="18" class="bar-neg" />
+    <rect x="380" y="224" width="4" height="10" class="bar-neg" />
+    <rect x="385" y="224" width="4" height="30" class="bar-neg" />
+    <rect x="390" y="224" width="4" height="12" class="bar-neg" />
+    <rect x="395" y="224" width="4" height="5" class="bar-neg" />
+    <rect x="400" y="224" width="4" height="2" class="bar-pos" /> <rect x="405" y="224" width="4" height="2" class="bar-pos" />
+    
+    <rect x="410" y="195" width="4" height="29" class="bar-pos" />
+    <rect x="415" y="185" width="4" height="39" class="bar-pos" />
+    <rect x="420" y="210" width="4" height="14" class="bar-pos" />
+    <rect x="425" y="205" width="4" height="19" class="bar-pos" />
+    <rect x="430" y="180" width="4" height="44" class="bar-pos" />
+    <rect x="435" y="215" width="4" height="9" class="bar-pos" />
+    <rect x="440" y="224" width="4" height="5" class="bar-neg" />
+    <rect x="445" y="224" width="4" height="15" class="bar-neg" />
+    <rect x="450" y="224" width="4" height="20" class="bar-neg" />
+    
+    <rect x="455" y="224" width="4" height="18" class="bar-neg" />
+    <rect x="460" y="215" width="4" height="9" class="bar-pos" />
+    <rect x="465" y="200" width="4" height="24" class="bar-pos" />
+    <rect x="470" y="224" width="4" height="10" class="bar-neg" />
+    <rect x="475" y="224" width="4" height="25" class="bar-neg" />
+    <rect x="480" y="210" width="4" height="14" class="bar-pos" />
+    <rect x="485" y="214" width="4" height="10" class="bar-pos" />
+    <rect x="490" y="212" width="4" height="12" class="bar-pos" />
+    <rect x="495" y="215" width="4" height="9" class="bar-pos" />
+    <rect x="500" y="212" width="4" height="12" class="bar-pos" />
+    <rect x="505" y="224" width="4" height="20" class="bar-neg" />
+    <rect x="510" y="224" width="4" height="10" class="bar-neg" />
+    <rect x="515" y="224" width="4" height="5" class="bar-neg" />
+    <rect x="520" y="210" width="4" height="14" class="bar-pos" />
+    <rect x="525" y="215" width="4" height="9" class="bar-pos" />
+    <rect x="530" y="224" width="4" height="8" class="bar-neg" />
+    <rect x="535" y="224" width="4" height="8" class="bar-neg" />
+    <rect x="540" y="200" width="4" height="24" class="bar-pos" />
+    <rect x="545" y="224" width="4" height="5" class="bar-neg" />
+    <rect x="550" y="222" width="4" height="2" class="bar-pos" />
+    
+    <rect x="555" y="224" width="4" height="8" class="bar-neg" />
+    <rect x="560" y="222" width="4" height="2" class="bar-pos" />
+    <rect x="565" y="200" width="4" height="24" class="bar-pos" />
+    <rect x="570" y="190" width="4" height="34" class="bar-pos" />
+    <rect x="575" y="200" width="4" height="24" class="bar-pos" />
+    <rect x="580" y="185" width="4" height="39" class="bar-pos" />
+    <rect x="585" y="205" width="4" height="19" class="bar-pos" />
+    <rect x="590" y="202" width="4" height="22" class="bar-pos" />
+    <rect x="595" y="190" width="4" height="34" class="bar-pos" />
+    <rect x="600" y="170" width="4" height="54" class="bar-pos" />
+    <rect x="605" y="160" width="4" height="64" class="bar-pos" />
+    <rect x="610" y="175" width="4" height="49" class="bar-pos" />
+    <rect x="615" y="165" width="4" height="59" class="bar-pos" />
+    <rect x="620" y="190" width="4" height="34" class="bar-pos" />
+    <rect x="625" y="185" width="4" height="39" class="bar-pos" />
+    <rect x="630" y="170" width="4" height="54" class="bar-pos" />
+    <rect x="635" y="160" width="4" height="64" class="bar-pos" />
+    <rect x="640" y="145" width="4" height="79" class="bar-pos" />
+    <rect x="645" y="180" width="4" height="44" class="bar-pos" />
+    <rect x="650" y="160" width="4" height="64" class="bar-pos" />
+    <rect x="655" y="135" width="4" height="89" class="bar-pos" />
+    <rect x="660" y="160" width="4" height="64" class="bar-pos" />
+    <rect x="665" y="162" width="4" height="62" class="bar-pos" />
+    <rect x="670" y="140" width="4" height="84" class="bar-pos" />
+    <rect x="675" y="140" width="4" height="84" class="bar-pos" />
+    <rect x="680" y="125" width="4" height="99" class="bar-pos" />
+    <rect x="685" y="135" width="4" height="89" class="bar-pos" />
+    <rect x="690" y="135" width="4" height="89" class="bar-pos" />
+    <rect x="695" y="115" width="4" height="109" class="bar-pos" />
+    <rect x="700" y="125" width="4" height="99" class="bar-pos" />
+    <rect x="705" y="115" width="4" height="109" class="bar-pos" />
+    <rect x="710" y="105" width="4" height="119" class="bar-pos" />
+    <rect x="715" y="115" width="4" height="109" class="bar-pos" />
+    <rect x="720" y="100" width="4" height="124" class="bar-pos" />
+    <rect x="725" y="80" width="4" height="144" class="bar-pos" />
+    <rect x="730" y="95" width="4" height="129" class="bar-pos" />
+    <rect x="735" y="70" width="4" height="154" class="bar-pos" />
+    <rect x="740" y="75" width="4" height="149" class="bar-pos" />
+    <rect x="745" y="85" width="4" height="139" class="bar-pos" />
+    <rect x="750" y="95" width="4" height="129" class="bar-pos" />
+    <rect x="755" y="50" width="4" height="174" class="bar-pos" />
+    <rect x="760" y="70" width="4" height="154" class="bar-pos" />
+    <rect x="765" y="40" width="4" height="184" class="bar-pos" /> </g>
+
+  <g class="axis-text" text-anchor="end">
+    <text x="70" y="55">1,2</text>
+    <text x="70" y="113">0,8</text>
+    <text x="70" y="171">0,4</text>
+    <text x="70" y="229">0</text>
+    <text x="70" y="287">-0,4</text>
+  </g>
+
+  <g class="axis-text" text-anchor="middle">
+    <text x="140" y="405">1880</text>
+    <text x="245" y="405">1900</text>
+    <text x="350" y="405">1920</text>
+    <text x="455" y="405">1940</text>
+    <text x="560" y="405">1960</text>
+    <text x="665" y="405">1980</text>
+    <text x="770" y="405">2000</text>
+    <text x="875" y="405">2020</text>
+  </g>
+
+  <text x="400" y="435" class="title-text">Metai</text>
+
+  <text x="30" y="360" class="title-text" transform="rotate(-90 30,360)">Vidutinės metinės temperatūros skirtumas</text>
+  <text x="55" y="360" class="title-text" transform="rotate(-90 55,360)">nuo 1901–2000 m. vidurkio (°C)</text>
+
+</svg>

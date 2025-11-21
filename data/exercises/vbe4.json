@@ -1,0 +1,17 @@
+{
+    "id": "vbe4",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Bendra",
+    "type": "multiple_choice",
+    "question": "4. Pabaikite teiginį, kad būtų suformuluota svarbiausia priežastis, kodėl reikia tinkamai tvarkyti elektroninės įrangos atliekas. Pasirinkite teisingą atsakymą. Tinkamas elektroninės įrangos atliekų tvarkymas...",
+    "image": null,
+    "options": [
+        "mažina poreikį iš žemės išgauti ribotus ir brangius išteklius",
+        "leidžia pagaminti pigius elektroninius prietaisus",
+        "apsaugo, kad jos nepatektų į trečiojo pasaulio šalis",
+        "leidžia žmonėms dažniau keisti elektroninius prietaisus naujais"
+    ],
+    "correctAnswer": "mažina poreikį iš žemės išgauti ribotus ir brangius išteklius",
+    "solution": "Elektronikos atliekų perdirbimas leidžia atgauti vertingas medžiagas (auksą, varį ir kt.), todėl mažėja poreikis kasti naujus išteklius."
+}

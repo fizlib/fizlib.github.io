@@ -1,0 +1,16 @@
+{
+    "id": "vbe3",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Bendra",
+    "type": "matching",
+    "question": "3. Sujunkite linijomis tinkamus kairėje ir dešinėje pateiktus fizikinius terminus.",
+    "image": null,
+    "pairs": {
+        "Fizikinis dydis": "medžiagos kiekis",
+        "Matavimo prietaisas": "multimetras",
+        "Matavimo vienetas": "tesla"
+    },
+    "correctAnswer": null,
+    "solution": "Fizikinis dydis - medžiagos kiekis; Matavimo prietaisas - multimetras; Matavimo vienetas - tesla."
+}

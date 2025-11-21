@@ -1,0 +1,44 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Magnetic Field (Crosses) -->
+  <defs>
+    <g id="cross">
+      <line x1="-5" y1="-5" x2="5" y2="5" stroke="#888" stroke-width="2"/>
+      <line x1="-5" y1="5" x2="5" y2="-5" stroke="#888" stroke-width="2"/>
+    </g>
+  </defs>
+  
+  <!-- Grid of crosses -->
+  <use href="#cross" x="50" y="50"/> <use href="#cross" x="125" y="50"/> <use href="#cross" x="200" y="50"/> <use href="#cross" x="275" y="50"/> <use href="#cross" x="350" y="50"/>
+  <use href="#cross" x="50" y="125"/> <use href="#cross" x="125" y="125"/> <use href="#cross" x="200" y="125"/> <use href="#cross" x="275" y="125"/> <use href="#cross" x="350" y="125"/>
+  <use href="#cross" x="50" y="200"/> <use href="#cross" x="125" y="200"/> <use href="#cross" x="200" y="200"/> <use href="#cross" x="275" y="200"/> <use href="#cross" x="350" y="200"/>
+  
+  <!-- B vector label -->
+  <text x="80" y="40" font-family="Arial" font-size="24" font-style="italic">B</text>
+  <line x1="80" y1="20" x2="100" y2="20" stroke="black" stroke-width="2"/>
+  <polygon points="100,20 95,15 95,25" fill="black"/>
+
+  <!-- Particle Entry Point -->
+  <line x1="200" y1="300" x2="200" y2="250" stroke="black" stroke-width="2"/>
+  <polygon points="200,250 195,260 205,260" fill="black"/>
+  <text x="210" y="290" font-family="Arial" font-size="24" font-style="italic">v</text>
+
+  <!-- Trajectories -->
+  <!-- 1: Left, smaller radius -->
+  <path d="M200,200 Q200,150 150,180 Q120,200 100,250" stroke="#3498db" stroke-width="3" fill="none"/>
+  <circle cx="100" cy="250" r="5" fill="#7f8c8d"/>
+  <text x="80" y="240" font-family="Arial" font-size="24" font-weight="bold">1</text>
+  <polygon points="150,180 140,185 145,175" fill="#3498db"/> <!-- Arrowhead on path -->
+
+  <!-- 2: Straight -->
+  <line x1="200" y1="200" x2="200" y2="50" stroke="#3498db" stroke-width="3"/>
+  <circle cx="200" cy="130" r="5" fill="#7f8c8d"/>
+  <text x="180" y="130" font-family="Arial" font-size="24" font-weight="bold">2</text>
+  <polygon points="200,100 195,110 205,110" fill="#3498db"/>
+
+  <!-- 3: Right, larger radius -->
+  <path d="M200,200 Q200,100 300,150 Q350,180 380,250" stroke="#3498db" stroke-width="3" fill="none"/>
+  <circle cx="330" cy="180" r="5" fill="#7f8c8d"/>
+  <text x="330" y="210" font-family="Arial" font-size="24" font-weight="bold">3</text>
+  <polygon points="300,150 310,145 305,155" fill="#3498db"/>
+
+</svg>

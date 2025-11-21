@@ -1,0 +1,17 @@
+{
+    "id": "vbe1",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Bendra",
+    "type": "multiple_choice",
+    "question": "1. Aristotelis yra pasakęs: „Platonas mano draugas, bet tiesa man brangesnė.“ Šis teiginys pabrėžia, kad mokslinėje veikloje tiesa svarbiau už asmeninius ryšius ar pripažintų asmenų teiginius. Kuris iš toliau pateiktų mokslinės etikos principų geriausiai atspindi šią mintį? Pažymėkite teisingą atsakymą.",
+    "image": null,
+    "options": [
+        "Mokslininkas gali klysti, bet neturi teisės klastoti rezultatų.",
+        "Mokslininkas gali cituoti kitus mokslininkus, tik visada privalo nurodyti šaltinį.",
+        "Mokslininkas gali pakartoti jau padarytą atradimą, bet neturi teisės plagijuoti.",
+        "Mokslininkas gali skelbti savo idėjas, neatsižvelgdamas į autoritetų nuomonę."
+    ],
+    "correctAnswer": "Mokslininkas gali skelbti savo idėjas, neatsižvelgdamas į autoritetų nuomonę.",
+    "solution": "Aristotelio posakis pabrėžia tiesos viršenybę prieš autoritetus ar draugystes. Tai tiesiogiai siejasi su principu, kad mokslininkas turi skelbti savo idėjas nepriklausomai nuo autoritetų nuomonės."
+}

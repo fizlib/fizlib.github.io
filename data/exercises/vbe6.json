@@ -1,0 +1,13 @@
+{
+    "id": "vbe6",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Elektra",
+    "type": "numerical",
+    "question": "6. Grafike pavaizduota dviejų vienodų taškinių elektros krūvių elektrostatinės sąveikos jėgos \\( F \\) priklausomybė nuo atstumo \\( r \\) tarp krūvių. Remdamiesi grafiko duomenimis ir Kulono dėsniu, apskaičiuokite elektros krūvio modulį. \\( k = 9,0 \\cdot 10^9 \\text{ N} \\cdot \\text{m}^2/\\text{C}^2 \\). Užrašykite atsakymą mikrokulonais (µC).",
+    "image": "assets/images/graph_coulomb.svg",
+    "options": null,
+    "correctAnswer": "1",
+    "unit": "µC",
+    "solution": "Pasirenkame tašką iš grafiko: pvz., \\( r = 0.03 \\text{ m} \\), \\( F = 10 \\text{ N} \\). Kulono dėsnis: \\( F = k \\frac{q^2}{r^2} \\). Išreiškiame \\( q \\): \\( q = \\sqrt{\\frac{F \\cdot r^2}{k}} \\). \\( q = \\sqrt{\\frac{10 \\cdot 0.03^2}{9 \\cdot 10^9}} = \\sqrt{\\frac{10 \\cdot 0.0009}{9 \\cdot 10^9}} = \\sqrt{\\frac{9 \\cdot 10^{-3}}{9 \\cdot 10^9}} = \\sqrt{10^{-12}} = 10^{-6} \\text{ C} = 1 \\text{ µC} \\)."
+}

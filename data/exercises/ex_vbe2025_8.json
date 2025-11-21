@@ -1,0 +1,17 @@
+{
+    "id": "ex_vbe2025_8",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Magnetizmas",
+    "type": "matching",
+    "question": "Trys vienodos masės, bet skirtingų elektros krūvių dalelės tokiu pačiu greičiu įlekia į vienalytį magnetinį lauką. Šio lauko magnetinės indukcijos vektorius nukreiptas nuo stebėtojo statmenai paveikslo plokštumai. Paveiksle pavaizduotos ir skaičiais pažymėtos šių dalelių judėjimo trajektorijos ir judėjimo kryptys. \n\nPasirinkite teisingus atsakymus:",
+    "image": "assets/images/ex_vbe2025_8.png",
+    "pairs": {
+        "Kuri dalelė yra elektriškai neutrali?": "2 dalelė",
+        "Kurią dalelę veikia mažiausia Lorenco jėga (kai \\( F_L \\neq 0 \\))?": "3 dalelė",
+        "Kurios dalelės elektros krūvis yra teigiamasis?": "1 dalelė"
+    },
+    "correctAnswer": null,
+    "unit": null,
+    "solution": "1. Dalelė 2 juda tiesiai, vadinasi, jos neveikia Lorenco jėga, ji yra neutrali.\n2. Lorenco jėga \\( F_L = qvB \\). Spindulys \\( R = \\frac{mv}{qB} \\). Kadangi \\( m, v, B \\) vienodi, tai \\( R \\sim \\frac{1}{q} \\). Dalelės 3 trajektorijos spindulys didesnis nei dalelės 1, vadinasi, dalelės 3 krūvis \\( q \\) yra mažesnis. Todėl ir jėga \\( F_L \\) mažesnė.\n3. Pagal kairiosios rankos taisyklę: magnetinės linijos eina į delną (nuo stebėtojo), pirštai rodo greičio kryptį (į viršų), atlenktas nykštys rodo jėgos kryptį teigiamam krūviui (į kairę). Į kairę sukasi dalelė 1, vadinasi, ji yra teigiama."
+}

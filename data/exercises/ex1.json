@@ -1,0 +1,13 @@
+{
+    "id": "ex1",
+    "category": "NVBE",
+    "grade": 9,
+    "topic": "Kinematika",
+    "type": "numerical",
+    "question": "Nustatykite kūno greitį iš pateikto kelio priklausomybės nuo laiko grafiko.",
+    "image": "assets/images/graph1.svg",
+    "options": null,
+    "correctAnswer": "2",
+    "unit": "m/s",
+    "solution": "Greitis \\( v = \\frac{s}{t} \\). Pasirenkame tašką grafike: kai \\( t = 4 \\text{ s} \\), \\( s = 8 \\text{ m} \\). \\( v = \\frac{8}{4} = 2 \\text{ m/s} \\)."
+}

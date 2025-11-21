@@ -1,0 +1,17 @@
+{
+    "id": "vbe5",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Kinematika",
+    "type": "multiple_choice",
+    "question": "5. Sveikatos specialistai rekomenduoja kasdien nueiti 10 000 žingsnių. Kiek laiko tai užtruks žmogui, jeigu jo žingsnio ilgis lygus 40 cm, o ėjimo greitis yra 4,5 km/h? Pažymėkite teisingą atsakymą.",
+    "image": null,
+    "options": [
+        "1 val.",
+        "3000 s",
+        "40,5 min.",
+        "53,3 min."
+    ],
+    "correctAnswer": "53,3 min.",
+    "solution": "Kelias \\( s = 10000 \\cdot 0.4 \\text{ m} = 4000 \\text{ m} = 4 \\text{ km} \\). Laikas \\( t = \\frac{s}{v} = \\frac{4}{4.5} \\approx 0.89 \\text{ h} \\). Verčiame į minutes: \\( 0.888... \\cdot 60 \\approx 53.3 \\text{ min} \\)."
+}
