@@ -335,6 +335,47 @@ document.addEventListener('DOMContentLoaded', () => {
                     opt.classList.add('selected');
                     hiddenInput.value = opt.dataset.value;
                 });
+
+                // Add ENTER key support for multiple choice options
+                opt.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        // Remove selected from all
+                        options.forEach(o => o.classList.remove('selected'));
+                        // Add to clicked
+                        opt.classList.add('selected');
+                        hiddenInput.value = opt.dataset.value;
+                        // Trigger submit
+                        submitBtn.click();
+                    }
+                });
+
+                // Make options focusable
+                opt.setAttribute('tabindex', '0');
+            });
+        }
+
+        // Add ENTER key support for text inputs (for all text-based exercises)
+        const textInput = card.querySelector('.text-input');
+        if (textInput) {
+            textInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitBtn.click();
+                }
+            });
+        }
+
+        // Add ENTER key support for matching dropdowns
+        if (ex.type === 'matching') {
+            const selects = card.querySelectorAll('.matching-select');
+            selects.forEach(select => {
+                select.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        submitBtn.click();
+                    }
+                });
             });
         }
 
@@ -384,9 +425,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     existingSolution.style.display = 'block';
                     solutionBtn.textContent = "Slėpti sprendimą";
                     feedbackEl.style.display = 'block';
+                    // Re-show correct answer
+                    showCorrectAnswer(card, ex);
                 } else {
                     existingSolution.style.display = 'none';
                     solutionBtn.textContent = "Rodyti sprendimą";
+                    // Hide correct answer highlighting
+                    hideCorrectAnswer(card, ex);
                     // If not submitted (no correct/incorrect class), hide the empty feedback box
                     if (!feedbackEl.classList.contains('correct') && !feedbackEl.classList.contains('incorrect')) {
                         feedbackEl.style.display = 'none';
@@ -400,6 +445,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 feedbackEl.appendChild(solutionDiv);
                 solutionBtn.textContent = "Slėpti sprendimą";
                 feedbackEl.style.display = 'block';
+
+                // Show correct answer
+                showCorrectAnswer(card, ex);
 
                 if (window.renderMathInElement) {
                     renderMathInElement(solutionDiv, {
@@ -419,5 +467,56 @@ document.addEventListener('DOMContentLoaded', () => {
         // Simple string comparison for now. 
         // For numerical, we might want to handle commas/dots if needed, but let's stick to simple.
         return user.toLowerCase() === correct.toLowerCase();
+    }
+
+    function showCorrectAnswer(card, ex) {
+        if (ex.type === 'multiple_choice') {
+            // Highlight the correct option
+            const options = card.querySelectorAll('.option-btn');
+            options.forEach(opt => {
+                if (opt.dataset.value === ex.correctAnswer) {
+                    opt.classList.add('correct-answer');
+                }
+            });
+        } else if (ex.type === 'matching') {
+            // Fill in the correct values in dropdowns
+            const selects = card.querySelectorAll('.matching-select');
+            selects.forEach(select => {
+                const correctValue = ex.pairs[select.dataset.key];
+                select.value = correctValue;
+                select.classList.add('showing-answer');
+            });
+        } else {
+            // Fill in the correct answer in text input
+            const textInput = card.querySelector('.text-input');
+            if (textInput) {
+                textInput.value = ex.correctAnswer;
+                textInput.classList.add('showing-answer');
+            }
+        }
+    }
+
+    function hideCorrectAnswer(card, ex) {
+        if (ex.type === 'multiple_choice') {
+            // Remove highlighting from correct option
+            const options = card.querySelectorAll('.option-btn');
+            options.forEach(opt => {
+                opt.classList.remove('correct-answer');
+            });
+        } else if (ex.type === 'matching') {
+            // Clear the dropdowns
+            const selects = card.querySelectorAll('.matching-select');
+            selects.forEach(select => {
+                select.value = '';
+                select.classList.remove('showing-answer');
+            });
+        } else {
+            // Clear the text input
+            const textInput = card.querySelector('.text-input');
+            if (textInput) {
+                textInput.value = '';
+                textInput.classList.remove('showing-answer');
+            }
+        }
     }
 });

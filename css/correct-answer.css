@@ -1,0 +1,31 @@
+/* Correct Answer Highlighting */
+.option-btn.correct-answer {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+    animation: pulseGreen 0.5s ease-out;
+}
+
+@keyframes pulseGreen {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+.text-input.showing-answer,
+.matching-select.showing-answer {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: var(--secondary-color);
+    font-weight: 600;
+}
