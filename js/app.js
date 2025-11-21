@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <button class="expand-btn" aria-label="Išskleisti">⤢</button>
                     <span class="badge">${ex.topic}</span>
-                    ${ex.subtopic ? `<span class="badge" style="background-color: var(--secondary-color); color: var(--text-primary);">${ex.subtopic}</span>` : ''}
+                    ${ex.subtopic ? `<span class="badge">${ex.subtopic}</span>` : ''}
                 </div>
             </div>
             <div class="card-question">${ex.question}</div>
