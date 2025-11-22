@@ -468,6 +468,58 @@ document.addEventListener('DOMContentLoaded', () => {
         applet.inject(containerId);
     }
 
+    function toggleCardExpansion(card, expandBtn) {
+        const isExpanded = card.classList.contains('expanded');
+        const allCards = document.querySelectorAll('.exercise-card');
+
+        if (isExpanded) {
+            // Collapse
+            card.classList.remove('expanded');
+            expandBtn.innerHTML = '⤢';
+            expandBtn.setAttribute('aria-label', 'Išskleisti');
+            allCards.forEach(c => c.classList.remove('hidden-card'));
+            // Remove any existing zoom overlay
+            const existingOverlay = document.querySelector('.image-zoom-overlay');
+            if (existingOverlay) {
+                existingOverlay.remove();
+            }
+        } else {
+            // Expand
+            allCards.forEach(c => {
+                if (c !== card) {
+                    c.classList.add('hidden-card');
+                }
+            });
+            card.classList.add('expanded');
+            expandBtn.innerHTML = '✕';
+            expandBtn.setAttribute('aria-label', 'Suskleisti');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Add image zoom functionality
+            const cardImage = card.querySelector('.card-image');
+            if (cardImage && !cardImage.dataset.zoomListener) {
+                cardImage.dataset.zoomListener = 'true';
+                cardImage.addEventListener('click', () => {
+                    // Create zoom overlay
+                    const overlay = document.createElement('div');
+                    overlay.className = 'image-zoom-overlay';
+
+                    const zoomedImg = document.createElement('img');
+                    zoomedImg.src = cardImage.src;
+                    zoomedImg.alt = cardImage.alt;
+
+                    overlay.appendChild(zoomedImg);
+                    document.body.appendChild(overlay);
+
+                    // Close on click
+                    overlay.addEventListener('click', () => {
+                        overlay.remove();
+                    });
+                });
+            }
+        }
+    }
+
     function attachCardEvents(card, ex, isFullSimulation = false) {
         // Handle Simulation/Structural Start
         if ((ex.type === 'simulation' || ex.type === 'structural') && !isFullSimulation) {
@@ -568,57 +620,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const expandBtn = card.querySelector('.expand-btn');
         if (expandBtn) {
             expandBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent bubbling if needed
+                e.stopPropagation();
+                toggleCardExpansion(card, expandBtn);
+            });
+        }
 
-                const isExpanded = card.classList.contains('expanded');
-                const allCards = document.querySelectorAll('.exercise-card');
-
-                if (isExpanded) {
-                    // Collapse
-                    card.classList.remove('expanded');
-                    expandBtn.innerHTML = '⤢';
-                    expandBtn.setAttribute('aria-label', 'Išskleisti');
-                    allCards.forEach(c => c.classList.remove('hidden-card'));
-                    // Remove any existing zoom overlay
-                    const existingOverlay = document.querySelector('.image-zoom-overlay');
-                    if (existingOverlay) {
-                        existingOverlay.remove();
-                    }
-                } else {
-                    // Expand
-                    allCards.forEach(c => {
-                        if (c !== card) {
-                            c.classList.add('hidden-card');
-                        }
-                    });
-                    card.classList.add('expanded');
-                    expandBtn.innerHTML = '✕';
-                    expandBtn.setAttribute('aria-label', 'Suskleisti');
-                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    // Add image zoom functionality
-                    const cardImage = card.querySelector('.card-image');
-                    if (cardImage && !cardImage.dataset.zoomListener) {
-                        cardImage.dataset.zoomListener = 'true';
-                        cardImage.addEventListener('click', () => {
-                            // Create zoom overlay
-                            const overlay = document.createElement('div');
-                            overlay.className = 'image-zoom-overlay';
-
-                            const zoomedImg = document.createElement('img');
-                            zoomedImg.src = cardImage.src;
-                            zoomedImg.alt = cardImage.alt;
-
-                            overlay.appendChild(zoomedImg);
-                            document.body.appendChild(overlay);
-
-                            // Close on click
-                            overlay.addEventListener('click', () => {
-                                overlay.remove();
-                            });
-                        });
-                    }
+        // Double-click to expand (Only for standard cards)
+        if (expandBtn) {
+            card.addEventListener('dblclick', (e) => {
+                // Don't expand if clicking on interactive elements
+                if (e.target.closest('.btn, .option-btn, input, select, .share-btn, .topic-badge')) {
+                    return;
                 }
+                e.stopPropagation();
+                toggleCardExpansion(card, expandBtn);
             });
         }
 
