@@ -261,8 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isFullView) {
                 return `
                     <div class="card-header">
-                        <span class="badge ${badgeClass}" style="${badgeStyle}">${badgeText}</span>
-                        <span class="badge">${ex.grade} klasė</span>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
+                            <span class="badge">${ex.grade} klasė</span>
+                            <span class="badge ${badgeClass}" style="${badgeStyle}">${badgeText}</span>
+                        </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                             <span class="badge">${ex.topic}</span>
@@ -297,13 +299,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 `}).join('');
 
                 const mainContent = isStructural
-                    ? `<img src="${ex.image}" alt="Užduoties iliustracija" style="max-width: 100%; height: auto; display: block; margin: 0 auto 2rem auto; border-radius: 8px;">`
+                    ? `<img src="${ex.image}" alt="Užduoties iliustracija" style="max-width: 60%; height: auto; display: block; margin: 0 auto 2rem auto; border-radius: 8px;">`
                     : `<div id="ggb-element-${ex.id}" class="simulation-container" style="margin-bottom: 2rem; border: 1px solid #e5e7eb; border-radius: 8px;"></div>`;
 
                 return `
                     <div class="card-header">
-                        <span class="badge ${badgeClass}" style="${badgeStyle}">${badgeText}</span>
-                        <span class="badge">${ex.grade} klasė</span>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
+                            <span class="badge">${ex.grade} klasė</span>
+                            <span class="badge ${badgeClass}" style="${badgeStyle}">${badgeText}</span>
+                        </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                             <span class="badge">${ex.topic}</span>
