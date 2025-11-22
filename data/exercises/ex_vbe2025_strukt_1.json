@@ -1,0 +1,93 @@
+{
+    "id": "ex_vbe2025_strukt_1",
+    "type": "structural",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Termodinamika",
+    "subtopic": "Vidinė energija",
+    "question": "Automobilis, kurio masė yra 1000 kg, juda 30 m/s greičiu. Paspaudus stabdžius, automobilis visiškai sustoja. Iškart po stabdymo atliekamas termovizinis tyrimas. Jo nuotrauka pateikta paveiksle kartu su temperatūrų spalvine skale.",
+    "image": "assets/images/ex_vbe2025_strukt_1.png",
+    "questions": [
+        {
+            "id": "q22",
+            "type": "multiple_choice",
+            "question": "22. Remdamiesi pateikta termovizine nuotrauka ir temperatūrų spalvine skale, nustatykite, kokia apytiksliai yra automobilio priekinių ratų temperatūra. <i>Pažymėkite teisingą atsakymą.</i> (1 taškas)",
+            "options": [
+                "Mažesnė nei 19 °C",
+                "Didesnė nei 28 °C",
+                "Tokia pati kaip aplinkos oro temperatūra",
+                "Tarp 19 °C ir 26 °C"
+            ],
+            "correctAnswer": "Didesnė nei 28 °C"
+        },
+        {
+            "id": "q23",
+            "type": "multiple_choice",
+            "question": "23. Remdamiesi pateikta termovizine nuotrauka ir temperatūrų spalvine skale, nustatykite, kokia apytiksliai yra automobilio priekinio stiklo temperatūra. <i>Pažymėkite teisingą atsakymą.</i> (1 taškas)",
+            "options": [
+                "Tarp 18 °C ir 25,6 °C",
+                "Mažesnė nei 19 °C",
+                "Didesnė nei 20 °C",
+                "Tarp 5,8 °C ir -0,8 °C"
+            ],
+            "correctAnswer": "Mažesnė nei 19 °C"
+        },
+        {
+            "id": "q24",
+            "type": "multiple_choice",
+            "question": "24. Kas lemia ratų temperatūros padidėjimą stabdymo metu? <i>Pažymėkite teisingą atsakymą.</i> (1 taškas)",
+            "options": [
+                "Mechaninė energija, virstanti elektros energija",
+                "Oro pasipriešinimas, važiuojant dideliu greičiu",
+                "Trintis tarp stabdžių diskų ir stabdymo kaladėlių",
+                "Stabdžių skysčio šiluminis plėtimasis"
+            ],
+            "correctAnswer": "Trintis tarp stabdžių diskų ir stabdymo kaladėlių"
+        },
+        {
+            "id": "q25",
+            "type": "multiple_choice",
+            "question": "25. Stabdant hibridinius ir elektrinius automobilius, dalis kinetinės energijos nevirsta vien šiluma stabdžiuose, kaip įprastose transporto priemonėse, bet yra panaudojama kitaip. Koks procesas leidžia tokio tipo automobiliams efektyviau panaudoti stabdymo metu susidarančią energiją? <i>Pažymėkite teisingą atsakymą.</i> (1 taškas)",
+            "options": [
+                "Regeneracinis stabdymas, kai kinetinė energija paverčiama elektros energija ir įkrauna bateriją.",
+                "Šiluminės energijos kaupimas ir vėlesnis jos panaudojimas varikliui pašildyti.",
+                "Mechaninė energija paverčiama suspausto oro energija, ir ji vėliau panaudojama įsibėgėjant.",
+                "Stabdžių šiluma panaudojama stabdžių diskams atvėsinti, kad jie neperkaistų."
+            ],
+            "correctAnswer": "Regeneracinis stabdymas, kai kinetinė energija paverčiama elektros energija ir įkrauna bateriją."
+        },
+        {
+            "id": "q26",
+            "type": "text",
+            "question": "26. Remdamiesi sąlygoje pateiktais duomenimis, apskaičiuokite, kiek šiluminės energijos perduodama stabdžiams, jei visa kinetinė energija virsta šiluma (kitų energijos virsmų nepaisykite). <i>Užrašykite atsakymą.</i> (1 taškas)",
+            "correctAnswer": "450",
+            "unit": "kJ",
+            "solution": "$$ E_k = \\frac{mv^2}{2} = \\frac{1000 \\cdot 30^2}{2} = \\frac{1000 \\cdot 900}{2} = 450000 \\text{ J} = 450 \\text{ kJ} $$"
+        },
+        {
+            "id": "q27",
+            "type": "group",
+            "question": "27. Lengvojo automobilio stabdžių sistema sudaryta iš stabdžių diskų, kurių bendra masė 9 kg, o jų savitoji šiluma 500 J/(kg · °C), ir stabdymo kaladėlių, kurių bendroji masė yra 2 kg. Kaladėlių medžiagos savitoji šiluma yra 800 J/(kg · °C). Automobilis, kurio masė 1000 kg, važiuoja 30 m/s greičiu ir staigiai stabdo, kol visiškai sustoja. Kiek laipsnių įkais stabdžių sistema? Laikykite, kad visa kinetinė energija virsta šiluma stabdžių sistemoje."
+        },
+        {
+            "id": "q27_1",
+            "type": "multiple_choice",
+            "question": "27.1. Kurioje eilutėje užrašytas <b>visas</b> formules reikėtų panaudoti, sprendžiant šį uždavinį? <i>Pažymėkite teisingą atsakymą.</i> (1 taškas)",
+            "options": [
+                "$$ E_k = \\frac{mv^2}{2}; Q = \\lambda m; Q = qm $$",
+                "$$ Q = Lm; Q = cm\\Delta t; E_k = \\frac{mv^2}{2} $$",
+                "$$ Q = qm; Q = cm\\Delta t $$",
+                "$$ E_k = \\frac{mv^2}{2}; Q = cm\\Delta t $$"
+            ],
+            "correctAnswer": "$$ E_k = \\frac{mv^2}{2}; Q = cm\\Delta t $$"
+        },
+        {
+            "id": "q27_2",
+            "type": "text",
+            "question": "27.2. Apskaičiuokite, kiek laipsnių įkais stabdžių sistema. <i>Užrašykite atsakymą, suapvalintą iki sveikojo skaičiaus.</i> (1 taškas)",
+            "correctAnswer": "74",
+            "unit": "°C",
+            "solution": "$$ Q = Q_{diskai} + Q_{kaladeles} $$ <br> $$ Q = c_1 m_1 \\Delta t + c_2 m_2 \\Delta t = (c_1 m_1 + c_2 m_2) \\Delta t $$ <br> $$ E_k = Q $$ <br> $$ 450000 = (500 \\cdot 9 + 800 \\cdot 2) \\Delta t $$ <br> $$ 450000 = (4500 + 1600) \\Delta t $$ <br> $$ 450000 = 6100 \\Delta t $$ <br> $$ \\Delta t = \\frac{450000}{6100} \\approx 73,77 \\approx 74 ^\\circ\\text{C} $$"
+        }
+    ]
+}
