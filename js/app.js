@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeFilters = {
         category: 'all',
         grade: 'all',
-        topic: 'all'
+        topic: 'all',
+        type: 'all'
     };
 
     // Fetch Data
@@ -128,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activeFilters.topic !== 'all') {
             filtered = filtered.filter(ex => ex.topic === activeFilters.topic);
         }
+        if (activeFilters.type !== 'all') {
+            if (activeFilters.type === 'simulation') {
+                filtered = filtered.filter(ex => ex.type === 'simulation');
+            } else if (activeFilters.type === 'structural') {
+                filtered = filtered.filter(ex => ex.type === 'structural');
+            } else if (activeFilters.type === 'normal') {
+                filtered = filtered.filter(ex => ex.type !== 'simulation' && ex.type !== 'structural');
+            }
+        }
 
         renderExercises(filtered);
     }
@@ -138,7 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const filterLabels = {
             category: 'Kategorija',
             grade: 'Klasė',
-            topic: 'Tema'
+            topic: 'Tema',
+            type: 'Tipas'
         };
 
         let activeCount = 0;
@@ -150,6 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (value !== 'all') {
                 let displayValue = value;
                 if (type === 'grade') displayValue = `${value} klasė`;
+                if (type === 'type') {
+                    if (value === 'normal') displayValue = 'Vienos dalies';
+                    else if (value === 'structural') displayValue = 'Struktūrinės';
+                    else if (value === 'simulation') displayValue = 'Simuliacinės';
+                }
 
                 const tag = document.createElement('div');
                 tag.className = 'active-filter-tag';
@@ -187,7 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 activeFilters = {
                     category: 'all',
                     grade: 'all',
-                    topic: 'all'
+                    topic: 'all',
+                    type: 'all'
                 };
 
                 // Reset Category Buttons UI
