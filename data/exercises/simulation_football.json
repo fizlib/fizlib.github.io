@@ -1,0 +1,117 @@
+{
+    "id": "sim_football",
+    "type": "simulation",
+    "category": "VBE-2025",
+    "grade": 11,
+    "topic": "Dinamika",
+    "subtopic": "Jėga ir judesys",
+    "question": "Futbolo simuliacija<div class=\"simulation-instructions\"><p>Futbolininkas analizuoja, kaip nuo spyrio jėgos¹ priklauso kamuolio įgytas greitis. Naudodamiesi interaktyviu eksperimento įrankiu, pagal aprašytą situaciją keisdami maksimalią spyrio jėgą, trukmę ir kamuolio masę, atlikite užduotis.</p><p><strong>Įrankio valdymas</strong></p><ul style=\"padding-left: 20px;\"><li>Maksimali spyrio jėga, spyrio trukmė ir kamuolio masė keičiami, pele stumdant slankiklį². Patikslinti nustatytą vertę galima klaviatūros rodyklių klavišais, prieš tai spustelėjus reikiamą slankiklį. Klaviatūra verčių nerašykite.</li><li>Norėdami pamatyti, kaip vyksta kūnų judėjimas, spustelėkite mygtuką „Pradėti“.</li><li>Norėdami kartoti bandymą, spustelėkite „Atnaujinti“.</li></ul></div>",
+    "simulationFile": "assets/simulations/football.ggb",
+    "questions": [
+        {
+            "id": "q15",
+            "type": "text",
+            "question": "15. Atlikdami bandymą, nustatykite, kokį greitį įgavo 0,450 kg masės kamuolys, jei futbolininkas spyrė į nejudantį kamuolį maksimalia 252 N jėga. Spyrio trukmė 0,01 s. Užrašykite atsakymą.",
+            "correctAnswer": "2,8",
+            "unit": "m/s"
+        },
+        {
+            "id": "q16",
+            "type": "matching",
+            "question": "16. Atlikdami bandymą, nustatykite, kaip ir kiek kartų pakinta kamuolio įgytas greitis, jėgą sumažinus du kartus. Pasirinkite teisingą atsakymą ir įrašykite reikiamą skaičių.",
+            "matchItems": [
+                {
+                    "question": "Atsakymas: kamuolio įgytas greitis",
+                    "options": [
+                        "padidėja",
+                        "sumažėja"
+                    ],
+                    "correctAnswer": "sumažėja"
+                }
+            ],
+            "secondPart": {
+                "type": "text",
+                "correctAnswer": "2",
+                "unit": "kartus"
+            }
+        },
+        {
+            "id": "q17",
+            "type": "matching",
+            "question": "17. Atlikdami bandymą, nustatykite, kaip ir kiek kartų pakinta kamuolio įgytas greitis, spyrio laiką padidinus du kartus. Pasirinkite teisingą atsakymą ir įrašykite reikiamą skaičių.",
+            "matchItems": [
+                {
+                    "question": "Atsakymas: kamuolio įgytas greitis",
+                    "options": [
+                        "padidėja",
+                        "sumažėja"
+                    ],
+                    "correctAnswer": "padidėja"
+                }
+            ],
+            "secondPart": {
+                "type": "text",
+                "correctAnswer": "2",
+                "unit": "kartus"
+            }
+        },
+        {
+            "id": "q18",
+            "type": "matching",
+            "question": "18. Pasirinkdami tinkamą atsakymą, pabaikite teiginį, kad jis būtų teisingas.",
+            "matchItems": [
+                {
+                    "question": "Kūną veikiančios jėgos priklausomybės nuo laiko grafiko ir laiko ašies apribotos figūros ploto skaitinė vertė lygi",
+                    "options": [
+                        "galiai",
+                        "jėgos impulsui",
+                        "atliktam darbui",
+                        "nueitam keliui"
+                    ],
+                    "correctAnswer": "jėgos impulsui"
+                }
+            ]
+        },
+        {
+            "id": "q19_1",
+            "type": "text",
+            "question": "19. Futbolininkas spyrė į nejudantį kamuolį, kurio masė 0,450 kg. Maksimali spyrio jėga buvo 360 N. Atkreipkite dėmesį, kad ši jėga kinta: pusę laiko didėja, o pusę - mažėja. Kamuolys įgavo 4 m/s greitį.<br>19.1. Kokia buvo smūgio trukmė sekundėmis? Užrašykite atsakymą tūkstantųjų tikslumu.",
+            "correctAnswer": "0,010",
+            "unit": "s"
+        },
+        {
+            "id": "q19_2",
+            "type": "text",
+            "question": "19.2. Apskaičiuokite kamuoliui suteiktą judesio kiekį. Užrašykite atsakymą dešimtųjų tikslumu.",
+            "correctAnswer": "1,8",
+            "unit": "kg · m/s"
+        },
+        {
+            "id": "q19_3",
+            "type": "text",
+            "question": "19.3. Apskaičiuokite kamuolį paveikusios jėgos impulsą. Užrašykite atsakymą dešimtųjų tikslumu.",
+            "correctAnswer": "1,8",
+            "unit": "N · s"
+        },
+        {
+            "id": "q20",
+            "type": "text",
+            "question": "20. Per pasaulio futbolo čempionato varžybas 0,450 kg kamuolio greitis gali siekti 30 m/s. Apskaičiuokite tokiu greičiu judančio kamuolio kinetinę energiją. Užrašykite atsakymą dešimtųjų tikslumu.",
+            "correctAnswer": "202,5",
+            "unit": "J"
+        },
+        {
+            "id": "q21",
+            "type": "multiple_choice",
+            "question": "21. Kada futbolo kamuolys turi potencinės energijos žemės atžvilgiu? Pažymėkite teisingą atsakymą.",
+            "options": [
+                "Kai jis yra ore po smūgio.",
+                "Kai jis guli ant žemės prieš žaidimą.",
+                "Kai jis rieda futbolo aikšte.",
+                "Kai jis guli šalia stovinčio futbolininko kojos."
+            ],
+            "correctAnswer": "Kai jis yra ore po smūgio."
+        }
+    ],
+    "solution": "Sprendimai bus pateikti vėliau."
+}

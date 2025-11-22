@@ -213,13 +213,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         exercises.forEach(ex => {
+            const isFullSimulation = (exercises.length === 1 && ex.type === 'simulation');
             const card = document.createElement('div');
             card.className = 'exercise-card';
-            card.innerHTML = buildCardHTML(ex);
+            if (isFullSimulation) {
+                card.classList.add('simulation-mode');
+                card.classList.add('expanded'); // Ensure it takes full width
+            }
+
+            card.innerHTML = buildCardHTML(ex, isFullSimulation);
             exercisesContainer.appendChild(card);
 
             // Add event listeners for this card
-            attachCardEvents(card, ex);
+            attachCardEvents(card, ex, isFullSimulation);
+
+            // Load GeoGebra if full simulation
+            if (isFullSimulation) {
+                // Small delay to ensure DOM is ready
+                setTimeout(() => {
+                    loadGeoGebraApplet(ex.simulationFile, `ggb-element-${ex.id}`);
+                }, 100);
+            }
         });
 
         // Render Math
@@ -235,61 +249,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function buildCardHTML(ex) {
-        let inputArea = '';
-
-        if (ex.type === 'multiple_choice') {
-            inputArea = `
-                <div class="options-grid">
-                    ${ex.options.map(opt => `<div class="option-btn" data-value="${opt}">${opt}</div>`).join('')}
-                </div>
-                <input type="hidden" class="user-answer" value="">
-            `;
-        } else if (ex.type === 'matching') {
-            if (ex.matchItems) {
-                // New structure with specific options
-                inputArea = `
-                    <div class="matching-container">
-                        ${ex.matchItems.map((item, index) => `
-                            <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                                <div style="flex: 1; font-weight: 500;">${item.question}</div>
-                                <select class="matching-select text-input" data-index="${index}" style="flex: 1;">
-                                    <option value="">Pasirinkite...</option>
-                                    ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
-                                </select>
-                            </div>
-                        `).join('')}
+    function buildCardHTML(ex, isFullView = false) {
+        if (ex.type === 'simulation') {
+            if (!isFullView) {
+                return `
+                    <div class="card-header">
+                        <span class="badge special-badge" style="background-color: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe;">Simuliacija</span>
+                        <span class="badge">${ex.grade} klasė</span>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
+                            <span class="badge">${ex.topic}</span>
+                        </div>
+                    </div>
+                    <div class="card-question">${ex.question}</div>
+                    <div class="card-content">
+                        <div class="simulation-preview" style="text-align: center; padding: 2rem; background: #f9fafb; border-radius: 8px; border: 1px dashed #d1d5db;">
+                            <p style="margin-bottom: 1rem; color: #6b7280;">Ši užduotis turi interaktyvią simuliaciją.</p>
+                            <button class="btn btn-primary start-simulation-btn">Pradėti simuliaciją</button>
+                        </div>
                     </div>
                 `;
             } else {
-                // Legacy structure (pairs)
-                // Shuffle values for dropdowns
-                const keys = Object.keys(ex.pairs);
-                const values = Object.values(ex.pairs).sort(() => Math.random() - 0.5);
+                // Full Simulation View
+                const questionsHTML = ex.questions.map((q, index) => `
+                    <div class="simulation-question-block" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+                        <div class="card-question">${q.question}</div>
+                        <div class="card-content" data-qid="${q.id}">
+                            ${buildInputArea(q)}
+                            <div class="feedback"></div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary submit-btn" data-qid="${q.id}">Pateikti</button>
+                            <button class="btn btn-outline solution-btn" data-qid="${q.id}">Rodyti atsakymą</button>
+                        </div>
+                    </div>
+                `).join('');
 
-                inputArea = `
-                    <div class="matching-container">
-                        ${keys.map((key, index) => `
-                            <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                                <div style="flex: 1; font-weight: 500;">${key}</div>
-                                <select class="matching-select text-input" data-key="${key}" style="flex: 1;">
-                                    <option value="">Pasirinkite...</option>
-                                    ${values.map(val => `<option value="${val}">${val}</option>`).join('')}
-                                </select>
-                            </div>
-                        `).join('')}
+                return `
+                    <div class="card-header">
+                        <span class="badge special-badge" style="background-color: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe;">Simuliacija</span>
+                        <span class="badge">${ex.grade} klasė</span>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
+                            <span class="badge">${ex.topic}</span>
+                        </div>
+                    </div>
+                    <div class="card-question">${ex.question}</div>
+                    
+                    <div id="ggb-element-${ex.id}" class="simulation-container" style="margin-bottom: 2rem; border: 1px solid #e5e7eb; border-radius: 8px;"></div>
+                    
+                    <div class="simulation-questions">
+                        ${questionsHTML}
                     </div>
                 `;
             }
-        } else {
-            inputArea = `
-                <div class="input-group" style="display: flex; align-items: center; gap: 0.5rem;">
-                    <input type="text" class="text-input" placeholder="Įveskite atsakymą...">
-                    ${ex.unit ? `<span style="font-weight: 500; color: var(--text-secondary);">${ex.unit}</span>` : ''}
-                </div>
-            `;
         }
 
+        // Standard Exercise
+        const inputArea = buildInputArea(ex);
         const imageHTML = ex.image ? `<img src="${ex.image}" alt="Užduoties grafikas" class="card-image">` : '';
 
         return `
@@ -321,10 +338,182 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    function attachCardEvents(card, ex) {
+    function buildInputArea(ex) {
+        if (ex.type === 'multiple_choice') {
+            return `
+                <div class="options-grid">
+                    ${ex.options.map(opt => `<div class="option-btn" data-value="${opt}">${opt}</div>`).join('')}
+                </div>
+                <input type="hidden" class="user-answer" value="">
+            `;
+        } else if (ex.type === 'matching') {
+            if (ex.matchItems) {
+                let secondPartHTML = '';
+                if (ex.secondPart) {
+                    secondPartHTML = `
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #e5e7eb;">
+                            <div class="input-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="text" class="text-input second-part-input" placeholder="Įveskite skaičių...">
+                                ${ex.secondPart.unit ? `<span style="font-weight: 500; color: var(--text-secondary);">${ex.secondPart.unit}</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="matching-container">
+                        ${ex.matchItems.map((item, index) => `
+                            <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                <div style="flex: 1; font-weight: 500;">${item.question}</div>
+                                <select class="matching-select text-input" data-index="${index}" style="flex: 1;">
+                                    <option value="">Pasirinkite...</option>
+                                    ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${secondPartHTML}
+                `;
+            } else {
+                const keys = Object.keys(ex.pairs);
+                const values = Object.values(ex.pairs).sort(() => Math.random() - 0.5);
+
+                return `
+                    <div class="matching-container">
+                        ${keys.map((key, index) => `
+                            <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                <div style="flex: 1; font-weight: 500;">${key}</div>
+                                <select class="matching-select text-input" data-key="${key}" style="flex: 1;">
+                                    <option value="">Pasirinkite...</option>
+                                    ${values.map(val => `<option value="${val}">${val}</option>`).join('')}
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+        } else {
+            return `
+                <div class="input-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="text" class="text-input" placeholder="Įveskite atsakymą...">
+                    ${ex.unit ? `<span style="font-weight: 500; color: var(--text-secondary);">${ex.unit}</span>` : ''}
+                </div>
+            `;
+        }
+    }
+
+    function loadGeoGebraApplet(filename, containerId) {
+        if (typeof GGBApplet === 'undefined') {
+            console.error('GeoGebra script not loaded');
+            document.getElementById(containerId).innerHTML = 'Nepavyko užkrauti simuliacijos.';
+            return;
+        }
+
+        const params = {
+            "appName": "classic",
+            "width": 1200,
+            "height": 670,
+            "showToolBar": false,
+            "showAlgebraInput": false,
+            "showMenuBar": false,
+            "filename": filename,
+            "enableRightClick": false,
+            "enableLabelDrags": false,
+            "enableShiftDragZoom": false,
+            "showZoomButtons": false,
+            "showResetIcon": true,
+            "language": "lt",
+            "borderRadius": 8,
+            "scaleContainerClass": "simulation-container",
+            "allowUpscale": false,
+        };
+
+        const applet = new GGBApplet(params, true);
+        applet.inject(containerId);
+    }
+
+    function attachCardEvents(card, ex, isFullSimulation = false) {
+        // Handle Simulation Start
+        if (ex.type === 'simulation' && !isFullSimulation) {
+            const startBtn = card.querySelector('.start-simulation-btn');
+            if (startBtn) {
+                startBtn.addEventListener('click', () => {
+                    // Update URL
+                    const newUrl = `${window.location.pathname}?id=${ex.id}`;
+                    window.history.pushState({ id: ex.id }, '', newUrl);
+
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+
+                    // Re-render only this exercise in full mode
+                    renderExercises([ex]);
+
+                    // Add "Show All" button if not present
+                    if (!document.querySelector('.show-all-btn')) {
+                        const showAllBtn = document.createElement('button');
+                        showAllBtn.className = 'btn btn-outline show-all-btn';
+                        showAllBtn.textContent = '← Rodyti visas užduotis';
+                        showAllBtn.style.marginBottom = '1rem';
+                        showAllBtn.onclick = () => {
+                            window.history.pushState({}, document.title, window.location.pathname);
+                            renderExercises(allExercises);
+                            showAllBtn.remove();
+                        };
+                        exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
+                    }
+                });
+            }
+
+            // Share Button Logic for Preview
+            const shareBtn = card.querySelector('.share-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const url = `${window.location.origin}${window.location.pathname}?id=${ex.id}`;
+                    navigator.clipboard.writeText(url).then(() => {
+                        showToast('Nuoroda nukopijuota!');
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                });
+            }
+            return; // No other events for preview
+        }
+
+        // If Full Simulation, we have multiple questions
+        if (isFullSimulation) {
+            ex.questions.forEach(q => {
+                const contentDiv = card.querySelector(`.card-content[data-qid="${q.id}"]`);
+                const submitBtn = card.querySelector(`.submit-btn[data-qid="${q.id}"]`);
+                const solutionBtn = card.querySelector(`.solution-btn[data-qid="${q.id}"]`);
+                const feedbackEl = contentDiv.querySelector('.feedback');
+
+                attachQuestionEvents(card, q, contentDiv, submitBtn, solutionBtn, feedbackEl);
+            });
+
+            // Share Button Logic for Full View
+            const shareBtn = card.querySelector('.share-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const url = `${window.location.origin}${window.location.pathname}?id=${ex.id}`;
+                    navigator.clipboard.writeText(url).then(() => {
+                        showToast('Nuoroda nukopijuota!');
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                });
+            }
+            return;
+        }
+
+        // Standard Exercise Events
         const submitBtn = card.querySelector('.submit-btn');
         const solutionBtn = card.querySelector('.solution-btn');
         const feedbackEl = card.querySelector('.feedback');
+        const contentDiv = card.querySelector('.card-content'); // Use main content div
+
+        attachQuestionEvents(card, ex, contentDiv, submitBtn, solutionBtn, feedbackEl);
 
         // Share Button Logic
         const shareBtn = card.querySelector('.share-btn');
@@ -338,61 +527,63 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Card Expansion Logic
+        // Card Expansion Logic (Only for standard cards)
         const expandBtn = card.querySelector('.expand-btn');
-        expandBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent bubbling if needed
+        if (expandBtn) {
+            expandBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent bubbling if needed
 
-            const isExpanded = card.classList.contains('expanded');
-            const allCards = document.querySelectorAll('.exercise-card');
+                const isExpanded = card.classList.contains('expanded');
+                const allCards = document.querySelectorAll('.exercise-card');
 
-            if (isExpanded) {
-                // Collapse
-                card.classList.remove('expanded');
-                expandBtn.innerHTML = '⤢';
-                expandBtn.setAttribute('aria-label', 'Išskleisti');
-                allCards.forEach(c => c.classList.remove('hidden-card'));
-                // Remove any existing zoom overlay
-                const existingOverlay = document.querySelector('.image-zoom-overlay');
-                if (existingOverlay) {
-                    existingOverlay.remove();
-                }
-            } else {
-                // Expand
-                allCards.forEach(c => {
-                    if (c !== card) {
-                        c.classList.add('hidden-card');
+                if (isExpanded) {
+                    // Collapse
+                    card.classList.remove('expanded');
+                    expandBtn.innerHTML = '⤢';
+                    expandBtn.setAttribute('aria-label', 'Išskleisti');
+                    allCards.forEach(c => c.classList.remove('hidden-card'));
+                    // Remove any existing zoom overlay
+                    const existingOverlay = document.querySelector('.image-zoom-overlay');
+                    if (existingOverlay) {
+                        existingOverlay.remove();
                     }
-                });
-                card.classList.add('expanded');
-                expandBtn.innerHTML = '✕';
-                expandBtn.setAttribute('aria-label', 'Suskleisti');
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Add image zoom functionality
-                const cardImage = card.querySelector('.card-image');
-                if (cardImage && !cardImage.dataset.zoomListener) {
-                    cardImage.dataset.zoomListener = 'true';
-                    cardImage.addEventListener('click', () => {
-                        // Create zoom overlay
-                        const overlay = document.createElement('div');
-                        overlay.className = 'image-zoom-overlay';
-
-                        const zoomedImg = document.createElement('img');
-                        zoomedImg.src = cardImage.src;
-                        zoomedImg.alt = cardImage.alt;
-
-                        overlay.appendChild(zoomedImg);
-                        document.body.appendChild(overlay);
-
-                        // Close on click
-                        overlay.addEventListener('click', () => {
-                            overlay.remove();
-                        });
+                } else {
+                    // Expand
+                    allCards.forEach(c => {
+                        if (c !== card) {
+                            c.classList.add('hidden-card');
+                        }
                     });
+                    card.classList.add('expanded');
+                    expandBtn.innerHTML = '✕';
+                    expandBtn.setAttribute('aria-label', 'Suskleisti');
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Add image zoom functionality
+                    const cardImage = card.querySelector('.card-image');
+                    if (cardImage && !cardImage.dataset.zoomListener) {
+                        cardImage.dataset.zoomListener = 'true';
+                        cardImage.addEventListener('click', () => {
+                            // Create zoom overlay
+                            const overlay = document.createElement('div');
+                            overlay.className = 'image-zoom-overlay';
+
+                            const zoomedImg = document.createElement('img');
+                            zoomedImg.src = cardImage.src;
+                            zoomedImg.alt = cardImage.alt;
+
+                            overlay.appendChild(zoomedImg);
+                            document.body.appendChild(overlay);
+
+                            // Close on click
+                            overlay.addEventListener('click', () => {
+                                overlay.remove();
+                            });
+                        });
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Topic Badge Dropdown Logic
         const topicBadge = card.querySelector('.topic-badge');
@@ -405,12 +596,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+    }
 
-
+    function attachQuestionEvents(card, ex, contentDiv, submitBtn, solutionBtn, feedbackEl) {
         // Handle Option Selection for Multiple Choice
         if (ex.type === 'multiple_choice') {
-            const options = card.querySelectorAll('.option-btn');
-            const hiddenInput = card.querySelector('.user-answer');
+            const options = contentDiv.querySelectorAll('.option-btn');
+            const hiddenInput = contentDiv.querySelector('.user-answer');
 
             options.forEach(opt => {
                 opt.addEventListener('click', () => {
@@ -441,39 +633,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Add ENTER key support for text inputs (for all text-based exercises)
-        const textInput = card.querySelector('.text-input');
-        if (textInput) {
+        const textInputs = contentDiv.querySelectorAll('.text-input');
+        textInputs.forEach(textInput => {
             textInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     e.preventDefault();
                     submitBtn.click();
                 }
             });
-        }
-
-        // Add ENTER key support for matching dropdowns
-        if (ex.type === 'matching') {
-            const selects = card.querySelectorAll('.matching-select');
-            selects.forEach(select => {
-                select.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        submitBtn.click();
-                    }
-                });
-            });
-        }
+        });
 
         submitBtn.addEventListener('click', () => {
             let isCorrect = false;
             let userAnswer = '';
 
             if (ex.type === 'multiple_choice') {
-                userAnswer = card.querySelector('.user-answer').value;
+                userAnswer = contentDiv.querySelector('.user-answer').value;
                 if (!userAnswer) return;
                 isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
             } else if (ex.type === 'matching') {
-                const selects = card.querySelectorAll('.matching-select');
+                const selects = contentDiv.querySelectorAll('.matching-select');
                 let allCorrect = true;
                 let allSelected = true;
 
@@ -492,10 +671,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
+                // Check second part input if exists
+                if (ex.secondPart) {
+                    const secondInput = contentDiv.querySelector('.second-part-input');
+                    if (!secondInput.value) allSelected = false;
+                    if (secondInput.value.trim() !== ex.secondPart.correctAnswer) {
+                        allCorrect = false;
+                    }
+                }
+
                 if (!allSelected) return;
                 isCorrect = allCorrect;
             } else {
-                userAnswer = card.querySelector('.text-input').value.trim();
+                userAnswer = contentDiv.querySelector('.text-input').value.trim();
                 if (!userAnswer) return;
                 isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
             }
@@ -510,22 +698,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         solutionBtn.addEventListener('click', () => {
+            // For simulation questions, we might not have a solution text for each sub-question yet, 
+            // or we might want to show the answer.
+            // If ex.solution is present, use it. If not, just show correct answer.
+
             const existingSolution = feedbackEl.querySelector('.solution-text');
 
             if (existingSolution) {
                 // Toggle visibility
                 if (existingSolution.style.display === 'none') {
                     existingSolution.style.display = 'block';
-                    solutionBtn.textContent = "Slėpti sprendimą";
+                    solutionBtn.textContent = "Slėpti atsakymą";
                     feedbackEl.style.display = 'block';
-                    // Re-show correct answer
-                    showCorrectAnswer(card, ex);
+                    showCorrectAnswer(contentDiv, ex);
                 } else {
                     existingSolution.style.display = 'none';
-                    solutionBtn.textContent = "Rodyti sprendimą";
-                    // Hide correct answer highlighting
-                    hideCorrectAnswer(card, ex);
-                    // If not submitted (no correct/incorrect class), hide the empty feedback box
+                    solutionBtn.textContent = "Rodyti atsakymą";
+                    hideCorrectAnswer(contentDiv, ex);
                     if (!feedbackEl.classList.contains('correct') && !feedbackEl.classList.contains('incorrect')) {
                         feedbackEl.style.display = 'none';
                     }
@@ -534,13 +723,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 // First time showing
                 const solutionDiv = document.createElement('div');
                 solutionDiv.className = 'solution-text';
-                solutionDiv.innerHTML = `<strong>Sprendimas:</strong><br>${ex.solution}`;
+                // If no specific solution text, just say "Atsakymas:"
+                const solText = ex.solution ? ex.solution : 'Teisingas atsakymas parodytas.';
+                solutionDiv.innerHTML = `<strong>Sprendimas:</strong><br>${solText}`;
                 feedbackEl.appendChild(solutionDiv);
-                solutionBtn.textContent = "Slėpti sprendimą";
+                solutionBtn.textContent = "Slėpti atsakymą";
                 feedbackEl.style.display = 'block';
 
-                // Show correct answer
-                showCorrectAnswer(card, ex);
+                showCorrectAnswer(contentDiv, ex);
 
                 if (window.renderMathInElement) {
                     renderMathInElement(solutionDiv, {
@@ -562,10 +752,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return user.toLowerCase() === correct.toLowerCase();
     }
 
-    function showCorrectAnswer(card, ex) {
+    function showCorrectAnswer(container, ex) {
         if (ex.type === 'multiple_choice') {
             // Highlight the correct option
-            const options = card.querySelectorAll('.option-btn');
+            const options = container.querySelectorAll('.option-btn');
             options.forEach(opt => {
                 if (opt.dataset.value === ex.correctAnswer) {
                     opt.classList.add('correct-answer');
@@ -573,7 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else if (ex.type === 'matching') {
             // Fill in the correct values in dropdowns
-            const selects = card.querySelectorAll('.matching-select');
+            const selects = container.querySelectorAll('.matching-select');
             selects.forEach(select => {
                 let correctValue;
                 if (ex.matchItems) {
@@ -585,9 +775,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 select.value = correctValue;
                 select.classList.add('showing-answer');
             });
+
+            if (ex.secondPart) {
+                const secondInput = container.querySelector('.second-part-input');
+                if (secondInput) {
+                    secondInput.value = ex.secondPart.correctAnswer;
+                    secondInput.classList.add('showing-answer');
+                }
+            }
         } else {
             // Fill in the correct answer in text input
-            const textInput = card.querySelector('.text-input');
+            const textInput = container.querySelector('.text-input');
             if (textInput) {
                 textInput.value = ex.correctAnswer;
                 textInput.classList.add('showing-answer');
@@ -595,23 +793,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function hideCorrectAnswer(card, ex) {
+    function hideCorrectAnswer(container, ex) {
         if (ex.type === 'multiple_choice') {
             // Remove highlighting from correct option
-            const options = card.querySelectorAll('.option-btn');
+            const options = container.querySelectorAll('.option-btn');
             options.forEach(opt => {
                 opt.classList.remove('correct-answer');
             });
         } else if (ex.type === 'matching') {
             // Clear the dropdowns
-            const selects = card.querySelectorAll('.matching-select');
+            const selects = container.querySelectorAll('.matching-select');
             selects.forEach(select => {
                 select.value = '';
                 select.classList.remove('showing-answer');
             });
+
+            if (ex.secondPart) {
+                const secondInput = container.querySelector('.second-part-input');
+                if (secondInput) {
+                    secondInput.value = '';
+                    secondInput.classList.remove('showing-answer');
+                }
+            }
         } else {
             // Clear the text input
-            const textInput = card.querySelector('.text-input');
+            const textInput = container.querySelector('.text-input');
             if (textInput) {
                 textInput.value = '';
                 textInput.classList.remove('showing-answer');
