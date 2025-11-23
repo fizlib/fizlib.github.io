@@ -2,15 +2,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const exercisesContainer = document.getElementById('exercises-list');
     const gradeFiltersContainer = document.getElementById('grade-filters');
     const topicFiltersContainer = document.getElementById('topic-filters');
-    const navButtons = document.querySelectorAll('.nav-btn[data-filter]');
     const activeFiltersContainer = document.getElementById('active-filters-container');
+    const searchInput = document.getElementById('search-input');
+    const clearAllBtn = document.getElementById('clear-all-filters');
+
+    // Mobile Sidebar Elements
+    const mobileFilterToggle = document.getElementById('mobile-filter-toggle');
+    const closeSidebarBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     let allExercises = [];
+
+    // Filter State
     let activeFilters = {
-        category: 'all',
-        grade: 'all',
-        topic: 'all',
-        type: 'all'
+        search: '',
+        grades: [], // Array of numbers/strings
+        topics: [], // Array of strings (child topics)
+        types: []   // Array of strings
+    };
+
+    // Topic Hierarchy Definition
+    const topicHierarchy = {
+        "Mechanika": ["Kinematika", "Dinamika", "Statika", "Tvermės dėsniai", "Mechaniniai svyravimai ir bangos"],
+        "Termodinamika": ["Molekulinė fizika", "Termodinamika"],
+        "Elektra": ["Elektrostatika", "Nuolatinė elektros srovė", "Elektrodinamika"],
+        "Magnetizmas": ["Magnetinis laukas", "Elektromagnetinė indukcija"],
+        "Optika": ["Geometrinė optika", "Banginė optika"],
+        "Bendra": ["Matavimai", "Paklaidos", "Astronomija"]
     };
 
     // Fetch Data
@@ -31,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initApp() {
         setupFilters();
+        setupMobileSidebar();
 
         // Check for deep link
         const urlParams = new URLSearchParams(window.location.search);
@@ -53,12 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
 
-                // Auto-expand the exercise
+                // Auto-expand
                 setTimeout(() => {
                     const expandBtn = exercisesContainer.querySelector('.expand-btn');
-                    if (expandBtn) {
-                        expandBtn.click();
-                    }
+                    if (expandBtn) expandBtn.click();
                 }, 100);
             } else {
                 exercisesContainer.innerHTML = '<div class="loading">Užduotis nerasta.</div>';
@@ -69,157 +87,211 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupFilters() {
-        // Extract unique grades and topics
-        const grades = [...new Set(allExercises.map(ex => ex.grade))].sort((a, b) => a - b);
-        const topics = [...new Set(allExercises.map(ex => ex.topic))].sort();
+        // 1. Search
+        searchInput.addEventListener('input', (e) => {
+            activeFilters.search = e.target.value.toLowerCase();
+            applyFilters();
+        });
 
-        // Render Grade Filters
-        gradeFiltersContainer.innerHTML = grades.map(grade =>
-            `<div class="dropdown-item" data-type="grade" data-value="${grade}">${grade} klasė</div>`
-        ).join('');
+        // 2. Grades (Fixed list: 9, 10, 11, 12)
+        const grades = [9, 10, 11, 12];
+        gradeFiltersContainer.innerHTML = grades.map(grade => `
+            <label class="checkbox-label">
+                <input type="checkbox" name="grade" value="${grade}">
+                <span class="checkbox-custom"></span>
+                ${grade} klasė
+            </label>
+        `).join('');
 
-        // Render Topic Filters
-        topicFiltersContainer.innerHTML = topics.map(topic =>
-            `<div class="dropdown-item" data-type="topic" data-value="${topic}">${topic}</div>`
-        ).join('');
-
-        // Add Event Listeners to Dropdown Items
-        document.querySelectorAll('.dropdown-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const type = e.target.dataset.type;
-                const value = e.target.dataset.value;
-                applyFilter(type, value);
+        gradeFiltersContainer.querySelectorAll('input').forEach(input => {
+            input.addEventListener('change', () => {
+                updateActiveFilters('grades', input.value, input.checked);
             });
         });
 
-        // Add Event Listeners to Category Buttons
-        document.querySelectorAll('.nav-btn[data-filter="category"]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const value = e.target.dataset.value;
-                applyFilter('category', value);
+        // 3. Topics (Accordion)
+        // Collect all actual topics from exercises to ensure we don't miss any
+        const actualTopics = new Set();
+        allExercises.forEach(ex => {
+            if (ex.topic) actualTopics.add(ex.topic);
+            if (ex.subtopic) actualTopics.add(ex.subtopic);
+        });
+
+        // Build Accordion HTML
+        let accordionHTML = '';
+        for (const [parent, children] of Object.entries(topicHierarchy)) {
+            // Check if any children exist in actual data (optional optimization)
+            // For now, render all defined in hierarchy
+
+            const childrenHTML = children.map(child => `
+                <label class="checkbox-label">
+                    <input type="checkbox" name="topic" value="${child}">
+                    <span class="checkbox-custom"></span>
+                    ${child}
+                </label>
+            `).join('');
+
+            accordionHTML += `
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>${parent}</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        ${childrenHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add "Kita" for topics not in hierarchy?
+        // For simplicity, let's stick to the requested list. 
+
+        topicFiltersContainer.innerHTML = accordionHTML;
+
+        // Accordion Logic
+        topicFiltersContainer.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
             });
+        });
+
+        // Topic Checkbox Logic
+        topicFiltersContainer.querySelectorAll('input').forEach(input => {
+            input.addEventListener('change', () => {
+                updateActiveFilters('topics', input.value, input.checked);
+            });
+        });
+
+        // 4. Types (Already in HTML)
+        document.querySelectorAll('input[name="type"]').forEach(input => {
+            input.addEventListener('change', () => {
+                updateActiveFilters('types', input.value, input.checked);
+            });
+        });
+
+        // 5. Clear All
+        clearAllBtn.addEventListener('click', () => {
+            // Reset State
+            activeFilters = { search: '', grades: [], topics: [], types: [] };
+            searchInput.value = '';
+
+            // Uncheck all checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+            applyFilters();
         });
     }
 
-    function applyFilter(type, value) {
-        activeFilters[type] = value;
+    function updateActiveFilters(category, value, isChecked) {
+        if (isChecked) {
+            activeFilters[category].push(value);
+        } else {
+            activeFilters[category] = activeFilters[category].filter(item => item !== value);
+        }
+        applyFilters();
+    }
 
-        // Update UI Active States for Categories
-        if (type === 'category') {
-            document.querySelectorAll('.nav-btn[data-filter="category"]').forEach(btn => {
-                if (btn.dataset.value === value) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+    function applyFilters() {
+        renderActiveTags();
+
+        let filtered = allExercises;
+
+        // Search
+        if (activeFilters.search) {
+            const term = activeFilters.search;
+            filtered = filtered.filter(ex =>
+                ex.question.toLowerCase().includes(term) ||
+                (ex.topic && ex.topic.toLowerCase().includes(term)) ||
+                (ex.subtopic && ex.subtopic.toLowerCase().includes(term))
+            );
+        }
+
+        // Grades
+        if (activeFilters.grades.length > 0) {
+            filtered = filtered.filter(ex => activeFilters.grades.includes(ex.grade.toString()));
+        }
+
+        // Topics
+        if (activeFilters.topics.length > 0) {
+            filtered = filtered.filter(ex => {
+                // Check if exercise topic OR subtopic matches any selected topic
+                // Also handle if the exercise topic is a Parent category (e.g. "Elektra") 
+                // but we selected a child (e.g. "Elektrostatika"). 
+                // Usually exercises have specific topics.
+                // Let's check exact match on topic or subtopic.
+                return activeFilters.topics.includes(ex.topic) || activeFilters.topics.includes(ex.subtopic);
             });
         }
 
-        renderActiveFilters();
-
-        // Filter Data
-        let filtered = allExercises;
-
-        if (activeFilters.category !== 'all') {
-            filtered = filtered.filter(ex => ex.category === activeFilters.category);
-        }
-        if (activeFilters.grade !== 'all') {
-            filtered = filtered.filter(ex => ex.grade == activeFilters.grade);
-        }
-        if (activeFilters.topic !== 'all') {
-            filtered = filtered.filter(ex => ex.topic === activeFilters.topic);
-        }
-        if (activeFilters.type !== 'all') {
-            if (activeFilters.type === 'simulation') {
-                filtered = filtered.filter(ex => ex.type === 'simulation');
-            } else if (activeFilters.type === 'structural') {
-                filtered = filtered.filter(ex => ex.type === 'structural');
-            } else if (activeFilters.type === 'normal') {
-                filtered = filtered.filter(ex => ex.type !== 'simulation' && ex.type !== 'structural');
-            }
+        // Types
+        if (activeFilters.types.length > 0) {
+            filtered = filtered.filter(ex => {
+                if (activeFilters.types.includes('simulation') && ex.type === 'simulation') return true;
+                if (activeFilters.types.includes('structural') && ex.type === 'structural') return true;
+                if (activeFilters.types.includes('normal') && ex.type !== 'simulation' && ex.type !== 'structural') return true;
+                return false;
+            });
         }
 
         renderExercises(filtered);
     }
 
-    function renderActiveFilters() {
+    function renderActiveTags() {
         activeFiltersContainer.innerHTML = '';
 
-        const filterLabels = {
-            category: 'Kategorija',
-            grade: 'Klasė',
-            topic: 'Tema',
-            type: 'Tipas'
+        // Helper to create tag
+        const createTag = (text, onClick) => {
+            const tag = document.createElement('div');
+            tag.className = 'active-filter-tag';
+            tag.innerHTML = `<span>${text}</span><button class="remove-filter-btn">×</button>`;
+            tag.querySelector('button').addEventListener('click', onClick);
+            activeFiltersContainer.appendChild(tag);
         };
 
-        let activeCount = 0;
-        Object.values(activeFilters).forEach(val => {
-            if (val !== 'all') activeCount++;
-        });
-
-        Object.entries(activeFilters).forEach(([type, value]) => {
-            if (value !== 'all') {
-                let displayValue = value;
-                if (type === 'grade') displayValue = `${value} klasė`;
-                if (type === 'type') {
-                    if (value === 'normal') displayValue = 'Vienos dalies';
-                    else if (value === 'structural') displayValue = 'Struktūrinės';
-                    else if (value === 'simulation') displayValue = 'Simuliacinės';
-                }
-
-                const tag = document.createElement('div');
-                tag.className = 'active-filter-tag';
-                tag.innerHTML = `
-                    <span>${displayValue}</span>
-                    <button class="remove-filter-btn" aria-label="Pašalinti filtrą">×</button>
-                `;
-
-                tag.querySelector('.remove-filter-btn').addEventListener('click', () => {
-                    applyFilter(type, 'all');
-                });
-
-                activeFiltersContainer.appendChild(tag);
-            }
-        });
-
-        if (activeCount >= 2) {
-            const clearAllBtn = document.createElement('button');
-            clearAllBtn.className = 'clear-all-filters-btn';
-            clearAllBtn.textContent = 'Valyti visus';
-            clearAllBtn.addEventListener('click', () => {
-                Object.keys(activeFilters).forEach(key => activeFilters[key] = 'all');
-                // Reset UI states
-                document.querySelectorAll('.nav-btn[data-filter="category"]').forEach(btn => {
-                    if (btn.dataset.value === 'all') btn.classList.add('active');
-                    else btn.classList.remove('active');
-                });
-                applyFilter('category', 'all'); // Re-trigger render with all reset (or just call renderExercises and renderActiveFilters)
-                // Actually, applyFilter only updates one. We need to reset all and then render.
-                // Let's fix the logic below.
+        // Grades
+        activeFilters.grades.forEach(g => {
+            createTag(`${g} klasė`, () => {
+                const cb = document.querySelector(`input[name="grade"][value="${g}"]`);
+                if (cb) { cb.checked = false; cb.dispatchEvent(new Event('change')); }
             });
+        });
 
-            // Better logic for clear all:
-            clearAllBtn.onclick = () => {
-                activeFilters = {
-                    category: 'all',
-                    grade: 'all',
-                    topic: 'all',
-                    type: 'all'
-                };
+        // Topics
+        activeFilters.topics.forEach(t => {
+            createTag(t, () => {
+                const cb = document.querySelector(`input[name="topic"][value="${t}"]`);
+                if (cb) { cb.checked = false; cb.dispatchEvent(new Event('change')); }
+            });
+        });
 
-                // Reset Category Buttons UI
-                document.querySelectorAll('.nav-btn[data-filter="category"]').forEach(btn => {
-                    if (btn.dataset.value === 'all') btn.classList.add('active');
-                    else btn.classList.remove('active');
-                });
+        // Types
+        activeFilters.types.forEach(t => {
+            let label = t;
+            if (t === 'normal') label = 'Vienos dalies';
+            if (t === 'structural') label = 'Struktūrinės';
+            if (t === 'simulation') label = 'Simuliacinės';
 
-                renderActiveFilters();
-                renderExercises(allExercises);
-            };
-
-            activeFiltersContainer.appendChild(clearAllBtn);
-        }
+            createTag(label, () => {
+                const cb = document.querySelector(`input[name="type"][value="${t}"]`);
+                if (cb) { cb.checked = false; cb.dispatchEvent(new Event('change')); }
+            });
+        });
     }
+
+    function setupMobileSidebar() {
+        const toggleSidebar = () => {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('open');
+        };
+
+        if (mobileFilterToggle) mobileFilterToggle.addEventListener('click', toggleSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', toggleSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+    }
+
+    // --- Rendering Logic (Mostly unchanged, just cleaned up) ---
 
     function renderExercises(exercises) {
         exercisesContainer.innerHTML = '';
@@ -235,25 +307,21 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'exercise-card';
             if (isFullSimulation) {
                 card.classList.add('simulation-mode');
-                card.classList.add('expanded'); // Ensure it takes full width
+                card.classList.add('expanded');
             }
 
             card.innerHTML = buildCardHTML(ex, isFullSimulation);
             exercisesContainer.appendChild(card);
 
-            // Add event listeners for this card
             attachCardEvents(card, ex, isFullSimulation);
 
-            // Load GeoGebra if full simulation
             if (isFullSimulation && ex.type === 'simulation') {
-                // Small delay to ensure DOM is ready
                 setTimeout(() => {
                     loadGeoGebraApplet(ex.simulationFile, `ggb-element-${ex.id}`);
                 }, 100);
             }
         });
 
-        // Render Math
         if (window.renderMathInElement) {
             renderMathInElement(exercisesContainer, {
                 delimiters: [
@@ -270,17 +338,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ex.type === 'simulation' || ex.type === 'structural') {
             const isStructural = ex.type === 'structural';
             const badgeText = isStructural ? 'Struktūrinis' : 'Simuliacija';
-            const badgeClass = isStructural ? 'structural-badge' : 'special-badge';
             const badgeStyle = isStructural
-                ? 'background-color: #fef3c7; color: #92400e; border: 1px solid #fcd34d;'
-                : 'background-color: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe;';
+                ? 'background-color: #FEF3C7; color: #92400E; border-color: #FCD34D;'
+                : 'background-color: #E0E7FF; color: #4338CA; border-color: #C7D2FE;';
 
             if (!isFullView) {
                 return `
                     <div class="card-header">
                         <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
                             <span class="badge">${ex.grade} klasė</span>
-                            <span class="badge ${badgeClass}" style="${badgeStyle}">${badgeText}</span>
+                            <span class="badge" style="${badgeStyle}">${badgeText}</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
@@ -289,20 +356,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="card-question">${ex.question}</div>
                     <div class="card-content">
-                        <div class="simulation-preview" style="text-align: center; padding: 2rem; background: #f9fafb; border-radius: 8px; border: 1px dashed #d1d5db;">
+                        <div class="simulation-preview">
                             <p style="margin-bottom: 1rem; color: #6b7280;">${isStructural ? 'Ši užduotis yra struktūrinė.' : 'Ši užduotis turi interaktyvią simuliaciją.'}</p>
                             <button class="btn btn-primary start-simulation-btn">${isStructural ? 'Pradėti užduotį' : 'Pradėti simuliaciją'}</button>
                         </div>
                     </div>
                 `;
             } else {
-                // Full Simulation/Structural View
-                const questionsHTML = ex.questions.map((q, index) => {
-                    if (q.type === 'group') {
-                        return `<div class="card-question" style="margin-top: 2rem; font-weight: bold;">${q.question}</div>`;
-                    }
+                const questionsHTML = ex.questions.map(q => {
+                    if (q.type === 'group') return `<div class="card-question" style="margin-top: 2rem; font-weight: bold;">${q.question}</div>`;
                     return `
-                    <div class="simulation-question-block" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+                    <div class="simulation-question-block">
                         <div class="card-question">${q.question}</div>
                         <div class="card-content" data-qid="${q.id}">
                             ${buildInputArea(q)}
@@ -323,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="card-header">
                         <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
                             <span class="badge">${ex.grade} klasė</span>
-                            <span class="badge ${badgeClass}" style="${badgeStyle}">${badgeText}</span>
+                            <span class="badge" style="${badgeStyle}">${badgeText}</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
@@ -331,17 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="card-question">${ex.question}</div>
-                    
                     ${mainContent}
-                    
-                    <div class="simulation-questions">
-                        ${questionsHTML}
-                    </div>
+                    <div class="simulation-questions">${questionsHTML}</div>
                 `;
             }
         }
 
-        // Standard Exercise
         const inputArea = buildInputArea(ex);
         const imageHTML = ex.image ? `<img src="${ex.image}" alt="Užduoties grafikas" class="card-image">` : '';
 
@@ -351,14 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                     <button class="expand-btn" aria-label="Išskleisti">⤢</button>
-                    ${ex.subtopic ? `
-                        <div class="topic-badge-container">
-                            <span class="badge topic-badge">${ex.topic} ▾</span>
-                            <div class="subtopic-dropdown">
-                                <span class="badge subtopic-badge">${ex.subtopic}</span>
-                            </div>
-                        </div>
-                    ` : `<span class="badge">${ex.topic}</span>`}
+                    <span class="badge">${ex.topic}</span>
                 </div>
             </div>
             <div class="card-question">${ex.question}</div>
@@ -395,7 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                 }
-
                 return `
                     <div class="matching-container">
                         ${ex.matchItems.map((item, index) => `
@@ -413,10 +464,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const keys = Object.keys(ex.pairs);
                 const values = Object.values(ex.pairs).sort(() => Math.random() - 0.5);
-
                 return `
                     <div class="matching-container">
-                        ${keys.map((key, index) => `
+                        ${keys.map((key) => `
                             <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
                                 <div style="flex: 1; font-weight: 500;">${key}</div>
                                 <select class="matching-select text-input" data-key="${key}" style="flex: 1;">
@@ -440,11 +490,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadGeoGebraApplet(filename, containerId) {
         if (typeof GGBApplet === 'undefined') {
-            console.error('GeoGebra script not loaded');
             document.getElementById(containerId).innerHTML = 'Nepavyko užkrauti simuliacijos.';
             return;
         }
-
         const params = {
             "appName": "classic",
             "width": 1200,
@@ -463,7 +511,6 @@ document.addEventListener('DOMContentLoaded', () => {
             "scaleContainerClass": "simulation-container",
             "allowUpscale": false,
         };
-
         const applet = new GGBApplet(params, true);
         applet.inject(containerId);
     }
@@ -473,70 +520,47 @@ document.addEventListener('DOMContentLoaded', () => {
         const allCards = document.querySelectorAll('.exercise-card');
 
         if (isExpanded) {
-            // Collapse
             card.classList.remove('expanded');
             expandBtn.innerHTML = '⤢';
             expandBtn.setAttribute('aria-label', 'Išskleisti');
             allCards.forEach(c => c.classList.remove('hidden-card'));
-            // Remove any existing zoom overlay
             const existingOverlay = document.querySelector('.image-zoom-overlay');
-            if (existingOverlay) {
-                existingOverlay.remove();
-            }
+            if (existingOverlay) existingOverlay.remove();
         } else {
-            // Expand
             allCards.forEach(c => {
-                if (c !== card) {
-                    c.classList.add('hidden-card');
-                }
+                if (c !== card) c.classList.add('hidden-card');
             });
             card.classList.add('expanded');
             expandBtn.innerHTML = '✕';
             expandBtn.setAttribute('aria-label', 'Suskleisti');
             card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-            // Add image zoom functionality
             const cardImage = card.querySelector('.card-image');
             if (cardImage && !cardImage.dataset.zoomListener) {
                 cardImage.dataset.zoomListener = 'true';
                 cardImage.addEventListener('click', () => {
-                    // Create zoom overlay
                     const overlay = document.createElement('div');
                     overlay.className = 'image-zoom-overlay';
-
                     const zoomedImg = document.createElement('img');
                     zoomedImg.src = cardImage.src;
-                    zoomedImg.alt = cardImage.alt;
-
                     overlay.appendChild(zoomedImg);
                     document.body.appendChild(overlay);
-
-                    // Close on click
-                    overlay.addEventListener('click', () => {
-                        overlay.remove();
-                    });
+                    overlay.addEventListener('click', () => overlay.remove());
                 });
             }
         }
     }
 
     function attachCardEvents(card, ex, isFullSimulation = false) {
-        // Handle Simulation/Structural Start
         if ((ex.type === 'simulation' || ex.type === 'structural') && !isFullSimulation) {
             const startBtn = card.querySelector('.start-simulation-btn');
             if (startBtn) {
                 startBtn.addEventListener('click', () => {
-                    // Update URL
                     const newUrl = `${window.location.pathname}?id=${ex.id}`;
                     window.history.pushState({ id: ex.id }, '', newUrl);
-
-                    // Scroll to top
                     window.scrollTo(0, 0);
-
-                    // Re-render only this exercise in full mode
                     renderExercises([ex]);
 
-                    // Add "Show All" button if not present
                     if (!document.querySelector('.show-all-btn')) {
                         const showAllBtn = document.createElement('button');
                         showAllBtn.className = 'btn btn-outline show-all-btn';
@@ -552,139 +576,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Share Button Logic for Preview
             const shareBtn = card.querySelector('.share-btn');
             if (shareBtn) {
                 shareBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const url = `${window.location.origin}${window.location.pathname}?id=${ex.id}`;
-                    navigator.clipboard.writeText(url).then(() => {
-                        showToast('Nuoroda nukopijuota!');
-                    }).catch(err => {
-                        console.error('Failed to copy: ', err);
-                    });
-                });
-            }
-            return; // No other events for preview
-        }
-
-        // If Full Simulation, we have multiple questions
-        if (isFullSimulation) {
-            ex.questions.forEach(q => {
-                if (q.type === 'group') return; // Skip group headers
-                const contentDiv = card.querySelector(`.card-content[data-qid="${q.id}"]`);
-                const submitBtn = card.querySelector(`.submit-btn[data-qid="${q.id}"]`);
-                const solutionBtn = card.querySelector(`.solution-btn[data-qid="${q.id}"]`);
-                const feedbackEl = contentDiv.querySelector('.feedback');
-
-                attachQuestionEvents(card, q, contentDiv, submitBtn, solutionBtn, feedbackEl);
-            });
-
-            // Share Button Logic for Full View
-            const shareBtn = card.querySelector('.share-btn');
-            if (shareBtn) {
-                shareBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const url = `${window.location.origin}${window.location.pathname}?id=${ex.id}`;
-                    navigator.clipboard.writeText(url).then(() => {
-                        showToast('Nuoroda nukopijuota!');
-                    }).catch(err => {
-                        console.error('Failed to copy: ', err);
-                    });
+                    navigator.clipboard.writeText(url).then(() => showToast('Nuoroda nukopijuota!'));
                 });
             }
             return;
         }
 
-        // Standard Exercise Events
+        if (isFullSimulation) {
+            ex.questions.forEach(q => {
+                if (q.type === 'group') return;
+                const contentDiv = card.querySelector(`.card-content[data-qid="${q.id}"]`);
+                const submitBtn = card.querySelector(`.submit-btn[data-qid="${q.id}"]`);
+                const solutionBtn = card.querySelector(`.solution-btn[data-qid="${q.id}"]`);
+                const feedbackEl = contentDiv.querySelector('.feedback');
+                attachQuestionEvents(card, q, contentDiv, submitBtn, solutionBtn, feedbackEl);
+            });
+
+            const shareBtn = card.querySelector('.share-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const url = `${window.location.origin}${window.location.pathname}?id=${ex.id}`;
+                    navigator.clipboard.writeText(url).then(() => showToast('Nuoroda nukopijuota!'));
+                });
+            }
+            return;
+        }
+
         const submitBtn = card.querySelector('.submit-btn');
         const solutionBtn = card.querySelector('.solution-btn');
         const feedbackEl = card.querySelector('.feedback');
-        const contentDiv = card.querySelector('.card-content'); // Use main content div
+        const contentDiv = card.querySelector('.card-content');
 
         attachQuestionEvents(card, ex, contentDiv, submitBtn, solutionBtn, feedbackEl);
 
-        // Share Button Logic
         const shareBtn = card.querySelector('.share-btn');
         shareBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             const url = `${window.location.origin}${window.location.pathname}?id=${ex.id}`;
-            navigator.clipboard.writeText(url).then(() => {
-                showToast('Nuoroda nukopijuota!');
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+            navigator.clipboard.writeText(url).then(() => showToast('Nuoroda nukopijuota!'));
         });
 
-        // Card Expansion Logic (Only for standard cards)
         const expandBtn = card.querySelector('.expand-btn');
         if (expandBtn) {
             expandBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 toggleCardExpansion(card, expandBtn);
             });
-        }
-
-        // Double-click to expand (Only for standard cards)
-        if (expandBtn) {
             card.addEventListener('dblclick', (e) => {
-                // Don't expand if clicking on interactive elements
-                if (e.target.closest('.btn, .option-btn, input, select, .share-btn, .topic-badge')) {
-                    return;
-                }
+                if (e.target.closest('.btn, .option-btn, input, select, .share-btn')) return;
                 e.stopPropagation();
                 toggleCardExpansion(card, expandBtn);
-            });
-        }
-
-        // Topic Badge Dropdown Logic
-        const topicBadge = card.querySelector('.topic-badge');
-        if (topicBadge) {
-            topicBadge.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const dropdown = card.querySelector('.subtopic-dropdown');
-                if (dropdown) {
-                    dropdown.classList.toggle('show');
-                }
             });
         }
     }
 
     function attachQuestionEvents(card, ex, contentDiv, submitBtn, solutionBtn, feedbackEl) {
-        // Handle Option Selection for Multiple Choice
         if (ex.type === 'multiple_choice') {
             const options = contentDiv.querySelectorAll('.option-btn');
             const hiddenInput = contentDiv.querySelector('.user-answer');
-
             options.forEach(opt => {
                 opt.addEventListener('click', () => {
-                    // Remove selected from all
                     options.forEach(o => o.classList.remove('selected'));
-                    // Add to clicked
                     opt.classList.add('selected');
                     hiddenInput.value = opt.dataset.value;
                 });
-
-                // Add ENTER key support for multiple choice options
                 opt.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        // Remove selected from all
                         options.forEach(o => o.classList.remove('selected'));
-                        // Add to clicked
                         opt.classList.add('selected');
                         hiddenInput.value = opt.dataset.value;
-                        // Trigger submit
                         submitBtn.click();
                     }
                 });
-
-                // Make options focusable
                 opt.setAttribute('tabindex', '0');
             });
         }
 
-        // Add ENTER key support for text inputs (for all text-based exercises)
         const textInputs = contentDiv.querySelectorAll('.text-input');
         textInputs.forEach(textInput => {
             textInput.addEventListener('keydown', (e) => {
@@ -707,31 +681,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const selects = contentDiv.querySelectorAll('.matching-select');
                 let allCorrect = true;
                 let allSelected = true;
-
                 selects.forEach(select => {
                     if (!select.value) allSelected = false;
-
                     if (ex.matchItems) {
                         const index = parseInt(select.dataset.index);
-                        if (ex.matchItems[index].correctAnswer !== select.value) {
-                            allCorrect = false;
-                        }
+                        if (ex.matchItems[index].correctAnswer !== select.value) allCorrect = false;
                     } else {
-                        if (ex.pairs[select.dataset.key] !== select.value) {
-                            allCorrect = false;
-                        }
+                        if (ex.pairs[select.dataset.key] !== select.value) allCorrect = false;
                     }
                 });
-
-                // Check second part input if exists
                 if (ex.secondPart) {
                     const secondInput = contentDiv.querySelector('.second-part-input');
                     if (!secondInput.value) allSelected = false;
-                    if (secondInput.value.trim() !== ex.secondPart.correctAnswer) {
-                        allCorrect = false;
-                    }
+                    if (secondInput.value.trim() !== ex.secondPart.correctAnswer) allCorrect = false;
                 }
-
                 if (!allSelected) return;
                 isCorrect = allCorrect;
             } else {
@@ -750,14 +713,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         solutionBtn.addEventListener('click', () => {
-            // For simulation questions, we might not have a solution text for each sub-question yet, 
-            // or we might want to show the answer.
-            // If ex.solution is present, use it. If not, just show correct answer.
-
             const existingSolution = feedbackEl.querySelector('.solution-text');
-
             if (existingSolution) {
-                // Toggle visibility
                 if (existingSolution.style.display === 'none') {
                     existingSolution.style.display = 'block';
                     solutionBtn.textContent = "Slėpti atsakymą";
@@ -772,18 +729,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             } else {
-                // First time showing
                 const solutionDiv = document.createElement('div');
                 solutionDiv.className = 'solution-text';
-                // If no specific solution text, just say "Atsakymas:"
                 const solText = ex.solution ? ex.solution : 'Teisingas atsakymas parodytas.';
                 solutionDiv.innerHTML = `<strong>Sprendimas:</strong><br>${solText}`;
                 feedbackEl.appendChild(solutionDiv);
                 solutionBtn.textContent = "Slėpti atsakymą";
                 feedbackEl.style.display = 'block';
-
                 showCorrectAnswer(contentDiv, ex);
-
                 if (window.renderMathInElement) {
                     renderMathInElement(solutionDiv, {
                         delimiters: [
@@ -799,81 +752,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkAnswer(user, correct) {
-        // Simple string comparison for now. 
-        // For numerical, we might want to handle commas/dots if needed, but let's stick to simple.
-        return user.toLowerCase() === correct.toLowerCase();
+        if (!user) return false;
+        return user.replace(',', '.').trim() === correct.replace(',', '.').trim();
     }
 
-    function showCorrectAnswer(container, ex) {
+    function showCorrectAnswer(contentDiv, ex) {
         if (ex.type === 'multiple_choice') {
-            // Highlight the correct option
-            const options = container.querySelectorAll('.option-btn');
+            const options = contentDiv.querySelectorAll('.option-btn');
             options.forEach(opt => {
                 if (opt.dataset.value === ex.correctAnswer) {
                     opt.classList.add('correct-answer');
                 }
             });
         } else if (ex.type === 'matching') {
-            // Fill in the correct values in dropdowns
-            const selects = container.querySelectorAll('.matching-select');
-            selects.forEach(select => {
-                let correctValue;
-                if (ex.matchItems) {
-                    const index = parseInt(select.dataset.index);
-                    correctValue = ex.matchItems[index].correctAnswer;
-                } else {
-                    correctValue = ex.pairs[select.dataset.key];
-                }
-                select.value = correctValue;
-                select.classList.add('showing-answer');
-            });
+            // For matching, we might want to highlight correct options if possible, 
+            // or just rely on the solution text. 
+            // The previous implementation didn't seem to do much for matching inline.
+            // We can try adding .showing-answer to selects if we knew the correct value for each.
+            // But for now let's leave matching as is or just highlight the inputs if they exist.
+            const selects = contentDiv.querySelectorAll('.matching-select');
+            selects.forEach(select => select.classList.add('showing-answer'));
 
             if (ex.secondPart) {
-                const secondInput = container.querySelector('.second-part-input');
+                const secondInput = contentDiv.querySelector('.second-part-input');
                 if (secondInput) {
                     secondInput.value = ex.secondPart.correctAnswer;
                     secondInput.classList.add('showing-answer');
                 }
             }
         } else {
-            // Fill in the correct answer in text input
-            const textInput = container.querySelector('.text-input');
-            if (textInput) {
-                textInput.value = ex.correctAnswer;
-                textInput.classList.add('showing-answer');
-            }
+            const input = contentDiv.querySelector('.text-input');
+            input.value = ex.correctAnswer;
+            input.classList.add('showing-answer');
         }
     }
 
-    function hideCorrectAnswer(container, ex) {
+    function hideCorrectAnswer(contentDiv, ex) {
         if (ex.type === 'multiple_choice') {
-            // Remove highlighting from correct option
-            const options = container.querySelectorAll('.option-btn');
+            const options = contentDiv.querySelectorAll('.option-btn');
             options.forEach(opt => {
                 opt.classList.remove('correct-answer');
             });
         } else if (ex.type === 'matching') {
-            // Clear the dropdowns
-            const selects = container.querySelectorAll('.matching-select');
-            selects.forEach(select => {
-                select.value = '';
-                select.classList.remove('showing-answer');
-            });
+            const selects = contentDiv.querySelectorAll('.matching-select');
+            selects.forEach(select => select.classList.remove('showing-answer'));
 
             if (ex.secondPart) {
-                const secondInput = container.querySelector('.second-part-input');
+                const secondInput = contentDiv.querySelector('.second-part-input');
                 if (secondInput) {
                     secondInput.value = '';
                     secondInput.classList.remove('showing-answer');
                 }
             }
         } else {
-            // Clear the text input
-            const textInput = container.querySelector('.text-input');
-            if (textInput) {
-                textInput.value = '';
-                textInput.classList.remove('showing-answer');
-            }
+            const input = contentDiv.querySelector('.text-input');
+            input.value = '';
+            input.classList.remove('showing-answer');
         }
     }
 
@@ -882,17 +816,10 @@ document.addEventListener('DOMContentLoaded', () => {
         toast.className = 'toast-notification';
         toast.textContent = message;
         document.body.appendChild(toast);
-
-        // Trigger reflow
-        toast.offsetHeight;
-
-        toast.classList.add('show');
-
+        requestAnimationFrame(() => toast.classList.add('show'));
         setTimeout(() => {
             toast.classList.remove('show');
-            setTimeout(() => {
-                toast.remove();
-            }, 300);
+            setTimeout(() => toast.remove(), 300);
         }, 2000);
     }
 });
