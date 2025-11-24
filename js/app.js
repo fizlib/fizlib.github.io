@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     subtopicsHTML += `
                         <div class="subtopic-group" style="margin-bottom: 0.5rem;">
-                            <div class="subtopic-header" style="font-weight: 500; padding: 0.25rem 0.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #4b5563;">
+                            <div class="subtopic-header" data-topic="${subtopic}" style="font-weight: 500; padding: 0.25rem 0.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #4b5563; border-radius: 4px;">
                                 <span>${subtopic}</span>
                                 <span class="accordion-icon" style="font-size: 0.8em;">▼</span>
                             </div>
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             accordionHTML += `
                 <div class="accordion-item">
-                    <div class="accordion-header">
+                    <div class="accordion-header" data-topic="${parent}">
                         <span>${parent}</span>
                         <span class="accordion-icon">▼</span>
                     </div>
@@ -238,18 +238,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         topicFiltersContainer.innerHTML = accordionHTML;
 
+        // Top-level headers
         topicFiltersContainer.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
+                const topic = header.dataset.topic;
+
+                // Toggle Expansion
                 item.classList.toggle('active');
+
+                // Toggle Filter
+                const isSelected = header.classList.toggle('selected');
+                updateActiveFilters('topics', topic, isSelected);
             });
         });
 
+        // Subtopic headers
         topicFiltersContainer.querySelectorAll('.subtopic-header').forEach(header => {
             header.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const content = header.nextElementSibling;
                 const icon = header.querySelector('.accordion-icon');
+                const topic = header.dataset.topic;
+
+                // Toggle Expansion
                 if (content.style.display === 'none') {
                     content.style.display = 'block';
                     icon.style.transform = 'rotate(180deg)';
@@ -257,11 +269,59 @@ document.addEventListener('DOMContentLoaded', () => {
                     content.style.display = 'none';
                     icon.style.transform = 'rotate(0deg)';
                 }
+
+                // Toggle Filter
+                const isSelected = header.classList.toggle('selected');
+                if (isSelected) {
+                    header.style.backgroundColor = '#e0e7ff';
+                    header.style.color = '#4338ca';
+                    
+                    // Remove parent topic filter
+                    const parentAccordionItem = header.closest('.accordion-item');
+                    if (parentAccordionItem) {
+                        const parentHeader = parentAccordionItem.querySelector('.accordion-header');
+                        if (parentHeader && parentHeader.classList.contains('selected')) {
+                            const parentTopic = parentHeader.dataset.topic;
+                            parentHeader.classList.remove('selected');
+                            updateActiveFilters('topics', parentTopic, false);
+                        }
+                    }
+                } else {
+                    header.style.backgroundColor = 'transparent';
+                    header.style.color = '#4b5563';
+                }
+                updateActiveFilters('topics', topic, isSelected);
             });
         });
 
+        // Sub-subtopic checkboxes (keep existing logic)
         topicFiltersContainer.querySelectorAll('input').forEach(input => {
             input.addEventListener('change', () => {
+                const isChecked = input.checked;
+                
+                if (isChecked) {
+                    // Remove all topic and subtopic filters when a sub-subtopic is selected
+                    const selectedTopics = [...activeFilters.topics];
+                    selectedTopics.forEach(topic => {
+                        // Try to find if this is a topic or subtopic and remove it
+                        const topicCheckbox = document.querySelector(`input[name="topic"][value="${topic}"]`);
+                        const topicHeader = document.querySelector(`.accordion-header[data-topic="${topic}"]`);
+                        const subtopicHeader = document.querySelector(`.subtopic-header[data-topic="${topic}"]`);
+                        
+                        if (topicHeader && topicHeader.classList.contains('selected')) {
+                            topicHeader.classList.remove('selected');
+                            updateActiveFilters('topics', topic, false);
+                        } else if (subtopicHeader && subtopicHeader.classList.contains('selected')) {
+                            subtopicHeader.classList.remove('selected');
+                            subtopicHeader.style.backgroundColor = 'transparent';
+                            subtopicHeader.style.color = '#4b5563';
+                            updateActiveFilters('topics', topic, false);
+                        } else if (topicCheckbox) {
+                            topicCheckbox.checked = false;
+                        }
+                    });
+                }
+                
                 updateActiveFilters('topics', input.value, input.checked);
             });
         });
@@ -328,15 +388,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         activeFilters.grades.forEach(g => {
             createTag(`${g} klasė`, () => {
-                const cb = document.querySelector(`input[name="grade"][value="${g}"]`);
-                if (cb) { cb.checked = false; cb.dispatchEvent(new Event('change')); }
+                updateActiveFilters('grades', g, false);
             });
         });
 
         activeFilters.topics.forEach(t => {
             createTag(t, () => {
-                const cb = document.querySelector(`input[name="topic"][value="${t}"]`);
-                if (cb) { cb.checked = false; cb.dispatchEvent(new Event('change')); }
+                updateActiveFilters('topics', t, false);
             });
         });
 
@@ -347,10 +405,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (t === 'simulation') label = 'Simuliacinės';
 
             createTag(label, () => {
-                const cb = document.querySelector(`input[name="type"][value="${t}"]`);
-                if (cb) { cb.checked = false; cb.dispatchEvent(new Event('change')); }
+                updateActiveFilters('types', t, false);
             });
         });
+
+        // Count total active filters
+        const totalFilters = activeFilters.grades.length + activeFilters.topics.length + activeFilters.types.length;
+        
+        // Show "Clear All" button if more than 1 filter is active
+        if (totalFilters > 1) {
+            const clearAllBtn = document.createElement('button');
+            clearAllBtn.className = 'clear-all-filters-btn';
+            clearAllBtn.textContent = 'Valyti visus';
+            clearAllBtn.addEventListener('click', () => {
+                activeFilters = { search: '', grades: [], topics: [], types: [] };
+                searchInput.value = '';
+                document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                applyFilters();
+            });
+            activeFiltersContainer.appendChild(clearAllBtn);
+        }
     }
 
     function setupMobileSidebar() {
