@@ -234,9 +234,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     subtopicsHTML += `
                         <div class="subtopic-group" style="margin-bottom: 0.5rem;">
-                            <div class="subtopic-header" data-topic="${subtopic}" style="font-weight: 500; padding: 0.25rem 0.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #4b5563; border-radius: 4px;">
-                                <span>${subtopic}</span>
-                                <span class="accordion-icon" style="font-size: 0.8em;">▼</span>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <button class="expand-subtopic-btn" data-topic="${subtopic}" style="background: none; border: none; padding: 0; cursor: pointer; color: #4b5563; font-size: 0.8em; display: flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem; margin-right: 0.25rem;">▼</button>
+                                <label class="checkbox-label" style="flex: 1; margin: 0; font-weight: 500;">
+                                    <input type="checkbox" class="subtopic-checkbox" name="topic" value="${subtopic}" data-subtopic="${subtopic}">
+                                    <span class="checkbox-custom"></span>
+                                    ${subtopic}
+                                </label>
                             </div>
                             <div class="subtopic-content" style="display: none; padding-left: 0.5rem;">
                                 ${subsubtopicsHTML}
@@ -248,9 +252,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             accordionHTML += `
                 <div class="accordion-item">
-                    <div class="accordion-header" data-topic="${parent}">
-                        <span>${parent}</span>
-                        <span class="accordion-icon">▼</span>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <button class="expand-topic-btn" data-topic="${parent}" style="background: none; border: none; padding: 0; cursor: pointer; color: #4b5563; font-size: 0.8em; display: flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem;">▼</button>
+                        <label class="checkbox-label" style="flex: 1; margin: 0; font-weight: 600;">
+                            <input type="checkbox" class="topic-checkbox" name="topic" value="${parent}" data-parent-topic="${parent}">
+                            <span class="checkbox-custom"></span>
+                            ${parent}
+                        </label>
                     </div>
                     <div class="accordion-content">
                         ${subtopicsHTML}
@@ -260,28 +268,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         topicFiltersContainer.innerHTML = accordionHTML;
 
-        // Top-level headers
-        topicFiltersContainer.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                const topic = header.dataset.topic;
-
-                // Toggle Expansion
+        // Top-level expand/collapse buttons (triangles)
+        topicFiltersContainer.querySelectorAll('.expand-topic-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const item = btn.closest('.accordion-item');
+                const icon = btn;
                 item.classList.toggle('active');
-
-                // Toggle Filter
-                const isSelected = header.classList.toggle('selected');
-                updateActiveFilters('topics', topic, isSelected);
+                icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
             });
         });
 
-        // Subtopic headers
-        topicFiltersContainer.querySelectorAll('.subtopic-header').forEach(header => {
-            header.addEventListener('click', (e) => {
+        // Top-level topic checkboxes
+        topicFiltersContainer.querySelectorAll('.topic-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const topic = checkbox.value;
+                const isChecked = checkbox.checked;
+                updateActiveFilters('topics', topic, isChecked);
+            });
+        });
+
+        // Subtopic expand/collapse buttons (triangles)
+        topicFiltersContainer.querySelectorAll('.expand-subtopic-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const content = header.nextElementSibling;
-                const icon = header.querySelector('.accordion-icon');
-                const topic = header.dataset.topic;
+                const group = btn.closest('.subtopic-group');
+                const content = group.querySelector('.subtopic-content');
+                const icon = btn;
 
                 // Toggle Expansion
                 if (content.style.display === 'none') {
@@ -291,33 +304,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     content.style.display = 'none';
                     icon.style.transform = 'rotate(0deg)';
                 }
+            });
+        });
 
-                // Toggle Filter
-                const isSelected = header.classList.toggle('selected');
-                if (isSelected) {
-                    header.style.backgroundColor = '#e0e7ff';
-                    header.style.color = '#4338ca';
-
-                    // Remove parent topic filter
-                    const parentAccordionItem = header.closest('.accordion-item');
+        // Subtopic checkboxes
+        topicFiltersContainer.querySelectorAll('.subtopic-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const topic = checkbox.value;
+                const isChecked = checkbox.checked;
+                
+                if (isChecked) {
+                    // Uncheck parent topic filter if any is selected
+                    const parentAccordionItem = checkbox.closest('.accordion-item');
                     if (parentAccordionItem) {
-                        const parentHeader = parentAccordionItem.querySelector('.accordion-header');
-                        if (parentHeader && parentHeader.classList.contains('selected')) {
-                            const parentTopic = parentHeader.dataset.topic;
-                            parentHeader.classList.remove('selected');
-                            updateActiveFilters('topics', parentTopic, false);
+                        const parentCheckbox = parentAccordionItem.querySelector('.topic-checkbox');
+                        if (parentCheckbox && parentCheckbox.checked) {
+                            parentCheckbox.checked = false;
+                            updateActiveFilters('topics', parentCheckbox.value, false);
                         }
                     }
-                } else {
-                    header.style.backgroundColor = 'transparent';
-                    header.style.color = '#4b5563';
                 }
-                updateActiveFilters('topics', topic, isSelected);
+                
+                updateActiveFilters('topics', topic, isChecked);
             });
         });
 
         // Sub-subtopic checkboxes (allow multiple selections)
-        topicFiltersContainer.querySelectorAll('input').forEach(input => {
+        topicFiltersContainer.querySelectorAll('input[name="topic"]:not(.topic-checkbox):not(.subtopic-checkbox)').forEach(input => {
             input.addEventListener('change', () => {
                 const isChecked = input.checked;
 
@@ -326,25 +339,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     // but allow multiple sub-subtopic selections
                     const selectedTopics = [...activeFilters.topics];
                     selectedTopics.forEach(topic => {
-                        const topicCheckbox = document.querySelector(`input[name="topic"][value="${topic}"]`);
-                        const topicHeader = document.querySelector(`.accordion-header[data-topic="${topic}"]`);
-                        const subtopicHeader = document.querySelector(`.subtopic-header[data-topic="${topic}"]`);
+                        const topicCheckbox = topicFiltersContainer.querySelector(`.topic-checkbox[value="${topic}"]`);
+                        const subtopicCheckbox = topicFiltersContainer.querySelector(`.subtopic-checkbox[value="${topic}"]`);
                         
-                        // Check if the selected topic is from a parent or subtopic header (not a checkbox)
-                        const hasTopicHeader = !!topicHeader;
-                        const hasSubtopicHeader = !!subtopicHeader;
-                        
-                        if (hasTopicHeader || hasSubtopicHeader) {
-                            // Remove parent/subtopic filters when sub-subtopic is selected
-                            if (topicHeader && topicHeader.classList.contains('selected')) {
-                                topicHeader.classList.remove('selected');
-                                updateActiveFilters('topics', topic, false);
-                            } else if (subtopicHeader && subtopicHeader.classList.contains('selected')) {
-                                subtopicHeader.classList.remove('selected');
-                                subtopicHeader.style.backgroundColor = 'transparent';
-                                subtopicHeader.style.color = '#4b5563';
-                                updateActiveFilters('topics', topic, false);
-                            }
+                        if (topicCheckbox && topicCheckbox.checked) {
+                            topicCheckbox.checked = false;
+                            updateActiveFilters('topics', topic, false);
+                        } else if (subtopicCheckbox && subtopicCheckbox.checked) {
+                            subtopicCheckbox.checked = false;
+                            updateActiveFilters('topics', topic, false);
                         }
                     });
                 }
@@ -369,21 +372,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 `).join('');
             }
 
-            // If there are no subsources, the parent itself is a checkbox (or acts like one)
-            // But for consistency with accordion, we can make it an item without children or just a checkbox.
-            // However, the user asked for "VBE" -> "2025 (1)".
-            // And "Kita", "Vadovėliai" etc.
-            // Let's treat top-level items as selectable if they have no children, or if they are just categories.
-            // Actually, "VBE" is a category, "2025 (1)" is the option.
-            // "Kita" is an option.
-            // So if it has children, render accordion. If not, render checkbox.
-
             if (subsources.length > 0) {
                 accordionHTML += `
                     <div class="accordion-item">
-                        <div class="accordion-header" data-source="${source}">
-                            <span>${source}</span>
-                            <span class="accordion-icon">▼</span>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <button class="expand-source-btn" data-source="${source}" style="background: none; border: none; padding: 0; cursor: pointer; color: #4b5563; font-size: 0.8em; display: flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem;">▼</button>
+                            <label class="checkbox-label" style="flex: 1; margin: 0; font-weight: 600;">
+                                <input type="checkbox" name="source" class="source-category-checkbox" value="${source}">
+                                <span class="checkbox-custom"></span>
+                                ${source}
+                            </label>
                         </div>
                         <div class="accordion-content">
                             ${subsourcesHTML}
@@ -402,15 +400,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         sourceFiltersContainer.innerHTML = accordionHTML;
 
-        // Accordion events
-        sourceFiltersContainer.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                // Toggle Expansion
+        // Expand/collapse buttons for sources
+        sourceFiltersContainer.querySelectorAll('.expand-source-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const item = btn.closest('.accordion-item');
+                const icon = btn;
                 item.classList.toggle('active');
-                // Note: Clicking header doesn't select the category as a filter in this design, 
-                // unless we want it to select all children? 
-                // For now, just expand/collapse.
+                icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
             });
         });
 
@@ -491,12 +488,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         activeFilters.grades.forEach(g => {
             createTag(`${g} klasė`, () => {
+                // Uncheck the corresponding checkbox in sidebar
+                const cb = gradeFiltersContainer.querySelector(`input[value="${g}"]`);
+                if (cb) cb.checked = false;
                 updateActiveFilters('grades', g, false);
             });
         });
 
         activeFilters.topics.forEach(t => {
             createTag(t, () => {
+                // Uncheck the corresponding checkbox in sidebar
+                const cb = topicFiltersContainer.querySelector(`input[name="topic"][value="${t}"]`);
+                if (cb) cb.checked = false;
                 updateActiveFilters('topics', t, false);
             });
         });
@@ -508,16 +511,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (t === 'simulation') label = 'Simuliacinės';
 
             createTag(label, () => {
+                // Uncheck the corresponding checkbox in sidebar
+                const cb = document.querySelector(`input[name="type"][value="${t}"]`);
+                if (cb) cb.checked = false;
                 updateActiveFilters('types', t, false);
             });
         });
 
         activeFilters.sources.forEach(s => {
             createTag(s, () => {
-                updateActiveFilters('sources', s, false);
-                // Also uncheck the checkbox
+                // Uncheck the corresponding checkbox in sidebar
                 const cb = sourceFiltersContainer.querySelector(`input[value="${s}"]`);
                 if (cb) cb.checked = false;
+                updateActiveFilters('sources', s, false);
             });
         });
 
