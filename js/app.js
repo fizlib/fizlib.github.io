@@ -25,12 +25,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Topic Hierarchy Definition
     const topicHierarchy = {
         11: {
-            "Fizikos mokslo kalba ir pažinimo metodai": ["Fizikos mokslo raida.", "Pažinimo metodai ir kalba.", "Matavimai ir skaičiavimai fizikoje."],
-            "Judėjimas ir jėgos": ["Judėjimas.", "Jėgos.", "Judesio kiekis ir jėgos impulsas."],
-            "Energija": ["Energija, darbas, galia."],
-            "Šiluminiai reiškiniai": ["Ryšys tarp mikro ir makro pasaulio.", "Termodinamika."],
-            "Elektra ir magnetizmas": ["Elektrostatinis laukas.", "Elektros srovė metaluose.", "Elektros srovės šaltiniai.", "Magnetinis laukas.", "Elektromagnetinė indukcija.", "Energijos šaltiniai."],
-            "Bendra": ["Bendra"]
+            "Fizikos mokslo kalba ir pažinimo metodai": {
+                "Fizikos mokslo raida.": ["Fizikos istorija ir asmenybės", "Fizika ir visuomenė"],
+                "Pažinimo metodai ir kalba.": ["Mokslinis tyrimas ir modeliai", "Fizikiniai dydžiai ir matavimai", "Grafinė analizė"],
+                "Matavimai ir skaičiavimai fizikoje.": ["SI sistema", "Vektoriai", "Paklaidos"]
+            },
+            "Judėjimas ir jėgos": {
+                "Judėjimas.": ["Kinematikos pagrindai", "Tolygiai kintamas judėjimas", "Judėjimas plokštumoje (metimas)", "Reliatyvumas"],
+                "Jėgos.": ["Jėgos ir jų rūšys", "Niutono dėsniai", "Visuotinė trauka", "Kūno svoris", "Trintis ir pasipriešinimas"],
+                "Judesio kiekis ir jėgos impulsas.": ["Judesio kiekis ir impulsas", "Tvermės dėsnis", "Smūgiai", "Reaktyvusis judėjimas"]
+            },
+            "Energija": {
+                "Energija, darbas, galia.": ["Mechaninis darbas ir galia", "Mechaninė energija", "Energijos tvermės dėsnis", "Naudingumo koeficientas"]
+            },
+            "Šiluminiai reiškiniai": {
+                "Ryšys tarp mikro ir makro pasaulio.": ["MKT pagrindai", "Idealiosios dujos", "Dujų dėsniai (izoprocesai)"],
+                "Termodinamika.": ["Vidinė energija ir šiluma", "Termodinamikos dėsniai", "Šiluminiai procesai"]
+            },
+            "Elektra ir magnetizmas": {
+                "Elektrostatinis laukas.": ["Elektros krūviai ir sąveika", "Elektrinis laukas", "Potencialas ir įtampa", "Kondensatoriai"],
+                "Elektros srovė metaluose.": ["Srovė ir varža", "Grandinės dėsniai"],
+                "Elektros srovės šaltiniai.": ["Elektrovara ir vidinė varža", "Omo dėsnis uždarai grandinei"],
+                "Magnetinis laukas.": ["Magnetinis laukas ir srovė", "Magnetinės jėgos", "Medžiagų magnetinės savybės"],
+                "Elektromagnetinė indukcija.": ["Indukcijos reiškinys", "Saviindukcija"],
+                "Energijos šaltiniai.": ["Elektrinės ir kuro rūšys", "Energetika ir ekologija"]
+            },
+            "Bendra": {
+                "Bendra": ["Bendra"]
+            }
         },
         9: {},
         10: {},
@@ -143,9 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedGrades = activeFilters.grades;
         topicFiltersContainer.innerHTML = ''; // Clear existing
 
-        // If we have existing topic filters, we should probably clear them because they might not apply to the new grade
-        // But for better UX, let's clear them only if the grade changes to something else.
-        // Actually, simpler to just clear active topics when switching grades to avoid confusion.
         if (activeFilters.topics.length > 0) {
             activeFilters.topics = [];
             renderActiveTags();
@@ -170,14 +189,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderTopicAccordion(topics) {
         let accordionHTML = '';
-        for (const [parent, children] of Object.entries(topics)) {
-            const childrenHTML = children.map(child => `
-                <label class="checkbox-label">
-                    <input type="checkbox" name="topic" value="${child}">
-                    <span class="checkbox-custom"></span>
-                    ${child}
-                </label>
-            `).join('');
+        for (const [parent, subtopics] of Object.entries(topics)) {
+            let subtopicsHTML = '';
+
+            if (Array.isArray(subtopics)) {
+                subtopicsHTML = subtopics.map(child => `
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="topic" value="${child}">
+                        <span class="checkbox-custom"></span>
+                        ${child}
+                    </label>
+                `).join('');
+            } else {
+                for (const [subtopic, subsubtopics] of Object.entries(subtopics)) {
+                    const subsubtopicsHTML = subsubtopics.map(subsub => `
+                        <label class="checkbox-label sub-sub-topic" style="margin-left: 1.5rem; font-size: 0.85rem;">
+                            <input type="checkbox" name="topic" value="${subsub}">
+                            <span class="checkbox-custom"></span>
+                            ${subsub}
+                        </label>
+                    `).join('');
+
+                    subtopicsHTML += `
+                        <div class="subtopic-group" style="margin-bottom: 0.5rem;">
+                            <div class="subtopic-header" style="font-weight: 500; padding: 0.25rem 0.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #4b5563;">
+                                <span>${subtopic}</span>
+                                <span class="accordion-icon" style="font-size: 0.8em;">▼</span>
+                            </div>
+                            <div class="subtopic-content" style="display: none; padding-left: 0.5rem;">
+                                ${subsubtopicsHTML}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
 
             accordionHTML += `
                 <div class="accordion-item">
@@ -186,14 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="accordion-icon">▼</span>
                     </div>
                     <div class="accordion-content">
-                        ${childrenHTML}
+                        ${subtopicsHTML}
                     </div>
                 </div>
             `;
         }
         topicFiltersContainer.innerHTML = accordionHTML;
 
-        // Accordion Logic
         topicFiltersContainer.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
@@ -201,7 +245,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Topic Checkbox Logic
+        topicFiltersContainer.querySelectorAll('.subtopic-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.accordion-icon');
+                if (content.style.display === 'none') {
+                    content.style.display = 'block';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    content.style.display = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
         topicFiltersContainer.querySelectorAll('input').forEach(input => {
             input.addEventListener('change', () => {
                 updateActiveFilters('topics', input.value, input.checked);
@@ -223,34 +281,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let filtered = allExercises;
 
-        // Search
         if (activeFilters.search) {
             const term = activeFilters.search;
             filtered = filtered.filter(ex =>
                 ex.question.toLowerCase().includes(term) ||
                 (ex.topic && ex.topic.toLowerCase().includes(term)) ||
-                (ex.subtopic && ex.subtopic.toLowerCase().includes(term))
+                (ex.subtopic && ex.subtopic.toLowerCase().includes(term)) ||
+                (ex.subsubtopic && ex.subsubtopic.toLowerCase().includes(term))
             );
         }
 
-        // Grades
         if (activeFilters.grades.length > 0) {
             filtered = filtered.filter(ex => activeFilters.grades.includes(ex.grade.toString()));
         }
 
-        // Topics
         if (activeFilters.topics.length > 0) {
             filtered = filtered.filter(ex => {
-                // Check if exercise topic OR subtopic matches any selected topic
-                // Also handle if the exercise topic is a Parent category (e.g. "Elektra") 
-                // but we selected a child (e.g. "Elektrostatika"). 
-                // Usually exercises have specific topics.
-                // Let's check exact match on topic or subtopic.
-                return activeFilters.topics.includes(ex.topic) || activeFilters.topics.includes(ex.subtopic);
+                return activeFilters.topics.includes(ex.topic) ||
+                    activeFilters.topics.includes(ex.subtopic) ||
+                    activeFilters.topics.includes(ex.subsubtopic);
             });
         }
 
-        // Types
         if (activeFilters.types.length > 0) {
             filtered = filtered.filter(ex => {
                 if (activeFilters.types.includes('simulation') && ex.type === 'simulation') return true;
@@ -266,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderActiveTags() {
         activeFiltersContainer.innerHTML = '';
 
-        // Helper to create tag
         const createTag = (text, onClick) => {
             const tag = document.createElement('div');
             tag.className = 'active-filter-tag';
@@ -275,7 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
             activeFiltersContainer.appendChild(tag);
         };
 
-        // Grades
         activeFilters.grades.forEach(g => {
             createTag(`${g} klasė`, () => {
                 const cb = document.querySelector(`input[name="grade"][value="${g}"]`);
@@ -283,7 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Topics
         activeFilters.topics.forEach(t => {
             createTag(t, () => {
                 const cb = document.querySelector(`input[name="topic"][value="${t}"]`);
@@ -291,7 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Types
         activeFilters.types.forEach(t => {
             let label = t;
             if (t === 'normal') label = 'Vienos dalies';

@@ -4,6 +4,7 @@
     "grade": 11,
     "topic": "Judėjimas ir jėgos",
     "subtopic": "Judėjimas.",
+    "subsubtopic": "Kinematikos pagrindai",
     "type": "multiple_choice",
     "question": "Sportininkas bėga apskritimo formos trasa pastoviu greičiu. Pažymėkite grafiką, kuriame teisingai pavaizduota sportininko poslinkio nuo pradinės padėties \\( s \\) priklausomybė nuo laiko \\( t \\), trasa bėgant vieną ratą.",
     "image": "assets/images/ex_vbe2025_13.svg",
