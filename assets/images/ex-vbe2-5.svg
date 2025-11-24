@@ -4,15 +4,16 @@
       <path d="M0,0 L0,6 L9,3 z" fill="black" />
     </marker>
   </defs>
-  <!-- Axes -->
+  
   <line x1="40" y1="170" x2="230" y2="170" stroke="black" stroke-width="1.5" marker-end="url(#arrow)" />
   <line x1="40" y1="170" x2="40" y2="20" stroke="black" stroke-width="1.5" marker-end="url(#arrow)" />
-  <!-- Labels -->
-  <text x="10" y="20" font-family="Arial" font-size="14" font-style="italic">s, km</text>
-  <text x="220" y="190" font-family="Arial" font-size="14" font-style="italic">t, min</text>
+  
+  <text x="40" y="15" text-anchor="middle" font-family="Arial" font-size="14" font-style="italic">s, km</text>
+  
+  <text x="230" y="190" text-anchor="end" font-family="Arial" font-size="14" font-style="italic">t, min</text>
+  
   <text x="25" y="185" font-family="Arial" font-size="12">0</text>
   
-  <!-- Ticks and Values -->
   <text x="10" y="55" font-family="Arial" font-size="12">180</text>
   <line x1="35" y1="50" x2="40" y2="50" stroke="black" />
   
@@ -22,10 +23,8 @@
   <text x="150" y="185" font-family="Arial" font-size="12">120</text>
   <line x1="160" y1="170" x2="160" y2="175" stroke="black" />
 
-  <!-- Graph -->
   <path d="M40,50 L100,170 L160,50" fill="none" stroke="black" stroke-width="2" />
   
-  <!-- Dashed lines -->
   <line x1="40" y1="50" x2="160" y2="50" stroke="black" stroke-dasharray="4" stroke-width="1" />
   <line x1="160" y1="50" x2="160" y2="170" stroke="black" stroke-dasharray="4" stroke-width="1" />
 </svg>
