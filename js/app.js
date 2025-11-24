@@ -656,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="card-actions">
                             <button class="btn btn-primary submit-btn" data-qid="${q.id}">Pateikti</button>
-                            <button class="btn btn-outline solution-btn" data-qid="${q.id}">Rodyti atsakymą</button>
+                            <button class="btn btn-outline solution-btn" data-qid="${q.id}">Rodyti sprendimą</button>
                         </div>
                     </div>
                 `}).join('');
@@ -975,14 +975,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             const options = contentDiv.querySelectorAll('.option-btn');
             const hiddenInput = contentDiv.querySelector('.user-answer');
-            
+
             options.forEach(opt => {
                 opt.addEventListener('click', () => {
                     if (isMultiSelect) {
                         // Multi-select: toggle selection with limit
                         const maxSelections = ex.correctAnswer.length;
                         const isCurrentlySelected = opt.classList.contains('selected');
-                        
+
                         if (!isCurrentlySelected) {
                             const currentlySelectedCount = contentDiv.querySelectorAll('.option-btn.selected').length;
                             if (currentlySelectedCount >= maxSelections) {
@@ -990,7 +990,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 return;
                             }
                         }
-                        
+
                         opt.classList.toggle('selected');
                         // Update hidden input with array of selected values
                         const selectedValues = Array.from(contentDiv.querySelectorAll('.option-btn.selected')).map(o => o.dataset.value);
@@ -1008,14 +1008,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (isMultiSelect) {
                             const maxSelections = ex.correctAnswer.length;
                             const isCurrentlySelected = opt.classList.contains('selected');
-                            
+
                             if (!isCurrentlySelected) {
                                 const currentlySelectedCount = contentDiv.querySelectorAll('.option-btn.selected').length;
                                 if (currentlySelectedCount >= maxSelections) {
                                     return;
                                 }
                             }
-                            
+
                             opt.classList.toggle('selected');
                             const selectedValues = Array.from(contentDiv.querySelectorAll('.option-btn.selected')).map(o => o.dataset.value);
                             hiddenInput.value = JSON.stringify(selectedValues);
@@ -1049,19 +1049,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
                 userAnswer = contentDiv.querySelector('.user-answer').value;
                 if (!userAnswer) {
+                    // Warning State
                     feedbackEl.className = 'feedback incorrect';
-                    feedbackEl.innerHTML = '<strong>Pasirinkite atsakymą.</strong>';
+                    feedbackEl.innerHTML = `
+                        <div class="feedback-header">
+                            <div class="feedback-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            </div>
+                            <div>
+                                <div class="feedback-title">Dėmesio</div>
+                                <div class="feedback-message">Pasirinkite atsakymą prieš pateikdami.</div>
+                            </div>
+                        </div>`;
                     return;
                 }
-                
+
                 if (isMultiSelect) {
-                    // For multi-select, parse the JSON array and compare
                     try {
                         const userAnswers = JSON.parse(userAnswer);
                         isCorrect = checkMultiSelectAnswer(userAnswers, ex.correctAnswer);
-                    } catch (e) {
-                        isCorrect = false;
-                    }
+                    } catch (e) { isCorrect = false; }
                 } else {
                     isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
                 }
@@ -1083,7 +1090,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!secondInput.value) allSelected = false;
                     if (secondInput.value.trim() !== ex.secondPart.correctAnswer) allCorrect = false;
                 }
-                if (!allSelected) return;
+                if (!allSelected) {
+                    // Warning State for Matching
+                    feedbackEl.className = 'feedback incorrect';
+                    feedbackEl.innerHTML = `
+                        <div class="feedback-header">
+                            <div class="feedback-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            </div>
+                            <div>
+                                <div class="feedback-title">Užpildykite visus laukus</div>
+                            </div>
+                        </div>`;
+                    return;
+                }
                 isCorrect = allCorrect;
             } else {
                 userAnswer = contentDiv.querySelector('.text-input').value.trim();
@@ -1091,42 +1111,85 @@ document.addEventListener('DOMContentLoaded', () => {
                 isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
             }
 
+            // RENDER RESULT
             if (isCorrect) {
                 feedbackEl.className = 'feedback correct';
-                feedbackEl.innerHTML = '<strong>Teisingai!</strong>';
+                feedbackEl.innerHTML = `
+                    <div class="feedback-header">
+                        <div class="feedback-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <div>
+                            <div class="feedback-title">Teisingai!</div>
+                            <div class="feedback-message">Puikiai atlikta užduotis.</div>
+                        </div>
+                    </div>`;
             } else {
                 feedbackEl.className = 'feedback incorrect';
-                feedbackEl.innerHTML = '<strong>Neteisingai.</strong> Bandykite dar kartą.';
+                feedbackEl.innerHTML = `
+                    <div class="feedback-header">
+                        <div class="feedback-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        </div>
+                        <div>
+                            <div class="feedback-title">Neteisingai</div>
+                            <div class="feedback-message">Pabandykite dar kartą arba peržiūrėkite teoriją.</div>
+                        </div>
+                    </div>`;
             }
         });
 
         solutionBtn.addEventListener('click', () => {
-            const existingSolution = feedbackEl.querySelector('.solution-text');
-            if (existingSolution) {
-                if (existingSolution.style.display === 'none') {
-                    existingSolution.style.display = 'block';
-                    solutionBtn.textContent = "Slėpti atsakymą";
-                    feedbackEl.style.display = 'block';
+            const existingSolutionContainer = feedbackEl.querySelector('.solution-container');
+
+            if (existingSolutionContainer) {
+                // Toggle visibility
+                if (existingSolutionContainer.style.display === 'none') {
+                    existingSolutionContainer.style.display = 'block';
+                    solutionBtn.textContent = "Slėpti sprendimą";
+                    feedbackEl.style.display = 'block'; // Ensure parent is visible
                     showCorrectAnswer(contentDiv, ex);
                 } else {
-                    existingSolution.style.display = 'none';
-                    solutionBtn.textContent = "Rodyti atsakymą";
+                    existingSolutionContainer.style.display = 'none';
+                    solutionBtn.textContent = "Rodyti sprendimą";
                     hideCorrectAnswer(contentDiv, ex);
+
+                    // If we are not currently showing a specific Right/Wrong status, hide the whole box
                     if (!feedbackEl.classList.contains('correct') && !feedbackEl.classList.contains('incorrect')) {
                         feedbackEl.style.display = 'none';
                     }
                 }
             } else {
-                const solutionDiv = document.createElement('div');
-                solutionDiv.className = 'solution-text';
-                const solText = ex.solution ? ex.solution : 'Teisingas atsakymas parodytas.';
-                solutionDiv.innerHTML = `<strong>Sprendimas:</strong><br>${solText}`;
-                feedbackEl.appendChild(solutionDiv);
-                solutionBtn.textContent = "Slėpti atsakymą";
-                feedbackEl.style.display = 'block';
+                // Create Solution HTML
+                // If feedback box isn't visible yet (no attempt made), show it neutrally
+                if (feedbackEl.style.display === 'none' || feedbackEl.innerHTML === '') {
+                    feedbackEl.className = 'feedback'; // Neutral class
+                    feedbackEl.style.display = 'block';
+                    feedbackEl.style.borderLeftColor = '#6B7280'; // Gray accent
+                    feedbackEl.innerHTML = ''; // Clear empty
+                }
+
+                const solText = ex.solution ? ex.solution : 'Teisingas atsakymas parodytas laukeliuose.';
+
+                const solutionHTML = `
+                    <div class="solution-container">
+                        <div class="solution-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                            Sprendimo eiga
+                        </div>
+                        <div class="solution-text">${solText}</div>
+                    </div>
+                `;
+
+                // Append without wiping existing status (if any)
+                feedbackEl.insertAdjacentHTML('beforeend', solutionHTML);
+
+                solutionBtn.textContent = "Slėpti sprendimą";
                 showCorrectAnswer(contentDiv, ex);
+
+                // Re-render math inside the new element
                 if (window.renderMathInElement) {
-                    renderMathInElement(solutionDiv, {
+                    renderMathInElement(feedbackEl, {
                         delimiters: [
                             { left: '$$', right: '$$', display: true },
                             { left: '$', right: '$', display: false },
@@ -1148,11 +1211,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if user selected exactly the same answers as correct
         if (!Array.isArray(userAnswers) || !Array.isArray(correctAnswers)) return false;
         if (userAnswers.length !== correctAnswers.length) return false;
-        
+
         // Sort both arrays and compare
         const sortedUser = userAnswers.slice().sort();
         const sortedCorrect = correctAnswers.slice().sort();
-        
+
         return sortedUser.every((val, idx) => val === sortedCorrect[idx]);
     }
 

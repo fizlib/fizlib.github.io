@@ -429,20 +429,125 @@ body {
     border: 1px solid #A7F3D0;
 }
 
+/* --- FEEDBACK & SOLUTION STYLES START --- */
+
+/* Feedback Container */
+.feedback {
+    display: none;
+    /* Hidden by default */
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    border-left: 4px solid transparent;
+    background-color: #fff;
+    animation: slideDownFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+@keyframes slideDownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Feedback Header (Icon + Title) */
+.feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.feedback-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.feedback-title {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.feedback-message {
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    opacity: 0.9;
+}
+
+/* Correct State */
+.feedback.correct {
+    display: block;
+    background-color: #ECFDF5;
+    /* Emerald-50 */
+    border-left-color: #10B981;
+    /* Emerald-500 */
+    border: 1px solid #D1FAE5;
+    border-left-width: 4px;
+    color: #065F46;
+    /* Emerald-800 */
+}
+
+/* Incorrect State */
 .feedback.incorrect {
     display: block;
     background-color: #FEF2F2;
+    /* Red-50 */
+    border-left-color: #EF4444;
+    /* Red-500 */
+    border: 1px solid #FEE2E2;
+    border-left-width: 4px;
     color: #991B1B;
-    border: 1px solid #FECACA;
+    /* Red-800 */
+}
+
+/* Solution Section */
+.solution-container {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.3s ease;
+}
+
+.solution-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .solution-text {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+.solution-text .katex-display {
+    margin: 0.5em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* --- FEEDBACK & SOLUTION STYLES END --- */
+
 
 /* Expanded State */
 .exercise-card.expanded {
