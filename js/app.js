@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const exercisesContainer = document.getElementById('exercises-list');
     const gradeFiltersContainer = document.getElementById('grade-filters');
     const topicFiltersContainer = document.getElementById('topic-filters');
+    const sourceFiltersContainer = document.getElementById('source-filters');
     const activeFiltersContainer = document.getElementById('active-filters-container');
     const searchInput = document.getElementById('search-input');
     const clearAllBtn = document.getElementById('clear-all-filters');
@@ -19,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         search: '',
         grades: [], // Array of numbers/strings
         topics: [], // Array of strings (child topics)
-        types: []   // Array of strings
+        types: [],   // Array of strings
+        sources: []  // Array of strings
     };
 
     // Topic Hierarchy Definition
@@ -59,6 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
         12: {}
     };
 
+    // Source Hierarchy Definition
+    const sourceHierarchy = {
+        "VBE": ["2025 (1)"],
+        "Vadovėliai": [],
+        "Uždavinynai": [],
+        "Kita": []
+    };
+
     // Fetch Data
     fetch('data/manifest.json')
         .then(response => response.json())
@@ -67,7 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return Promise.all(promises);
         })
         .then(data => {
-            allExercises = data;
+            // Enrich data with source info
+            allExercises = data.map(ex => {
+                if (ex.grade === 11 || ex.grade === '11') {
+                    ex.source = "VBE";
+                    ex.subsource = "2025 (1)";
+                } else {
+                    ex.source = "Kita";
+                }
+                return ex;
+            });
             initApp();
         })
         .catch(err => {
@@ -148,10 +167,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // 5. Sources
+        renderSourceAccordion();
+
         // 5. Clear All
         clearAllBtn.addEventListener('click', () => {
             // Reset State
-            activeFilters = { search: '', grades: [], topics: [], types: [] };
+            activeFilters = { search: '', grades: [], topics: [], types: [], sources: [] };
             searchInput.value = '';
 
             // Uncheck all checkboxes
@@ -275,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isSelected) {
                     header.style.backgroundColor = '#e0e7ff';
                     header.style.color = '#4338ca';
-                    
+
                     // Remove parent topic filter
                     const parentAccordionItem = header.closest('.accordion-item');
                     if (parentAccordionItem) {
@@ -294,35 +316,108 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Sub-subtopic checkboxes (keep existing logic)
+        // Sub-subtopic checkboxes (allow multiple selections)
         topicFiltersContainer.querySelectorAll('input').forEach(input => {
             input.addEventListener('change', () => {
                 const isChecked = input.checked;
-                
+
                 if (isChecked) {
-                    // Remove all topic and subtopic filters when a sub-subtopic is selected
+                    // When checking a sub-subtopic, remove topic and subtopic filters
+                    // but allow multiple sub-subtopic selections
                     const selectedTopics = [...activeFilters.topics];
                     selectedTopics.forEach(topic => {
-                        // Try to find if this is a topic or subtopic and remove it
                         const topicCheckbox = document.querySelector(`input[name="topic"][value="${topic}"]`);
                         const topicHeader = document.querySelector(`.accordion-header[data-topic="${topic}"]`);
                         const subtopicHeader = document.querySelector(`.subtopic-header[data-topic="${topic}"]`);
                         
-                        if (topicHeader && topicHeader.classList.contains('selected')) {
-                            topicHeader.classList.remove('selected');
-                            updateActiveFilters('topics', topic, false);
-                        } else if (subtopicHeader && subtopicHeader.classList.contains('selected')) {
-                            subtopicHeader.classList.remove('selected');
-                            subtopicHeader.style.backgroundColor = 'transparent';
-                            subtopicHeader.style.color = '#4b5563';
-                            updateActiveFilters('topics', topic, false);
-                        } else if (topicCheckbox) {
-                            topicCheckbox.checked = false;
+                        // Check if the selected topic is from a parent or subtopic header (not a checkbox)
+                        const hasTopicHeader = !!topicHeader;
+                        const hasSubtopicHeader = !!subtopicHeader;
+                        
+                        if (hasTopicHeader || hasSubtopicHeader) {
+                            // Remove parent/subtopic filters when sub-subtopic is selected
+                            if (topicHeader && topicHeader.classList.contains('selected')) {
+                                topicHeader.classList.remove('selected');
+                                updateActiveFilters('topics', topic, false);
+                            } else if (subtopicHeader && subtopicHeader.classList.contains('selected')) {
+                                subtopicHeader.classList.remove('selected');
+                                subtopicHeader.style.backgroundColor = 'transparent';
+                                subtopicHeader.style.color = '#4b5563';
+                                updateActiveFilters('topics', topic, false);
+                            }
                         }
                     });
                 }
-                
+
                 updateActiveFilters('topics', input.value, input.checked);
+            });
+        });
+    }
+
+    function renderSourceAccordion() {
+        let accordionHTML = '';
+        for (const [source, subsources] of Object.entries(sourceHierarchy)) {
+            let subsourcesHTML = '';
+
+            if (subsources.length > 0) {
+                subsourcesHTML = subsources.map(sub => `
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="source" value="${sub}">
+                        <span class="checkbox-custom"></span>
+                        ${sub}
+                    </label>
+                `).join('');
+            }
+
+            // If there are no subsources, the parent itself is a checkbox (or acts like one)
+            // But for consistency with accordion, we can make it an item without children or just a checkbox.
+            // However, the user asked for "VBE" -> "2025 (1)".
+            // And "Kita", "Vadovėliai" etc.
+            // Let's treat top-level items as selectable if they have no children, or if they are just categories.
+            // Actually, "VBE" is a category, "2025 (1)" is the option.
+            // "Kita" is an option.
+            // So if it has children, render accordion. If not, render checkbox.
+
+            if (subsources.length > 0) {
+                accordionHTML += `
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-source="${source}">
+                            <span>${source}</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            ${subsourcesHTML}
+                        </div>
+                    </div>
+                `;
+            } else {
+                accordionHTML += `
+                    <label class="checkbox-label" style="padding: 0.5rem; display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" name="source" value="${source}">
+                        <span class="checkbox-custom"></span>
+                        <span style="font-weight: 500; color: #4b5563;">${source}</span>
+                    </label>
+                `;
+            }
+        }
+        sourceFiltersContainer.innerHTML = accordionHTML;
+
+        // Accordion events
+        sourceFiltersContainer.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                // Toggle Expansion
+                item.classList.toggle('active');
+                // Note: Clicking header doesn't select the category as a filter in this design, 
+                // unless we want it to select all children? 
+                // For now, just expand/collapse.
+            });
+        });
+
+        // Checkbox events
+        sourceFiltersContainer.querySelectorAll('input[name="source"]').forEach(input => {
+            input.addEventListener('change', () => {
+                updateActiveFilters('sources', input.value, input.checked);
             });
         });
     }
@@ -372,6 +467,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        if (activeFilters.sources.length > 0) {
+            filtered = filtered.filter(ex => {
+                // Check if any active source matches ex.source or ex.subsource
+                return activeFilters.sources.includes(ex.source) ||
+                    activeFilters.sources.includes(ex.subsource);
+            });
+        }
+
         renderExercises(filtered);
     }
 
@@ -409,16 +512,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        activeFilters.sources.forEach(s => {
+            createTag(s, () => {
+                updateActiveFilters('sources', s, false);
+                // Also uncheck the checkbox
+                const cb = sourceFiltersContainer.querySelector(`input[value="${s}"]`);
+                if (cb) cb.checked = false;
+            });
+        });
+
         // Count total active filters
-        const totalFilters = activeFilters.grades.length + activeFilters.topics.length + activeFilters.types.length;
-        
+        const totalFilters = activeFilters.grades.length + activeFilters.topics.length + activeFilters.types.length + activeFilters.sources.length;
+
         // Show "Clear All" button if more than 1 filter is active
         if (totalFilters > 1) {
             const clearAllBtn = document.createElement('button');
             clearAllBtn.className = 'clear-all-filters-btn';
             clearAllBtn.textContent = 'Valyti visus';
             clearAllBtn.addEventListener('click', () => {
-                activeFilters = { search: '', grades: [], topics: [], types: [] };
+                activeFilters = { search: '', grades: [], topics: [], types: [], sources: [] };
                 searchInput.value = '';
                 document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
                 applyFilters();
