@@ -723,9 +723,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildInputArea(ex) {
         if (ex.type === 'multiple_choice') {
+            const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             return `
                 <div class="options-grid">
-                    ${ex.options.map(opt => `<div class="option-btn" data-value="${opt}">${opt}</div>`).join('')}
+                    ${ex.options.map(opt => `<div class="option-btn${isMultiSelect ? ' multi-select-btn' : ''}" data-value="${opt}">${opt}</div>`).join('')}
                 </div>
                 <input type="hidden" class="user-answer" value="">
             `;
@@ -971,20 +972,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function attachQuestionEvents(card, ex, contentDiv, submitBtn, solutionBtn, feedbackEl) {
         if (ex.type === 'multiple_choice') {
+            const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             const options = contentDiv.querySelectorAll('.option-btn');
             const hiddenInput = contentDiv.querySelector('.user-answer');
+            
             options.forEach(opt => {
                 opt.addEventListener('click', () => {
-                    options.forEach(o => o.classList.remove('selected'));
-                    opt.classList.add('selected');
-                    hiddenInput.value = opt.dataset.value;
+                    if (isMultiSelect) {
+                        // Multi-select: toggle selection with limit
+                        const maxSelections = ex.correctAnswer.length;
+                        const isCurrentlySelected = opt.classList.contains('selected');
+                        
+                        if (!isCurrentlySelected) {
+                            const currentlySelectedCount = contentDiv.querySelectorAll('.option-btn.selected').length;
+                            if (currentlySelectedCount >= maxSelections) {
+                                // Prevent selecting more than allowed
+                                return;
+                            }
+                        }
+                        
+                        opt.classList.toggle('selected');
+                        // Update hidden input with array of selected values
+                        const selectedValues = Array.from(contentDiv.querySelectorAll('.option-btn.selected')).map(o => o.dataset.value);
+                        hiddenInput.value = JSON.stringify(selectedValues);
+                    } else {
+                        // Single select: only one can be selected
+                        options.forEach(o => o.classList.remove('selected'));
+                        opt.classList.add('selected');
+                        hiddenInput.value = opt.dataset.value;
+                    }
                 });
                 opt.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        options.forEach(o => o.classList.remove('selected'));
-                        opt.classList.add('selected');
-                        hiddenInput.value = opt.dataset.value;
+                        if (isMultiSelect) {
+                            const maxSelections = ex.correctAnswer.length;
+                            const isCurrentlySelected = opt.classList.contains('selected');
+                            
+                            if (!isCurrentlySelected) {
+                                const currentlySelectedCount = contentDiv.querySelectorAll('.option-btn.selected').length;
+                                if (currentlySelectedCount >= maxSelections) {
+                                    return;
+                                }
+                            }
+                            
+                            opt.classList.toggle('selected');
+                            const selectedValues = Array.from(contentDiv.querySelectorAll('.option-btn.selected')).map(o => o.dataset.value);
+                            hiddenInput.value = JSON.stringify(selectedValues);
+                        } else {
+                            options.forEach(o => o.classList.remove('selected'));
+                            opt.classList.add('selected');
+                            hiddenInput.value = opt.dataset.value;
+                        }
                         submitBtn.click();
                     }
                 });
@@ -1007,9 +1046,25 @@ document.addEventListener('DOMContentLoaded', () => {
             let userAnswer = '';
 
             if (ex.type === 'multiple_choice') {
+                const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
                 userAnswer = contentDiv.querySelector('.user-answer').value;
-                if (!userAnswer) return;
-                isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
+                if (!userAnswer) {
+                    feedbackEl.className = 'feedback incorrect';
+                    feedbackEl.innerHTML = '<strong>Pasirinkite atsakymą.</strong>';
+                    return;
+                }
+                
+                if (isMultiSelect) {
+                    // For multi-select, parse the JSON array and compare
+                    try {
+                        const userAnswers = JSON.parse(userAnswer);
+                        isCorrect = checkMultiSelectAnswer(userAnswers, ex.correctAnswer);
+                    } catch (e) {
+                        isCorrect = false;
+                    }
+                } else {
+                    isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
+                }
             } else if (ex.type === 'matching') {
                 const selects = contentDiv.querySelectorAll('.matching-select');
                 let allCorrect = true;
@@ -1089,12 +1144,31 @@ document.addEventListener('DOMContentLoaded', () => {
         return user.replace(',', '.').trim() === correct.replace(',', '.').trim();
     }
 
+    function checkMultiSelectAnswer(userAnswers, correctAnswers) {
+        // Check if user selected exactly the same answers as correct
+        if (!Array.isArray(userAnswers) || !Array.isArray(correctAnswers)) return false;
+        if (userAnswers.length !== correctAnswers.length) return false;
+        
+        // Sort both arrays and compare
+        const sortedUser = userAnswers.slice().sort();
+        const sortedCorrect = correctAnswers.slice().sort();
+        
+        return sortedUser.every((val, idx) => val === sortedCorrect[idx]);
+    }
+
     function showCorrectAnswer(contentDiv, ex) {
         if (ex.type === 'multiple_choice') {
+            const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             const options = contentDiv.querySelectorAll('.option-btn');
             options.forEach(opt => {
-                if (opt.dataset.value === ex.correctAnswer) {
-                    opt.classList.add('correct-answer');
+                if (isMultiSelect) {
+                    if (ex.correctAnswer.includes(opt.dataset.value)) {
+                        opt.classList.add('correct-answer');
+                    }
+                } else {
+                    if (opt.dataset.value === ex.correctAnswer) {
+                        opt.classList.add('correct-answer');
+                    }
                 }
             });
         } else if (ex.type === 'matching') {
