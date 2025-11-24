@@ -424,7 +424,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
-                            <span class="badge">${ex.topic}</span>
+                            <div class="topic-badge-container">
+                                <span class="badge topic-badge">${ex.topic}</span>
+                                <div class="topic-tooltip">
+                                    ${ex.subtopic ? `<div class="tooltip-row"><span class="tooltip-label">Tema:</span>${ex.subtopic}</div>` : ''}
+                                    ${ex.subsubtopic ? `<div class="tooltip-row"><span class="tooltip-label">Potemė:</span>${ex.subsubtopic}</div>` : ''}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-question">${ex.question}</div>
@@ -464,7 +470,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
-                            <span class="badge">${ex.topic}</span>
+                            <div class="topic-badge-container">
+                                <span class="badge topic-badge">${ex.topic}</span>
+                                <div class="topic-tooltip">
+                                    ${ex.subtopic ? `<div class="tooltip-row"><span class="tooltip-label">Tema:</span>${ex.subtopic}</div>` : ''}
+                                    ${ex.subsubtopic ? `<div class="tooltip-row"><span class="tooltip-label">Potemė:</span>${ex.subsubtopic}</div>` : ''}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-question">${ex.question}</div>
@@ -482,8 +494,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="badge">${ex.grade} klasė</span>
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
-                    <button class="expand-btn" aria-label="Išskleisti">⤢</button>
-                    <span class="badge">${ex.topic}</span>
+                    <div class="topic-badge-container">
+                        <span class="badge topic-badge">${ex.topic}</span>
+                        <div class="topic-tooltip">
+                            ${ex.subtopic ? `<div class="tooltip-row"><span class="tooltip-label">Tema:</span>${ex.subtopic}</div>` : ''}
+                            ${ex.subsubtopic ? `<div class="tooltip-row"><span class="tooltip-label">Potemė:</span>${ex.subsubtopic}</div>` : ''}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card-question">${ex.question}</div>
