@@ -1,0 +1,15 @@
+{
+    "id": "ex_vbe2025_19",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas.",
+    "subsubtopic": "Santykinis judėjimas",
+    "type": "numerical",
+    "question": "Iš dviejų miestų, nutolusių vienas nuo kito 180 km, vienu metu vienas priešais kitą išvažiuoja du automobiliai. Grafike pavaizduota atstumo tarp jų priklausomybė nuo laiko t. Remdamiesi grafiko pateiktais duomenimis, apskaičiuokite, kokiu santykiniu greičiu artėjo vienas prie kito abu automobiliai (t.y. kokiu greičiu jie judėjo vienas kito atžvilgiu). Užrašykite atsakymą. Išreikškite metrais per sekundę (m/s).",
+    "image": "assets/images/ex-vbe2-5.svg",
+    "options": null,
+    "correctAnswer": "50",
+    "unit": "m/s",
+    "solution": "Grafike matome, kad atstumas sumažėjo nuo 180 km iki 0 km per 60 min. Santykinis greitis v = s / t = 180 km / 60 min = 3 km/min. Paverčiame į m/s: 3 * 1000 m / 60 s = 50 m/s."
+}

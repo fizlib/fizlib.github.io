@@ -1,0 +1,15 @@
+{
+    "id": "ex_vbe2025_17",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Fizikos mokslo kalba ir pažinimo metodai",
+    "subtopic": "Matavimai ir skaičiavimai fizikoje.",
+    "subsubtopic": "Matavimo prietaisai",
+    "type": "numerical",
+    "question": "Remdamiesi paveikslu, apskaičiuokite įtampos santykinę matavimo paklaidą procentais. Absoliučioji paklaida lygi pusei mažiausios voltmetro padalos vertės. Užrašykite atsakymą, suapvalintą iki sveikojo skaičiaus.",
+    "image": "assets/images/ex-vbe2-3.png",
+    "options": null,
+    "correctAnswer": "2",
+    "unit": "%",
+    "solution": "Reikia nustatyti padalos vertę ir rodmenį iš paveikslėlio. Santykinė paklaida = (Absoliučioji paklaida / Rodmuo) * 100%."
+}

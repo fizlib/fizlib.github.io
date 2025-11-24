@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2025_20",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Jėgos.",
+    "subsubtopic": "Nuožulnioji plokštuma",
+    "type": "multiple_choice",
+    "question": "Kaladėlė, kurios masė yra m, juda nuožulniąja plokštuma žemyn pastoviu pagreičiu a. Kita tokių pat matmenų kaladėlė, kurios masė yra 2m, taip pat juda žemyn ta pačia nuožulniąja plokštuma. Koks yra antros kaladėlės pagreitis, kai ji juda žemyn nuožulniąja plokštuma? Į trintį neatsižvelkite. Pažymėkite teisingą atsakymą.",
+    "image": null,
+    "options": [
+        "\\( \\frac{1}{2}a \\)",
+        "\\( 4a \\)",
+        "\\( 2a \\)",
+        "\\( a \\)"
+    ],
+    "correctAnswer": "\\( a \\)",
+    "solution": "Kūno pagreitis slystant nuožulniąja plokštuma (neįskaitant trinties) yra \\( a = g \\sin \\alpha \\). Jis nepriklauso nuo kūno masės. Todėl pagreitis išliks toks pat \\( a \\)."
+}

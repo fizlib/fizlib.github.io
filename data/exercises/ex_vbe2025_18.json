@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2025_18",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas.",
+    "subsubtopic": "Judėjimo grafikai",
+    "type": "multiple_choice",
+    "question": "Grafike pavaizduota tiesia trajektorija judančio kūno poslinkio d priklausomybė nuo laiko t. Pažymėkite grafiką, kuriame pavaizduota kūno greičio v priklausomybė nuo laiko t.",
+    "image": "assets/images/ex-vbe2-4-main.svg",
+    "options": [
+        "<img src='assets/images/ex-vbe2-4-opt1.svg' alt='Option 1' style='height: 100px;'>",
+        "<img src='assets/images/ex-vbe2-4-opt2.svg' alt='Option 2' style='height: 100px;'>",
+        "<img src='assets/images/ex-vbe2-4-opt3.svg' alt='Option 3' style='height: 100px;'>",
+        "<img src='assets/images/ex-vbe2-4-opt4.svg' alt='Option 4' style='height: 100px;'>"
+    ],
+    "correctAnswer": "<img src='assets/images/ex-vbe2-4-opt4.svg' alt='Option 4' style='height: 100px;'>",
+    "solution": "Poslinkio grafikas rodo, kad iš pradžių kūnas juda pastoviu greičiu (tiesė kyla į viršų), o vėliau sustoja (tiesė horizontali). Greičio grafikas turi rodyti pastovų teigiamą greitį, o po to nulį. Tai atitinka 4-asis grafikas."
+}

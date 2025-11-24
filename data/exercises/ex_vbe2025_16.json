@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2025_16",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Fizikos mokslo kalba ir pažinimo metodai",
+    "subtopic": "Matavimai ir skaičiavimai fizikoje.",
+    "subsubtopic": "Matavimo paklaidos",
+    "type": "multiple_choice",
+    "question": "Mokinys kelis kartus matavo atstumą. Gautos reikšmės svyravo nuo 49,8 cm iki 50,2 cm. Kurie matavimo rezultatai yra tiksliausi? Pažymėkite teisingą atsakymą.",
+    "image": null,
+    "options": [
+        "50,0 ± 0,2 cm",
+        "50,0 ± 0,4 cm",
+        "49,8 ± 0,2 cm",
+        "49,8 ± 0,4 cm"
+    ],
+    "correctAnswer": "50,0 ± 0,2 cm",
+    "solution": "Vidutinė reikšmė: (49,8 + 50,2) / 2 = 50,0 cm. Absoliučioji paklaida: (50,2 - 49,8) / 2 = 0,2 cm. Atsakymas: 50,0 ± 0,2 cm."
+}

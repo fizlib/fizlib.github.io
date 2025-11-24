@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Source Hierarchy Definition
     const sourceHierarchy = {
-        "VBE": ["2025 (1)"],
+        "VBE": ["2025 (1)", "2025 (2)"],
         "Vadovėliai": [],
         "Uždavinynai": [],
         "Kita": []
@@ -79,7 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             // Enrich data with source info
             allExercises = data.map(ex => {
-                if (ex.grade === 11 || ex.grade === '11') {
+                if (ex.category === 'VBE-2025-2') {
+                    ex.source = "VBE";
+                    ex.subsource = "2025 (2)";
+                } else if (ex.category === 'VBE-2025') {
+                    ex.source = "VBE";
+                    ex.subsource = "2025 (1)";
+                } else if (ex.grade === 11 || ex.grade === '11') {
                     ex.source = "VBE";
                     ex.subsource = "2025 (1)";
                 } else {
@@ -312,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
             checkbox.addEventListener('change', () => {
                 const topic = checkbox.value;
                 const isChecked = checkbox.checked;
-                
+
                 if (isChecked) {
                     // Uncheck parent topic filter if any is selected
                     const parentAccordionItem = checkbox.closest('.accordion-item');
@@ -324,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 }
-                
+
                 updateActiveFilters('topics', topic, isChecked);
             });
         });
@@ -341,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     selectedTopics.forEach(topic => {
                         const topicCheckbox = topicFiltersContainer.querySelector(`.topic-checkbox[value="${topic}"]`);
                         const subtopicCheckbox = topicFiltersContainer.querySelector(`.subtopic-checkbox[value="${topic}"]`);
-                        
+
                         if (topicCheckbox && topicCheckbox.checked) {
                             topicCheckbox.checked = false;
                             updateActiveFilters('topics', topic, false);
