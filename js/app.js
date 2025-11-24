@@ -24,12 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Topic Hierarchy Definition
     const topicHierarchy = {
-        "Mechanika": ["Kinematika", "Dinamika", "Statika", "Tvermės dėsniai", "Mechaniniai svyravimai ir bangos"],
-        "Termodinamika": ["Molekulinė fizika", "Termodinamika"],
-        "Elektra": ["Elektrostatika", "Nuolatinė elektros srovė", "Elektrodinamika"],
-        "Magnetizmas": ["Magnetinis laukas", "Elektromagnetinė indukcija"],
-        "Optika": ["Geometrinė optika", "Banginė optika"],
-        "Bendra": ["Matavimai", "Paklaidos", "Astronomija"]
+        11: {
+            "Fizikos mokslo kalba ir pažinimo metodai": ["Fizikos mokslo raida.", "Pažinimo metodai ir kalba.", "Matavimai ir skaičiavimai fizikoje."],
+            "Judėjimas ir jėgos": ["Judėjimas.", "Jėgos.", "Judesio kiekis ir jėgos impulsas."],
+            "Energija": ["Energija, darbas, galia."],
+            "Šiluminiai reiškiniai": ["Ryšys tarp mikro ir makro pasaulio.", "Termodinamika."],
+            "Elektra ir magnetizmas": ["Elektrostatinis laukas.", "Elektros srovė metaluose.", "Elektros srovės šaltiniai.", "Magnetinis laukas.", "Elektromagnetinė indukcija.", "Energijos šaltiniai."],
+            "Bendra": ["Bendra"]
+        },
+        9: {},
+        10: {},
+        12: {}
     };
 
     // Fetch Data
@@ -106,23 +111,66 @@ document.addEventListener('DOMContentLoaded', () => {
         gradeFiltersContainer.querySelectorAll('input').forEach(input => {
             input.addEventListener('change', () => {
                 updateActiveFilters('grades', input.value, input.checked);
+                updateTopicVisibility();
             });
         });
 
-        // 3. Topics (Accordion)
-        // Collect all actual topics from exercises to ensure we don't miss any
-        const actualTopics = new Set();
-        allExercises.forEach(ex => {
-            if (ex.topic) actualTopics.add(ex.topic);
-            if (ex.subtopic) actualTopics.add(ex.subtopic);
+        // 3. Topics (Initially empty)
+        topicFiltersContainer.innerHTML = '<div style="padding: 0.5rem; color: #6b7280; font-size: 0.9rem;">Pasirinkite klasę, kad matytumėte temas.</div>';
+
+
+        // 4. Types (Already in HTML)
+        document.querySelectorAll('input[name="type"]').forEach(input => {
+            input.addEventListener('change', () => {
+                updateActiveFilters('types', input.value, input.checked);
+            });
         });
 
-        // Build Accordion HTML
-        let accordionHTML = '';
-        for (const [parent, children] of Object.entries(topicHierarchy)) {
-            // Check if any children exist in actual data (optional optimization)
-            // For now, render all defined in hierarchy
+        // 5. Clear All
+        clearAllBtn.addEventListener('click', () => {
+            // Reset State
+            activeFilters = { search: '', grades: [], topics: [], types: [] };
+            searchInput.value = '';
 
+            // Uncheck all checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+            applyFilters();
+        });
+    }
+
+    function updateTopicVisibility() {
+        const selectedGrades = activeFilters.grades;
+        topicFiltersContainer.innerHTML = ''; // Clear existing
+
+        // If we have existing topic filters, we should probably clear them because they might not apply to the new grade
+        // But for better UX, let's clear them only if the grade changes to something else.
+        // Actually, simpler to just clear active topics when switching grades to avoid confusion.
+        if (activeFilters.topics.length > 0) {
+            activeFilters.topics = [];
+            renderActiveTags();
+            applyFilters();
+        }
+
+        if (selectedGrades.length === 1) {
+            const grade = selectedGrades[0];
+            const topics = topicHierarchy[grade];
+
+            if (topics && Object.keys(topics).length > 0) {
+                renderTopicAccordion(topics);
+            } else {
+                topicFiltersContainer.innerHTML = '<div style="padding: 0.5rem; color: #6b7280; font-size: 0.9rem;">Šiai klasei temų nėra.</div>';
+            }
+        } else if (selectedGrades.length === 0) {
+            topicFiltersContainer.innerHTML = '<div style="padding: 0.5rem; color: #6b7280; font-size: 0.9rem;">Pasirinkite klasę, kad matytumėte temas.</div>';
+        } else {
+            topicFiltersContainer.innerHTML = '<div style="padding: 0.5rem; color: #6b7280; font-size: 0.9rem;">Pasirinkite tik vieną klasę, kad matytumėte temas.</div>';
+        }
+    }
+
+    function renderTopicAccordion(topics) {
+        let accordionHTML = '';
+        for (const [parent, children] of Object.entries(topics)) {
             const childrenHTML = children.map(child => `
                 <label class="checkbox-label">
                     <input type="checkbox" name="topic" value="${child}">
@@ -143,10 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         }
-
-        // Add "Kita" for topics not in hierarchy?
-        // For simplicity, let's stick to the requested list. 
-
         topicFiltersContainer.innerHTML = accordionHTML;
 
         // Accordion Logic
@@ -162,25 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
             input.addEventListener('change', () => {
                 updateActiveFilters('topics', input.value, input.checked);
             });
-        });
-
-        // 4. Types (Already in HTML)
-        document.querySelectorAll('input[name="type"]').forEach(input => {
-            input.addEventListener('change', () => {
-                updateActiveFilters('types', input.value, input.checked);
-            });
-        });
-
-        // 5. Clear All
-        clearAllBtn.addEventListener('click', () => {
-            // Reset State
-            activeFilters = { search: '', grades: [], topics: [], types: [] };
-            searchInput.value = '';
-
-            // Uncheck all checkboxes
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-
-            applyFilters();
         });
     }
 
