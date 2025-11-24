@@ -471,10 +471,16 @@ body {
     line-height: 1;
     border-radius: 4px;
     transition: all 0.2s;
+    min-width: 2rem;
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .expand-btn:hover {
     color: var(--primary-color);
+    background-color: rgba(124, 58, 237, 0.1);
 }
 
 /* Active Filters Display */

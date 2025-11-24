@@ -469,6 +469,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Hide/show active filters based on view mode
+        const isExpandedView = exercises.length === 1 && (exercises[0].type === 'simulation' || exercises[0].type === 'structural');
+        activeFiltersContainer.style.display = isExpandedView ? 'none' : 'flex';
+
         if (window.renderMathInElement) {
             renderMathInElement(exercisesContainer, {
                 delimiters: [
@@ -497,6 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="badge" style="${badgeStyle}">${badgeText}</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <button class="expand-btn" aria-label="Išskleisti" title="Išskleisti">⤢</button>
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                             <div class="topic-badge-container">
                                 <span class="badge topic-badge">${ex.topic}</span>
@@ -543,6 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="badge" style="${badgeStyle}">${badgeText}</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <button class="expand-btn" aria-label="Suskleisti" title="Suskleisti">✕</button>
                             <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                             <div class="topic-badge-container">
                                 <span class="badge topic-badge">${ex.topic}</span>
@@ -567,6 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="card-header">
                 <span class="badge">${ex.grade} klasė</span>
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="expand-btn" aria-label="Išskleisti" title="Išskleisti">⤢</button>
                     <button class="share-btn" aria-label="Dalintis" title="Kopijuoti nuorodą">🔗</button>
                     <div class="topic-badge-container">
                         <span class="badge topic-badge">${ex.topic}</span>
@@ -740,6 +747,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
+            const expandBtn = card.querySelector('.expand-btn');
+            if (expandBtn) {
+                expandBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const newUrl = `${window.location.pathname}?id=${ex.id}`;
+                    window.history.pushState({ id: ex.id }, '', newUrl);
+                    window.scrollTo(0, 0);
+                    renderExercises([ex]);
+
+                    if (!document.querySelector('.show-all-btn')) {
+                        const showAllBtn = document.createElement('button');
+                        showAllBtn.className = 'btn btn-outline show-all-btn';
+                        showAllBtn.textContent = '← Rodyti visas užduotis';
+                        showAllBtn.style.marginBottom = '1rem';
+                        showAllBtn.onclick = () => {
+                            window.history.pushState({}, document.title, window.location.pathname);
+                            renderExercises(allExercises);
+                            showAllBtn.remove();
+                        };
+                        exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
+                    }
+                });
+            }
+
             const shareBtn = card.querySelector('.share-btn');
             if (shareBtn) {
                 shareBtn.addEventListener('click', (e) => {
@@ -760,6 +791,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const feedbackEl = contentDiv.querySelector('.feedback');
                 attachQuestionEvents(card, q, contentDiv, submitBtn, solutionBtn, feedbackEl);
             });
+
+            const expandBtn = card.querySelector('.expand-btn');
+            if (expandBtn) {
+                expandBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    window.history.pushState({}, document.title, window.location.pathname);
+                    renderExercises(allExercises);
+
+                    const showAllBtn = document.querySelector('.show-all-btn');
+                    if (showAllBtn) {
+                        showAllBtn.remove();
+                    }
+                });
+            }
 
             const shareBtn = card.querySelector('.share-btn');
             if (shareBtn) {
