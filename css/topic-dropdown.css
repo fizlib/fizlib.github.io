@@ -52,7 +52,7 @@
     border-radius: 6px;
     padding: 8px 12px;
     position: absolute;
-    z-index: 1000;
+    z-index: 1500;
     bottom: 125%;
     /* Position above */
     left: 50%;
