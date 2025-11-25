@@ -29,40 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sources: []  // Array of strings
     };
 
-    // Topic Hierarchy Definition
-    const topicHierarchy = {
-        11: {
-            "Fizikos mokslo kalba ir pažinimo metodai": {
-                "Fizikos mokslo raida.": ["Fizikos istorija ir asmenybės", "Fizika ir visuomenė"],
-                "Pažinimo metodai ir kalba.": ["Mokslinis tyrimas ir modeliai", "Fizikiniai dydžiai ir matavimai", "Grafinė analizė"],
-                "Matavimai ir skaičiavimai fizikoje.": ["SI sistema", "Vektoriai", "Paklaidos"]
-            },
-            "Judėjimas ir jėgos": {
-                "Judėjimas.": ["Kinematikos pagrindai", "Tolygiai kintamas judėjimas", "Judėjimas plokštumoje (metimas)", "Reliatyvumas"],
-                "Jėgos.": ["Jėgos ir jų rūšys", "Niutono dėsniai", "Visuotinė trauka", "Kūno svoris", "Trintis ir pasipriešinimas"],
-                "Judesio kiekis ir jėgos impulsas.": ["Judesio kiekis ir impulsas", "Tvermės dėsnis", "Smūgiai", "Reaktyvusis judėjimas"]
-            },
-            "Energija": {
-                "Energija, darbas, galia.": ["Mechaninis darbas ir galia", "Mechaninė energija", "Energijos tvermės dėsnis", "Naudingumo koeficientas"]
-            },
-            "Šiluminiai reiškiniai": {
-                "Ryšys tarp mikro ir makro pasaulio.": ["MKT pagrindai", "Idealiosios dujos", "Dujų dėsniai (izoprocesai)"],
-                "Termodinamika.": ["Vidinė energija ir šiluma", "Termodinamikos dėsniai", "Šiluminiai procesai"]
-            },
-            "Elektra ir magnetizmas": {
-                "Elektrostatinis laukas.": ["Elektros krūviai ir sąveika", "Elektrinis laukas", "Potencialas ir įtampa", "Kondensatoriai"],
-                "Elektros srovė metaluose.": ["Srovė ir varža", "Grandinės dėsniai"],
-                "Elektros srovės šaltiniai.": ["Elektrovara ir vidinė varža", "Omo dėsnis uždarai grandinei"],
-                "Magnetinis laukas.": ["Magnetinis laukas ir srovė", "Magnetinės jėgos", "Medžiagų magnetinės savybės"],
-                "Elektromagnetinė indukcija.": ["Indukcijos reiškinys", "Saviindukcija"],
-                "Energijos šaltiniai.": ["Elektrinės ir kuro rūšys", "Energetika ir ekologija"]
-            },
-            "Bendra": {
-                "Bendra": ["Bendra"]
-            }
-        },
+    // Topic Hierarchy - will be loaded from topic_descriptions.json
+    let topicHierarchy = {
         9: {},
         10: {},
+        11: {},
         12: {}
     };
 
@@ -74,8 +45,54 @@ document.addEventListener('DOMContentLoaded', () => {
         "Kita": []
     };
 
-    // Fetch Data - Load manifest first, then exercises in batches
-    fetch('data/manifest.json')
+    // Load topic descriptions and convert to hierarchy
+    function loadTopicDescriptions() {
+        return fetch('data/topic_descriptions.json')
+            .then(response => response.json())
+            .then(descriptions => {
+                // Parse the structure for each grade
+                Object.keys(descriptions).forEach(grade => {
+                    const gradeTopics = descriptions[grade];
+                    topicHierarchy[grade] = {};
+
+                    Object.keys(gradeTopics).forEach(topicName => {
+                        const topicData = gradeTopics[topicName];
+
+                        // Check if topicData is an object (contains subtopics)
+                        if (typeof topicData === 'object' && !Array.isArray(topicData)) {
+                            topicHierarchy[grade][topicName] = {};
+
+                            Object.keys(topicData).forEach(subtopicName => {
+                                const subtopicData = topicData[subtopicName];
+
+                                // Check if subtopicData is an object (contains subsubtopics)
+                                if (typeof subtopicData === 'object' && !Array.isArray(subtopicData)) {
+                                    // Has subsubtopics
+                                    topicHierarchy[grade][topicName][subtopicName] = Object.keys(subtopicData);
+                                } else {
+                                    // No subsubtopics, just a description string
+                                    topicHierarchy[grade][topicName][subtopicName] = [];
+                                }
+                            });
+                        }
+                    });
+                });
+
+                // Add "Bendra" topic for grade 11 if it doesn't exist
+                if (!topicHierarchy[11]["Bendra"]) {
+                    topicHierarchy[11]["Bendra"] = {
+                        "Bendra": ["Bendra"]
+                    };
+                }
+            })
+            .catch(err => {
+                console.error('Error loading topic descriptions:', err);
+            });
+    }
+
+    // Fetch Data - Load topic descriptions first, then manifest and exercises
+    loadTopicDescriptions()
+        .then(() => fetch('data/manifest.json'))
         .then(response => response.json())
         .then(async files => {
             manifestFiles = files;
