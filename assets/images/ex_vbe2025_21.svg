@@ -6,14 +6,19 @@
     .label-text { font-family: Arial, sans-serif; font-size: 28px; font-weight: bold; fill: #1E40AF; text-anchor: middle; dominant-baseline: middle; }
     .surface { fill: none; stroke: #4B5563; stroke-width: 4; stroke-linecap: round; }
     .cube { fill: #BFDBFE; stroke: #60A5FA; stroke-width: 2; }
-    .arrow { stroke: #374151; stroke-width: 2; marker-end: url(#arrowhead); marker-start: url(#arrowhead); }
+    .arrow { stroke: #374151; stroke-width: 2; marker-end: url(#arrowhead-end); marker-start: url(#arrowhead-start); }
     .line-ref { stroke: #4B5563; stroke-width: 2; }
   </style>
 
   <!-- Markers -->
   <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+    <!-- End Marker: Points forward. refX=10 ensures the tip (at 10) touches the line end, body sits inside. -->
+    <marker id="arrowhead-end" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#374151" />
+    </marker>
+    <!-- Start Marker: Points backward. refX=0 ensures the tip (at 0) touches the line start, body sits inside. -->
+    <marker id="arrowhead-start" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#374151" />
     </marker>
   </defs>
 
@@ -30,11 +35,13 @@
 
     <!-- Height Indicators -->
     <!-- H (between top and middle shelf) -->
-    <line x1="115" y1="122" x2="115" y2="228" class="arrow" />
+    <!-- Coordinates adjusted to 120 and 230 to touch lines exactly; markers handle offset -->
+    <line x1="115" y1="120" x2="115" y2="230" class="arrow" />
     <text x="75" y="185" class="text" font-style="italic" font-weight="bold" font-size="36">H</text>
 
     <!-- h (between middle and bottom shelf) -->
-    <line x1="340" y1="232" x2="340" y2="308" class="arrow" />
+    <!-- Coordinates adjusted to 230 and 310 to touch lines exactly; markers handle offset -->
+    <line x1="340" y1="230" x2="340" y2="310" class="arrow" />
     <text x="305" y="280" class="text" font-style="italic" font-weight="bold" font-size="36">h</text>
 
     <!-- Cubes & Labels -->
