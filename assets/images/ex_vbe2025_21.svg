@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Styles -->
+  <style>
+    .text { font-family: Arial, sans-serif; font-size: 24px; fill: #1F2937; }
+    .label-circle { fill: #EFF6FF; stroke: #DBEAFE; stroke-width: 2; }
+    .label-text { font-family: Arial, sans-serif; font-size: 28px; font-weight: bold; fill: #1E40AF; text-anchor: middle; dominant-baseline: middle; }
+    .surface { fill: none; stroke: #4B5563; stroke-width: 4; stroke-linecap: round; }
+    .cube { fill: #BFDBFE; stroke: #60A5FA; stroke-width: 2; }
+    .arrow { stroke: #374151; stroke-width: 2; marker-end: url(#arrowhead); marker-start: url(#arrowhead); }
+    .line-ref { stroke: #4B5563; stroke-width: 2; }
+  </style>
+
+  <!-- Markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#374151" />
+    </marker>
+  </defs>
+
+  <!-- Centering Group: Shifted Right 75px and Down 20px -->
+  <g transform="translate(75, 20)">
+
+    <!-- Surface Curve -->
+    <path d="M 50,120 L 100,120 C 180,120 200,230 300,230 L 350,230 C 430,230 450,310 550,310 L 600,310" class="surface" />
+
+    <!-- Ground Reference Lines -->
+    <line x1="50" y1="120" x2="130" y2="120" class="line-ref" />
+    <line x1="90" y1="230" x2="350" y2="230" class="line-ref" />
+    <line x1="270" y1="310" x2="600" y2="310" class="line-ref" />
+
+    <!-- Height Indicators -->
+    <!-- H (between top and middle shelf) -->
+    <line x1="115" y1="122" x2="115" y2="228" class="arrow" />
+    <text x="75" y="185" class="text" font-style="italic" font-weight="bold" font-size="36">H</text>
+
+    <!-- h (between middle and bottom shelf) -->
+    <line x1="340" y1="232" x2="340" y2="308" class="arrow" />
+    <text x="305" y="280" class="text" font-style="italic" font-weight="bold" font-size="36">h</text>
+
+    <!-- Cubes & Labels -->
+    
+    <!-- A: Moved label up (y=45) to avoid overlap with cube at y=80 -->
+    <rect x="95" y="80" width="40" height="40" class="cube" />
+    <g transform="translate(115, 45)">
+      <circle cx="0" cy="0" r="22" class="label-circle" />
+      <text x="0" y="2" class="label-text">A</text>
+    </g>
+
+    <!-- B -->
+    <g transform="translate(340, 170)">
+      <circle cx="0" cy="0" r="22" class="label-circle" />
+      <text x="0" y="2" class="label-text">B</text>
+    </g>
+
+    <!-- C: Moved label up (y=235) to avoid overlap with cube at y=270 -->
+    <rect x="530" y="270" width="40" height="40" class="cube" />
+    <g transform="translate(550, 235)">
+      <circle cx="0" cy="0" r="22" class="label-circle" />
+      <text x="0" y="2" class="label-text">C</text>
+    </g>
+
+  </g>
+</svg>

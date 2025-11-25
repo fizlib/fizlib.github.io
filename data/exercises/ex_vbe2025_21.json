@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2025_21",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Energija",
+    "subtopic": "Energija, darbas, galia.",
+    "subsubtopic": "Mechaninė energija",
+    "type": "multiple_choice",
+    "question": "Taške A padėtas \\( m \\) masės kubelis pradeda slysti žemyn paveiksle pavaizduotu paviršiumi. Paveiksle pažymėkite kubelio padėtį (A, B ar C), kurioje jo kinetinė energija bus didžiausia. Trinties ir oro pasipriešinimo nepaisykite.",
+    "image": "assets/images/ex_vbe2025_21.svg",
+    "options": [
+        "A",
+        "B",
+        "C"
+    ],
+    "correctAnswer": "C",
+    "solution": "Remiantis energijos tvermės dėsniu, mechaninė energija (kinetinės ir potencinės energijos suma) uždaroje sistemoje, kurioje neveikia trintis, išlieka pastovi: \\[ E = E_p + E_k = \\text{const} \\] \\[ E_k = E - E_p \\] Kinetinė energija (\\( E_k \\)) bus didžiausia ten, kur potencinė energija (\\( E_p = mgh \\)) bus mažiausia (t.y. kūnas bus nusileidęs žemiausiai). <br><br> Nagrinėkime padėtis: <br> 1. **Taškas A**: Aukščiausias taškas. Visą energiją sudaro potencinė energija, kinetinė energija lygi nuliui (kubelis tik pradeda slysti). <br> 2. **Taškas B**: Kubelis nusileido aukščiu \\( H \\). Dalis potencinės energijos virto kinetine. <br> 3. **Taškas C**: Žemiausias taškas. Kubelis nusileido bendru aukščiu \\( H + h \\). Potencinė energija čia mažiausia, todėl kinetinė energija didžiausia."
+}
