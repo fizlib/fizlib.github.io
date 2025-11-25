@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     let allExercises = [];
+    let manifestFiles = [];
+    let loadedCount = 0;
+    const BATCH_SIZE = 10; // Load 10 exercises at a time
+    let isLoading = false;
 
     // Filter State
     let activeFilters = {
@@ -69,36 +73,63 @@ document.addEventListener('DOMContentLoaded', () => {
         "Kita": []
     };
 
-    // Fetch Data
+    // Fetch Data - Load manifest first, then exercises in batches
     fetch('data/manifest.json')
         .then(response => response.json())
         .then(files => {
-            const promises = files.map(file => fetch(`data/exercises/${file}`).then(res => res.json()));
-            return Promise.all(promises);
+            manifestFiles = files;
+            return loadNextBatch();
         })
-        .then(data => {
-            // Enrich data with source info
-            allExercises = data.map(ex => {
-                if (ex.category === 'VBE-2025-2') {
-                    ex.source = "VBE";
-                    ex.subsource = "2025 (2)";
-                } else if (ex.category === 'VBE-2025') {
-                    ex.source = "VBE";
-                    ex.subsource = "2025 (1)";
-                } else if (ex.grade === 11 || ex.grade === '11') {
-                    ex.source = "VBE";
-                    ex.subsource = "2025 (1)";
-                } else {
-                    ex.source = "Kita";
-                }
-                return ex;
-            });
+        .then(() => {
             initApp();
         })
         .catch(err => {
             console.error('Error loading exercises:', err);
             exercisesContainer.innerHTML = '<div class="loading">Nepavyko užkrauti užduočių.</div>';
         });
+
+    function enrichExerciseData(ex) {
+        if (ex.category === 'VBE-2025-2') {
+            ex.source = "VBE";
+            ex.subsource = "2025 (2)";
+        } else if (ex.category === 'VBE-2025') {
+            ex.source = "VBE";
+            ex.subsource = "2025 (1)";
+        } else if (ex.grade === 11 || ex.grade === '11') {
+            ex.source = "VBE";
+            ex.subsource = "2025 (1)";
+        } else {
+            ex.source = "Kita";
+        }
+        return ex;
+    }
+
+    async function loadNextBatch() {
+        if (isLoading || loadedCount >= manifestFiles.length) {
+            return;
+        }
+
+        isLoading = true;
+        const startIdx = loadedCount;
+        const endIdx = Math.min(loadedCount + BATCH_SIZE, manifestFiles.length);
+        const batchFiles = manifestFiles.slice(startIdx, endIdx);
+
+        try {
+            const promises = batchFiles.map(file =>
+                fetch(`data/exercises/${file}`).then(res => res.json())
+            );
+            const batchData = await Promise.all(promises);
+
+            // Enrich and add to allExercises
+            const enrichedData = batchData.map(enrichExerciseData);
+            allExercises.push(...enrichedData);
+            loadedCount = endIdx;
+        } catch (err) {
+            console.error('Error loading batch:', err);
+        } finally {
+            isLoading = false;
+        }
+    }
 
     function initApp() {
         setupFilters();
@@ -567,8 +598,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderExercises(exercises) {
         exercisesContainer.innerHTML = '';
 
+        // Remove any existing load more button container
+        const existingLoadMoreContainer = document.querySelector('.load-more-container');
+        if (existingLoadMoreContainer) {
+            existingLoadMoreContainer.remove();
+        }
+
         if (exercises.length === 0) {
             exercisesContainer.innerHTML = '<div class="loading">Užduočių nerasta.</div>';
+
+            // If no filtered results but more exercises could be loaded, show load more
+            if (loadedCount < manifestFiles.length && Object.values(activeFilters).every(f => !f || (Array.isArray(f) && f.length === 0))) {
+                addLoadMoreButton();
+            }
             return;
         }
 
@@ -593,6 +635,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Add "Load More" button if there are more exercises to load
+        if (loadedCount < manifestFiles.length) {
+            addLoadMoreButton();
+        }
+
         // Hide/show active filters based on view mode
         const isExpandedView = exercises.length === 1 && (exercises[0].type === 'simulation' || exercises[0].type === 'structural');
         activeFiltersContainer.style.display = isExpandedView ? 'none' : 'flex';
@@ -607,6 +654,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 ]
             });
         }
+    }
+
+    function addLoadMoreButton() {
+        const loadMoreContainer = document.createElement('div');
+        loadMoreContainer.className = 'load-more-container';
+        loadMoreContainer.style.cssText = 'text-align: center; padding: 2rem; margin-top: 1rem;';
+
+        const loadMoreBtn = document.createElement('button');
+        loadMoreBtn.className = 'btn btn-primary load-more-btn';
+        loadMoreBtn.textContent = `Įkelti daugiau (${loadedCount}/${manifestFiles.length})`;
+        loadMoreBtn.style.cssText = 'padding: 0.75rem 1.5rem; font-size: 1rem;';
+
+        loadMoreBtn.addEventListener('click', async () => {
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.textContent = 'Įkeliama...';
+
+            await loadNextBatch();
+
+            // Re-apply filters with newly loaded exercises
+            applyFilters();
+        });
+
+        loadMoreContainer.appendChild(loadMoreBtn);
+        exercisesContainer.parentElement.appendChild(loadMoreContainer);
     }
 
     function formatQuestionText(text) {
