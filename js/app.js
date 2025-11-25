@@ -610,6 +610,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatQuestionText(text) {
+        // Remove leading numbering (e.g., "3. ", "12. ", etc.)
+        text = text.replace(/^\d+\.\s+/, '');
+
         // Common question indicators in Lithuanian
         const questionIndicators = [
             'Kokiu', 'Koks', 'Kokia', 'Kokią', 'Kokiame', 'Kokie',
@@ -618,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Pažymėkite', 'Nustatykite', 'Apskaičiuokite', 'Nurodykite',
             'Išrinkite', 'Parinkite', 'Raskite', 'Įvertinkite',
             'Apibrėžkite', 'Apibūdinkite', 'Paaiškinkite',
-            'Dėl kurio', 'Į kurį', 'Su kuriuo', 'Kuriuo'
+            'Dėl kurio', 'Į kurį', 'Su kuriuo', 'Kuriuo', 'Sujunkite'
         ];
 
         // Split by sentences (periods followed by space and capital letter, or question marks)

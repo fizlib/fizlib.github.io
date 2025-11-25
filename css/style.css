@@ -316,7 +316,7 @@ body {
 
 /* Question context (description/setup) */
 .card-question .question-context {
-    color: var(--text-secondary);
+    color: #4B5563;
     margin-bottom: 0.75rem;
     display: block;
     font-size: 0.95rem;
