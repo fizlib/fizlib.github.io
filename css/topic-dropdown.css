@@ -4,6 +4,11 @@
     display: inline-block;
 }
 
+/* Raise the entire exercise card when topic badge is hovered to ensure tooltip appears above other cards */
+.exercise-card:has(.topic-badge-container:hover) {
+    z-index: 100;
+}
+
 .topic-badge {
     cursor: pointer;
     user-select: none;
