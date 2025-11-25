@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2025_2_10",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Energija, darbas, galia",
+    "subtopic": "Mechaninė energija",
+    "subsubtopic": "Energijos tvermės dėsnis",
+    "type": "multiple_choice",
+    "question": "Paveiksle pavaizduotas vienas iš amžinojo variklio projektų. Pažymėkite, kuris pateiktas teiginys yra teisingas.",
+    "image": "assets/images/ex_vbe2025_2_10.png",
+    "options": [
+        "Tokios mašinos naudingumo koeficientas yra daugiau kaip 100 procentų.",
+        "Tokia mašina atlieka daugiau darbo, nei pati sunaudoja energijos.",
+        "Paveiksle pavaizduota mašina kartą pasukta veikia iš niekur negaudama energijos.",
+        "Tokia mašina amžinai veikti negali, nes jos veikimo principas prieštarauja energijos tvermės dėsniui."
+    ],
+    "correctAnswer": "Tokia mašina amžinai veikti negali, nes jos veikimo principas prieštarauja energijos tvermės dėsniui.",
+    "solution": "Amžinasis variklis (perpetuum mobile) yra hipotetinė mašina, kuri galėtų veikti amžinai be išorinės energijos tiekimo arba gaminti daugiau energijos, nei sunaudoja. <br><br> Tačiau toks įrenginys prieštarauja **energijos tvermės dėsniui**, kuris teigia, kad energija negali būti sukurta iš nieko ir negali išnykti – ji tik keičia formas. <br><br> Realybėje bet kokioje mašinoje dalis energijos visada virsta šiluma dėl trinties ir oro pasipriešinimo, todėl mašina negali veikti amžinai be papildomos energijos. <br><br> **Kodėl kiti atsakymai neteisingi:** <br> - Naudingumo koeficientas negali būti didesnis nei 100%, nes tai reikštų, kad mašina gamina daugiau energijos, nei sunaudoja. <br> - Mašina negali atlikti daugiau darbo, nei sunaudoja energijos – tai prieštarautų energijos tvermės dėsniui. <br> - Mašina, kartą pasukta, negali veikti iš niekur negaudama energijos, nes trinties ir oro pasipriešinimo dėka ji neteks energijos ir galiausiai sustos."
+}
