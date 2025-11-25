@@ -1387,13 +1387,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         } else if (ex.type === 'matching') {
-            // For matching, we might want to highlight correct options if possible, 
-            // or just rely on the solution text. 
-            // The previous implementation didn't seem to do much for matching inline.
-            // We can try adding .showing-answer to selects if we knew the correct value for each.
-            // But for now let's leave matching as is or just highlight the inputs if they exist.
             const selects = contentDiv.querySelectorAll('.matching-select');
-            selects.forEach(select => select.classList.add('showing-answer'));
+
+            if (ex.matchItems) {
+                // For matchItems format, set each dropdown to its correct answer
+                selects.forEach(select => {
+                    const index = parseInt(select.dataset.index);
+                    const correctAnswer = ex.matchItems[index].correctAnswer;
+                    select.value = correctAnswer;
+                    select.classList.add('showing-answer');
+                });
+            } else if (ex.pairs) {
+                // For pairs format, set each dropdown to its correct answer
+                selects.forEach(select => {
+                    const key = select.dataset.key;
+                    const correctAnswer = ex.pairs[key];
+                    select.value = correctAnswer;
+                    select.classList.add('showing-answer');
+                });
+            }
 
             if (ex.secondPart) {
                 const secondInput = contentDiv.querySelector('.second-part-input');
@@ -1417,7 +1429,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else if (ex.type === 'matching') {
             const selects = contentDiv.querySelectorAll('.matching-select');
-            selects.forEach(select => select.classList.remove('showing-answer'));
+            selects.forEach(select => {
+                select.value = ''; // Reset to empty/default option
+                select.classList.remove('showing-answer');
+            });
 
             if (ex.secondPart) {
                 const secondInput = contentDiv.querySelector('.second-part-input');
