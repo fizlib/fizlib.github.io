@@ -307,11 +307,28 @@ body {
 }
 
 .card-question {
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 400;
     margin-bottom: 1rem;
     color: var(--text-main);
-    line-height: 1.4;
+    line-height: 1.65;
+}
+
+/* Question context (description/setup) */
+.card-question .question-context {
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Main question text */
+.card-question .question-main {
+    font-weight: 600;
+    color: var(--text-main);
+    display: block;
+    font-size: 1.05rem;
 }
 
 .card-image {
@@ -533,11 +550,12 @@ body {
 .solution-text {
     font-size: 0.95rem;
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.7;
     background-color: rgba(255, 255, 255, 0.6);
     padding: 1rem;
     border-radius: var(--radius-md);
     border: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: 400;
 }
 
 .solution-text .katex-display {

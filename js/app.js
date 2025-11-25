@@ -609,6 +609,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function formatQuestionText(text) {
+        // Common question indicators in Lithuanian
+        const questionIndicators = [
+            'Kokiu', 'Koks', 'Kokia', 'Kokią', 'Kokiame', 'Kokie',
+            'Kiek', 'Kuri', 'Kurį', 'Kuris', 'Kuriame', 'Kurie',
+            'Ką', 'Kas', 'Kaip', 'Kodėl', 'Kada',
+            'Pažymėkite', 'Nustatykite', 'Apskaičiuokite', 'Nurodykite',
+            'Išrinkite', 'Parinkite', 'Raskite', 'Įvertinkite',
+            'Apibrėžkite', 'Apibūdinkite', 'Paaiškinkite',
+            'Dėl kurio', 'Į kurį', 'Su kuriuo', 'Kuriuo'
+        ];
+
+        // Split by sentences (periods followed by space and capital letter, or question marks)
+        const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+
+        // Find the last sentence that starts with a question indicator
+        let questionIndex = -1;
+        for (let i = sentences.length - 1; i >= 0; i--) {
+            const sentence = sentences[i].trim();
+            if (questionIndicators.some(indicator => sentence.startsWith(indicator))) {
+                questionIndex = i;
+                break;
+            }
+        }
+
+        // If no question indicator found, check for question mark
+        if (questionIndex === -1) {
+            for (let i = sentences.length - 1; i >= 0; i--) {
+                if (sentences[i].includes('?')) {
+                    questionIndex = i;
+                    break;
+                }
+            }
+        }
+
+        // If still not found, treat the last sentence as the question
+        if (questionIndex === -1 && sentences.length > 1) {
+            questionIndex = sentences.length - 1;
+        }
+
+        // Build formatted HTML
+        if (questionIndex > 0) {
+            const context = sentences.slice(0, questionIndex).join(' ').trim();
+            const question = sentences.slice(questionIndex).join(' ').trim();
+            return `<span class="question-context">${context}</span><span class="question-main">${question}</span>`;
+        } else {
+            // No context, just the question
+            return `<span class="question-main">${text}</span>`;
+        }
+    }
+
     function buildCardHTML(ex, isFullView = false) {
         if (ex.type === 'simulation' || ex.type === 'structural') {
             const isStructural = ex.type === 'structural';
@@ -636,7 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>
-                    <div class="card-question">${ex.question}</div>
+                    <div class="card-question">${formatQuestionText(ex.question)}</div>
                     <div class="card-content">
                         <div class="simulation-preview">
                             <p style="margin-bottom: 1rem; color: #6b7280;">${isStructural ? 'Ši užduotis yra struktūrinė.' : 'Ši užduotis turi interaktyvią simuliaciją.'}</p>
@@ -649,7 +700,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (q.type === 'group') return `<div class="card-question" style="margin-top: 2rem; font-weight: bold;">${q.question}</div>`;
                     return `
                     <div class="simulation-question-block">
-                        <div class="card-question">${q.question}</div>
+                        <div class="card-question">${formatQuestionText(q.question)}</div>
                         <div class="card-content" data-qid="${q.id}">
                             ${buildInputArea(q)}
                             <div class="feedback"></div>
@@ -683,7 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>
-                    <div class="card-question">${ex.question}</div>
+                    <div class="card-question">${formatQuestionText(ex.question)}</div>
                     ${mainContent}
                     <div class="simulation-questions">${questionsHTML}</div>
                 `;
@@ -708,7 +759,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </div>
-            <div class="card-question">${ex.question}</div>
+            <div class="card-question">${formatQuestionText(ex.question)}</div>
             ${imageHTML}
             <div class="card-content">
                 ${inputArea}
