@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let loadedCount = 0;
     const BATCH_SIZE = 10; // Load 10 exercises at a time
     let isLoading = false;
+    let scrollObserver = null;
 
     // Filter State
     let activeFilters = {
@@ -616,18 +617,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderExercises(exercises) {
         exercisesContainer.innerHTML = '';
 
-        // Remove any existing load more button container
-        const existingLoadMoreContainer = document.querySelector('.load-more-container');
-        if (existingLoadMoreContainer) {
-            existingLoadMoreContainer.remove();
+        // Remove any existing scroll sentinel
+        const existingSentinel = document.querySelector('.scroll-sentinel');
+        if (existingSentinel) {
+            existingSentinel.remove();
         }
 
         if (exercises.length === 0) {
             exercisesContainer.innerHTML = '<div class="loading">Užduočių nerasta.</div>';
 
-            // If no filtered results but more exercises could be loaded, show load more
+            // If no filtered results but more exercises could be loaded, add sentinel
             if (loadedCount < manifestFiles.length && Object.values(activeFilters).every(f => !f || (Array.isArray(f) && f.length === 0))) {
-                addLoadMoreButton();
+                addScrollSentinel();
             }
             return;
         }
@@ -653,9 +654,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Add "Load More" button if there are more exercises to load
+        // Add scroll sentinel if there are more exercises to load
         if (loadedCount < manifestFiles.length) {
-            addLoadMoreButton();
+            addScrollSentinel();
         }
 
         // Hide/show active filters based on view mode
@@ -674,28 +675,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function addLoadMoreButton() {
-        const loadMoreContainer = document.createElement('div');
-        loadMoreContainer.className = 'load-more-container';
-        loadMoreContainer.style.cssText = 'text-align: center; padding: 2rem; margin-top: 1rem;';
+    function addScrollSentinel() {
+        // Disconnect existing observer if any
+        if (scrollObserver) {
+            scrollObserver.disconnect();
+        }
 
-        const loadMoreBtn = document.createElement('button');
-        loadMoreBtn.className = 'btn btn-primary load-more-btn';
-        loadMoreBtn.textContent = `Įkelti daugiau (${loadedCount}/${manifestFiles.length})`;
-        loadMoreBtn.style.cssText = 'padding: 0.75rem 1.5rem; font-size: 1rem;';
+        // Create sentinel element
+        const sentinel = document.createElement('div');
+        sentinel.className = 'scroll-sentinel';
+        sentinel.style.cssText = 'height: 1px; width: 100%; margin-top: 2rem;';
+        exercisesContainer.parentElement.appendChild(sentinel);
 
-        loadMoreBtn.addEventListener('click', async () => {
-            loadMoreBtn.disabled = true;
-            loadMoreBtn.textContent = 'Įkeliama...';
+        // Create intersection observer
+        scrollObserver = new IntersectionObserver(async (entries) => {
+            const entry = entries[0];
 
-            await loadNextBatch();
+            // When sentinel is visible and we're not already loading
+            if (entry.isIntersecting && !isLoading && loadedCount < manifestFiles.length) {
+                await loadNextBatch();
 
-            // Re-apply filters with newly loaded exercises
-            applyFilters();
+                // Re-apply filters with newly loaded exercises
+                applyFilters();
+            }
+        }, {
+            root: null, // viewport
+            rootMargin: '200px', // Start loading 200px before reaching the sentinel
+            threshold: 0
         });
 
-        loadMoreContainer.appendChild(loadMoreBtn);
-        exercisesContainer.parentElement.appendChild(loadMoreContainer);
+        scrollObserver.observe(sentinel);
     }
 
     function formatQuestionText(text) {
