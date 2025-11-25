@@ -1,0 +1,25 @@
+{
+    "id": "ex_vbe2025_2_8",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Energija",
+    "subtopic": "Mechaninė energija.",
+    "subsubtopic": "Kinetinė energija",
+    "type": "matching",
+    "question": "Kūno koordinatės kitimo lygtis yra $x(t) = 5 - 2t^2$. Čia dydžiai išreikšti SI matavimo vienetais. Kaip nuo stebėjimo pradžios kinta šio kūno kinetinė energija? Pasirinkite teisingą atsakymą.",
+    "image": null,
+    "matchItems": [
+        {
+            "question": "Kinetinė energija",
+            "options": [
+                "palikti tuščią",
+                "didėja",
+                "mažėja",
+                "nekinta"
+            ],
+            "correctAnswer": "didėja"
+        }
+    ],
+    "correctAnswer": null,
+    "solution": "Iš koordinatės lygtis $x(t) = 5 - 2t^2$ randame greičio projekciją: $v_x(t) = \\frac{dx}{dt} = -4t$. <br><br> Kinetinė energija yra $E_k = \\frac{1}{2}mv^2 = \\frac{1}{2}m(4t)^2 = 8mt^2$. <br><br> Matome, kad kinetinė energija proporcinga $t^2$, todėl ji didėja nuo stebėjimo pradžios (kai $t = 0$, $E_k = 0$)."
+}
