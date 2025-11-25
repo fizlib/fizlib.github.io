@@ -465,7 +465,25 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilters();
     }
 
-    function applyFilters() {
+    async function applyFilters() {
+        // Check if any filters are active
+        const hasActiveFilters = activeFilters.search ||
+            activeFilters.grades.length > 0 ||
+            activeFilters.topics.length > 0 ||
+            activeFilters.types.length > 0 ||
+            activeFilters.sources.length > 0;
+
+        // If filters are active and not all exercises are loaded, load them all
+        if (hasActiveFilters && loadedCount < manifestFiles.length) {
+            // Show loading indicator
+            exercisesContainer.innerHTML = '<div class="loading">Įkeliami visi rezultatai...</div>';
+
+            // Load all remaining exercises
+            while (loadedCount < manifestFiles.length) {
+                await loadNextBatch();
+            }
+        }
+
         renderActiveTags();
 
         let filtered = allExercises;
