@@ -1,0 +1,39 @@
+{
+    "id": "ex_vbe2025_2_9",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Energija",
+    "subtopic": "Mechaninė energija.",
+    "subsubtopic": "Energijos virsmai",
+    "type": "matching",
+    "question": "Tekste, kuriame lyginami energijos virsmai automobiliuose, pasirinkite tinkamus praleistus žodžius.",
+    "image": null,
+    "matchItems": [
+        {
+            "question": "Automobiliuose, kuriuose yra vidaus degimo varikliai, stabdant",
+            "options": [
+                "kinetinė",
+                "potencinė"
+            ],
+            "correctAnswer": "kinetinė"
+        },
+        {
+            "question": "energija virsta",
+            "options": [
+                "elektra",
+                "šiluma"
+            ],
+            "correctAnswer": "šiluma"
+        },
+        {
+            "question": "ir išsisklaido aplinkoje. Elektriniai varikliai gali veikti ir kaip generatoriai, paverčiantys šią energiją",
+            "options": [
+                "elektros",
+                "potencine"
+            ],
+            "correctAnswer": "elektros"
+        }
+    ],
+    "correctAnswer": null,
+    "solution": "Stabdant automobilį, jo kinetinė energija virsta šilumine energija (dėl trinties tarp stabdžių kaladėlių ir diskų) ir išsisklaido aplinkoje. <br><br> Elektriniai automobiliai naudoja regeneracinį stabdymą – stabdant, elektros variklis veikia kaip generatorius ir paverčia kinetinę energiją atgal į elektros energiją, kuri saugoma akumuliatoriuje. Tai padidina automobilio energijos efektyvumą."
+}
