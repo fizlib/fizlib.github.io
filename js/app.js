@@ -77,9 +77,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch Data - Load manifest first, then exercises in batches
     fetch('data/manifest.json')
         .then(response => response.json())
-        .then(files => {
+        .then(async files => {
             manifestFiles = files;
-            return loadNextBatch();
+
+            // Check if there's a deep link - if so, load all exercises first
+            const urlParams = new URLSearchParams(window.location.search);
+            const exerciseId = urlParams.get('id');
+
+            if (exerciseId) {
+                // Load all exercises for deep linking
+                exercisesContainer.innerHTML = '<div class="loading">Ieškoma užduotis...</div>';
+                while (loadedCount < manifestFiles.length) {
+                    await loadNextBatch();
+                }
+            } else {
+                // Normal flow - load first batch
+                await loadNextBatch();
+            }
         })
         .then(() => {
             initApp();
