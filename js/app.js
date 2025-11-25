@@ -909,20 +909,37 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                 }
-                return `
-                    <div class="matching-container">
-                        ${ex.matchItems.map((item, index) => `
-                            <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                                <div style="flex: 1; font-weight: 500;">${item.question}</div>
-                                <select class="matching-select text-input" data-index="${index}" style="flex: 1;">
-                                    <option value="">Pasirinkite...</option>
-                                    ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
-                                </select>
-                            </div>
-                        `).join('')}
-                    </div>
-                    ${secondPartHTML}
-                `;
+
+                // Check if inline rendering is requested
+                if (ex.inline) {
+                    // Render dropdowns inline with text
+                    let inlineHTML = '<div class="matching-container" style="line-height: 2.2;">';
+                    ex.matchItems.forEach((item, index) => {
+                        inlineHTML += item.question + ' ';
+                        inlineHTML += `<select class="matching-select text-input" data-index="${index}" style="display: inline-block; width: auto; min-width: 120px; margin: 0 0.25rem; vertical-align: middle;">
+                            <option value="">―</option>
+                            ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                        </select> `;
+                    });
+                    inlineHTML += '</div>';
+                    return inlineHTML + secondPartHTML;
+                } else {
+                    // Original row-based rendering
+                    return `
+                        <div class="matching-container">
+                            ${ex.matchItems.map((item, index) => `
+                                <div class="matching-row" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <div style="flex: 1; font-weight: 500;">${item.question}</div>
+                                    <select class="matching-select text-input" data-index="${index}" style="flex: 1;">
+                                        <option value="">Pasirinkite...</option>
+                                        ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                                    </select>
+                                </div>
+                            `).join('')}
+                        </div>
+                        ${secondPartHTML}
+                    `;
+                }
             } else {
                 const keys = Object.keys(ex.pairs);
                 const values = Object.values(ex.pairs).sort(() => Math.random() - 0.5);

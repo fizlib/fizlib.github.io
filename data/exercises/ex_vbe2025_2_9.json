@@ -8,6 +8,7 @@
     "type": "matching",
     "question": "Tekste, kuriame lyginami energijos virsmai automobiliuose, pasirinkite tinkamus praleistus žodžius.",
     "image": null,
+    "inline": true,
     "matchItems": [
         {
             "question": "Automobiliuose, kuriuose yra vidaus degimo varikliai, stabdant",
