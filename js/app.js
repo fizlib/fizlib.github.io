@@ -188,11 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
 
-                // Auto-expand
-                setTimeout(() => {
-                    const expandBtn = exercisesContainer.querySelector('.expand-btn');
-                    if (expandBtn) expandBtn.click();
-                }, 100);
+                // Auto-expand (only for normal exercises, not simulation/structural which are already expanded)
+                const exerciseType = specificExercise[0]?.type;
+                if (exerciseType !== 'simulation' && exerciseType !== 'structural') {
+                    setTimeout(() => {
+                        const expandBtn = exercisesContainer.querySelector('.expand-btn');
+                        if (expandBtn) expandBtn.click();
+                    }, 100);
+                }
             } else {
                 exercisesContainer.innerHTML = '<div class="loading">Užduotis nerasta.</div>';
             }
