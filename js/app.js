@@ -95,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(() => fetch('data/manifest.json'))
         .then(response => response.json())
         .then(async files => {
-            manifestFiles = files;
+            // Reverse the order so newest exercises (added to end of manifest) display first
+            manifestFiles = files.reverse();
 
             // Check if there's a deep link - if so, load all exercises first
             const urlParams = new URLSearchParams(window.location.search);
