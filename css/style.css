@@ -333,7 +333,7 @@ body {
 
 .card-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 280px;
     height: auto;
     margin-bottom: 1rem;
     margin-left: auto;
@@ -578,7 +578,7 @@ body {
 }
 
 .exercise-card.expanded .card-image {
-    max-width: 600px;
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -721,11 +721,11 @@ body {
     }
 
     .card-image {
-        max-width: 300px;
+        max-width: 240px;
     }
 
     .exercise-card.expanded .card-image {
-        max-width: 100%;
+        max-width: 90%;
     }
 }
 
