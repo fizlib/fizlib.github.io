@@ -18,17 +18,27 @@
             "points": 2,
             "matchItems": [
                 {
-                    "question": "Birželio mėnesį daugiausią elektros energijos pagamino",
-                    "options": ["vėjo elektrinės", "hidroelektrinės", "saulės elektrinės"],
+                    "question": "Birželio mėnesį daugiausia elektros energijos pagamino {{}} .",
+                    "options": [
+                        "vėjo elektrinės",
+                        "hidroelektrinės",
+                        "saulės elektrinės"
+                    ],
                     "correctAnswer": "saulės elektrinės"
                 },
                 {
-                    "question": "mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.",
-                    "options": ["Kovo", "Spalio", "Sausio", "Birželio", "Gruodžio"],
+                    "question": "{{}} mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.",
+                    "options": [
+                        "Kovo",
+                        "Spalio",
+                        "Sausio",
+                        "Birželio",
+                        "Gruodžio"
+                    ],
                     "correctAnswer": "Spalio"
                 }
             ],
-            "solution": "<p><b>Teisingi atsakymai:</b></p><p>Birželio mėnesį daugiausią elektros energijos pagamino <b>saulės elektrinės</b>. <b>Spalio</b> mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.</p><p><b>Paaiškinimas:</b></p><ul><li><b>Birželio mėnuo:</b> Iš diagramos matome, kad birželį saulės elektrinės pagamino daugiausiai elektros energijos.</li><li><b>Spalio mėnuo:</b> Spalį vėjo elektrinės pagamino $369{,}4$ GWh, o importuota buvo $167{,}63$ GWh. Taigi vėjo elektrinės pagamino daugiau nei buvo importuota.</li></ul>"
+            "solution": "<p><b>Teisingi atsakymai:</b></p><p>Birželio mėnesį daugiausia elektros energijos pagamino <b>saulės elektrinės</b>. <b>Spalio</b> mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.</p><p><b>Paaiškinimas:</b></p><ul><li><b>Birželio mėnuo:</b> Iš diagramos matome, kad birželį saulės elektrinės pagamino daugiausiai elektros energijos.</li><li><b>Spalio mėnuo:</b> Spalį vėjo elektrinės pagamino $369{,}4 \\text{ GWh}$, o importuota buvo $167{,}63 \\text{ GWh}$. Taigi vėjo elektrinės pagamino daugiau nei buvo importuota.</li></ul>"
         },
         {
             "id": "ex_vbe2025_2_13_2",
@@ -36,9 +46,9 @@
             "question": "Kiek elektros energijos liepos mėnesį pagamino saulės elektrinės? <i>Užrašykite atsakymą SI matavimo vienetais šimtųjų tikslumu.</i>",
             "points": 1,
             "correctAnswer": "3.84",
-            "unit": "·10¹⁴ J",
+            "unit": "$\\cdot 10^{14} \\text{ J}$",
             "tolerance": 0.01,
-            "solution": "<p><b>Teisingas atsakymas:</b> $E = 3{,}84 \\cdot 10^{14}$ J</p><p><b>Sprendimas:</b></p><p>Iš diagramos liepos (Liepa) mėnesiui matome, kad saulės elektrinės pagamino $106{,}7$ GWh elektros energijos.</p><p>Konvertuojame į džaulius (J):</p><p>$E = 106{,}7$ GWh $= 106{,}7 \\times 10^9$ Wh</p><p>$E = 106{,}7 \\times 10^9$ W $\\times 3600$ s</p><p>$E = 106{,}7 \\times 3600 \\times 10^9$ J</p><p>$E = 384\\,120 \\times 10^9$ J</p><p>$E = 3{,}8412 \\times 10^{14}$ J</p><p>$E \\approx 3{,}84 \\times 10^{14}$ J (šimtųjų tikslumu)</p>"
+            "solution": "<p><b>Teisingas atsakymas:</b> \\[ E = 3{,}84 \\cdot 10^{14} \\text{ J} \\]</p><p><b>Sprendimas:</b></p><p>Iš diagramos liepos (Liepa) mėnesiui matome, kad saulės elektrinės pagamino $106{,}7 \\text{ GWh}$ elektros energijos.</p><p>Konvertuojame į džaulius (J):</p>\\[ E = 106{,}7 \\text{ GWh} = 106{,}7 \\cdot 10^9 \\text{ Wh} \\]\\[ E = 106{,}7 \\cdot 10^9 \\text{ W} \\cdot 3600 \\text{ s} \\]\\[ E = 106{,}7 \\cdot 3600 \\cdot 10^9 \\text{ J} \\]\\[ E = 384\\,120 \\cdot 10^9 \\text{ J} \\]\\[ E = 3{,}8412 \\cdot 10^{14} \\text{ J} \\]\\[ E \\approx 3{,}84 \\cdot 10^{14} \\text{ J} \\text{ (šimtųjų tikslumu)} \\]"
         }
     ]
 }

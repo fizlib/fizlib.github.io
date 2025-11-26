@@ -940,13 +940,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (ex.inline) {
                     // Render dropdowns inline with text
                     let inlineHTML = '<div class="matching-container" style="line-height: 2.2;">';
+                    
                     ex.matchItems.forEach((item, index) => {
-                        inlineHTML += item.question + ' ';
-                        inlineHTML += `<select class="matching-select text-input" data-index="${index}" style="display: inline-block; width: auto; min-width: 120px; margin: 0 0.25rem; vertical-align: middle;">
+                        // Generate the dropdown HTML
+                        const selectHTML = `<select class="matching-select text-input" data-index="${index}" style="display: inline-block; width: auto; min-width: 120px; margin: 0 0.35rem; vertical-align: middle;">
                             <option value="">―</option>
                             ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
-                        </select> `;
+                        </select>`;
+
+                        // Placeholder logic: Replace {{}} if present, otherwise append to end
+                        let itemHTML = '';
+                        if (item.question.includes('{{}}')) {
+                            itemHTML = item.question.replace('{{}}', selectHTML);
+                        } else {
+                            itemHTML = item.question + ' ' + selectHTML;
+                        }
+
+                        // Wrap in a div to ensure each sentence is on a new line
+                        inlineHTML += `<div style="margin-bottom: 0.5rem;">${itemHTML}</div>`;
                     });
+                    
                     inlineHTML += '</div>';
                     return inlineHTML + secondPartHTML;
                 } else {
@@ -967,6 +980,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                 }
             } else {
+                // Key-Value pair matching (legacy)
                 const keys = Object.keys(ex.pairs);
                 const values = Object.values(ex.pairs).sort(() => Math.random() - 0.5);
                 return `
@@ -984,6 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
         } else {
+            // Standard text input
             return `
                 <div class="input-group" style="display: flex; align-items: center; gap: 0.5rem;">
                     <input type="text" class="text-input" placeholder="Įveskite atsakymą...">
