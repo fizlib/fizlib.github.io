@@ -49,7 +49,8 @@
 
 /* Tooltip Styles */
 .topic-tooltip {
-    visibility: hidden;
+    /* Changed from visibility: hidden to display: none to prevent layout width calculations causing scroll */
+    display: none;
     width: max-content;
     background-color: #333;
     color: #fff;
@@ -62,12 +63,12 @@
     /* Position above */
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
+    /* Removed opacity transition as it conflicts with display: none */
     font-size: 0.85rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     pointer-events: none;
-    /* Prevent flickering */
+    /* Limit width on mobile to prevent overflow if it does appear */
+    max-width: 250px;
 }
 
 .topic-tooltip::after {
@@ -82,8 +83,9 @@
 }
 
 .topic-badge-container:hover .topic-tooltip {
-    visibility: visible;
-    opacity: 1;
+    /* Changed from visibility: visible to display: block */
+    display: block;
+    animation: fadeIn 0.2s ease-out;
 }
 
 .tooltip-row {
@@ -99,4 +101,24 @@
     color: #D1D5DB;
     /* Gray-300 */
     margin-right: 4px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    /* Improve mobile tooltip positioning */
+    .topic-tooltip {
+        left: auto;
+        right: 0;
+        transform: none;
+        bottom: 135%;
+        max-width: 200px;
+    }
+    .topic-tooltip::after {
+        left: auto;
+        right: 10px;
+    }
 }
