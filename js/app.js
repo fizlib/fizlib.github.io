@@ -930,7 +930,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #e5e7eb;">
                             <div class="input-group" style="display: flex; align-items: center; gap: 0.5rem;">
                                 <input type="text" class="text-input second-part-input" placeholder="Įveskite skaičių...">
-                                ${ex.secondPart.unit ? `<span style="font-weight: 500; color: var(--text-secondary);">${ex.secondPart.unit}</span>` : ''}
+                                ${ex.secondPart.unit ? `<span style="font-weight: 500; color: var(--text-secondary); white-space: nowrap;">${ex.secondPart.unit}</span>` : ''}
                             </div>
                         </div>
                     `;
@@ -1002,7 +1002,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `
                 <div class="input-group" style="display: flex; align-items: center; gap: 0.5rem;">
                     <input type="text" class="text-input" placeholder="Įveskite atsakymą...">
-                    ${ex.unit ? `<span style="font-weight: 500; color: var(--text-secondary);">${ex.unit}</span>` : ''}
+                    ${ex.unit ? `<span style="font-weight: 500; color: var(--text-secondary); white-space: nowrap;">${ex.unit}</span>` : ''}
                 </div>
             `;
         }
