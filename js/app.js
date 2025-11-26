@@ -843,7 +843,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     questionNumber++;
                     return `
                     <div class="simulation-question-block">
-                        <div class="card-question"><span class="question-number">${questionNumber}. </span>${formatQuestionText(q.question)}</div>
+                        <div class="card-question" style="display: inline;">${questionNumber}. ${formatQuestionText(q.question)}</div>
                         <div class="card-content" data-qid="${q.id}">
                             ${buildInputArea(q)}
                             <div class="feedback"></div>
