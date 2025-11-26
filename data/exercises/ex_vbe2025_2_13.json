@@ -1,0 +1,44 @@
+{
+    "id": "ex_vbe2025_2_13",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Energija",
+    "subtopic": "Elektros energija",
+    "subsubtopic": "Energijos gamyba ir vartojimas",
+    "type": "structural",
+    "question": "13. Diagramoje pateikti elektros gamybos ir vartojimo balanso duomenys iš Lietuvos energetikos agentūros 2023 metų energetikos duomenų apžvalgos. Remdamiesi diagramoje pateikta informacija, atlikite užduotis.",
+    "image": "assets/images/ex_vbe2025_2_13.png",
+    "points": 4,
+    "questions": [
+        {
+            "id": "ex_vbe2025_2_13_1",
+            "type": "matching",
+            "inline": true,
+            "question": "13.1. Tekste pasirinkite tinkamus žodžius, kad teiginiai apie elektros energijos gamybą būtų teisingi.",
+            "points": 2,
+            "matchItems": [
+                {
+                    "question": "Birželio mėnesį daugiausia elektros energijos pagamino",
+                    "options": ["vėjo elektrinės", "hidroelektrinės", "saulės elektrinės"],
+                    "correctAnswer": "hidroelektrinės"
+                },
+                {
+                    "question": "mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.",
+                    "options": ["Kovo", "Spalio", "Sausio", "Birželio", "Gruodžio"],
+                    "correctAnswer": "Spalio"
+                }
+            ],
+            "solution": "<p><b>Teisingi atsakymai:</b></p><p>Birželio mėnesį daugiausia elektros energijos pagamino <b>hidroelektrinės</b>. <b>Spalio</b> mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.</p><p><b>Paaiškinimas:</b></p><ul><li><b>Birželio mėnuo:</b> Iš diagramos matome, kad birželį hidroelektrinės pagamino 485,99 GWh, vėjo elektrinės - 94,8 GWh, o saulės elektrinės - 108,1 GWh. Hidroelektrinės pagamino daugiausiai.</li><li><b>Spalio mėnuo:</b> Spalį vėjo elektrinės pagamino 369,4 GWh, o importuota buvo 167,63 GWh. Taigi vėjo elektrinės pagamino daugiau nei buvo importuota.</li></ul>"
+        },
+        {
+            "id": "ex_vbe2025_2_13_2",
+            "type": "numerical",
+            "question": "13.2. Kiek elektros energijos liepos mėnesį pagamino saulės elektrinės? <i>Užrašykite atsakymą SI matavimo vienetais šimtųjų tikslumu.</i>",
+            "points": 1,
+            "correctAnswer": "3.84",
+            "unit": "·10¹⁴ J",
+            "tolerance": 0.01,
+            "solution": "<p><b>Teisingas atsakymas:</b> E = 3,84 · 10¹⁴ J</p><p><b>Sprendimas:</b></p><p>Iš diagramos liepos (Liepa) mėnesiui matome, kad saulės elektrinės pagamino 106,7 GWh elektros energijos.</p><p>Konvertuojame į džaulius (J):</p><p>E = 106,7 GWh = 106,7 × 10⁹ Wh</p><p>E = 106,7 × 10⁹ W × 3600 s</p><p>E = 106,7 × 3600 × 10⁹ J</p><p>E = 384 120 × 10⁹ J</p><p>E = 3,8412 × 10¹⁴ J</p><p>E ≈ 3,84 × 10¹⁴ J (šimtųjų tikslumu)</p>"
+        }
+    ]
+}

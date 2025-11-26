@@ -1,0 +1,20 @@
+{
+    "id": "ex_vbe2025_2_12",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Elektromagnetizmas",
+    "subtopic": "Elektromagnetinė indukcija",
+    "subsubtopic": "Faradėjaus dėsnis",
+    "type": "multiple_choice",
+    "question": "12. Paveiksle pavaizduota eksperimento, skirto tam tikram reiškiniui stebėti, įranga. Kurio moksininko pavarde pavadintas stebėtas reiškinys? <i>Pažymėkite teisingą atsakymą.</i>",
+    "image": "assets/images/ex_vbe2025_2_12.png",
+    "points": 1,
+    "options": [
+        "Ampero (<i>André-Marie Ampère</i>)",
+        "Faradėjaus (<i>Michael Faraday</i>)",
+        "Lorenco (<i>Hendrik Antoon Lorentz</i>)",
+        "Kulono (<i>Charles-Augustin de Coulomb</i>)"
+    ],
+    "correctAnswer": "Faradėjaus (<i>Michael Faraday</i>)",
+    "solution": "<p><b>Teisingas atsakymas:</b> Faradėjaus (<i>Michael Faraday</i>)</p><p><b>Paaiškinimas:</b></p><p>Paveiksle pavaizduota elektromagnetinės indukcijos demonstravimo įranga. Kai magnetinis laukas, kertantis ritę (elektros grandinės dalį), kinta, ritėje indukuojama elektrovara (EMJ) ir grandinėje teka elektros srovė. Šis reiškinys vadinamas elektromagnetine indukcija ir buvo atrastas 1831 metais anglų fiziko ir chemiko Michaelo Faraday. Jo garbei pavadinti elektromagnetinės indukcijos dėsniai Faradėjaus dėsniais.</p><p><b>Kiti mokslininkai:</b></p><ul><li><b>André-Marie Ampère</b> - tyrė elektros srovės ir magnetinio lauko ryšį, įvedė Ampero dėsnį.</li><li><b>Hendrik Antoon Lorentz</b> - aprašė Lorenco jėgą, veikiančią judančią įelektrintą dalelę magnetiniame lauke.</li><li><b>Charles-Augustin de Coulomb</b> - suformulavo Kulono dėsnį, apibūdinantį elektrostatinę sąveiką tarp krūvių.</li></ul>"
+}
