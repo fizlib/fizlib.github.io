@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let allExercises = [];
     let manifestFiles = [];
+    let exercisesMetadata = {}; // Store creation dates for sorting
     let loadedCount = 0;
     const BATCH_SIZE = 10; // Load 10 exercises at a time
     let isLoading = false;
@@ -90,13 +91,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Fetch Data - Load topic descriptions first, then manifest and exercises
+    // Fetch Data - Load topic descriptions, metadata, then manifest and exercises
     loadTopicDescriptions()
-        .then(() => fetch('data/manifest.json'))
+        .then(() => fetch('data/exercises-metadata.json'))
+        .then(response => response.json())
+        .then(metadata => {
+            exercisesMetadata = metadata;
+            return fetch('data/manifest.json');
+        })
         .then(response => response.json())
         .then(async files => {
-            // Reverse the order so newest exercises (added to end of manifest) display first
-            manifestFiles = files.reverse();
+            // Sort files by creation date (newest first) using metadata
+            manifestFiles = files.sort((a, b) => {
+                const dateA = exercisesMetadata[a]?.created || '1970-01-01';
+                const dateB = exercisesMetadata[b]?.created || '1970-01-01';
+                return new Date(dateB) - new Date(dateA); // Descending order
+            });
 
             // Check if there's a deep link - if so, load all exercises first
             const urlParams = new URLSearchParams(window.location.search);
