@@ -724,6 +724,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // When sentinel is visible and we're not already loading
             if (entry.isIntersecting && !isLoading && loadedCount < manifestFiles.length) {
+                // Check if any card is currently expanded - if so, skip re-rendering
+                const expandedCard = document.querySelector('.exercise-card.expanded');
+                if (expandedCard) {
+                    return;
+                }
+
                 await loadNextBatch();
 
                 // Re-apply filters with newly loaded exercises
