@@ -18,17 +18,17 @@
             "points": 2,
             "matchItems": [
                 {
-                    "question": "Birželio mėnesį daugiausia elektros energijos pagamino",
+                    "question": "Birželio mėnesį daugiausią elektros energijos pagamino",
                     "options": ["vėjo elektrinės", "hidroelektrinės", "saulės elektrinės"],
-                    "correctAnswer": "hidroelektrinės"
+                    "correctAnswer": "saulės elektrinės"
                 },
                 {
-                    "question": "mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.",
+                    "question": ". mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.",
                     "options": ["Kovo", "Spalio", "Sausio", "Birželio", "Gruodžio"],
                     "correctAnswer": "Spalio"
                 }
             ],
-            "solution": "<p><b>Teisingi atsakymai:</b></p><p>Birželio mėnesį daugiausia elektros energijos pagamino <b>hidroelektrinės</b>. <b>Spalio</b> mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.</p><p><b>Paaiškinimas:</b></p><ul><li><b>Birželio mėnuo:</b> Iš diagramos matome, kad birželį hidroelektrinės pagamino 485,99 GWh, vėjo elektrinės - 94,8 GWh, o saulės elektrinės - 108,1 GWh. Hidroelektrinės pagamino daugiausiai.</li><li><b>Spalio mėnuo:</b> Spalį vėjo elektrinės pagamino 369,4 GWh, o importuota buvo 167,63 GWh. Taigi vėjo elektrinės pagamino daugiau nei buvo importuota.</li></ul>"
+            "solution": "<p><b>Teisingi atsakymai:</b></p><p>Birželio mėnesį daugiausią elektros energijos pagamino <b>saulės elektrinės</b>. <b>Spalio</b> mėnesį vien vėjo elektrinės pagamino daugiau elektros energijos negu buvo importuota vartojimui padengti.</p><p><b>Paaiškinimas:</b></p><ul><li><b>Birželio mėnuo:</b> Iš diagramos matome, kad birželį saulės elektrinės pagamino daugiausiai elektros energijos.</li><li><b>Spalio mėnuo:</b> Spalį vėjo elektrinės pagamino 369,4 GWh, o importuota buvo 167,63 GWh. Taigi vėjo elektrinės pagamino daugiau nei buvo importuota.</li></ul>"
         },
         {
             "id": "ex_vbe2025_2_13_2",
