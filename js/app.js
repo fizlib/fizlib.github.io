@@ -837,11 +837,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             } else {
+                let questionNumber = 0;
                 const questionsHTML = ex.questions.map(q => {
                     if (q.type === 'group') return `<div class="card-question" style="margin-top: 2rem; font-weight: bold;">${q.question}</div>`;
+                    questionNumber++;
                     return `
                     <div class="simulation-question-block">
-                        <div class="card-question">${formatQuestionText(q.question)}</div>
+                        <div class="card-question"><span class="question-number">${questionNumber}. </span>${formatQuestionText(q.question)}</div>
                         <div class="card-content" data-qid="${q.id}">
                             ${buildInputArea(q)}
                             <div class="feedback"></div>
