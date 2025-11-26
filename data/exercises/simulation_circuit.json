@@ -12,21 +12,21 @@
         {
             "id": "q28",
             "type": "text",
-            "question": "Atlikdami bandymą, nustatykite elektros grandine tekančios srovės stiprį, kai lempos kaitinamojo siūlelio varža 17 Ω, galvaninio elemento elektrovara 11 V, vidinė varža 0,5 Ω. Užrašykite atsakymą dešimtųjų tikslumu. (1 taškas)",
+            "question": "**Atlikdami bandymą, nustatykite elektros grandine tekančios srovės stiprį, kai lempos kaitinamojo siūlelio varža 17 Ω, galvaninio elemento elektrovara 11 V, vidinė varža 0,5 Ω.** Užrašykite atsakymą dešimtųjų tikslumu.",
             "correctAnswer": "0,6",
             "unit": "A"
         },
         {
             "id": "q29",
             "type": "text",
-            "question": "Atlikdami bandymą, nustatykite galvaninio elemento gnybtų įtampą, kai lempos kaitinamojo siūlelio varža 18 Ω, galvaninio elemento elektrovara 11,3 V, vidinė varža 0,5 Ω. Užrašykite atsakymą sveikojo skaičiaus tikslumu. (1 taškas)",
+            "question": "**Atlikdami bandymą, nustatykite galvaninio elemento gnybtų įtampą, kai lempos kaitinamojo siūlelio varža 18 Ω, galvaninio elemento elektrovara 11,3 V, vidinė varža 0,5 Ω.** Užrašykite atsakymą sveikojo skaičiaus tikslumu.",
             "correctAnswer": "11",
             "unit": "V"
         },
         {
             "id": "q30",
             "type": "matching",
-            "question": "Atlikdami bandymą, nustatykite, ar keičiasi elektros srovės stipris grandinėje, kai galvaninio elemento vidinė varža didėja, o jei keičiasi, tai kaip – didėja ar mažėja. Pasirinkdami tinkamą atsakymą, pabaikite teiginį, kad jis būtų teisingas. (1 taškas)",
+            "question": "**Atlikdami bandymą, nustatykite, ar keičiasi elektros srovės stipris grandinėje, kai galvaninio elemento vidinė varža didėja, o jei keičiasi, tai kaip – didėja ar mažėja.** Pasirinkdami tinkamą atsakymą, pabaikite teiginį, kad jis būtų teisingas.",
             "matchItems": [
                 {
                     "question": "Elektros srovės stipris grandinėje",
@@ -42,14 +42,14 @@
         {
             "id": "q31",
             "type": "text",
-            "question": "Apskaičiuokite, kokia turėtų būti 0,5 Ω vidinės varžos galvaninio elemento elektrovara, kad į elektros grandinę įjungus 99,5 Ω varžos kaitinamąją lempą grandine tekėtų 0,5 A srovė. Užrašykite atsakymą sveikojo skaičiaus tikslumu. (1 taškas)",
+            "question": "**Apskaičiuokite, kokia turėtų būti 0,5 Ω vidinės varžos galvaninio elemento elektrovara, kad į elektros grandinę įjungus 99,5 Ω varžos kaitinamąją lempą grandine tekėtų 0,5 A srovė.** Užrašykite atsakymą sveikojo skaičiaus tikslumu.",
             "correctAnswer": "50",
             "unit": "V"
         },
         {
             "id": "q32_intro",
             "type": "group",
-            "question": "Turime tris vienodus galvaninius elementus, kurių elektrovara 10 V, o vidinė varža 0,6 Ω. Pirmą kartą galvaniniai elementai sujungiami nuosekliai ir prijungiami prie 98,2 Ω varžos kaitinamosios lempos. Antrą kartą jie sujungiami lygiagrečiai ir prijungiami prie tos pačios lempos. Kokio stiprio elektros srovė tekės per lempą abiem atvejais? Užrašykite atsakymus dešimtųjų tikslumu. (2 taškai)"
+            "question": "**Turime tris vienodus galvaninius elementus, kurių elektrovara 10 V, o vidinė varža 0,6 Ω. Pirmą kartą galvaniniai elementai sujungiami nuosekliai ir prijungiami prie 98,2 Ω varžos kaitinamosios lempos. Antrą kartą jie sujungiami lygiagrečiai ir prijungiami prie tos pačios lempos. Kokio stiprio elektros srovė tekės per lempą abiem atvejais?** Užrašykite atsakymus dešimtųjų tikslumu."
         },
         {
             "id": "q32_1",
@@ -68,7 +68,7 @@
         {
             "id": "q33_intro",
             "type": "group",
-            "question": "119,5 Ω kaitinamoji lempa prijungta prie galvaninio elemento, kurio elektrovara 20 V, o vidinė varža 0,5 Ω. Lempa šviečia 9 h 4 min. Kokį darbą atlieka elektros srovė lempoje? Darbą užrašykite kilodžauliais ir vatvalandėmis. Užrašykite atsakymus, suapvalintus iki sveikojo skaičiaus. (2 taškai)"
+            "question": "**119,5 Ω kaitinamoji lempa prijungta prie galvaninio elemento, kurio elektrovara 20 V, o vidinė varža 0,5 Ω. Lempa šviečia 9 h 4 min. Kokį darbą atlieka elektros srovė lempoje? Darbą užrašykite kilodžauliais ir vatvalandėmis.** Užrašykite atsakymus, suapvalintus iki sveikojo skaičiaus."
         },
         {
             "id": "q33_1",
@@ -87,7 +87,7 @@
         {
             "id": "q34",
             "type": "multiple_choice",
-            "question": "Kokie energijos virsmai vyksta lempos kaitinamajame siūlelyje, kai juo teka elektros srovė? Pažymėkite teisingą atsakymą. (1 taškas)",
+            "question": "**Kokie energijos virsmai vyksta lempos kaitinamajame siūlelyje, kai juo teka elektros srovė?** Pažymėkite teisingą atsakymą.",
             "options": [
                 "Elektrinė energija → Mechaninė energija",
                 "Elektrinė energija → Šviesos energija",
