@@ -5,15 +5,19 @@
     "topic": "Bendra",
     "subtopic": "Bendra",
     "subsubtopic": "Bendra",
-    "type": "matching",
+    "type": "multiple_choice",
     "question": "11. 2024 m. rugsėjį nuo liūčių labai nukentėjo Lenkija, Austrija, Čekija, Vengrija ir kitos Vidurio Europos šalys. Spalio 29 d. Valensijoje per aštuonias valandas iškrito metinis lietaus kiekis. Pažymėkite <b>dvi</b> labiausiai tikėtinas šių stichinių nelaimių priežastis.",
     "points": 1,
-    "pairs": {
-        "2024 metais buvo pasiektas Saulės aktyvumo maksimumas.": false,
-        "Per 2024 metų pirmąjį pusmetį iškrito mažiau kritulių nei įprasta.": false,
-        "Kuo šiltesnis Pasaulio vandenynas, tuo daugiau vandens išgaruoja.": true,
-        "Vanduo sparčiau juda vandens apytakos ratu (vandenynas–oras–žemė), debesys nespėja nukeliauti įprasto atstumo, todėl kyla liūtys.": true,
-        "Žemėje dėl gausių kritulių didėja vandens kiekis.": false
-    },
+    "options": [
+        "2024 metais buvo pasiektas Saulės aktyvumo maksimumas.",
+        "Per 2024 metų pirmąjį pusmetį iškrito mažiau kritulių nei įprasta.",
+        "Kuo šiltesnis Pasaulio vandenynas, tuo daugiau vandens išgaruoja.",
+        "Vanduo sparčiau juda vandens apytakos ratu (vandenynas–oras–žemė), debesys nespėja nukeliauti įprasto atstumo, todėl kyla liūtys.",
+        "Žemėje dėl gausių kritulių didėja vandens kiekis."
+    ],
+    "correctAnswer": [
+        "Kuo šiltesnis Pasaulio vandenynas, tuo daugiau vandens išgaruoja.",
+        "Vanduo sparčiau juda vandens apytakos ratu (vandenynas–oras–žemė), debesys nespėja nukeliauti įprasto atstumo, todėl kyla liūtys."
+    ],
     "solution": "<p><b>Teisingi atsakymai:</b></p><ul><li>Kuo šiltesnis Pasaulio vandenynas, tuo daugiau vandens išgaruoja.</li><li>Vanduo sparčiau juda vandens apytakos ratu (vandenynas–oras–žemė), debesys nespėja nukeliauti įprasto atstumo, todėl kyla liūtys.</li></ul><p><b>Paaiškinimas:</b></p><p>Klimato kaita lemia didėjančią vandenynų temperatūrą, todėl intensyvėja vandens garavimas. Spartėjant vandens apytakos ciklui, didėja ekstremalių oro reiškinių - sausrų ir potvynių - tikimybė. Debesys, kurie susidaro iš greitai išgaravusio vandens, ne visada spėja nukeliauti įprastu atstumu, todėl lietus išliejamas koncentruotai vienoje teritorijoje, sukeliant liūtis ir potvynius.</p>"
 }
