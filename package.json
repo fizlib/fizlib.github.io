@@ -1,0 +1,12 @@
+{
+  "name": "fizlib-exercises",
+  "version": "1.0.0",
+  "description": "Physics exercise library with automatic newest-first sorting",
+  "scripts": {
+    "update-manifest": "node scripts/update-manifest.js",
+    "sort-exercises": "node scripts/update-manifest.js"
+  },
+  "keywords": ["physics", "exercises", "education"],
+  "author": "",
+  "license": "ISC"
+}
