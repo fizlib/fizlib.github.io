@@ -1139,6 +1139,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     navigator.clipboard.writeText(url).then(() => showToast('Nuoroda nukopijuota!'));
                 });
             }
+
+            // Add image zoom functionality for structural exercises
+            const cardImage = card.querySelector('img[src^="assets/images"]');
+            if (cardImage && !cardImage.dataset.zoomListener) {
+                cardImage.dataset.zoomListener = 'true';
+                cardImage.style.cursor = 'zoom-in';
+                cardImage.addEventListener('click', () => {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'image-zoom-overlay';
+                    const zoomedImg = document.createElement('img');
+                    zoomedImg.src = cardImage.src;
+                    overlay.appendChild(zoomedImg);
+                    document.body.appendChild(overlay);
+                    overlay.addEventListener('click', () => overlay.remove());
+                });
+            }
             return;
         }
 

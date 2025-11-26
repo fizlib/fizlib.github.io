@@ -14,7 +14,7 @@
             "id": "ex_vbe2025_2_13_1",
             "type": "matching",
             "inline": true,
-            "question": "13.1. Tekste pasirinkite tinkamus žodžius, kad teiginiai apie elektros energijos gamybą būtų teisingi.",
+            "question": "Tekste pasirinkite tinkamus žodžius, kad teiginiai apie elektros energijos gamybą būtų teisingi.",
             "points": 2,
             "matchItems": [
                 {
@@ -33,7 +33,7 @@
         {
             "id": "ex_vbe2025_2_13_2",
             "type": "numerical",
-            "question": "13.2. Kiek elektros energijos liepos mėnesį pagamino saulės elektrinės? <i>Užrašykite atsakymą SI matavimo vienetais šimtųjų tikslumu.</i>",
+            "question": "Kiek elektros energijos liepos mėnesį pagamino saulės elektrinės? <i>Užrašykite atsakymą SI matavimo vienetais šimtųjų tikslumu.</i>",
             "points": 1,
             "correctAnswer": "3.84",
             "unit": "·10¹⁴ J",
