@@ -76,35 +76,35 @@
         {
             "id": "q19_1",
             "type": "text",
-            "question": "19. Futbolininkas spyrė į nejudantį kamuolį, kurio masė 0,450 kg. Maksimali spyrio jėga buvo 360 N. Atkreipkite dėmesį, kad ši jėga kinta: pusę laiko didėja, o pusę - mažėja. Kamuolys įgavo 4 m/s greitį.<br>19.1. Kokia buvo smūgio trukmė sekundėmis? Užrašykite atsakymą tūkstantųjų tikslumu.",
+            "question": "Futbolininkas spyrė į nejudantį kamuolį, kurio masė 0,450 kg. Maksimali spyrio jėga buvo 360 N. Atkreipkite dėmesį, kad ši jėga kinta: pusę laiko didėja, o pusę - mažėja. Kamuolys įgavo 4 m/s greitį.<br>Kokia buvo smūgio trukmė sekundėmis? Užrašykite atsakymą tūkstantųjų tikslumu.",
             "correctAnswer": "0,010",
             "unit": "s"
         },
         {
             "id": "q19_2",
             "type": "text",
-            "question": "19.2. Apskaičiuokite kamuoliui suteiktą judesio kiekį. Užrašykite atsakymą dešimtųjų tikslumu.",
+            "question": "Apskaičiuokite kamuoliui suteiktą judesio kiekį. Užrašykite atsakymą dešimtųjų tikslumu.",
             "correctAnswer": "1,8",
             "unit": "kg · m/s"
         },
         {
             "id": "q19_3",
             "type": "text",
-            "question": "19.3. Apskaičiuokite kamuolį paveikusios jėgos impulsą. Užrašykite atsakymą dešimtųjų tikslumu.",
+            "question": "Apskaičiuokite kamuolį paveikusios jėgos impulsą. Užrašykite atsakymą dešimtųjų tikslumu.",
             "correctAnswer": "1,8",
             "unit": "N · s"
         },
         {
             "id": "q20",
             "type": "text",
-            "question": "20. Per pasaulio futbolo čempionato varžybas 0,450 kg kamuolio greitis gali siekti 30 m/s. Apskaičiuokite tokiu greičiu judančio kamuolio kinetinę energiją. Užrašykite atsakymą dešimtųjų tikslumu.",
+            "question": "Per pasaulio futbolo čempionato varžybas 0,450 kg kamuolio greitis gali siekti 30 m/s. Apskaičiuokite tokiu greičiu judančio kamuolio kinetinę energiją. Užrašykite atsakymą dešimtųjų tikslumu.",
             "correctAnswer": "202,5",
             "unit": "J"
         },
         {
             "id": "q21",
             "type": "multiple_choice",
-            "question": "21. Kada futbolo kamuolys turi potencinės energijos žemės atžvilgiu? Pažymėkite teisingą atsakymą.",
+            "question": "Kada futbolo kamuolys turi potencinės energijos žemės atžvilgiu? Pažymėkite teisingą atsakymą.",
             "options": [
                 "Kai jis yra ore po smūgio.",
                 "Kai jis guli ant žemės prieš žaidimą.",
