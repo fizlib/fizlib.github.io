@@ -841,9 +841,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const questionsHTML = ex.questions.map(q => {
                     if (q.type === 'group') return `<div class="card-question" style="margin-top: 2rem; font-weight: bold;">${q.question}</div>`;
                     questionNumber++;
+                    const formattedQuestion = formatQuestionText(q.question);
+                    const numberedQuestion = formattedQuestion.replace(/^(<span[^>]*>)/, `$1${questionNumber}. `);
                     return `
                     <div class="simulation-question-block">
-                        <div class="card-question" style="display: inline;">${questionNumber}. ${formatQuestionText(q.question)}</div>
+                        <div class="card-question">${numberedQuestion}</div>
                         <div class="card-content" data-qid="${q.id}">
                             ${buildInputArea(q)}
                             <div class="feedback"></div>
