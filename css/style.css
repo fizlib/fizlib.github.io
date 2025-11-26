@@ -36,8 +36,10 @@ body {
     color: var(--text-main);
     line-height: 1.5;
     min-height: 100vh;
+    /* ADD THESE TWO LINES: */
+    overflow-x: hidden;
+    width: 100%;
 }
-
 /* Layout */
 .app-layout {
     display: flex;
@@ -256,7 +258,8 @@ body {
 
 .exercises-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* CHANGE THIS LINE (was 300px): */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.5rem;
     padding-bottom: 3rem;
     flex: 1;
@@ -697,6 +700,7 @@ body {
         width: 85%;
         max-width: 320px;
         box-shadow: var(--shadow-lg);
+        left: 0; 
     }
 
     .sidebar.open {
