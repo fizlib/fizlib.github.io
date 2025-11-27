@@ -298,7 +298,12 @@ body {
     flex-direction: column;
     border: 1px solid var(--border-color);
     position: relative;
+    
+    /* --- NEW/UPDATED PROPERTIES --- */
     max-width: 100%;
+    width: 100%;      /* Ensure it fills grid column but doesn't overflow */
+    min-width: 0;     /* Critical: Allows the card to shrink smaller than its content */
+    overflow-wrap: break-word; /* Prevents long text from breaking layout */
 }
 
 .exercise-card:hover {
@@ -890,8 +895,13 @@ body {
     margin-bottom: 1rem;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
+    
+    /* --- NEW PROPERTIES TO FIX MOBILE --- */
+    display: block;             /* Ensures block formatting context */
+    width: 100%;                /* Take full available width */
+    max-width: 100%;            /* Never exceed parent width */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
-
 .custom-table {
     width: 100%;
     border-collapse: collapse;
