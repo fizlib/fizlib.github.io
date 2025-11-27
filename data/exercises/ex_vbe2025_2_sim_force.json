@@ -1,0 +1,124 @@
+{
+    "id": "sim_force_friction",
+    "type": "simulation",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Jėgos.",
+    "subsubtopic": "Trinties jėga",
+    "question": "Kūno judėjimo horizontalia plokštuma tyrimas<div class=\"simulation-instructions\"><p>Paveiksle pavaizduotas 4 kg masės kūno judėjimas horizontaliu paviršiumi. Rimties trinties koeficientas 0,4, o slydimo trinties koeficientas 0,1. Laisvojo kritimo pagreitis 9,8 m/s². Kūno masė ir trinties koeficientai <strong>nekinta viso tyrimo metu</strong>. Naudodamiesi interaktyviu eksperimento įrankiu, pagal aprašytą situaciją keisdami kūną veikiančios tempimo jėgos dydį ir kryptį (kampą tarp tempimo jėgos ir judėjimo krypties), atlikite užduotis.</p><p><strong>Įrankio valdymas</strong></p><ul style=\"padding-left: 20px;\"><li>Tempimo jėga, masė, kampas, rimties ir slydimo trinties koeficientai keičiami, <strong>pele stumdant slankiklį</strong>. Patikslinti nustatytą vertę ± 1 arba atitinkamai ± 0,1 galima rodyklių klavišais, prieš tai spustelėjus reikiamą slankiklį. Klaviatūra verčių nerašykite.</li><li>Animacija paleidžiama mygtuku „Pradėti“, sustabdoma – „Sustabdyti“.</li><li>Svarbu: <strong>prieš keisdami tyrimo kintamųjų vertes ar sąlygas, būtinai paspauskite mygtuką „Atnaujinti“</strong>.</li></ul></div>",
+    "simulationFile": "assets/simulations/force-simulation.ggb",
+    "questions": [
+        {
+            "id": "q14",
+            "type": "text",
+            "question": "14. Apskaičiuokite arba, naudodamiesi interaktyviu eksperimento įrankiu, nustatykite, kokios mažiausios jėgos reikia kūnui išjudinti, jį veikiant horizontaliai nukreipta jėga. <em>Užrašykite atsakymą dešimtųjų tikslumu.</em>",
+            "correctAnswer": "15,7",
+            "unit": "N",
+            "solution": "Mažiausia jėga kūnui išjudinti lygi maksimaliai rimties trinties jėgai: $T_{min} = F_{tr.max} = \\mu_s N = \\mu_s mg = 0,4 \\cdot 4 \\cdot 9,8 = 15,68 \\approx 15,7 \\text{ N}$."
+        },
+        {
+            "id": "q15",
+            "type": "text",
+            "question": "15. Naudodamiesi interaktyviu eksperimento įrankiu, nustatykite, kokios mažiausios jėgos reikia kūnui išjudinti, jeigu jėga $T$ sudaro $60^\\circ$ kampą su horizontu. <em>Užrašykite atsakymą dešimtųjų tikslumu.</em>",
+            "correctAnswer": "18,5",
+            "unit": "N",
+            "solution": "Kūnas pajuda, kai $T_x = F_{tr.max}$. Veikiant jėgai kampu, sumažėja atramos reakcijos jėga $N = mg - T\\sin\\alpha$.<br> $T\\cos\\alpha = \\mu_s (mg - T\\sin\\alpha)$ <br> $T(\\cos\\alpha + \\mu_s\\sin\\alpha) = \\mu_s mg$ <br> $T = \\frac{\\mu_s mg}{\\cos\\alpha + \\mu_s\\sin\\alpha} = \\frac{15,68}{0,5 + 0,4 \\cdot 0,866} \\approx 18,5 \\text{ N}$."
+        },
+        {
+            "id": "q16",
+            "type": "matching",
+            "inline": true,
+            "question": "16. Pasirinkdami tinkamą fizikinį dydį, pabaikite teiginį, kad jis būtų teisingas.",
+            "matchItems": [
+                {
+                    "question": "Kūno inertiškumas priklauso nuo {{}}.",
+                    "options": [
+                        "masės",
+                        "laiko",
+                        "greičio",
+                        "pagreičio",
+                        "jėgos"
+                    ],
+                    "correctAnswer": "masės"
+                }
+            ],
+            "solution": "Kūno inertiškumas priklauso tik nuo jo masės."
+        },
+        {
+            "id": "q17",
+            "type": "text",
+            "question": "17. Išjudintas aptariamas kūnas (esant trinčiai) juda, veikiamas 16 N horizontaliai nukreiptos jėgos $T$. Apskaičiuokite, kokiu pagreičiu juda kūnas. <em>Užrašykite atsakymą, suapvalintą iki sveikojo skaičiaus.</em>",
+            "correctAnswer": "3",
+            "unit": "m/s²",
+            "solution": "Pagal II Niutono dėsnį: $ma = T - F_{tr}$. Kadangi kūnas juda, veikia slydimo trintis: $F_{tr} = \\mu_k mg = 0,1 \\cdot 4 \\cdot 9,8 = 3,92 \\text{ N}$.<br>$a = \\frac{T - F_{tr}}{m} = \\frac{16 - 3,92}{4} = 3,02 \\approx 3 \\text{ m/s}^2$."
+        },
+        {
+            "id": "q18",
+            "type": "fill_in_blanks",
+            "question": "18. Užrašykite kūno koordinatės kitimo nuo laiko lygtį $x(t)$ SI matavimo vienetais. Pradinė koordinatė lygi nuliui, kūnas pajuda iš rimties būsenos, pagreitis yra $2 \\text{ m/s}^2$. <em>Įrašykite tinkamus skaičius (tuščių langelių palikti negalima).</em>",
+            "template": "$x(t) =$ {{}} $+$ {{}} $t +$ {{}} $t^2$",
+            "correctAnswers": [
+                "0",
+                "0",
+                "1"
+            ],
+            "solution": "Lygtis: $x(t) = x_0 + v_{0x}t + \\frac{a_x t^2}{2}$.<br>Duota: $x_0 = 0$, $v_{0x} = 0$, $a = 2$.<br>Įstatę gauname: $x(t) = 0 + 0t + \\frac{2}{2}t^2 = 0 + 0t + 1t^2$."
+        },
+        {
+            "id": "q19",
+            "type": "text",
+            "question": "19. 4 kg kūną veikiančių jėgų atstojamoji lygi nuliui, kūnas juda tolygiai 5 m/s greičiu. Apskaičiuokite kūno kinetinę energiją. <em>Užrašykite atsakymą.</em>",
+            "correctAnswer": "50",
+            "unit": "J",
+            "solution": "$E_k = \\frac{mv^2}{2} = \\frac{4 \\cdot 5^2}{2} = 50 \\text{ J}$."
+        },
+        {
+            "id": "q20",
+            "type": "text",
+            "question": "20. Kūnas juda tolygiai, veikiamas horizontaliai nukreiptos jėgos $T$. Apskaičiuokite energiją, kurios reikia kūnui pastumti horizontalia kryptimi 20 dm. <em>Užrašykite atsakymą, suapvalintą iki sveikojo skaičiaus.</em>",
+            "correctAnswer": "8",
+            "unit": "J",
+            "solution": "Kūnas juda tolygiai, todėl $T = F_{tr} = \\mu_k mg = 0,1 \\cdot 4 \\cdot 9,8 = 3,92 \\text{ N}$.<br>Kelias $s = 20 \\text{ dm} = 2 \\text{ m}$.<br>Darbas (energija) $A = F \\cdot s = 3,92 \\cdot 2 = 7,84 \\approx 8 \\text{ J}$."
+        },
+        {
+            "id": "q21",
+            "type": "matching",
+            "inline": true,
+            "question": "21. Kokį darbą atlieka 3,9 N slydimo trintis 100 cm kelyje, kai kūnas juda horizontaliai? <em>Pasirinkite tinkamą atsakymą ir užrašykite skaičių dešimtųjų tikslumu.</em>",
+            "matchItems": [
+                {
+                    "question": "Slydimo trintis atlieka {{}}",
+                    "options": [
+                        "neigiamą",
+                        "teigiamą"
+                    ],
+                    "correctAnswer": "neigiamą"
+                }
+            ],
+            "secondPart": {
+                "correctAnswer": "3,9",
+                "unit": "J darbą."
+            },
+            "solution": "Trinties jėga visada nukreipta prieš judėjimo kryptį, todėl atlieka neigiamą darbą.<br>$A = F \\cdot s = 3,9 \\text{ N} \\cdot 1 \\text{ m} = 3,9 \\text{ J}$."
+        },
+        {
+            "id": "q22",
+            "type": "matching",
+            "inline": true,
+            "question": "22. Ar pasikeistų trinties jėgos atlikto darbo modulis, jei slydimo koeficientas padidėtų du kartus? Jei pasikeistų, tai kaip – padidėtų ar sumažėtų? <em>Pasirinkite tinkamą žodį, kad teiginys būtų teisingas.</em>",
+            "matchItems": [
+                {
+                    "question": "Trinties jėgos atlikto darbo modulis {{}}.",
+                    "options": [
+                        "nepasikeistų",
+                        "padidėtų",
+                        "sumažėtų"
+                    ],
+                    "correctAnswer": "padidėtų"
+                }
+            ],
+            "solution": "Trinties jėgos darbas $A = \\mu_k mg s$. Jei koeficientas $\\mu_k$ padidėja, darbas taip pat padidėja (modulis)."
+        }
+    ]
+}

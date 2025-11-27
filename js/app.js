@@ -918,7 +918,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildInputArea(ex) {
-        if (ex.type === 'multiple_choice') {
+        if (ex.type === 'fill_in_blanks') {
+             let html = ex.template;
+             ex.correctAnswers.forEach((_, i) => {
+                 html = html.replace('{{}}', `<input type="text" class="text-input small-input" data-index="${i}" style="width: 60px; display: inline-block; margin: 0 5px; text-align: center;">`);
+             });
+             return `<div class="fill-in-blanks-container" style="font-size: 1.1rem;">${html}</div>`;
+        } else if (ex.type === 'multiple_choice') {
             const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             return `
                 <div class="options-grid">
@@ -1215,7 +1221,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function attachQuestionEvents(card, ex, contentDiv, submitBtn, solutionBtn, feedbackEl) {
-        if (ex.type === 'multiple_choice') {
+        if (ex.type === 'fill_in_blanks') {
+            const inputs = contentDiv.querySelectorAll('.text-input');
+            inputs.forEach(input => {
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        submitBtn.click();
+                    }
+                });
+            });
+
+            submitBtn.addEventListener('click', () => {
+                let allCorrect = true;
+                let allFilled = true;
+                inputs.forEach(input => {
+                    if (!input.value) allFilled = false;
+                    const idx = parseInt(input.dataset.index);
+                    if (input.value.replace(',', '.').trim() !== ex.correctAnswers[idx]) allCorrect = false;
+                });
+
+                if (!allFilled) {
+                    feedbackEl.className = 'feedback incorrect';
+                    feedbackEl.innerHTML = `
+                        <div class="feedback-header">
+                            <div class="feedback-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            </div>
+                            <div>
+                                <div class="feedback-title">Užpildykite visus laukus</div>
+                            </div>
+                        </div>`;
+                    return;
+                }
+
+                if (allCorrect) {
+                    feedbackEl.className = 'feedback correct';
+                    feedbackEl.innerHTML = `
+                    <div class="feedback-header">
+                        <div class="feedback-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <div>
+                            <div class="feedback-title">Teisingai!</div>
+                            <div class="feedback-message">Puikiai atlikta užduotis.</div>
+                        </div>
+                    </div>`;
+                } else {
+                    feedbackEl.className = 'feedback incorrect';
+                    feedbackEl.innerHTML = `
+                    <div class="feedback-header">
+                        <div class="feedback-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        </div>
+                        <div>
+                            <div class="feedback-title">Neteisingai</div>
+                            <div class="feedback-message">Pabandykite dar kartą.</div>
+                        </div>
+                    </div>`;
+                }
+            });
+        } else if (ex.type === 'multiple_choice') {
             const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             const options = contentDiv.querySelectorAll('.option-btn');
             const hiddenInput = contentDiv.querySelector('.user-answer');
@@ -1276,112 +1342,116 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const textInputs = contentDiv.querySelectorAll('.text-input');
-        textInputs.forEach(textInput => {
-            textInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    submitBtn.click();
-                }
-            });
-        });
-
-        submitBtn.addEventListener('click', () => {
-            let isCorrect = false;
-            let userAnswer = '';
-
-            if (ex.type === 'multiple_choice') {
-                const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
-                userAnswer = contentDiv.querySelector('.user-answer').value;
-                if (!userAnswer) {
-                    // Warning State
-                    feedbackEl.className = 'feedback incorrect';
-                    feedbackEl.innerHTML = `
-                        <div class="feedback-header">
-                            <div class="feedback-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                            </div>
-                            <div>
-                                <div class="feedback-title">Dėmesio</div>
-                                <div class="feedback-message">Pasirinkite atsakymą prieš pateikdami.</div>
-                            </div>
-                        </div>`;
-                    return;
-                }
-
-                if (isMultiSelect) {
-                    try {
-                        const userAnswers = JSON.parse(userAnswer);
-                        isCorrect = checkMultiSelectAnswer(userAnswers, ex.correctAnswer);
-                    } catch (e) { isCorrect = false; }
-                } else {
-                    isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
-                }
-            } else if (ex.type === 'matching') {
-                const selects = contentDiv.querySelectorAll('.matching-select');
-                let allCorrect = true;
-                let allSelected = true;
-                selects.forEach(select => {
-                    if (!select.value) allSelected = false;
-                    if (ex.matchItems) {
-                        const index = parseInt(select.dataset.index);
-                        if (ex.matchItems[index].correctAnswer !== select.value) allCorrect = false;
-                    } else {
-                        if (ex.pairs[select.dataset.key] !== select.value) allCorrect = false;
+        if (ex.type !== 'fill_in_blanks') {
+             textInputs.forEach(textInput => {
+                textInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        submitBtn.click();
                     }
                 });
-                if (ex.secondPart) {
-                    const secondInput = contentDiv.querySelector('.second-part-input');
-                    if (!secondInput.value) allSelected = false;
-                    if (secondInput.value.trim() !== ex.secondPart.correctAnswer) allCorrect = false;
+            });
+        }
+
+        if (ex.type !== 'fill_in_blanks') {
+            submitBtn.addEventListener('click', () => {
+                let isCorrect = false;
+                let userAnswer = '';
+
+                if (ex.type === 'multiple_choice') {
+                    const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
+                    userAnswer = contentDiv.querySelector('.user-answer').value;
+                    if (!userAnswer) {
+                        // Warning State
+                        feedbackEl.className = 'feedback incorrect';
+                        feedbackEl.innerHTML = `
+                            <div class="feedback-header">
+                                <div class="feedback-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                </div>
+                                <div>
+                                    <div class="feedback-title">Dėmesio</div>
+                                    <div class="feedback-message">Pasirinkite atsakymą prieš pateikdami.</div>
+                                </div>
+                            </div>`;
+                        return;
+                    }
+
+                    if (isMultiSelect) {
+                        try {
+                            const userAnswers = JSON.parse(userAnswer);
+                            isCorrect = checkMultiSelectAnswer(userAnswers, ex.correctAnswer);
+                        } catch (e) { isCorrect = false; }
+                    } else {
+                        isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
+                    }
+                } else if (ex.type === 'matching') {
+                    const selects = contentDiv.querySelectorAll('.matching-select');
+                    let allCorrect = true;
+                    let allSelected = true;
+                    selects.forEach(select => {
+                        if (!select.value) allSelected = false;
+                        if (ex.matchItems) {
+                            const index = parseInt(select.dataset.index);
+                            if (ex.matchItems[index].correctAnswer !== select.value) allCorrect = false;
+                        } else {
+                            if (ex.pairs[select.dataset.key] !== select.value) allCorrect = false;
+                        }
+                    });
+                    if (ex.secondPart) {
+                        const secondInput = contentDiv.querySelector('.second-part-input');
+                        if (!secondInput.value) allSelected = false;
+                        if (secondInput.value.trim() !== ex.secondPart.correctAnswer) allCorrect = false;
+                    }
+                    if (!allSelected) {
+                        // Warning State for Matching
+                        feedbackEl.className = 'feedback incorrect';
+                        feedbackEl.innerHTML = `
+                            <div class="feedback-header">
+                                <div class="feedback-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                </div>
+                                <div>
+                                    <div class="feedback-title">Užpildykite visus laukus</div>
+                                </div>
+                            </div>`;
+                        return;
+                    }
+                    isCorrect = allCorrect;
+                } else {
+                    userAnswer = contentDiv.querySelector('.text-input').value.trim();
+                    if (!userAnswer) return;
+                    isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
                 }
-                if (!allSelected) {
-                    // Warning State for Matching
+
+                // RENDER RESULT
+                if (isCorrect) {
+                    feedbackEl.className = 'feedback correct';
+                    feedbackEl.innerHTML = `
+                        <div class="feedback-header">
+                            <div class="feedback-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            </div>
+                            <div>
+                                <div class="feedback-title">Teisingai!</div>
+                                <div class="feedback-message">Puikiai atlikta užduotis.</div>
+                            </div>
+                        </div>`;
+                } else {
                     feedbackEl.className = 'feedback incorrect';
                     feedbackEl.innerHTML = `
                         <div class="feedback-header">
                             <div class="feedback-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                             </div>
                             <div>
-                                <div class="feedback-title">Užpildykite visus laukus</div>
+                                <div class="feedback-title">Neteisingai</div>
+                                <div class="feedback-message">Pabandykite dar kartą arba peržiūrėkite teoriją.</div>
                             </div>
                         </div>`;
-                    return;
                 }
-                isCorrect = allCorrect;
-            } else {
-                userAnswer = contentDiv.querySelector('.text-input').value.trim();
-                if (!userAnswer) return;
-                isCorrect = checkAnswer(userAnswer, ex.correctAnswer);
-            }
-
-            // RENDER RESULT
-            if (isCorrect) {
-                feedbackEl.className = 'feedback correct';
-                feedbackEl.innerHTML = `
-                    <div class="feedback-header">
-                        <div class="feedback-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        </div>
-                        <div>
-                            <div class="feedback-title">Teisingai!</div>
-                            <div class="feedback-message">Puikiai atlikta užduotis.</div>
-                        </div>
-                    </div>`;
-            } else {
-                feedbackEl.className = 'feedback incorrect';
-                feedbackEl.innerHTML = `
-                    <div class="feedback-header">
-                        <div class="feedback-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-                        </div>
-                        <div>
-                            <div class="feedback-title">Neteisingai</div>
-                            <div class="feedback-message">Pabandykite dar kartą arba peržiūrėkite teoriją.</div>
-                        </div>
-                    </div>`;
-            }
-        });
+            });
+        }
 
         solutionBtn.addEventListener('click', () => {
             const existingSolutionContainer = feedbackEl.querySelector('.solution-container');
@@ -1464,7 +1534,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showCorrectAnswer(contentDiv, ex) {
-        if (ex.type === 'multiple_choice') {
+        if (ex.type === 'fill_in_blanks') {
+             const inputs = contentDiv.querySelectorAll('.text-input');
+             inputs.forEach(input => {
+                 const idx = parseInt(input.dataset.index);
+                 input.value = ex.correctAnswers[idx];
+                 input.classList.add('showing-answer');
+             });
+        } else if (ex.type === 'multiple_choice') {
             const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             const options = contentDiv.querySelectorAll('.option-btn');
             options.forEach(opt => {
@@ -1514,7 +1591,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hideCorrectAnswer(contentDiv, ex) {
-        if (ex.type === 'multiple_choice') {
+        if (ex.type === 'fill_in_blanks') {
+             const inputs = contentDiv.querySelectorAll('.text-input');
+             inputs.forEach(input => {
+                 input.value = '';
+                 input.classList.remove('showing-answer');
+             });
+        } else if (ex.type === 'multiple_choice') {
             const options = contentDiv.querySelectorAll('.option-btn');
             options.forEach(opt => {
                 opt.classList.remove('correct-answer');
