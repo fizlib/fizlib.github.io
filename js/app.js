@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
     }
 
-    // --- Rendering Logic (Mostly unchanged, just cleaned up) ---
+    // --- Rendering Logic ---
 
     function renderExercises(exercises) {
         exercisesContainer.innerHTML = '';
@@ -931,6 +931,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${ex.options.map(opt => `<div class="option-btn${isMultiSelect ? ' multi-select-btn' : ''}" data-value="${opt}">${opt}</div>`).join('')}
                 </div>
                 <input type="hidden" class="user-answer" value="">
+            `;
+        } else if (ex.type === 'table_checkbox') {
+            const headersHTML = ex.headers.map(h => `<th>${h}</th>`).join('');
+            
+            const rowsHTML = ex.rows.map((rowText, rowIdx) => {
+                const cellsHTML = ex.headers.map((_, colIdx) => `
+                    <td>
+                        <input type="checkbox" class="table-checkbox-input" data-row="${rowIdx}" data-col="${colIdx}">
+                    </td>
+                `).join('');
+                return `<tr><td>${rowText}</td>${cellsHTML}</tr>`;
+            }).join('');
+
+            return `
+                <div class="table-checkbox-container">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th></th> <!-- Empty corner cell -->
+                                ${headersHTML}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rowsHTML}
+                        </tbody>
+                    </table>
+                </div>
             `;
         } else if (ex.type === 'matching') {
             if (ex.matchItems) {
@@ -1339,6 +1366,69 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 opt.setAttribute('tabindex', '0');
             });
+        } else if (ex.type === 'table_checkbox') {
+             submitBtn.addEventListener('click', () => {
+                const checkboxes = contentDiv.querySelectorAll('.table-checkbox-input');
+                let allCorrect = true;
+                let anyChecked = false;
+
+                // Reset styles
+                checkboxes.forEach(cb => {
+                    cb.classList.remove('correct-check', 'incorrect-check');
+                    cb.parentElement.classList.remove('cell-correct', 'cell-missed');
+                });
+
+                checkboxes.forEach(cb => {
+                    const r = cb.dataset.row;
+                    const c = cb.dataset.col;
+                    const headerName = ex.headers[c]; // Map column index to header name (e.g., "A", "B")
+                    
+                    const isChecked = cb.checked;
+                    if (isChecked) anyChecked = true;
+
+                    // Get correct answers for this row (Array of header strings)
+                    const correctForThisRow = ex.correctAnswer[r] || [];
+                    
+                    const shouldBeChecked = correctForThisRow.includes(headerName);
+
+                    if (isChecked && shouldBeChecked) {
+                        // Correctly checked
+                    } else if (!isChecked && !shouldBeChecked) {
+                        // Correctly left empty
+                    } else {
+                        // Wrong
+                        allCorrect = false;
+                    }
+                });
+
+                if (!anyChecked) {
+                    feedbackEl.className = 'feedback incorrect';
+                    feedbackEl.innerHTML = `<div class="feedback-header"><div class="feedback-title">Pasirinkite atsakymus</div></div>`;
+                    return;
+                }
+
+                if (allCorrect) {
+                    feedbackEl.className = 'feedback correct';
+                    feedbackEl.innerHTML = `
+                        <div class="feedback-header">
+                            <div class="feedback-icon">✓</div>
+                            <div>
+                                <div class="feedback-title">Teisingai!</div>
+                                <div class="feedback-message">Puikiai atlikta užduotis.</div>
+                            </div>
+                        </div>`;
+                } else {
+                    feedbackEl.className = 'feedback incorrect';
+                    feedbackEl.innerHTML = `
+                        <div class="feedback-header">
+                            <div class="feedback-icon">✕</div>
+                            <div>
+                                <div class="feedback-title">Neteisingai</div>
+                                <div class="feedback-message">Kai kurie atsakymai neteisingi. Spauskite "Rodyti sprendimą" paaiškinimui.</div>
+                            </div>
+                        </div>`;
+                }
+             });
         }
 
         const textInputs = contentDiv.querySelectorAll('.text-input');
@@ -1353,7 +1443,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        if (ex.type !== 'fill_in_blanks') {
+        // Logic for types other than fill_in_blanks and table_checkbox
+        if (ex.type !== 'fill_in_blanks' && ex.type !== 'table_checkbox') {
             submitBtn.addEventListener('click', () => {
                 let isCorrect = false;
                 let userAnswer = '';
@@ -1555,6 +1646,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
+        } else if (ex.type === 'table_checkbox') {
+            const checkboxes = contentDiv.querySelectorAll('.table-checkbox-input');
+            checkboxes.forEach(cb => {
+                const r = cb.dataset.row;
+                const c = cb.dataset.col;
+                const headerName = ex.headers[c];
+                const correctForThisRow = ex.correctAnswer[r] || [];
+                const shouldBeChecked = correctForThisRow.includes(headerName);
+
+                if (shouldBeChecked) {
+                    cb.parentElement.classList.add('cell-correct');
+                    if (cb.checked) {
+                        cb.classList.add('correct-check');
+                    } else {
+                        // Missed answer
+                        cb.parentElement.classList.add('cell-missed');
+                        // Optional: Force check it to show answer? 
+                        // cb.checked = true; 
+                    }
+                } else if (cb.checked) {
+                    // Wrongly checked
+                    cb.classList.add('incorrect-check');
+                }
+            });
         } else if (ex.type === 'matching') {
             const selects = contentDiv.querySelectorAll('.matching-select');
 
@@ -1601,6 +1716,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const options = contentDiv.querySelectorAll('.option-btn');
             options.forEach(opt => {
                 opt.classList.remove('correct-answer');
+            });
+        } else if (ex.type === 'table_checkbox') {
+            const checkboxes = contentDiv.querySelectorAll('.table-checkbox-input');
+            checkboxes.forEach(cb => {
+                cb.classList.remove('correct-check', 'incorrect-check');
+                cb.parentElement.classList.remove('cell-correct', 'cell-missed');
+                // Don't uncheck user answers, just remove feedback styles
             });
         } else if (ex.type === 'matching') {
             const selects = contentDiv.querySelectorAll('.matching-select');

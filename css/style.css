@@ -883,3 +883,77 @@ body {
     margin-bottom: 1.5rem;
     max-width: 100%;
 }
+/* --- TABLE CHECKBOX COMPONENT STYLES --- */
+
+.table-checkbox-container {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.custom-table th, 
+.custom-table td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.custom-table th {
+    background-color: var(--primary-bg);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.custom-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    min-width: 200px;
+    background-color: #f9fafb;
+}
+
+/* Custom Checkbox in Table */
+.table-checkbox-input {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+/* Feedback Styles for Table */
+.table-checkbox-input.correct-check {
+    accent-color: var(--secondary-color);
+    outline: 2px solid var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.table-checkbox-input.incorrect-check {
+    accent-color: var(--error-color);
+    outline: 2px solid var(--error-color);
+}
+
+/* Cell background highlights */
+.cell-correct {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+}
+
+.cell-missed {
+    background-color: rgba(239, 68, 68, 0.1);
+    position: relative;
+}
+
+.cell-missed::after {
+    content: "!";
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: var(--error-color);
+    font-weight: bold;
+    font-size: 0.8rem;
+}

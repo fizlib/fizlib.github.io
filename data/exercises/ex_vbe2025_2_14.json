@@ -5,10 +5,72 @@
     "topic": "Šiluminiai reiškiniai",
     "subtopic": "Termodinamika.",
     "subsubtopic": "Fazinių virsmų grafikai",
-    "type": "numerical",
-    "question": "100 g tam tikros kietosios medžiagos, kurios pradinė temperatūra yra 20 °C, kaitinama 90 W galios šildytuvu. Grafike pavaizduota temperatūros kitimo priklausomybė nuo laiko. Tarkime, kad šilumos nuostolių nėra.<br><em>Pagal grafiką nustatykite šios medžiagos lydymosi temperatūrą.</em>",
+    "type": "structural",
+    "question": "100 g tam tikros kietosios medžiagos, kurios pradinė temperatūra yra 20 °C, kaitinama 90 W galios šildytuvu. Grafike pavaizduota temperatūros kitimo priklausomybė nuo laiko. Tarkime, kad šilumos nuostolių nėra.",
     "image": "assets/images/ex_vbe2025_2_14.svg",
-    "correctAnswer": "48",
-    "unit": "°C",
-    "solution": "Grafike B dalis vaizduoja lydymosi procesą, kurio metu medžiagai suteikiama šiluma, tačiau temperatūra nekinta, kol visa medžiaga išsilydo. Ši horizontali grafiko dalis yra ties 48 °C riba (kiekviena smulki Y ašies padala atitinka 2 °C: $40 + 4 \\cdot 2 = 48$)."
+    "questions": [
+        {
+            "id": "q23",
+            "type": "numerical",
+            "question": "23. Pagal grafiką nustatykite šios medžiagos lydymosi temperatūrą. <i>Užrašykite skaičių.</i> (1 taškas)",
+            "correctAnswer": "48",
+            "unit": "°C",
+            "solution": "Grafike horizontali dalis (B sritis) rodo fazinį virsmą – lydymąsi, kurio metu temperatūra nekinta. Ši dalis atitinka 48 °C padalą."
+        },
+        {
+            "id": "q24",
+            "type": "multiple_choice",
+            "question": "24. Kuriuo teiginiu teisingai apibrėžiama medžiagos savitosios lydymosi šilumos sąvoka? <i>Pažymėkite teisingą atsakymą.</i> (1 taškas)",
+            "options": [
+                "Šilumos kiekis, kuris išsiskiria, 1 kg kietosios medžiagos virstant skysčiu jos lydymosi temperatūroje.",
+                "Šilumos kiekis, reikalingas bet kurios masės medžiagai išlydyti jos lydymosi temperatūroje.",
+                "Šilumos kiekis, kurio reikia 1 kg kietosios medžiagos paversti skysčiu.",
+                "Šilumos kiekis, kurio reikia 1 kg kietosios medžiagos išlydyti jos lydymosi temperatūroje."
+            ],
+            "correctAnswer": "Šilumos kiekis, kurio reikia 1 kg kietosios medžiagos išlydyti jos lydymosi temperatūroje."
+        },
+        {
+            "id": "q25",
+            "type": "table_checkbox",
+            "question": "25. Pagal grafiką nustatykite, kuriomis raidėmis pažymėtose kreivės dalyse (A, B, C) šiluma eikvojama ryšiams tarp molekulių nutraukti ir kuriose vidinė energija didėja. <i>Lentelėje pažymėkite teisingus atsakymus.</i>",
+            "headers": ["A", "B", "C"],
+            "rows": [
+                "Šiluma eikvojama ryšiams tarp molekulių nutraukti",
+                "Vidinė energija didėja"
+            ],
+            "correctAnswer": {
+                "0": ["B"],
+                "1": ["A", "B", "C"]
+            },
+            "solution": "Šiluma eikvojama ryšiams nutraukti lydymosi metu (horizontalioji grafiko dalis B). Vidinė energija (kinetinė + potencinė) didėja visuose etapuose, kai kūnui suteikiama šiluma."
+        },
+        {
+            "id": "q26",
+            "type": "numerical",
+            "question": "26. Pagal grafiką apskaičiuokite, koks šilumos kiekis reikalingas šiai medžiagai išlydyti, kai medžiagos temperatūra lygi lydymosi temperatūrai. <i>Užrašykite atsakymą kilodžauliais.</i> (1 taškas)",
+            "correctAnswer": "36",
+            "unit": "kJ",
+            "solution": "Jei grafikas būtų sugraduotas laiko ašyje, matytume lydymosi trukmę $\\tau$. $Q = P \\cdot \\tau$. Pagal užduoties duomenis ir sprendimą: $Q=36\\text{ kJ}$."
+        },
+        {
+            "id": "q27_1",
+            "type": "multiple_choice",
+            "question": "Pagal kurią formulę apskaičiuotume šios medžiagos savitąją šilumą, kai ji yra skystosios būsenos? <i>Pažymėkite teisingą atsakymą.</i>",
+            "options": [
+                "$$ \\lambda = \\frac{P \\cdot t}{m} $$",
+                "$$ c = \\frac{P \\cdot t}{m \\cdot \\Delta T} $$",
+                "$$ c = \\frac{Q \\cdot P}{m \\cdot (t - t_0)} $$",
+                "$$ \\lambda = \\frac{Q}{m} $$"
+            ],
+            "correctAnswer": "$$ c = \\frac{P \\cdot t}{m \\cdot \\Delta T} $$"
+        },
+        {
+            "id": "q27_2",
+            "type": "numerical",
+            "question": "Pagal grafiką apskaičiuokite šios medžiagos savitąją šilumą, kai ji yra skystosios būsenos. <i>Užrašykite atsakymą, suapvalintą iki sveikojo skaičiaus.</i> (1 taškas)",
+            "correctAnswer": "2647",
+            "unit": "$\\frac{\\text{J}}{\\text{kg} \\cdot \\text{K}}$",
+            "solution": "Remiantis formule $c = \\frac{P \\cdot t}{m \\cdot \\Delta T}$. Duota galia $P=90\\text{ W}$, masė $m=0,1\\text{ kg}$."
+        }
+    ]
 }
