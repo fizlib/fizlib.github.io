@@ -1,0 +1,14 @@
+{
+    "id": "ex_vbe2025_2_14",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Šiluminiai reiškiniai",
+    "subtopic": "Termodinamika.",
+    "subsubtopic": "Fazinių virsmų grafikai",
+    "type": "numerical",
+    "question": "100 g tam tikros kietosios medžiagos, kurios pradinė temperatūra yra 20 °C, kaitinama 90 W galios šildytuvu. Grafike pavaizduota temperatūros kitimo priklausomybė nuo laiko. Tarkime, kad šilumos nuostolių nėra.<br><em>Pagal grafiką nustatykite šios medžiagos lydymosi temperatūrą.</em>",
+    "image": "assets/images/ex_vbe2025_2_14.svg",
+    "correctAnswer": "48",
+    "unit": "°C",
+    "solution": "Grafike B dalis vaizduoja lydymosi procesą, kurio metu medžiagai suteikiama šiluma, tačiau temperatūra nekinta, kol visa medžiaga išsilydo. Ši horizontali grafiko dalis yra ties 48 °C riba (kiekviena smulki Y ašies padala atitinka 2 °C: $40 + 4 \\cdot 2 = 48$)."
+}
