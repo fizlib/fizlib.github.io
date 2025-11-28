@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_p_1",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Fizikos mokslo kalba ir pažinimo metodai",
+    "subtopic": "Fizikos mokslo raida.",
+    "subsubtopic": "Fizikos mokslo raida.",
+    "type": "multiple_choice",
+    "question": "Skirtingų sričių mokslininkai bendradarbiauja spręsdami įvairias globalias problemas. Kurią problemą sprendžiant labiausiai prisideda fizikos mokslas?",
+    "options": [
+        "Biologinės įvairovės nykimas",
+        "Infekcinių ligų plitimas",
+        "Klimato kaita",
+        "Lyčių nelygybė"
+    ],
+    "correctAnswer": "Klimato kaita",
+    "solution": "Fizikos mokslas (ypač termodinamika, atmosferos fizika, energetika) tiesiogiai tiria energijos balansą Žemėje, šiltnamio efektą ir atmosferos procesus, todėl labiausiai prisideda prie klimato kaitos problemų sprendimo."
+}

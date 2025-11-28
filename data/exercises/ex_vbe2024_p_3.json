@@ -1,0 +1,33 @@
+{
+    "id": "ex_vbe2024_p_3",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Fizikos mokslo kalba ir pažinimo metodai",
+    "subtopic": "Matavimai ir skaičiavimai fizikoje.",
+    "subsubtopic": "Matavimai ir skaičiavimai fizikoje.",
+    "type": "matching",
+    "question": "Priskirkite fizikinius dydžius tinkamai grupei (Skaliarinis arba Vektorinis dydis).",
+    "matchItems": [
+        {
+            "question": "kinetinė energija",
+            "options": ["Skaliarinis dydis", "Vektorinis dydis"],
+            "correctAnswer": "Skaliarinis dydis"
+        },
+        {
+            "question": "greitis",
+            "options": ["Skaliarinis dydis", "Vektorinis dydis"],
+            "correctAnswer": "Vektorinis dydis"
+        },
+        {
+            "question": "darbas",
+            "options": ["Skaliarinis dydis", "Vektorinis dydis"],
+            "correctAnswer": "Skaliarinis dydis"
+        },
+        {
+            "question": "jėga",
+            "options": ["Skaliarinis dydis", "Vektorinis dydis"],
+            "correctAnswer": "Vektorinis dydis"
+        }
+    ],
+    "solution": "Skaliariniai dydžiai turi tik skaitinę vertę (energija, darbas, masė). Vektoriniai dydžiai turi ir skaitinę vertę, ir kryptį (greitis, jėga, pagreitis)."
+}

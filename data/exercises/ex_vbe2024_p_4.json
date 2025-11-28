@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_p_4",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Fizikos mokslo kalba ir pažinimo metodai",
+    "subtopic": "Matavimai ir skaičiavimai fizikoje.",
+    "subsubtopic": "Matavimai ir skaičiavimai fizikoje.",
+    "type": "multiple_choice",
+    "question": "Mokinys užrašė ampermetro ir voltmetro rodmenis su absoliutine matavimo paklaida: $I = (0{,}7 \\pm 0{,}1) \\text{ A}$, $U = (1{,}4 \\pm 0{,}2) \\text{ V}$. Kuriuo teiginiu teisingai apibūdintas ampermetro ir voltmetro santykinių matavimo paklaidų palyginimas?",
+    "options": [
+        "Skirtingų prietaisų santykinių matavimo paklaidų negalima lyginti.",
+        "Voltmetro santykinė matavimo paklaida didesnė.",
+        "Abiejų prietaisų santykinės matavimo paklaidos vienodos.",
+        "Ampermetro santykinė matavimo paklaida didesnė."
+    ],
+    "correctAnswer": "Abiejų prietaisų santykinės matavimo paklaidos vienodos.",
+    "solution": "Santykinė paklaida $\\varepsilon = \\frac{\\Delta x}{x}$. <br> Ampermetro: $\\varepsilon_I = \\frac{0{,}1}{0{,}7} = \\frac{1}{7} \\approx 14{,}3\\%$. <br> Voltmetro: $\\varepsilon_U = \\frac{0{,}2}{1{,}4} = \\frac{1}{7} \\approx 14{,}3\\%$. <br> Paklaidos yra vienodos."
+}

@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_p_5",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Jėgos.",
+    "subsubtopic": "Niutono dėsniai",
+    "type": "multiple_choice",
+    "question": "Kokio didumo pagreitį kūnui suteikia paveiksle pavaizduotos jėgos?",
+    "image": "assets/images/ex_vbe2024_p_5.svg",
+    "options": [
+        "$0{,}25 \\text{ m/s}^2$",
+        "$1{,}25 \\text{ m/s}^2$",
+        "$4 \\text{ m/s}^2$",
+        "$5 \\text{ m/s}^2$"
+    ],
+    "correctAnswer": "$0{,}25 \\text{ m/s}^2$",
+    "solution": "Jėgos veikia statmenai viena kitai, todėl atstojamoji jėga apskaičiuojama pagal Pitagoro teoremą: <br> $F = \\sqrt{F_1^2 + F_2^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9+16} = \\sqrt{25} = 5 \\text{ N}$. <br> Pagal II Niutono dėsnį: <br> $a = \\frac{F}{m} = \\frac{5}{20} = 0{,}25 \\text{ m/s}^2$."
+}

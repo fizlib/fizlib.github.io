@@ -1,0 +1,53 @@
+{
+    "id": "ex_vbe2024_p_2",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Fizikos mokslo kalba ir pažinimo metodai",
+    "subtopic": "Pažinimo metodai ir kalba.",
+    "subsubtopic": "Pažinimo metodai ir kalba.",
+    "type": "matching",
+    "question": "Sudėliokite kortelėse įvardytus tyrimo etapus pagal jų eiliškumą (1 – pirmasis etapas, 4 – paskutinis).",
+    "matchItems": [
+        {
+            "question": "1 etapas",
+            "options": [
+                "išvadų formulavimas",
+                "tyrimo planavimas",
+                "tyrimo tikslo ir hipotezės formulavimas",
+                "rezultatų ir duomenų apdorojimas"
+            ],
+            "correctAnswer": "tyrimo tikslo ir hipotezės formulavimas"
+        },
+        {
+            "question": "2 etapas",
+            "options": [
+                "išvadų formulavimas",
+                "tyrimo planavimas",
+                "tyrimo tikslo ir hipotezės formulavimas",
+                "rezultatų ir duomenų apdorojimas"
+            ],
+            "correctAnswer": "tyrimo planavimas"
+        },
+        {
+            "question": "3 etapas",
+            "options": [
+                "išvadų formulavimas",
+                "tyrimo planavimas",
+                "tyrimo tikslo ir hipotezės formulavimas",
+                "rezultatų ir duomenų apdorojimas"
+            ],
+            "correctAnswer": "rezultatų ir duomenų apdorojimas"
+        },
+        {
+            "question": "4 etapas",
+            "options": [
+                "išvadų formulavimas",
+                "tyrimo planavimas",
+                "tyrimo tikslo ir hipotezės formulavimas",
+                "rezultatų ir duomenų apdorojimas"
+            ],
+            "correctAnswer": "išvadų formulavimas"
+        }
+    ],
+    "solution": "Mokslinio tyrimo eiga: 1. Suformuluojamas tikslas ir hipotezė. 2. Suplanuojama eiga ir priemonės. 3. Atliekamas tyrimas ir apdorojami duomenys. 4. Suformuluojamos išvados."
+}

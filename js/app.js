@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Source Hierarchy Definition
     const sourceHierarchy = {
-        "VBE": ["2025 (1)", "2025 (2)"],
+        "VBE": ["2025 (1)", "2025 (2)", "2024 (P)"],
         "Vadovėliai": [],
         "Uždavinynai": [],
         "Kita": []
@@ -127,7 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (ex.category === 'VBE-2025') {
             ex.source = "VBE";
             ex.subsource = "2025 (1)";
+        } else if (ex.category === 'VBE-2024-P') {
+            ex.source = "VBE";
+            ex.subsource = "2024 (P)";
         } else if (ex.grade === 11 || ex.grade === '11') {
+            // Default generic 11th grade to VBE 2025 (1) if no specific category matches above
             ex.source = "VBE";
             ex.subsource = "2025 (1)";
         } else {
@@ -759,7 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Pažymėkite', 'Nustatykite', 'Apskaičiuokite', 'Nurodykite',
             'Išrinkite', 'Parinkite', 'Raskite', 'Įvertinkite',
             'Apibrėžkite', 'Apibūdinkite', 'Paaiškinkite',
-            'Dėl kurio', 'Į kurį', 'Su kuriuo', 'Kuriuo', 'Sujunkite'
+            'Dėl kurio', 'Į kurį', 'Su kuriuo', 'Kuriuo', 'Sujunkite', 'Sudėliokite', 'Priskirkite', 'Įkelkite'
         ];
 
         // Split by sentences (periods followed by space and capital letter, or question marks)
