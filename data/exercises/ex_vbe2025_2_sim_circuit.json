@@ -1,0 +1,94 @@
+{
+    "id": "ex_vbe2025_2_sim_circuit",
+    "type": "simulation",
+    "category": "VBE-2025-2",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektros srovė metaluose.",
+    "subsubtopic": "Elektros grandinės",
+    "question": "Elektros grandinės tyrimas<div class=\"simulation-instructions\"><p>Schemoje pateikta elektros grandinė yra prijungta prie 9 V maitinimo šaltinio ir viso tyrimo metu <strong>įtampa nekeičiama</strong>. Grandinėje įjungtos keturios kaitrinės lempos, pažymėtos L1, L2, L3 ir L4. Visos keturios kaitrinės lempos yra <strong>vienodos</strong>.</p><p><strong>Įrankio valdymas</strong></p><ul style=\"padding-left: 20px;\"><li>Įtampa keičiama, <strong>pele stumdant slankiklį</strong>. Patikslinti nustatytą vertę ± 1 galima rodyklių klavišais, prieš tai spustelėjus reikiamą slankiklį. Klaviatūra verčių nerašykite.</li><li>Jungikliai įjungiami ir išjungiami, pele pažymėjus atitinkamą kvadratėlį.</li><li>Voltmetrų ir elektros srovės stiprio rodymas įjungiamas ir išjungiamas, pele pažymėjus atitinkamą kvadratėlį.</li></ul></div>",
+    "simulationFile": "assets/simulations/grandine-2.ggb",
+    "questions": [
+        {
+            "id": "q28",
+            "type": "matching",
+            "inline": true,
+            "question": "Kokia kryptimi per lempą L1 sujungtoje elektros grandinėje juda elektronai? <em>Pasirinkite tinkamus žodžius, kad teiginys būtų teisingas.</em>",
+            "matchItems": [
+                {
+                    "question": "Elektronai per lempą L1 kryptingai juda {{}} .",
+                    "options": [
+                        "link lempos L2",
+                        "link maitinimo šaltinio"
+                    ],
+                    "correctAnswer": "link lempos L2"
+                }
+            ]
+        },
+        {
+            "id": "q29",
+            "type": "text",
+            "question": "Remdamiesi matavimo rezultatais, apskaičiuokite vienos lempos varžą. <em>Užrašykite atsakymą.</em>",
+            "correctAnswer": "6",
+            "unit": "Ω"
+        },
+        {
+            "id": "q30",
+            "type": "text",
+            "question": "Remdamiesi matavimo rezultatais, apskaičiuokite grandinės varžą, kai įjungti visi jungikliai. <em>Užrašykite atsakymą.</em>",
+            "correctAnswer": "10",
+            "unit": "Ω"
+        },
+        {
+            "id": "q31",
+            "type": "text",
+            "question": "Remdamiesi matavimo rezultatais, apskaičiuokite, kokio stiprio elektros srovė teka per lempą L1, kai visi jungikliai įjungti. <em>Užrašykite atsakymą.</em>",
+            "correctAnswer": "0,9",
+            "unit": "A"
+        },
+        {
+            "id": "q32",
+            "type": "matching",
+            "inline": true,
+            "question": "Iš pradžių visi jungikliai buvo įjungti. Kaip pasikeitė elektros srovės stipris lempoje L1, kai buvo išjungtas 3 jungiklis? <em>Pasirinkite tinkamus žodžius, kad teiginys būtų teisingas.</em>",
+            "matchItems": [
+                {
+                    "question": "Srovės stipris lempoje L1 {{}} .",
+                    "options": [
+                        "sumažėjo 1,8 karto",
+                        "padidėjo 2 kartus",
+                        "padidėjo 1,8 karto",
+                        "sumažėjo 2 kartus"
+                    ],
+                    "correctAnswer": "sumažėjo 1,8 karto"
+                }
+            ]
+        },
+        {
+            "id": "q33",
+            "type": "table_checkbox",
+            "question": "Tarkime, elektros grandinėje visi jungikliai yra įjungti. Kurioje lempoje (ar lempose) išsiskyrė didžiausias šilumos kiekis, o kurioje (kuriose) – mažiausias? <em>Lentelėje pažymėkite teisingus atsakymus.</em>",
+            "headers": [
+                "L1",
+                "L2",
+                "L3",
+                "L4"
+            ],
+            "rows": [
+                "Išskiriamas mažiausias šilumos kiekis",
+                "Išskiriamas didžiausias šilumos kiekis"
+            ],
+            "correctAnswer": {
+                "0": ["L2", "L3"],
+                "1": ["L1"]
+            }
+        },
+        {
+            "id": "q34",
+            "type": "text",
+            "question": "Remdamiesi matavimo rezultatais, apskaičiuokite, koks šilumos kiekis išskiriamas elektros grandinėje per 1 minutę, kai įjungti tik 1 ir 2 jungikliai. <em>Užrašykite atsakymą.</em>",
+            "correctAnswer": "270",
+            "unit": "J"
+        }
+    ]
+}
