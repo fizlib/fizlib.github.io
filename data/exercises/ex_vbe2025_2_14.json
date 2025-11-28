@@ -47,7 +47,7 @@
         {
             "id": "q26",
             "type": "numerical",
-            "question": "26. Pagal grafiką apskaičiuokite, koks šilumos kiekis reikalingas šiai medžiagai išlydyti, kai medžiagos temperatūra lygi lydymosi temperatūrai. <i>Užrašykite atsakymą kilodžauliais.</i> (1 taškas)",
+            "question": "26. Pagal grafiką apskaičiuokite, koks šilumos kiekis reikalingas šiai medžiagai išlydyti, kai medžiagos temperatūra lygi lydymosi temperatūrai. <i>Užrašykite atsakymą kilodžauliais.</i>",
             "correctAnswer": "36",
             "unit": "kJ",
             "solution": "Jei grafikas būtų sugraduotas laiko ašyje, matytume lydymosi trukmę $\\tau$. $Q = P \\cdot \\tau$. Pagal užduoties duomenis ir sprendimą: $Q=36\\text{ kJ}$."
