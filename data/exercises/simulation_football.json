@@ -5,7 +5,7 @@
     "grade": 11,
     "topic": "Judėjimas ir jėgos",
     "subtopic": "Judesio kiekis ir jėgos impulsas.",
-    "subsubtopic": "Judesio kiekis ir impulsas",
+    "subsubtopic": "Dydžių apibrėžimai",
     "question": "Futbolo simuliacija<div class=\"simulation-instructions\"><p>Futbolininkas analizuoja, kaip nuo spyrio jėgos¹ priklauso kamuolio įgytas greitis. Naudodamiesi interaktyviu eksperimento įrankiu, pagal aprašytą situaciją keisdami maksimalią spyrio jėgą, trukmę ir kamuolio masę, atlikite užduotis.</p><p><strong>Įrankio valdymas</strong></p><ul style=\"padding-left: 20px;\"><li>Maksimali spyrio jėga, spyrio trukmė ir kamuolio masė keičiami, pele stumdant slankiklį². Patikslinti nustatytą vertę galima klaviatūros rodyklių klavišais, prieš tai spustelėjus reikiamą slankiklį. Klaviatūra verčių nerašykite.</li><li>Norėdami pamatyti, kaip vyksta kūnų judėjimas, spustelėkite mygtuką „Pradėti“.</li><li>Norėdami kartoti bandymą, spustelėkite „Atnaujinti“.</li></ul></div>",
     "simulationFile": "assets/simulations/football.ggb",
     "questions": [

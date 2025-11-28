@@ -1,48 +1,102 @@
 {
-    "11": {
-        "Fizikos mokslo kalba ir pažinimo metodai": {
-            "Fizikos mokslo raida.": "Aptariamos fizikos istorijos svarbiausios datos, siejant su mokslininkų darbais ir atradimais, turėjusiais reikšmę žmonijai. Aptariamas Lietuvos fizikos mokslininkų indėlis į fizikos mokslą. Aiškinamasi ir mokomasi vertinti fizikos mokslo ir technologijų laimėjimų įtaką darniam vystymuisi, aptariama fizikinių technologijų svarba ES mokslinių tyrimų ir inovacijų programų kontekste. Aptariamos fizikos mokslo ateities perspektyvos.",
-            "Pažinimo metodai ir kalba.": "Aiškinamasi skirtumai ir panašumai tarp stebėjimo ir eksperimento, laboratorinio darbo ir tyrimo, teorinio ir eksperimentinio tyrimo. Prisimenami mokslinio tyrimo etapai. Aptariami modeliai kaip pažinimo metodas, jų naudojimo privalumai ir trūkumai. Aptariama tikslingo ir taisyklingo fizikinių sąvokų vartojimo svarba. Prisimenamos fizikinių dydžių ir matavimo vienetų rašymo taisyklės tekstiniame redaktoriuje. Aptariama, kaip atliekama fizikinių dydžių priklausomybių grafinė analizė, braižomi fizikinių dydžių priklausomybių grafikai.",
-            "Matavimai ir skaičiavimai fizikoje.": "Aptariami pagrindinių SI matavimo vienetų šiuolaikiniai apibrėžimai ir išvestinių fizikinių dydžių ryšys su pagrindiniais SI sistemos vienetais. Prisimenami daliniai ir kartotiniai fizikinių dydžių vienetai. Aptariamas matavimo tikslumo įvertinimas, matavimo ir skaičiavimo tikslumo įtaka gautiems rezultatams. Prisimenama, kurie fizikiniai dydžiai yra vektoriniai ir aptariama, ką padeda išsiaiškinti veiksmai su vektoriniais dydžiais. Prisimenamas absoliutinių ir santykinių matuojamų ir apskaičiuojamų fizikinių dydžių paklaidų skaičiavimas. Aptariama, kaip galima nustatyti ir sumažinti atsitiktines ir sistemines paklaidas."
-        },
-        "Judėjimas ir jėgos": {
-            "Judėjimas.": "Prisimenama mechaninio judėjimo sąvoka ir mechaninį judėjimą apibūdinantys skaliariniai ir vektoriniai dydžiai (kelias, poslinkis, greitis, pagreitis), jų matavimo vienetai, mechaninio judėjimo rūšys pagal trajektoriją ir judėjimo greitį. Apibrėžiamas materialusis taškas. Nagrinėjamos greičio, poslinkio ir koordinatės priklausomybės nuo laiko lygtys, braižomi šių priklausomybių grafikai. Mokomasi analizuoti grafikus: poslinkis nustatomas kaip greičio priklausomybės nuo laiko grafiko ribojamas plotas. Mokomasi apskaičiuoti tolygiai kintamai judančio kūno greitį, poslinkį ir koordinatę. Apibūdinamas netolyginio judėjimo vidutinis greitis, mokomasi apskaičiuoti vidutinį ir momentinį greitį bei pagreitį remiantis x(t), v(t) grafikais. Prisimenamas laisvasis kūnų kritimas kaip tolygiai kintamo judėjimo rūšis. Nagrinėjamas Galilėjaus reliatyvumo principas, sprendžiami uždaviniai taikant Galilėjaus reliatyvumo taisykles. Nagrinėjamas ir tyrinėjamas horizontaliai ir kampu į horizontą mesto kūno judėjimas kaip kūno judėjimas plokštumoje, kai veikia viena (sunkio) jėga, skaičiuojami greičio, pagreičio ir koordinatės kitimai x ir y ašyse. Eksperimentiškai nustatomas laisvojo kritimo pagreitis. Mokomasi tyrinėti judėjimą analizuojant vaizdo įrašą ir naudojant jutiklius.",
-            "Jėgos.": "Prisimenamas jėgos apibūdinimas, jėgų rūšys ir jų grafinis vaizdavimas, jėgų atstojamoji, inercija ir inertiškumas. Skaičiuojama ir grafiškai pavaizduojama jėgų atstojamoji. Aptariama atskaitos sistema ir Niutono dėsnių galiojimas, apibrėžiamos inercinės ir neinercinės atskaitos sistemos. Prisimenami ir tyrinėjami Niutono dėsniai, sprendžiami uždaviniai juos taikant. Nagrinėjamas visuotinės traukos dėsnis. Mokomasi apskaičiuoti laisvojo kritimo pagreitį prie Žemės paviršiaus ir tam tikrame aukštyje virš Žemės. Mokomasi apskaičiuoti su pagreičiu judančio kūno svorį. Nagrinėjamas ir tyrinėjamas Huko dėsnis, nagrinėjama atramos reakcijos jėga. Tyrinėjama trinties jėga, nagrinėjamos jos rūšys, mokomasi apskaičiuoti trinties koeficientą. Mokomasi spręsti uždavinius, kai kūnas veikiamas kelių jėgų (nuožulnioji plokštuma, surišti kūnai ir kt.). Mokomasi paaiškinti kasdienės aplinkos kūnų judėjimą remiantis žiniomis apie jėgas.",
-            "Judesio kiekis ir jėgos impulsas.": "Apibūdinamas judesio kiekis ir jėgos impulsas, jų matavimo vienetai; aiškinamasis antrojo Niutono dėsnio ir judesio kiekio ryšys. Braižomi ir analizuojami judesio kiekio ir jėgos priklausomybės nuo laiko grafikai. Atliekant ir stebint bandymus ir eksperimentuojant aiškinamasi, kas yra tamprūs ir netamprūs, centriniai ir necentriniai smūgiai. Nagrinėjamas ir tyrinėjamas kūnų judesio kiekio tvermės dėsnis, nustatant sąveikos metu įgytą greitį, pagreitį, veikiančią jėgą ir laiką, sprendžiami uždaviniai. Nagrinėjamas reaktyvusis judėjimas, aptariami Kazimiero Semenavičiaus darbai."
-        },
-        "Energija, darbas, galia": {
-            "Mechaninis darbas": {
-                "Mechaninio darbo sąvoka": "Prisimenamas mechaninio darbo apibūdinimas ir apibrėžimas. Aptariamos darbo atlikimo sąlygos ir darbą apibūdinantys dydžiai.",
-                "Darbo apskaičiavimas": "Mokomasi apskaičiuoti mechaninį darbą, kai jėga pastovi ir veikia išilgai judėjimo krypties. Mokomasi apskaičiuoti darbą, kai jėgos kryptis nesutampa su judėjimo kryptimi.",
-                "Darbo grafinis nustatymas": "Aiškinamasi, kaip grafiškai nustatyti jėgos atliktą darbą, kai jėga pastovi ar kinta tolygiai. Mokomasi analizuoti jėgos priklausomybės nuo poslinkio grafikus.",
-                "Darbo ir energijos sąryšis": "Nagrinėjamas mechaninio darbo sąryšis su kūno kinetinės ir potencinės energijos pokyčiu. Sprendžiami uždaviniai taikant darbo ir energijos sąryšį."
-            },
-            "Galia": {
-                "Galios sąvoka": "Prisimenamas galios apibūdinimas, apibrėžimas ir matavimo vienetai. Aptariama galios fizikine prasmė.",
-                "Galios apskaičiavimas": "Išsiaiškinama, kaip skaičiuojama pastoviu greičiu judančių kūnų galia. Mokomasi skaičiuoti galią įvairiose situacijose, sprendžiami uždaviniai."
-            },
-            "Mechaninė energija": {
-                "Kinetinė energija": "Prisimenamas kinetinės energijos apibūdinimas ir apskaičiavimo formulės. Mokomasi apskaičiuoti judančių kūnų kinetinę energiją.",
-                "Potencinė energija": "Prisimenamas potencinės energijos apibūdinimas ir apskaičiavimo formulės. Mokomasi apskaičiuoti kūnų potencinę energiją gravitaciniame lauke ir tampriai deformuoto kūno potencinę energiją.",
-                "Energijos tvermės dėsnis": "Prisimenamas energijos tvermės dėsnis. Sprendžiami energijos ir judesio kiekio tvermės dėsnių taikymo uždaviniai.",
-                "Energijos virsmai": "Tyrinėjami laisvai krintančių ir deformuotų kūnų energijos virsmai. Nagrinėjami įvairių sistemų energijos virsmai ir analizuojamos energijos transformacijos."
-            },
-            "Naudingumo koeficientas": {
-                "Naudingumo koeficiento sąvoka": "Prisimenama, kas yra naudingumo koeficientas, jo apibrėžimas ir fizikinė prasmė.",
-                "Naudingumo koeficiento taikymas": "Sprendžiami naudingumo koeficiento uždaviniai. Tyrinėjamas nuožulniosios plokštumos naudingumo koeficientas, nustatomos energijos nuostolių priežastys įvairiose sistemose."
-            }
-        },
-        "Šiluminiai reiškiniai": {
-            "Ryšys tarp mikro ir makro pasaulio.": "Mokomasi apibūdinti pagrindinius molekulinės kinetinės teorijos teiginius, aiškinamasi, kokiais bandymais jie įrodomi. Prisimenama, kurie fizikiniai reiškiniai yra šiluminiai, mokomasi juos paaiškinti remiantis molekuline kinetine teorija. Išsiaiškinama, kurie fizikiniai dydžiai nusako ryšį tarp mikro ir makro pasaulio – molinė masė, dalelės masė, dalelių skaičius, Avogadro konstanta, medžiagos kiekis, dalelių koncentracija, slėgis, medžiagos masė, tūris, tankis, temperatūra, vidutinis kvadratinis dujų molekulių šiluminio judėjimo greitis, dalelės kinetinė energija. Apibrėžiama absoliutinė temperatūra, aiškinamasi absoliutinio nulio fizikinė prasmė, absoliutinės temperatūros skalės ryšys su Celsijaus skale. Išsiaiškinama, kas yra idealiosios dujos. Mokomasi nusakyti idealiųjų vienatomių dujų vidinės energijos priklausomybę nuo temperatūros ir sieti vidinę energiją su molekulių kinetine energija. Mokomasi nusakyti dujų slėgio į indo sieneles atsiradimo priežastis ir užrašyti pagrindinę molekulinės kinetinės teorijos lygtį. Naudojant laboratorinę įrangą arba virtualius įrankius tyrinėjami dujų būseną apibūdinančių parametrų (slėgio, tūrio, temperatūros) tarpusavio ryšiai, užrašoma idealiųjų dujų būsenos lygtis, sprendžiami uždaviniai. Nagrinėjami izoprocesai (izochorinis, izobarinis ir izoterminis), jų grafikai, sprendžiami uždaviniai. Aptariama, kad idealiųjų dujų dėsniai realioms dujoms galioja tik esant mažam slėgiui ir dujų tankiui.",
-            "Termodinamika.": "Prisimenamas šilumos kiekis kaip vidinės energijos dalis, savitosios šilumos (medžiagos savitoji, savitoji lydymosi (kietėjimo), savitoji garavimo (kondensacijos), kuro degimo). Prisimenama šilumos balanso lygtis, sprendžiami kiekybiniai ir eksperimentiniai uždaviniai, kai dėl šilumos perdavimo kinta kelių kūnų temperatūra ir (ar) medžiagos būsena. Brėžiami ir analizuojami šilumos mainų ir fazinių virsmų temperatūros kitimo grafikai. Apibūdinamas darbas termodinamikoje, išsiaiškinamas dujų ir išorinių jėgų darbas, mokomasi dujų darbą apskaičiuoti iš grafiko. Nagrinėjamas I-asis termodinamikos dėsnis, apibūdinamas adiabatinis procesas, naudojant laboratorinę įrangą arba virtualias laboratorijas tyrinėjamas I-ojo termodinamikos dėsnio taikymas izoterminiam, izochoriniam, izobariniam, adiabatiniam procesams. Aptariami II-asis ir III-iasis termodinamikos dėsniai, entropija kaip fizikinės sistemos netvarkos matas, rodantis, kaip arti termodinaminės pusiausvyros yra kūnas."
-        },
-        "Elektra ir magnetizmas": {
-            "Elektrostatinis laukas.": "Stebint ir atliekant eksperimentus prisimenamas kūnų įelektrinimas, elektros krūvio rūšys ir sąveika, krūvio tvermės dėsnis, elektrinis laukas, elektrinio lauko stipris. Formuluojamas Kulono dėsnis, išvedama taškinio krūvio formulė. Apibrėžiamas laukų superpozicijos principas ir mokomasi skaičiuoti elektrinio lauko stiprį, kai lauką kuria keli krūviai. Nagrinėjamas elektrostatinio lauko jėgų darbas perkeliant krūvį, aptariamas ryšys tarp džaulio ir elektronvolto, mokomasi apskaičiuoti darbą. Apibūdinamas potencialas, ekvipotencialiniai paviršiai, aiškinamas elektrinio lauko stiprio ir potencialo ryšys, skaičiuojamas potencialų skirtumas (įtampa). Tyrinėjami laidininkai ir dielektrikai elektrostatiniame lauke, apibrėžiama dielektrinė skvarba. Aiškinamasi, kaip atsižvelgiama į aplinkos dielektrinę skvarbą skaičiuojant krūvių sąveikos jėgą ir elektrinio lauko stiprį tam tikru atstumu nuo krūvio. Prisimenama elektrinė talpa, kondensatoriai ir jų tipai, kondensatoriaus talpos priklausomybė nuo plokščių ploto, atstumo tarp jų. Nagrinėjama kondensatoriaus talpos priklausomybė nuo dielektriko savybių, skaičiuojama įelektrinto kondensatoriaus energija.",
-            "Elektros srovė metaluose.": "Prisimenamas elektros srovės metaluose apibūdinimas ir sąlygos srovei tekėti. Prisimenamas Omo dėsnis grandinės daliai, laidininko varža. Apibrėžiama laidininko savitoji varža, aiškinamasi, kas yra laidumas. Aptariama laidininko varžos priklausomybė nuo temperatūros, superlaidumas ir jo taikymas. Prisimenama, kaip braižomos grandinių schemos, laidininkų jungimo būdai. Nagrinėjamos grandinių voltamperinės charakteristikos, braižomi grafikai. Formuluojamas ir taikomas uždaviniams spręsti Džaulio ir Lenco dėsnis.",
-            "Elektros srovės šaltiniai.": "Remiantis galvaninio elemento pavyzdžiu apibrėžiama elektrovara ir vidinė varža. Formuluojamas Omo dėsnis uždarajai grandinei, sprendžiami uždaviniai, aptariamas trumpasis jungimas ir jo sukeliami pavojai. Tyrinėjant nustatoma šaltinio vidinė varža ir elektrovara, nuosekliai ir lygiagrečiai sujungtų srovės šaltinių elektrovara. Aptariamas baterijų ir kitų srovės šaltinių panaudojimas ir ekologinės problemos, susijusios su jų poveikiu aplinkai, akcentuojama rūšiavimo svarba.",
-            "Magnetinis laukas.": "Prisimenama nuolatinių magnetų ir elektros srovės kuriamo magnetinio lauko savybės, jo grafinis vaizdavimas bei magnetinių reiškinių kilmė, elektros srovių sąveika, magnetinė (Ampero) jėga, jos dydžio skaičiavimas ir krypties nustatymas. Virtualiai tyrinėjamas elektringųjų dalelių judėjimas elektriniame ir magnetiniame lauke, mokomasi apskaičiuoti Lorenco jėgą ir nustatyti jėgos veikimo kryptį. Aptariama, kur taikomas elektringųjų dalelių judėjimas magnetiniame lauke. Apibūdinamos magnetinės medžiagų savybės, magnetinė skvarba, feromagnetinės medžiagos ir jų taikymas.",
-            "Elektromagnetinė indukcija.": "Apibrėžiamas magnetinis srautas ir elektromagnetinė indukcija. Nagrinėjami elektromagnetinės indukcijos egzistavimą įrodantys eksperimentai, Faradėjaus indukcijos dėsnis, aptariamas elektromagnetinės indukcijos taikymas. Nagrinėjamas ir taikomas uždaviniams spręsti Lenco dėsnis ir tiesiame laidininke indukuota elektrovara. Mokomasi taikyti dešinės rankos taisyklę nustatyti indukuotos srovės kryptį tiesiame laidininke. Tyrinėjamas ir nagrinėjamas saviindukcijos reiškinys, jo taikymas. Pakartojamas ritės induktyvumas ir atliekant bandymus aptariama, nuo ko jis priklauso. Naudojantis induktyvumo apibrėžimu išvedama indukuotos elektrovaros formulė. Mokomasi apskaičiuoti elektros srovės sukurto magnetinio lauko energiją.",
-            "Energijos šaltiniai.": "Aptariamos įvairios energijos gamybai naudojamo kuro rūšys. Aptariami pirminiai ir antriniai energijos šaltiniai. Apibūdinami iškastinio kuro, branduolinės, termobranduonės, vėjo, hidro ir hidroakumuliacinės, geoterminės, saulės elementų elektrinės. Aptariamas skirtumas tarp saulės elementų ir saulės modulių. Analizuojami pagrindiniai įvairių energijos šaltinių saugumo, ekonomiškumo ir ekologiškumo aspektai, lyginami elektrinių naudingumo koeficientai, galia ir galia, tenkanti užimamo ploto vienetui. Taikant skaitmenines technologijas mokomasi braižyti ir analizuoti diagramas energijos gamybos ir perdavimo procesams. Diskutuojama apie energetikos plėtrą Lietuvoje ir pasaulyje remiantis elektrinių saugumo, ekonomiškumo ir ekologiškumo parametrais."
-        }
+  "11": {
+    "Fizikos mokslo kalba ir pažinimo metodai": {
+      "Fizikos mokslo raida.": "Aptariamos fizikos istorijos svarbiausios datos, siejant su mokslininkų darbais ir atradimais, turėjusiais reikšmę žmonijai. Aptariamas Lietuvos fizikos mokslininkų indėlis į fizikos mokslą. Aiškinamasi ir mokomasi vertinti fizikos mokslo ir technologijų laimėjimų įtaką darniam vystymuisi, aptariama fizikinių technologijų svarba ES mokslinių tyrimų ir inovacijų programų kontekste. Aptariamos fizikos mokslo ateities perspektyvos.",
+      "Pažinimo metodai ir kalba.": "Aiškinamasi skirtumai ir panašumai tarp stebėjimo ir eksperimento, laboratorinio darbo ir tyrimo, teorinio ir eksperimentinio tyrimo. Prisimenami mokslinio tyrimo etapai. Aptariami modeliai kaip pažinimo metodas, jų naudojimo privalumai ir trūkumai. Aptariama tikslingo ir taisyklingo fizikinių sąvokų vartojimo svarba. Prisimenamos fizikinių dydžių ir matavimo vienetų rašymo taisyklės tekstiniame redaktoriuje. Aptariama, kaip atliekama fizikinių dydžių priklausomybių grafinė analizė, braižomi fizikinių dydžių priklausomybių grafikai.",
+      "Matavimai ir skaičiavimai fizikoje.": "Aptariami pagrindinių SI matavimo vienetų šiuolaikiniai apibrėžimai ir išvestinių fizikinių dydžių ryšys su pagrindiniais SI sistemos vienetais. Prisimenami daliniai ir kartotiniai fizikinių dydžių vienetai. Aptariamas matavimo tikslumo įvertinimas, matavimo ir skaičiavimo tikslumo įtaka gautiems rezultatams. Prisimenama, kurie fizikiniai dydžiai yra vektoriniai ir aptariama, ką padeda išsiaiškinti veiksmai su vektoriniais dydžiais. Prisimenamas absoliutinių ir santykinių matuojamų ir apskaičiuojamų fizikinių dydžių paklaidų skaičiavimas. Aptariama, kaip galima nustatyti ir sumažinti atsitiktines ir sistemines paklaidas."
+    },
+    "Judėjimas ir jėgos": {
+      "Judėjimas": {
+        "Kinematikos pagrindai": "Prisimenama mechaninio judėjimo sąvoka ir mechaninį judėjimą apibūdinantys skaliariniai ir vektoriniai dydžiai (kelias, poslinkis, greitis, pagreitis), jų matavimo vienetai, mechaninio judėjimo rūšys pagal trajektoriją ir judėjimo greitį. Apibrėžiamas materialusis taškas.",
+        "Judėjimo lygtys ir grafikai": "Nagrinėjamos greičio, poslinkio ir koordinatės priklausomybės nuo laiko lygtys, braižomi šių priklausomybių grafikai. Mokomasi analizuoti grafikus: poslinkis nustatomas kaip greičio priklausomybės nuo laiko grafiko ribojamas plotas. Mokomasi apskaičiuoti vidutinį ir momentinį greitį bei pagreitį remiantis x(t), v(t) grafikais.",
+        "Tolygiai kintamas judėjimas": "Mokomasi apskaičiuoti tolygiai kintamai judančio kūno greitį, poslinkį ir koordinatę. Prisimenamas laisvasis kūnų kritimas kaip tolygiai kintamo judėjimo rūšis. Eksperimentiškai nustatomas laisvojo kritimo pagreitis.",
+        "Judėjimas plokštumoje": "Nagrinėjamas ir tyrinėjamas horizontaliai ir kampu į horizontą mesto kūno judėjimas kaip kūno judėjimas plokštumoje, kai veikia viena (sunkio) jėga, skaičiuojami greičio, pagreičio ir koordinatės kitimai x ir y ašyse.",
+        "Reliatyvumas": "Nagrinėjamas Galilėjaus reliatyvumo principas, sprendžiami uždaviniai taikant Galilėjaus reliatyvumo taisykles.",
+        "Tyrimai ir analizė": "Mokomasi tyrinėti judėjimą analizuojant vaizdo įrašą ir naudojant jutiklius."
+      },
+      "Jėgos": {
+        "Jėgų rūšys ir atstojamoji": "Prisimenamas jėgos apibūdinimas, jėgų rūšys ir jų grafinis vaizdavimas, jėgų atstojamoji, inercija ir inertiškumas. Skaičiuojama ir grafiškai pavaizduojama jėgų atstojamoji.",
+        "Niutono dėsniai": "Aptariama atskaitos sistema ir Niutono dėsnių galiojimas, apibrėžiamos inercinės ir neinercinės atskaitos sistemos. Prisimenami ir tyrinėjami Niutono dėsniai, sprendžiami uždaviniai juos taikant.",
+        "Gravitacija ir svoris": "Nagrinėjamas visuotinės traukos dėsnis. Mokomasi apskaičiuoti laisvojo kritimo pagreitį prie Žemės paviršiaus ir tam tikrame aukštyje virš Žemės. Mokomasi apskaičiuoti su pagreičiu judančio kūno svorį.",
+        "Tamprumo ir atramos jėgos": "Nagrinėjamas ir tyrinėjamas Huko dėsnis, nagrinėjama atramos reakcijos jėga.",
+        "Trinties jėga": "Tyrinėjama trinties jėga, nagrinėjamos jos rūšys, mokomasi apskaičiuoti trinties koeficientą.",
+        "Kelių jėgų veikimas": "Mokomasi spręsti uždavinius, kai kūnas veikiamas kelių jėgų (nuožulnioji plokštuma, surišti kūnai ir kt.). Mokomasi paaiškinti kasdienės aplinkos kūnų judėjimą remiantis žiniomis apie jėgas."
+      },
+      "Judesio kiekis ir jėgos impulsas": {
+        "Dydžių apibrėžimai": "Apibūdinamas judesio kiekis ir jėgos impulsas, jų matavimo vienetai; aiškinamasis antrojo Niutono dėsnio ir judesio kiekio ryšys. Braižomi ir analizuojami judesio kiekio ir jėgos priklausomybės nuo laiko grafikai.",
+        "Tvermės dėsnis": "Nagrinėjamas ir tyrinėjamas kūnų judesio kiekio tvermės dėsnis, nustatant sąveikos metu įgytą greitį, pagreitį, veikiančią jėgą ir laiką, sprendžiami uždaviniai.",
+        "Smūgiai": "Atliekant ir stebint bandymus ir eksperimentuojant aiškinamasi, kas yra tamprūs ir netamprūs, centriniai ir necentriniai smūgiai.",
+        "Reaktyvusis judėjimas": "Nagrinėjamas reaktyvusis judėjimas, aptariami Kazimiero Semenavičiaus darbai."
+      }
+    },
+    "Energija, darbas, galia": {
+      "Mechaninis darbas": {
+        "Mechaninio darbo sąvoka": "Prisimenamas mechaninio darbo apibūdinimas ir apibrėžimas. Aptariamos darbo atlikimo sąlygos ir darbą apibūdinantys dydžiai.",
+        "Darbo apskaičiavimas": "Mokomasi apskaičiuoti mechaninį darbą, kai jėga pastovi ir veikia išilgai judėjimo krypties. Mokomasi apskaičiuoti darbą, kai jėgos kryptis nesutampa su judėjimo kryptimi.",
+        "Darbo grafinis nustatymas": "Aiškinamasi, kaip grafiškai nustatyti jėgos atliktą darbą, kai jėga pastovi ar kinta tolygiai. Mokomasi analizuoti jėgos priklausomybės nuo poslinkio grafikus.",
+        "Darbo ir energijos sąryšis": "Nagrinėjamas mechaninio darbo sąryšis su kūno kinetinės ir potencinės energijos pokyčiu. Sprendžiami uždaviniai taikant darbo ir energijos sąryšį."
+      },
+      "Galia": {
+        "Galios sąvoka": "Prisimenamas galios apibūdinimas, apibrėžimas ir matavimo vienetai. Aptariama galios fizikine prasmė.",
+        "Galios apskaičiavimas": "Išsiaiškinama, kaip skaičiuojama pastoviu greičiu judančių kūnų galia. Mokomasi skaičiuoti galią įvairiose situacijose, sprendžiami uždaviniai."
+      },
+      "Mechaninė energija": {
+        "Kinetinė energija": "Prisimenamas kinetinės energijos apibūdinimas ir apskaičiavimo formulės. Mokomasi apskaičiuoti judančių kūnų kinetinę energiją.",
+        "Potencinė energija": "Prisimenamas potencinės energijos apibūdinimas ir apskaičiavimo formulės. Mokomasi apskaičiuoti kūnų potencinę energiją gravitaciniame lauke ir tampriai deformuoto kūno potencinę energiją.",
+        "Energijos tvermės dėsnis": "Prisimenamas energijos tvermės dėsnis. Sprendžiami energijos ir judesio kiekio tvermės dėsnių taikymo uždaviniai.",
+        "Energijos virsmai": "Tyrinėjami laisvai krintančių ir deformuotų kūnų energijos virsmai. Nagrinėjami įvairių sistemų energijos virsmai ir analizuojamos energijos transformacijos."
+      },
+      "Naudingumo koeficientas": {
+        "Naudingumo koeficiento sąvoka": "Prisimenama, kas yra naudingumo koeficientas, jo apibrėžimas ir fizikinė prasmė.",
+        "Naudingumo koeficiento taikymas": "Sprendžiami naudingumo koeficiento uždaviniai. Tyrinėjamas nuožulniosios plokštumos naudingumo koeficientas, nustatomos energijos nuostolių priežastys įvairiose sistemose."
+      }
+    },
+    "Šiluminiai reiškiniai": {
+      "Ryšys tarp mikro ir makro pasaulio": {
+        "Molekulinė kinetinė teorija": "Mokomasi apibūdinti pagrindinius molekulinės kinetinės teorijos teiginius, aiškinamasi, kokiais bandymais jie įrodomi. Prisimenama, kurie fizikiniai reiškiniai yra šiluminiai, mokomasi juos paaiškinti remiantis molekuline kinetine teorija.",
+        "Mikro ir makro parametrai": "Išsiaiškinama, kurie fizikiniai dydžiai nusako ryšį tarp mikro ir makro pasaulio – molinė masė, dalelės masė, dalelių skaičius, Avogadro konstanta, medžiagos kiekis, dalelių koncentracija, slėgis, medžiagos masė, tūris, tankis, temperatūra, vidutinis kvadratinis dujų molekulių šiluminio judėjimo greitis, dalelės kinetinė energija.",
+        "Temperatūra ir vidinė energija": "Apibrėžiama absoliutinė temperatūra, aiškinamasi absoliutinio nulio fizikinė prasmė, absoliutinės temperatūros skalės ryšys su Celsijaus skale. Mokomasi nusakyti idealiųjų vienatomių dujų vidinės energijos priklausomybę nuo temperatūros ir sieti vidinę energiją su molekulių kinetine energija.",
+        "Dujų dėsniai ir lygtys": "Mokomasi nusakyti dujų slėgio į indo sieneles atsiradimo priežastis ir užrašyti pagrindinę molekulinės kinetinės teorijos lygtį. Tyrinėjami dujų būseną apibūdinančių parametrų tarpusavio ryšiai, užrašoma idealiųjų dujų būsenos lygtis. Aptariama, kad idealiųjų dujų dėsniai realioms dujoms galioja tik esant mažam slėgiui ir dujų tankiui.",
+        "Izoprocesai": "Nagrinėjami izoprocesai (izochorinis, izobarinis ir izoterminis), jų grafikai, sprendžiami uždaviniai naudojant laboratorinę įrangą arba virtualius įrankius."
+      },
+      "Termodinamika": {
+        "Šilumos kiekis ir faziniai virsmai": "Prisimenamas šilumos kiekis, savitosios šilumos rūšys. Brėžiami ir analizuojami šilumos mainų ir fazinių virsmų temperatūros kitimo grafikai. Sprendžiami kiekybiniai ir eksperimentiniai uždaviniai taikant šilumos balanso lygtį.",
+        "Darbas termodinamikoje": "Apibūdinamas darbas termodinamikoje, išsiaiškinamas dujų ir išorinių jėgų darbas, mokomasi dujų darbą apskaičiuoti iš grafiko.",
+        "Pirmasis termodinamikos dėsnis": "Nagrinėjamas I-asis termodinamikos dėsnis, apibūdinamas adiabatinis procesas. Tyrinėjamas I-ojo termodinamikos dėsnio taikymas izoterminiam, izochoriniam, izobariniam, adiabatiniam procesams.",
+        "Antrasis ir trečiasis dėsniai": "Aptariami II-asis ir III-iasis termodinamikos dėsniai, entropija kaip fizikinės sistemos netvarkos matas, rodantis, kaip arti termodinaminės pusiausvyros yra kūnas."
+      }
+    },
+    "Elektra ir magnetizmas": {
+      "Elektrostatinis laukas": {
+        "Krūviai ir sąveika": "Prisimenamas kūnų įelektrinimas, elektros krūvio rūšys ir sąveika, krūvio tvermės dėsnis. Formuluojamas Kulono dėsnis, išvedama taškinio krūvio formulė.",
+        "Elektrinis laukas": "Prisimenamas elektrinis laukas, elektrinio lauko stipris. Apibrėžiamas laukų superpozicijos principas ir mokomasi skaičiuoti elektrinio lauko stiprį, kai lauką kuria keli krūviai.",
+        "Potencialas ir darbas": "Nagrinėjamas elektrostatinio lauko jėgų darbas perkeliant krūvį, aptariamas ryšys tarp džaulio ir elektronvolto. Apibūdinamas potencialas, ekvipotencialiniai paviršiai, aiškinamas elektrinio lauko stiprio ir potencialo ryšys, skaičiuojama įtampa.",
+        "Laidininkai ir dielektrikai": "Tyrinėjami laidininkai ir dielektrikai elektrostatiniame lauke, apibrėžiama dielektrinė skvarba ir jos įtaka krūvių sąveikai.",
+        "Kondensatoriai": "Prisimenama elektrinė talpa, kondensatoriai ir jų tipai. Nagrinėjama kondensatoriaus talpos priklausomybė nuo plokščių ploto, atstumo, dielektriko savybių. Skaičiuojama įelektrinto kondensatoriaus energija."
+      },
+      "Elektros srovė metaluose": {
+        "Srovė ir varža": "Prisimenamas elektros srovės metaluose apibūdinimas, sąlygos srovei tekėti, Omo dėsnis grandinės daliai. Apibrėžiama laidininko savitoji varža, laidumas, aptariama varžos priklausomybė nuo temperatūros ir superlaidumas.",
+        "Grandinės ir dėsniai": "Prisimenama, kaip braižomos grandinių schemos, laidininkų jungimo būdai. Nagrinėjamos grandinių voltamperinės charakteristikos. Formuluojamas ir taikomas Džaulio ir Lenco dėsnis."
+      },
+      "Elektros srovės šaltiniai": {
+        "Elektrovara ir vidinė varža": "Remiantis galvaninio elemento pavyzdžiu apibrėžiama elektrovara ir vidinė varža. Tyrinėjant nustatoma šaltinio vidinė varža ir elektrovara.",
+        "Uždaroji grandinė": "Formuluojamas Omo dėsnis uždarajai grandinei, sprendžiami uždaviniai, aptariamas trumpasis jungimas ir jo pavojai.",
+        "Šaltinių jungimas ir ekologija": "Nustatoma nuosekliai ir lygiagrečiai sujungtų srovės šaltinių elektrovara. Aptariamas baterijų panaudojimas ir ekologinės problemos, rūšiavimo svarba."
+      },
+      "Magnetinis laukas": {
+        "Magnetinio lauko savybės": "Prisimenama nuolatinių magnetų ir elektros srovės kuriamo magnetinio lauko savybės, jo grafinis vaizdavimas, magnetinių reiškinių kilmė ir elektros srovių sąveika.",
+        "Magnetinė jėga": "Nagrinėjama magnetinė (Ampero) jėga, jos dydžio skaičiavimas ir krypties nustatymas.",
+        "Lorenco jėga": "Virtualiai tyrinėjamas elektringųjų dalelių judėjimas elektriniame ir magnetiniame lauke, mokomasi apskaičiuoti Lorenco jėgą ir nustatyti jos kryptį. Aptariamas taikymas.",
+        "Medžiagų magnetinės savybės": "Apibūdinamos magnetinės medžiagų savybės, magnetinė skvarba, feromagnetinės medžiagos ir jų taikymas."
+      },
+      "Elektromagnetinė indukcija": {
+        "Indukcijos dėsniai": "Apibrėžiamas magnetinis srautas ir elektromagnetinė indukcija. Nagrinėjami eksperimentai, Faradėjaus indukcijos dėsnis. Nagrinėjamas Lenco dėsnis ir tiesiame laidininke indukuota elektrovara (dešinės rankos taisyklė).",
+        "Saviindukcija ir energija": "Tyrinėjamas saviindukcijos reiškinys ir jo taikymas. Pakartojamas ritės induktyvumas, nuo ko jis priklauso. Išvedama indukuotos elektrovaros formulė. Mokomasi apskaičiuoti magnetinio lauko energiją."
+      },
+      "Energijos šaltiniai": {
+        "Šaltinių tipai": "Aptariamos kuro rūšys, pirminiai ir antriniai energijos šaltiniai. Apibūdinami elektrinių tipai (iškastinio kuro, branduolinės, vėjo, hidro, geoterminės, saulės).",
+        "Efektyvumas ir ekologija": "Analizuojami energijos šaltinių saugumo, ekonomiškumo ir ekologiškumo aspektai, lyginami naudingumo koeficientai ir galia. Diskutuojama apie energetikos plėtrą ir tvarumą."
+      }
     }
+  }
 }

@@ -4,7 +4,7 @@
     "grade": 11,
     "topic": "Elektra ir magnetizmas",
     "subtopic": "Elektrostatinis laukas.",
-    "subsubtopic": "Elektros krūviai ir sąveika",
+    "subsubtopic": "Krūviai ir sąveika",
     "type": "numerical",
     "question": "6. Grafike pavaizduota dviejų vienodų taškinių elektros krūvių elektrostatinės sąveikos jėgos \\( F \\) priklausomybė nuo atstumo \\( r \\) tarp krūvių. Remdamiesi grafiko duomenimis ir Kulono dėsniu, apskaičiuokite elektros krūvio modulį. \\( k = 9,0 \\cdot 10^9 \\text{ N} \\cdot \\text{m}^2/\\text{C}^2 \\). Užrašykite atsakymą mikrokulonais (µC).",
     "image": "assets/images/graph_coulomb.svg",

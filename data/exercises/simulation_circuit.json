@@ -5,7 +5,7 @@
     "grade": 11,
     "topic": "Elektra ir magnetizmas",
     "subtopic": "Elektros srovės šaltiniai.",
-    "subsubtopic": "Omo dėsnis uždarai grandinei",
+    "subsubtopic": "Uždaroji grandinė",
     "question": "Elektros grandinės simuliacija<div class=\"simulation-instructions\"><p>Kaitinamoji lempa, kurios kaitinamojo siūlelio varža $R$ buvo prijungta prie galvaninio elemento ($E$ – galvaninio elemento elektrovara, o $r$ – jo vidinė varža). Naudodamiesi interaktyviu eksperimento įrankiu, pagal aprašytą situaciją keisdami galvaninio elemento elektrovarą ir vidinę varžą bei lempos kaitinamojo siūlelio varžą, atlikite užduotis.</p><p><strong>Įrankio valdymas</strong></p><ul style=\"padding-left: 20px;\"><li>Elektros grandinė jungiama jungikliu.</li><li>Maksimali galvaninio elemento elektrovara, vidinė varža ir lempos kaitinamojo siūlelio varža keičiami, pele stumdant slankiklį.</li><li> Patikslinti nustatytą vertę ± 0,1 galima klaviatūros rodyklių klavišais, prieš tai spustelėjus reikiamą slankiklį.</li></ul></div>",
     "simulationFile": "assets/simulations/grandine.ggb",
     "questions": [

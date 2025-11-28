@@ -5,7 +5,7 @@
     "grade": 11,
     "topic": "Elektra ir magnetizmas",
     "subtopic": "Elektros srovė metaluose.",
-    "subsubtopic": "Elektros grandinės",
+    "subsubtopic": "Grandinės ir dėsniai",
     "question": "Elektros grandinės tyrimas<div class=\"simulation-instructions\"><p>Schemoje pateikta elektros grandinė yra prijungta prie 9 V maitinimo šaltinio ir viso tyrimo metu <strong>įtampa nekeičiama</strong>. Grandinėje įjungtos keturios kaitrinės lempos, pažymėtos L1, L2, L3 ir L4. Visos keturios kaitrinės lempos yra <strong>vienodos</strong>.</p><p><strong>Įrankio valdymas</strong></p><ul style=\"padding-left: 20px;\"><li>Įtampa keičiama, <strong>pele stumdant slankiklį</strong>. Patikslinti nustatytą vertę ± 1 galima rodyklių klavišais, prieš tai spustelėjus reikiamą slankiklį. Klaviatūra verčių nerašykite.</li><li>Jungikliai įjungiami ir išjungiami, pele pažymėjus atitinkamą kvadratėlį.</li><li>Voltmetrų ir elektros srovės stiprio rodymas įjungiamas ir išjungiamas, pele pažymėjus atitinkamą kvadratėlį.</li></ul></div>",
     "simulationFile": "assets/simulations/grandine-2.ggb",
     "questions": [

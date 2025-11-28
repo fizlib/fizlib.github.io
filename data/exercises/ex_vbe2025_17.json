@@ -4,7 +4,6 @@
     "grade": 11,
     "topic": "Fizikos mokslo kalba ir pažinimo metodai",
     "subtopic": "Matavimai ir skaičiavimai fizikoje.",
-    "subsubtopic": "Matavimo prietaisai",
     "type": "numerical",
     "question": "Remdamiesi paveikslu, apskaičiuokite įtampos santykinę matavimo paklaidą procentais. Absoliučioji paklaida lygi pusei mažiausios voltmetro padalos vertės. Užrašykite atsakymą, suapvalintą iki sveikojo skaičiaus.",
     "image": "assets/images/ex-vbe2-3.png",
