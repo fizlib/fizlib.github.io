@@ -934,10 +934,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         } else if (ex.type === 'table_checkbox') {
             const headersHTML = ex.headers.map(h => `<th>${h}</th>`).join('');
-            
+
             const rowsHTML = ex.rows.map((rowText, rowIdx) => {
-                const cellsHTML = ex.headers.map((_, colIdx) => `
-                    <td>
+                const cellsHTML = ex.headers.map((headerName, colIdx) => `
+                    <td data-label="${headerName}">
                         <input type="checkbox" class="table-checkbox-input" data-row="${rowIdx}" data-col="${colIdx}">
                     </td>
                 `).join('');

@@ -967,3 +967,76 @@ body {
     font-weight: bold;
     font-size: 0.8rem;
 }
+
+/* --- RESPONSIVE TABLE (CARD VIEW) FOR MOBILE --- */
+
+@media (max-width: 600px) {
+    /* 1. Reset standard table display properties */
+    .table-checkbox-container {
+        border: none; /* Remove outer border */
+    }
+
+    .custom-table,
+    .custom-table tbody,
+    .custom-table tr,
+    .custom-table td {
+        display: block;
+        width: 100%;
+    }
+
+    /* 2. Hide the main header row (A, B, C at the top) */
+    .custom-table thead {
+        display: none;
+    }
+
+    /* 3. Style each row as a separate "Card" */
+    .custom-table tr {
+        margin-bottom: 1rem;
+        background-color: #fff;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        box-shadow: var(--shadow-sm);
+    }
+
+    /* 4. Style the Question Text (First cell) */
+    .custom-table td:first-child {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0 0 0.75rem 0;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        text-align: left;
+        color: var(--text-main);
+    }
+
+    /* 5. Container for the Checkboxes (Subsequent cells) */
+    /* We make them display inline-flex to sit side-by-side */
+    .custom-table td:not(:first-child) {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: auto; /* Allow them to shrink/grow */
+        min-width: 40px;
+        border: none;
+        padding: 0;
+        margin-right: 1.5rem; /* Space between A, B, C */
+    }
+
+    /* 6. Inject the Label (A, B, C) above the checkbox using the data-label we added in JS */
+    .custom-table td:not(:first-child)::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+    }
+
+    /* 7. Adjust checkbox size for easier tapping */
+    .table-checkbox-input {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
