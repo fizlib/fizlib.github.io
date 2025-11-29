@@ -1,0 +1,65 @@
+{
+    "id": "ex_vbe2024_p_17",
+    "type": "simulation",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Jėgos",
+    "subsubtopic": "Kelių jėgų veikimas",
+    "question": "Mokinys tyrinėjo besvoriu lynu surištų kūnų judėjimą. Naudodamiesi interaktyviu eksperimento įrankiu, pagal aprašytą situaciją keisdami kūnų mases ir trinties koeficientą, atsakykite į klausimus.<div class=\"simulation-instructions\"><p><strong>Įrankio valdymas:</strong></p><ul><li>Abiejų kūnų masės $m_1$ ir $m_2$ bei trinties koeficientas tarp $m_2$ ir paviršiaus, ant kurio jis padėtas, keičiami pele stumdant slankiklį. Patikslinti nustatytą vertę ± 0,1 galima rodyklių klavišais.</li><li>Norėdami, kad būtų rodomos skaitinės pagreičio, lyno įtempimo jėgos, greičio, laiko ir $m_1$ masės kūno aukščio pokyčio vertės, pažymėkite laukelį „Rodyti skaitines vertes“.</li><li>Norėdami pamatyti, kaip vyksta kūnų judėjimas, spustelėkite mygtuką „Pradėti“.</li></ul></div>",
+    "simulationFile": "assets/simulations/pulley-simulation.ggb",
+    "questions": [
+        {
+            "id": "q1",
+            "type": "text",
+            "question": "Atlikdami bandymą, išsiaiškinkite, kokiu atstumu į dešinę pasislinko $m_2 = 10$ kg masės kūnas, kai žemyn judantis $m_1 = 5$ kg masės kūnas pasiekė žemę?",
+            "correctAnswer": "2,4",
+            "unit": "m",
+            "solution": "Kūnas $m_2$ pasislenka tokiu pačiu atstumu, kokiu nusileidžia $m_1$. Iš simuliacijos duomenų matyti, kad aukštis $h = 2,4$ m."
+        },
+        {
+            "id": "q2",
+            "type": "text",
+            "question": "Kokiu vidutiniu greičiu judėjo $m_1 = 5$ kg ir $m_2 = 10$ kg surištų kūnų sistema, jeigu $m_1$ kūno greitis prie žemės paviršiaus buvo 4 m/s?",
+            "correctAnswer": "2",
+            "unit": "m/s",
+            "solution": "Judėjimas yra tolygiai greitėjantis be pradinio greičio, todėl vidutinis greitis $v_{vid} = \\frac{v_0 + v}{2} = \\frac{0 + 4}{2} = 2$ m/s."
+        },
+        {
+            "id": "q3",
+            "type": "fill_in_blanks",
+            "question": "$m_1 = 5$ kg masės kūnas tempia $m_2 = 10$ kg masės kūną, be trinties slystantį horizontaliu paviršiumi. Atlikdami bandymą, išsiaiškinkite, kam lygus $m_1$ kūno aukščio, jam nusileidus iš pradinės padėties iki žemės paviršiaus, pokytis ir jo greitis prie pat žemės paviršiaus. Apskaičiuokite $m_1$ kūno potencinės energijos <strong>pokytį</strong> ir jo kinetinę energiją. Laisvojo kritimo pagreitis $g = 10$ m/s². Atsakymą pateikite suapvalintą iki sveikųjų.",
+            "template": "Potencinės energijos pokytis {{}} J<br>Kinetinė energija {{}} J",
+            "correctAnswers": [
+                "120",
+                "40"
+            ],
+            "solution": "Aukščio pokytis $h = 2,4$ m (nustatyta iš bandymo).<br>Potencinės energijos pokytis: $\\Delta E_p = m_1 g h = 5 \\cdot 10 \\cdot 2,4 = 120$ J.<br>Greitis prie žemės $v = 4$ m/s.<br>Kinetinė energija: $E_k = \\frac{m_1 v^2}{2} = \\frac{5 \\cdot 4^2}{2} = 40$ J."
+        },
+        {
+            "id": "q4",
+            "type": "multiple_choice",
+            "question": "Kai $m_1 = 2$ kg, šio kūno kinetinė energija, kol jis pasiekia žemę, padidėja 8,59 J, o potencinė energija sumažėja 51,55 J. Pažymėkite <strong>visas</strong> galimas priežastis, dėl kurių ne visa potencinė energija virto kinetine ir kūnas neteko kinetinės energijos, kai atsitrenkė į žemę.",
+            "options": [
+                "Kūnui atsitrenkus į žemę, dalis energijos virto garso energija.",
+                "Dalis energijos sunaudota darbui, tempiant $m_2$ kūną horizontaliu paviršiumi, atlikti.",
+                "Kūnui atsitrenkus į žemę, dalis energijos virto vidine energija.",
+                "Dalis energijos sunaudota trinčiai tarp lyno ir skridinio įveikti."
+            ],
+            "correctAnswer": [
+                "Kūnui atsitrenkus į žemę, dalis energijos virto garso energija.",
+                "Dalis energijos sunaudota darbui, tempiant $m_2$ kūną horizontaliu paviršiumi, atlikti.",
+                "Kūnui atsitrenkus į žemę, dalis energijos virto vidine energija."
+            ],
+            "solution": "Potencinė energija virsta sistemos kinetine energija (tiek $m_1$, tiek $m_2$) bei darbu nugalint trintį (jei ji yra). Smūgio metu energija virsta garsu ir šiluma (vidine energija). Dalis energijos tenka $m_2$ įsibėgėjimui."
+        },
+        {
+            "id": "q5",
+            "type": "text",
+            "question": "$m_1 = 5$ kg kūnas tempia $m_2 = 6$ kg kūną, kol pasiekia žemę. Kokį darbą atliko trinties jėga, veikianti $m_2 = 6$ kg kūną, jei trinties koeficientas buvo 0,3? Laisvojo kritimo pagreitis $g = 10$ m/s².",
+            "correctAnswer": "43,2",
+            "unit": "J",
+            "solution": "Trinties jėga $F_{tr} = \\mu m_2 g = 0,3 \\cdot 6 \\cdot 10 = 18$ N.<br>Darbas $A = F_{tr} \\cdot s = 18 \\cdot 2,4 = 43,2$ J."
+        }
+    ]
+}
