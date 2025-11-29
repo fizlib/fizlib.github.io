@@ -1,0 +1,52 @@
+{
+    "id": "ex_vbe2024_p_9",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Šiluminiai reiškiniai",
+    "subtopic": "Termodinamika",
+    "subsubtopic": "Šilumos kiekis ir faziniai virsmai",
+    "type": "matching",
+    "question": "Sujunkite formules su jų aprašymais.",
+    "matchItems": [
+        {
+            "question": "$Q = \\lambda m$",
+            "options": [
+                "Kūno gautas ar išskirtas šilumos kiekis",
+                "Sudeginto kuro išskirtas šilumos kiekis",
+                "Lydymosi temperatūros kūnui išlydyti reikalingas šilumos kiekis",
+                "Virimo temperatūros skysčiui išgarinti reikalingas šilumos kiekis"
+            ],
+            "correctAnswer": "Lydymosi temperatūros kūnui išlydyti reikalingas šilumos kiekis"
+        },
+        {
+            "question": "$Q = Lm$",
+            "options": [
+                "Kūno gautas ar išskirtas šilumos kiekis",
+                "Sudeginto kuro išskirtas šilumos kiekis",
+                "Lydymosi temperatūros kūnui išlydyti reikalingas šilumos kiekis",
+                "Virimo temperatūros skysčiui išgarinti reikalingas šilumos kiekis"
+            ],
+            "correctAnswer": "Virimo temperatūros skysčiui išgarinti reikalingas šilumos kiekis"
+        },
+        {
+            "question": "$Q = qm$",
+            "options": [
+                "Kūno gautas ar išskirtas šilumos kiekis",
+                "Sudeginto kuro išskirtas šilumos kiekis",
+                "Lydymosi temperatūros kūnui išlydyti reikalingas šilumos kiekis",
+                "Virimo temperatūros skysčiui išgarinti reikalingas šilumos kiekis"
+            ],
+            "correctAnswer": "Sudeginto kuro išskirtas šilumos kiekis"
+        },
+        {
+            "question": "$Q = mc(t_2 - t_1)$",
+            "options": [
+                "Kūno gautas ar išskirtas šilumos kiekis",
+                "Sudeginto kuro išskirtas šilumos kiekis",
+                "Lydymosi temperatūros kūnui išlydyti reikalingas šilumos kiekis",
+                "Virimo temperatūros skysčiui išgarinti reikalingas šilumos kiekis"
+            ],
+            "correctAnswer": "Kūno gautas ar išskirtas šilumos kiekis"
+        }
+    ]
+}

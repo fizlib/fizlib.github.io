@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_p_10",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektrostatinis laukas",
+    "subsubtopic": "Krūviai ir sąveika",
+    "type": "multiple_choice",
+    "question": "Turime tris vienodus metalinius rutulius. Vieno iš jų krūvis lygus $q$, o kiti du neįelektrinti. Jie visi suglaudžiami, o paskui atskiriami. Kam lygus kiekvieno rutulio krūvis, juos atskyrus?",
+    "options": [
+        "Jų visų krūvis $q/3$.",
+        "Jų visų krūvis $q$.",
+        "Krūvį $q$ turi tik tas pats vienas rutulys.",
+        "Nė vienas iš jų krūvio neturi."
+    ],
+    "correctAnswer": "Jų visų krūvis $q/3$.",
+    "solution": "Pagal krūvio tvermės dėsnį, bendras sistemos krūvis suglaudus išlieka toks pat: $Q_{\\text{bendras}} = q + 0 + 0 = q$. Kadangi rutuliai vienodi, atskyrus juos krūvis pasiskirsto po lygiai: $q' = \\frac{Q_{\\text{bendras}}}{3} = \\frac{q}{3}$."
+}

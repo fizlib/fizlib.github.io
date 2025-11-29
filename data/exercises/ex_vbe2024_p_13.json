@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_p_13",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Magnetinis laukas",
+    "subsubtopic": "Magnetinio lauko savybės",
+    "type": "multiple_choice",
+    "question": "Saulės vainiko pliūpsnių metu yra išspinduliuojami intensyvūs elektringųjų dalelių srautai. Šių dalelių sąveika su Žemės magnetiniu lauku sukelia jo neįprastus svyravimus – magnetinę audrą, galinčią paveikti įvairius elektromagnetinės kilmės procesus. Kuriam procesui magnetinė audra nedaro poveikio?",
+    "options": [
+        "GPS (globaliai padėties nustatymo sistemai)",
+        "Mobiliajam ryšiui",
+        "Jūros lygio svyravimams (potvyniams ir atoslūgiams)",
+        "Elektros srovės tiekimui"
+    ],
+    "correctAnswer": "Jūros lygio svyravimams (potvyniams ir atoslūgiams)",
+    "solution": "Magnetinės audros veikia jonosferą ir indukuoja sroves ilguose laidininkuose, todėl trikdo radijo ryšį (GPS, mobilųjį ryšį) ir elektros tinklus. Jūros lygio svyravimus (potvynius ir atoslūgius) sukelia Mėnulio ir Saulės gravitacinė trauka, o ne magnetinis laukas."
+}

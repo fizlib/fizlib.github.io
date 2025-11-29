@@ -1,0 +1,99 @@
+<svg width="850" height="300" viewBox="0 0 850 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black" />
+    </marker>
+  </defs>
+
+  <g id="circuit-diagram" transform="translate(10, 10)">
+    <rect x="0" y="0" width="380" height="280" fill="none" stroke="black" stroke-width="1.5"/>
+
+    <g transform="translate(80, 100)" stroke="black" stroke-width="1.5" fill="none">
+      <rect x="0" y="0" width="50" height="30"/>
+      <rect x="50" y="0" width="50" height="30"/>
+      <rect x="100" y="0" width="50" height="30"/>
+    </g>
+
+    <line x1="80" y1="150" x2="280" y2="150" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <g font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+      <line x1="80" y1="145" x2="80" y2="155" stroke="black" stroke-width="1.5"/>
+      <text x="80" y="175">0</text>
+
+      <line x1="130" y1="145" x2="130" y2="155" stroke="black" stroke-width="1.5"/>
+      <text x="130" y="175">0,1</text>
+
+      <line x1="180" y1="145" x2="180" y2="155" stroke="black" stroke-width="1.5"/>
+      <text x="180" y="175">0,2</text>
+
+      <line x1="230" y1="145" x2="230" y2="155" stroke="black" stroke-width="1.5"/>
+      <text x="230" y="175">0,3</text>
+      
+      <text x="300" y="175" font-style="italic">X, <tspan font-style="normal">m</tspan></text>
+    </g>
+
+    <g transform="translate(155, 230)">
+       <line x1="0" y1="-15" x2="0" y2="15" stroke="black" stroke-width="2"/>
+       <line x1="10" y1="-8" x2="10" y2="8" stroke="black" stroke-width="4"/>
+    </g>
+
+    <path d="M 80,115 L 40,115 L 40,230 L 155,230" fill="none" stroke="black" stroke-width="1.5"/> 
+    <path d="M 230,115 L 340,115 L 340,230 L 165,230" fill="none" stroke="black" stroke-width="1.5"/> 
+
+    <g>
+      <circle cx="95" cy="50" r="20" fill="white" stroke="black" stroke-width="1.5"/>
+      <text x="95" y="55" font-family="Arial, sans-serif" font-size="18" text-anchor="middle">V</text>
+      
+      <polyline points="40,115 40,50 75,50" fill="none" stroke="black" stroke-width="1.5"/>
+      
+      <polyline points="115,50 130,50 130,90" fill="none" stroke="black" stroke-width="1.5"/>
+      
+      <path d="M 130,100 L 125,90 L 135,90 Z" fill="black" stroke="none" />
+      
+      <text x="145" y="90" font-family="Arial, sans-serif" font-size="16">K</text>
+    </g>
+  </g>
+
+
+  <g id="graph-diagram" transform="translate(410, 10)">
+    <rect x="0" y="0" width="430" height="280" fill="none" stroke="black" stroke-width="1.5"/>
+
+    <g stroke="#999" stroke-width="1">
+       <line x1="60" y1="230" x2="380" y2="230"/> 
+       <line x1="60" y1="180" x2="380" y2="180"/> 
+       <line x1="60" y1="130" x2="380" y2="130"/> 
+       <line x1="60" y1="80" x2="380" y2="80"/> 
+       <line x1="60" y1="30" x2="380" y2="30"/>  
+    </g>
+
+    <g font-family="Arial, sans-serif" font-size="14" text-anchor="end">
+       <text x="50" y="235">0</text>
+       <text x="50" y="185">2</text>
+       <text x="50" y="135">4</text>
+       <text x="50" y="85">6</text>
+       <text x="50" y="35">8</text>
+       <text x="50" y="20" font-style="italic">U, <tspan font-style="normal">V</tspan></text>
+    </g>
+
+    <g font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+       <text x="60" y="255">0</text>
+       <text x="140" y="255">0,1</text>
+       <text x="220" y="255">0,2</text>
+       <text x="300" y="255">0,3</text>
+       <text x="380" y="255">0,4</text>
+       <text x="380" y="275" font-style="italic">X, <tspan font-style="normal">m</tspan></text>
+    </g>
+
+    <line x1="60" y1="230" x2="60" y2="20" stroke="black" stroke-width="1.5"/>
+    <line x1="60" y1="230" x2="380" y2="230" stroke="black" stroke-width="1.5"/>
+
+    <polyline points="60,230 140,205 220,155 300,80" fill="none" stroke="#333" stroke-width="3"/>
+
+    <g fill="#333">
+       <path d="M60,225 L65,230 L60,235 L55,230 Z" />
+       <path d="M140,200 L145,205 L140,210 L135,205 Z" />
+       <path d="M220,150 L225,155 L220,160 L215,155 Z" />
+       <path d="M300,75 L305,80 L300,85 L295,80 Z" />
+    </g>
+
+  </g>
+</svg>

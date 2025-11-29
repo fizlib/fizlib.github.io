@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_p_11",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektros srovė metaluose",
+    "subsubtopic": "Grandinės ir dėsniai",
+    "type": "multiple_choice",
+    "question": "Kokio didumo įtampą rodo į grandinę įjungtas be galo didelės varžos voltmetras?",
+    "image": "assets/images/ex_vbe2024_p_11.svg",
+    "options": [
+        "0,1 V",
+        "2 V",
+        "0,2 V",
+        "1 V"
+    ],
+    "correctAnswer": "1 V",
+    "solution": "Grandinėje yra du nuosekliai sujungti rezistoriai po $10~\\Omega$ (voltmetro varža begalinė, todėl jis srovės 'nevagia' ir nekeičia bendros varžos). Bendra varža $R = 10 + 10 = 20~\\Omega$. Srovė grandinėje $I = U/R = 2/20 = 0{,}1~\\text{A}$. Voltmetras matuoja įtampą ant vieno $10~\\Omega$ rezistoriaus: $U_V = I \\cdot R = 0{,}1 \\cdot 10 = 1~\\text{V}$.\nArba: kadangi rezistoriai vienodi, įtampa pasiskirsto po lygiai: $2~\\text{V} / 2 = 1~\\text{V}$."
+}

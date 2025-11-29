@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="500" height="300">
+  <defs>
+    <style>
+      .thick-line {
+        stroke: black;
+        stroke-width: 3;
+        stroke-linejoin: round;
+      }
+      .ramp-fill {
+        fill: #e0e0e0; /* Light gray */
+      }
+      .block-fill {
+        fill: #c0c0c0; /* Slightly darker gray */
+      }
+      .angle-text {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </defs>
+
+  <path d="M 50 20 L 450 250 L 50 250 Z" class="thick-line ramp-fill" />
+
+  <rect x="150" y="17.5" width="60" height="60" class="thick-line block-fill" transform="rotate(30 150 77.5)" />
+
+  <path d="M 415.4 230 A 40 40 0 0 0 410 250" fill="none" stroke="black" stroke-width="2" />
+
+  <text x="365" y="240" class="angle-text">30°</text>
+
+</svg>

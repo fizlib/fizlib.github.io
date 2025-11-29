@@ -1,0 +1,24 @@
+{
+    "id": "ex_vbe2024_p_6",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Energija, darbas, galia",
+    "subtopic": "Mechaninė energija",
+    "subsubtopic": "Energijos virsmai",
+    "type": "matching",
+    "question": "Kamuolys, mestas vertikaliai aukštyn y ašies kryptimi, sugrįžta į pradinį tašką. Nurodykite, kuriame iš grafikų pavaizduota kamuolio kinetinės energijos ($E_k$) priklausomybė nuo laiko, o kuriame – potencinės energijos priklausomybė nuo laiko ($E_p$).",
+    "image": "assets/images/ex_vbe2024_p_6.svg",
+    "matchItems": [
+        {
+            "question": "Kairysis grafikas (prasideda aukštai, nusileidžia iki 0, vėl pakyla)",
+            "options": ["Ek", "Ep"],
+            "correctAnswer": "Ek"
+        },
+        {
+            "question": "Dešinysis grafikas (prasideda nuo 0, pakyla, nusileidžia)",
+            "options": ["Ek", "Ep"],
+            "correctAnswer": "Ep"
+        }
+    ],
+    "solution": "Metant kamuolį aukštyn: \n1. Pradžioje greitis maksimalus -> Kinetinė energija ($E_k = mv^2/2$) maksimali. Aukštis 0 -> Potencinė energija ($E_p = mgh$) lygi 0.\n2. Aukščiausiame taške greitis 0 -> $E_k = 0$. Aukštis maksimalus -> $E_p$ maksimali.\n3. Grįžtant greitis didėja -> $E_k$ didėja. Aukštis mažėja -> $E_p$ mažėja.\nTodėl kairysis grafikas (U formos) yra $E_k$, o dešinysis (kalnelio formos) yra $E_p$."
+}

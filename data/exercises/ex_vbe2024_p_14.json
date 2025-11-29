@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_p_14",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Magnetinis laukas",
+    "subsubtopic": "Lorenco jėga",
+    "type": "multiple_choice",
+    "question": "Dalelė, įelektrinta krūviu $q$, $10^8 \\text{ m/s}$ greičiu skrieja erdvėje tarp dviejų įelektrintų plokščių, kurios kuria $10^5 \\text{ N/C}$ stiprio elektrinį lauką. Dalelės masės galima nepaisyti. Kokio didumo turi būti tos erdvės magnetinio lauko indukcija, kad dalelė praskrietų pro siaurą plyšį A?",
+    "image": "assets/images/ex_vbe2024_p_14.svg",
+    "options": [
+        "$10^{-13} \\text{ T}$",
+        "$10^{-3} \\text{ T}$",
+        "$10^3 \\text{ T}$",
+        "$10^{13} \\text{ T}$"
+    ],
+    "correctAnswer": "$10^{-3} \\text{ T}$",
+    "solution": "Kad dalelė judėtų tiesiai (į tašką A), ją veikiančios jėgos turi atsverti viena kitą. Elektrinė jėga $F_E = qE$. Lorenco (magnetinė) jėga $F_L = qvB$.\nSąlyga tiesiaeigiam judėjimui: $F_E = F_L \\Rightarrow qE = qvB$.\n$B = \\frac{E}{v} = \\frac{10^5}{10^8} = 10^{-3} \\text{ T}$."
+}

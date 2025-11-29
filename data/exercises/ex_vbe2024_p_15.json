@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_p_15",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Energijos šaltiniai",
+    "subsubtopic": "Efektyvumas ir ekologija",
+    "type": "multiple_choice",
+    "question": "Žibintuvėliuose, išmaniuosiuose telefonuose, dulkių siurbliuose, elektriniuose paspirtukuose, automobiliuose ir kituose įrenginiuose yra baterijų arba akumuliatorių. Jų gamybai naudojami neatsinaujinantys gamtos ištekliai, o gamybos metu teršiama aplinka. Baterijų ir akumuliatorių atliekose yra pavojingų cheminių medžiagų, kurios gali pakenkti aplinkai. Kuris baterijų ir akumuliatorių gamybos ir vartojimo ciklo pokytis greičiausiai prisidėtų prie darnaus vystymosi?",
+    "options": [
+        "Visuomenės švietimas apie tvarų baterijų ir akumuliatorių vartojimą",
+        "Tvaresnių baterijų ir akumuliatorių gamybos technologijų kūrimas",
+        "Baterijų ir akumuliatorių atliekų antrinio panaudojimo plėtra",
+        "Naujų energijos šaltinių paieška",
+        "Baterijų ir akumuliatorių atliekų utilizavimo tobulinimas"
+    ],
+    "correctAnswer": "Baterijų ir akumuliatorių atliekų antrinio panaudojimo plėtra",
+    "solution": "Pagal žiedinės ekonomikos principus (Reduce, Reuse, Recycle), antrinis panaudojimas (Reuse) yra efektyvesnis ir duoda greitesnį rezultatą nei utilizavimas (Recycle) ar naujų technologijų kūrimas, nes pratęsia gaminio gyvavimo ciklą be papildomų didelių energijos sąnaudų perdirbimui."
+}

@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_p_7",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Energija, darbas, galia",
+    "subtopic": "Mechaninė energija",
+    "subsubtopic": "Energijos tvermės dėsnis",
+    "type": "multiple_choice",
+    "question": "Kūnas, kurio masė 5 kg, be pradinio greičio ir trinties slysta žemyn lygiu nuožulniosios plokštumos paviršiumi. Laisvojo kritimo pagreitis $g = 10 \\text{ m/s}^2$, o $\\sin 30^\\circ = 0{,}5$. Kam lygi šio kūno kinetinė energija, nuslydus 20 m?",
+    "image": "assets/images/ex_vbe2024_p_7.svg",
+    "options": [
+        "200 J",
+        "300 J",
+        "400 J",
+        "500 J"
+    ],
+    "correctAnswer": "500 J",
+    "solution": "Nuslydus kelią $L=20$ m kampu $\\alpha=30^\\circ$, kūno aukščio pokytis $h = L \\cdot \\sin\\alpha = 20 \\cdot 0{,}5 = 10 \\text{ m}$.\nPagal energijos tvermės dėsnį, potencinė energija virsta kinetine (trinties nėra): $E_k = E_p = mgh$.\n$E_k = 5 \\cdot 10 \\cdot 10 = 500 \\text{ J}$."
+}

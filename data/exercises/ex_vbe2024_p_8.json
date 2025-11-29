@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_p_8",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Energija, darbas, galia",
+    "subtopic": "Galia",
+    "subsubtopic": "Galios apskaičiavimas",
+    "type": "multiple_choice",
+    "question": "Kokią galią išvysto konstruktoriaus variklis, 2 m/s greičiu keldamas 300 g masės svarelį?",
+    "options": [
+        "600 W",
+        "6 W",
+        "6000 W",
+        "60 W"
+    ],
+    "correctAnswer": "6 W",
+    "solution": "Galia skaičiuojama pagal formulę $P = F \\cdot v$. Keliant tolygiai, jėga lygi sunkio jėgai: $F = mg$.\n$m = 300 \\text{ g} = 0{,}3 \\text{ kg}$.\n$P = m \\cdot g \\cdot v = 0{,}3 \\cdot 10 \\cdot 2 = 6 \\text{ W}$."
+}

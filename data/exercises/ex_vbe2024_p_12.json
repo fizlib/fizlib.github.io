@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_p_12",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektros srovė metaluose",
+    "subsubtopic": "Grandinės ir dėsniai",
+    "type": "multiple_choice",
+    "question": "Mokinys tyrė tris vienodo ilgio ir vienodo skerspjūvio ploto, bet skirtingų medžiagų laidininkus. Jie buvo sujungti taip, kaip pavaizduota elektros grandinės schemoje (nuosekliai). Remdamasis voltmetro rodmenimis, mokinys turėjo suformuluoti išvadą apie laidininkų varžų santykį. Išanalizavęs gautus duomenis, jis nubraižė paveiksle pavaizduotą įtampos priklausomybę nuo šliaužiklio padėties $x$. Kokį varžų santykį mokinys nurodė išvadoje?",
+    "image": "assets/images/ex_vbe2024_p_12.svg",
+    "options": [
+        "1 : 3 : 6",
+        "1 : 2 : 3",
+        "3 : 2 : 1",
+        "6 : 3 : 1"
+    ],
+    "correctAnswer": "1 : 2 : 3",
+    "solution": "Nuoseklioje grandinėje srovė $I$ visur vienoda, todėl $U = I \\cdot R$, t.y. įtampos kritimas proporcingas varžai ($U \\sim R$).\nIš grafiko matome įtampos pokyčius kiekvienam laidininkui (kiekvienas laidininkas yra $0{,}1\\text{ m}$ ilgio):\n1. Pirmas laidininkas ($0 - 0{,}1\\text{ m}$): $\\Delta U_1 = 1 - 0 = 1\\text{ V}$.\n2. Antras laidininkas ($0{,}1 - 0{,}2\\text{ m}$): $\\Delta U_2 = 3 - 1 = 2\\text{ V}$.\n3. Trečias laidininkas ($0{,}2 - 0{,}3\\text{ m}$): $\\Delta U_3 = 6 - 3 = 3\\text{ V}$.\nVaržų santykis lygus įtampų santykiui: $R_1 : R_2 : R_3 = 1 : 2 : 3$."
+}
