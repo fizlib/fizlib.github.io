@@ -1,0 +1,60 @@
+{
+    "id": "ex_vbe2024_p_16",
+    "type": "structural",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas",
+    "subsubtopic": "Tolygiai kintamas judėjimas",
+    "question": "Keliu važiuoja automobilis, o paskui jį kita kelio juosta pradeda važiuoti motociklas. Naudodamiesi paveiksle pavaizduotais jų kelio priklausomybės nuo laiko grafikais, atsakykite į klausimus.",
+    "image": "assets/images/ex_vbe2024_p_strukt_1.svg",
+    "questions": [
+        {
+            "id": "q16_1",
+            "type": "multiple_choice",
+            "question": "Pažymėkite teiginius, kurie teisingai apibūdina automobilio ir motociklo judėjimą. (1 taškas)",
+            "options": [
+                "Automobilis juda tiesiai ir tolygiai.",
+                "Automobilis visą laiką juda greitėdamas.",
+                "Motociklas pirmas 5 s juda tolygiai greitėdamas, o kitas 5 s – tolygiai lėtėdamas.",
+                "Motociklas visą laiką važiuoja tolygiai greitėdamas."
+            ],
+            "correctAnswer": [
+                "Automobilis juda tiesiai ir tolygiai.",
+                "Motociklas visą laiką važiuoja tolygiai greitėdamas."
+            ]
+        },
+        {
+            "id": "q16_2_group",
+            "type": "group",
+            "question": "Kokiu pagreičiu motociklas greitėjo? Pažymėkite formulę, kuria remdamiesi, pagal grafike pateiktus duomenis, galėsite apskaičiuoti pagreitį, ir jį apskaičiuokite."
+        },
+        {
+            "id": "q16_2_1",
+            "type": "multiple_choice",
+            "question": "Pažymėkite tinkamą formulę:",
+            "options": [
+                "$$ a = \\frac{v^2}{2s} $$",
+                "$$ a = \\frac{v - v_0}{t} $$",
+                "$$ a = \\frac{2s}{t^2} $$"
+            ],
+            "correctAnswer": "$$ a = \\frac{2s}{t^2} $$"
+        },
+        {
+            "id": "q16_2_2",
+            "type": "text",
+            "question": "Apskaičiuokite pagreitį. <i>Užrašykite atsakymą.</i>",
+            "correctAnswer": "4",
+            "unit": "m/s²",
+            "solution": "Pasirenkame tašką grafike: $t=10 \\text{ s}$, $s=200 \\text{ m}$. <br> $$ a = \\frac{2s}{t^2} = \\frac{2 \\cdot 200}{10^2} = \\frac{400}{100} = 4 \\text{ m/s}^2 $$"
+        },
+        {
+            "id": "q16_3",
+            "type": "text",
+            "question": "Apskaičiuokite, kokiu vidutiniu greičiu judėjo motociklas. <i>Užrašykite atsakymą.</i>",
+            "correctAnswer": "20",
+            "unit": "m/s",
+            "solution": "$$ v_{vid} = \\frac{s}{t} = \\frac{200}{10} = 20 \\text{ m/s} $$"
+        }
+    ]
+}
