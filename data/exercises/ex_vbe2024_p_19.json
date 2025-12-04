@@ -1,0 +1,66 @@
+{
+    "id": "ex_vbe2024_p_19",
+    "type": "structural",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektrostatinis laukas",
+    "subsubtopic": "Kondensatoriai",
+    "question": "Norėdamas ištirti plokščiojo kondensatoriaus savybes, mokinys jam pagaminti panaudojo dvi aliuminio folijos juostas, kurių kiekvienos ilgis 0,5 m, o plotis 4 cm. Įtampą matuojančiu prietaisu jis nustatė 9 V įtampą tarp juostų, 3 mm atstumu, kaip pavaizduota paveiksle.",
+    "image": "assets/images/ex_vbe2024_p_19.svg",
+    "questions": [
+        {
+            "id": "q1",
+            "type": "text",
+            "question": "1. Apskaičiuokite kondensatoriaus elektrinę talpą. Atsakymą pateikite pikofaradais, suapvalinę iki sveikojo skaičiaus.",
+            "correctAnswer": "59",
+            "unit": "pF",
+            "solution": "$$ C = \\frac{\\varepsilon_0 S}{d} $$ <br> $$ S = 0,5 \\cdot 0,04 = 0,02 \\text{ m}^2 $$ <br> $$ d = 3 \\cdot 10^{-3} \\text{ m} $$ <br> $$ C = \\frac{8,85 \\cdot 10^{-12} \\cdot 0,02}{3 \\cdot 10^{-3}} \\approx 59 \\cdot 10^{-12} \\text{ F} = 59 \\text{ pF} $$"
+        },
+        {
+            "id": "q2",
+            "type": "text",
+            "question": "2. Kam lygi įtampa tarp kondensatoriaus plokštelių?",
+            "correctAnswer": "9",
+            "unit": "V",
+            "solution": "Įtampa nurodyta sąlygoje: $U = 9$ V."
+        },
+        {
+            "id": "q3",
+            "type": "multiple_choice",
+            "question": "3. Kuris paveikslėlis teisingai vaizduoja baterijos polių ženklus?",
+            "options": [
+                "<img src='assets/images/ex_vbe2024_p_19_optA.svg' alt='A' style='height: 50px;'>",
+                "<img src='assets/images/ex_vbe2024_p_19_optB.svg' alt='B' style='height: 50px;'>"
+            ],
+            "correctAnswer": "<img src='assets/images/ex_vbe2024_p_19_optA.svg' alt='A' style='height: 50px;'>",
+            "solution": "Ilgesnė baterijos simbolio linija žymi teigiamą polių (+), o trumpesnė ir storesnė – neigiamą (-)."
+        },
+        {
+            "id": "q4",
+            "type": "multiple_choice",
+            "question": "4. Pažymėkite teisingą elektrinio lauko jėgų linijų kryptį tarp kondensatoriaus plokštelių.",
+            "options": [
+                "Iš teigiamos į neigiamą",
+                "Iš neigiamos į teigiamą",
+                "Lygiagrečiai plokštelėms",
+                "Apskritimais aplink plokšteles"
+            ],
+            "correctAnswer": "Iš teigiamos į neigiamą",
+            "solution": "Elektrinio lauko jėgų linijos eina iš teigiamo krūvio į neigiamą."
+        },
+        {
+            "id": "q5",
+            "type": "multiple_choice",
+            "question": "5. Vieną aliuminio juostą mokinys vis patrumpindavo, nukirpdamas po kelis jos centimetrus. Kuriuo teiginiu teisingai apibūdinta, kaip dėl to keitėsi kondensatoriaus elektrinė talpa ir įtampa tarp jo plokštelių, jeigu jis kaskart buvo prijungiamas prie to paties srovės šaltinio?",
+            "options": [
+                "Kondensatoriaus talpa mažėjo, o įtampa didėjo.",
+                "Kondensatoriaus talpa didėjo, o įtampa nekito.",
+                "Kondensatoriaus talpa mažėjo, o įtampa nekito.",
+                "Kondensatoriaus talpa nekito, o įtampa mažėjo."
+            ],
+            "correctAnswer": "Kondensatoriaus talpa mažėjo, o įtampa nekito.",
+            "solution": "Kondensatoriaus talpa $C = \\frac{\\varepsilon \\varepsilon_0 S}{d}$. Mažinant juostos ilgį, mažėja plotas $S$, todėl talpa $C$ mažėja. Kadangi kondensatorius prijungtas prie to paties šaltinio, įtampa $U$ nekinta."
+        }
+    ]
+}

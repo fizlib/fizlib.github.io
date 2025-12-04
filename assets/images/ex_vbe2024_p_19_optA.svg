@@ -1,0 +1,13 @@
+<svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-15, 10)">
+    <g stroke="black" stroke-width="2">
+      <line x1="85" y1="20" x2="85" y2="70"/> 
+      <line x1="105" y1="30" x2="105" y2="60" stroke-width="4"/> 
+      <line x1="125" y1="20" x2="125" y2="70"/> 
+      <line x1="145" y1="30" x2="145" y2="60" stroke-width="4"/> 
+      <line x1="105" y1="45" x2="125" y2="45" stroke-dasharray="5,5"/>
+    </g>
+    <text x="85" y="15" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="black">+</text>
+    <text x="145" y="15" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="black">-</text>
+  </g>
+</svg>
