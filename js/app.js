@@ -187,7 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 showAllBtn.style.marginBottom = '1rem';
                 showAllBtn.onclick = () => {
                     window.history.pushState({}, document.title, window.location.pathname);
-                    renderExercises(allExercises);
+                    // UPDATED: Use applyFilters instead of renderExercises(allExercises)
+                    applyFilters();
                     showAllBtn.remove();
                 };
                 exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
@@ -923,11 +924,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildInputArea(ex) {
         if (ex.type === 'fill_in_blanks') {
-             let html = ex.template;
-             ex.correctAnswers.forEach((_, i) => {
-                 html = html.replace('{{}}', `<input type="text" class="text-input small-input" data-index="${i}" style="width: 60px; display: inline-block; margin: 0 5px; text-align: center;">`);
-             });
-             return `<div class="fill-in-blanks-container" style="font-size: 1.1rem;">${html}</div>`;
+            let html = ex.template;
+            ex.correctAnswers.forEach((_, i) => {
+                html = html.replace('{{}}', `<input type="text" class="text-input small-input" data-index="${i}" style="width: 60px; display: inline-block; margin: 0 5px; text-align: center;">`);
+            });
+            return `<div class="fill-in-blanks-container" style="font-size: 1.1rem;">${html}</div>`;
         } else if (ex.type === 'multiple_choice') {
             const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             return `
@@ -981,7 +982,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (ex.inline) {
                     // Render dropdowns inline with text
                     let inlineHTML = '<div class="matching-container" style="line-height: 2.2;">';
-                    
+
                     ex.matchItems.forEach((item, index) => {
                         // Generate the dropdown HTML
                         const selectHTML = `<select class="matching-select text-input" data-index="${index}" style="display: inline-block; width: auto; min-width: 120px; margin: 0 0.35rem; vertical-align: middle;">
@@ -1000,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Wrap in a div to ensure each sentence is on a new line
                         inlineHTML += `<div style="margin-bottom: 0.5rem;">${itemHTML}</div>`;
                     });
-                    
+
                     inlineHTML += '</div>';
                     return inlineHTML + secondPartHTML;
                 } else {
@@ -1129,7 +1130,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         showAllBtn.style.marginBottom = '1rem';
                         showAllBtn.onclick = () => {
                             window.history.pushState({}, document.title, window.location.pathname);
-                            renderExercises(allExercises);
+                            // UPDATED: Use applyFilters instead of renderExercises(allExercises)
+                            applyFilters();
                             showAllBtn.remove();
                         };
                         exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
@@ -1153,7 +1155,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         showAllBtn.style.marginBottom = '1rem';
                         showAllBtn.onclick = () => {
                             window.history.pushState({}, document.title, window.location.pathname);
-                            renderExercises(allExercises);
+                            // UPDATED: Use applyFilters instead of renderExercises(allExercises)
+                            applyFilters();
                             showAllBtn.remove();
                         };
                         exercisesContainer.parentElement.insertBefore(showAllBtn, exercisesContainer);
@@ -1187,7 +1190,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 expandBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     window.history.pushState({}, document.title, window.location.pathname);
-                    renderExercises(allExercises);
+
+                    // UPDATED: Use applyFilters instead of renderExercises(allExercises)
+                    applyFilters();
 
                     const showAllBtn = document.querySelector('.show-all-btn');
                     if (showAllBtn) {
@@ -1371,7 +1376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opt.setAttribute('tabindex', '0');
             });
         } else if (ex.type === 'table_checkbox') {
-             submitBtn.addEventListener('click', () => {
+            submitBtn.addEventListener('click', () => {
                 const checkboxes = contentDiv.querySelectorAll('.table-checkbox-input');
                 let allCorrect = true;
                 let anyChecked = false;
@@ -1386,13 +1391,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const r = cb.dataset.row;
                     const c = cb.dataset.col;
                     const headerName = ex.headers[c]; // Map column index to header name (e.g., "A", "B")
-                    
+
                     const isChecked = cb.checked;
                     if (isChecked) anyChecked = true;
 
                     // Get correct answers for this row (Array of header strings)
                     const correctForThisRow = ex.correctAnswer[r] || [];
-                    
+
                     const shouldBeChecked = correctForThisRow.includes(headerName);
 
                     if (isChecked && shouldBeChecked) {
@@ -1432,12 +1437,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>`;
                 }
-             });
+            });
         }
 
         const textInputs = contentDiv.querySelectorAll('.text-input');
         if (ex.type !== 'fill_in_blanks') {
-             textInputs.forEach(textInput => {
+            textInputs.forEach(textInput => {
                 textInput.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
                         e.preventDefault();
@@ -1630,12 +1635,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showCorrectAnswer(contentDiv, ex) {
         if (ex.type === 'fill_in_blanks') {
-             const inputs = contentDiv.querySelectorAll('.text-input');
-             inputs.forEach(input => {
-                 const idx = parseInt(input.dataset.index);
-                 input.value = ex.correctAnswers[idx];
-                 input.classList.add('showing-answer');
-             });
+            const inputs = contentDiv.querySelectorAll('.text-input');
+            inputs.forEach(input => {
+                const idx = parseInt(input.dataset.index);
+                input.value = ex.correctAnswers[idx];
+                input.classList.add('showing-answer');
+            });
         } else if (ex.type === 'multiple_choice') {
             const isMultiSelect = Array.isArray(ex.correctAnswer) && ex.correctAnswer.length > 1;
             const options = contentDiv.querySelectorAll('.option-btn');
@@ -1711,11 +1716,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function hideCorrectAnswer(contentDiv, ex) {
         if (ex.type === 'fill_in_blanks') {
-             const inputs = contentDiv.querySelectorAll('.text-input');
-             inputs.forEach(input => {
-                 input.value = '';
-                 input.classList.remove('showing-answer');
-             });
+            const inputs = contentDiv.querySelectorAll('.text-input');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('showing-answer');
+            });
         } else if (ex.type === 'multiple_choice') {
             const options = contentDiv.querySelectorAll('.option-btn');
             options.forEach(opt => {
