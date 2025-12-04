@@ -1,0 +1,115 @@
+{
+    "id": "ex_vbe2024_p_18",
+    "type": "simulation",
+    "category": "VBE-2024-P",
+    "grade": 11,
+    "topic": "Šiluminiai reiškiniai",
+    "subtopic": "Termodinamika",
+    "subsubtopic": "Darbas termodinamikoje",
+    "question": "Naudodamiesi interaktyviu eksperimento įrankiu, ištirkite šiluminėje mašinoje vykstančius procesus.",
+    "description": "<div class=\"simulation-instructions\"><p><strong>Įrankio valdymas:</strong></p><ul><li>Pele vilkite taškus A, B, C ir D, kad jų padėtis p(V) diagramoje atitiktų ciklo aprašyme nurodytas slėgio ir tūrio skaitines vertes. Patikslinti šių taškų padėtį galima rodyklių klavišais.</li><li>Norėdami pamatyti vidinės energijos pokytį (ΔU), dujoms suteiktą šilumos kiekį (Q) ir dujų atliktą darbą (A), pažymėkite langelį „Rodyti skaitines vertes“.</li></ul></div><p>Idealioje šiluminėje mašinoje vyksta uždaras ciklas. Dujų būsenos kinta tokia tvarka: A -> B -> C -> D -> A.</p><p>Būsenų parametrai:<br>A ($p = 30 \\cdot 10^4$ Pa, $V = 10 \\cdot 10^{-4}$ m³);<br>B ($p = 30 \\cdot 10^4$ Pa, $V = 30 \\cdot 10^{-4}$ m³);<br>C ($p = 10 \\cdot 10^4$ Pa, $V = 30 \\cdot 10^{-4}$ m³);<br>D ($p = 10 \\cdot 10^4$ Pa, $V = 10 \\cdot 10^{-4}$ m³).</p>",
+    "simulationFile": "assets/simulations/pv-diagram-simulation.ggb",
+    "questions": [
+        {
+            "id": "q1",
+            "type": "text",
+            "question": "Sumodeliuokite aprašytą šiluminėje mašinoje vykstantį ciklą ir išsiaiškinkite, kokio didumo darbą besiplėsdamos atliko dujos.",
+            "correctAnswer": "600",
+            "unit": "J",
+            "solution": "Dujos plečiasi proceso A-B metu. Darbas $A = p \\Delta V = 30 \\cdot 10^4 \\cdot (30 - 10) \\cdot 10^{-4} = 600$ J."
+        },
+        {
+            "id": "q2",
+            "type": "text",
+            "question": "Kokio didumo darbą atliko išorinės jėgos, suspaudžiant dujas?",
+            "correctAnswer": "200",
+            "unit": "J",
+            "solution": "Dujos suspaudžiamos proceso C-D metu. Išorinių jėgų darbas $A' = p |\\Delta V| = 10 \\cdot 10^4 \\cdot |10 - 30| \\cdot 10^{-4} = 200$ J."
+        },
+        {
+            "id": "q3",
+            "type": "text",
+            "question": "Kam lygus šilumos kiekis, kurį dujos <strong>gavo</strong> viso ciklo metu?",
+            "correctAnswer": "400",
+            "unit": "J",
+            "solution": "Viso ciklo metu gautas šilumos kiekis (naudingas darbas) lygus ciklo plotui p-V diagramoje arba dujų atlikto ir išorinių jėgų atlikto darbo skirtumui: $A_{ciklo} = 600 - 200 = 400$ J."
+        },
+        {
+            "id": "q4",
+            "type": "multiple_choice",
+            "question": "Šiluminių mašinų naudingumo koeficientas yra labai mažas, pvz., nagrinėjamos – tik 22 %. Visgi visuomenei šiluminės mašinos yra dar svarbios, nors ir kenkia darniam vystymuisi, spartindamos klimato kaitą. Kurie teiginiai teisingai paaiškina, kodėl šiluminių mašinų naudingumo koeficientas yra mažas?",
+            "options": [
+                "Šiluminės mašinos darbo metu kaista ne tik darbinis kūnas, bet ir jos detalės.",
+                "Šiluminės mašinos naudingumo koeficientą mažina nedidelis šildytuvo ir aušintuvo temperatūrų skirtumas.",
+                "Šiluminei mašinai neįmanoma suteikti didesnio šilumos kiekio.",
+                "Dalis energijos šilumos pavidalu su išmetamosiomis dujomis atiduodama aplinkai."
+            ],
+            "correctAnswer": [
+                "Šiluminės mašinos darbo metu kaista ne tik darbinis kūnas, bet ir jos detalės.",
+                "Šiluminės mašinos naudingumo koeficientą mažina nedidelis šildytuvo ir aušintuvo temperatūrų skirtumas.",
+                "Dalis energijos šilumos pavidalu su išmetamosiomis dujomis atiduodama aplinkai."
+            ],
+            "solution": "Naudingumo koeficientą riboja antrasis termodinamikos dėsnis (būtina atiduoti šilumą aušintuvu), šilumos nuostoliai detalėms ir aplinkai, bei temperatūrų skirtumas."
+        },
+        {
+            "id": "q5",
+            "type": "multiple_choice",
+            "question": "Kaip kito dujų temperatūra, dujoms pereinat iš B būsenos į C?",
+            "options": [
+                "Mažėjo",
+                "Didėjo",
+                "Nekito"
+            ],
+            "correctAnswer": "Mažėjo",
+            "solution": "Procesas B-C yra izochorinis (tūris pastovus), slėgis mažėja. Pagal Šarlio dėsnį ($p/T = const$), mažėjant slėgiui, temperatūra taip pat mažėja."
+        },
+        {
+            "id": "q6",
+            "type": "matching",
+            "inline": true,
+            "question": "Į langelius šalia nurodytų procesų įkelkite jų pavadinimą.",
+            "matchItems": [
+                {
+                    "question": "A -> B",
+                    "options": [
+                        "izoterminis",
+                        "izobarinis",
+                        "izochorinis",
+                        "adiabatinis"
+                    ],
+                    "correctAnswer": "izobarinis"
+                },
+                {
+                    "question": "B -> C",
+                    "options": [
+                        "izoterminis",
+                        "izobarinis",
+                        "izochorinis",
+                        "adiabatinis"
+                    ],
+                    "correctAnswer": "izochorinis"
+                },
+                {
+                    "question": "C -> D",
+                    "options": [
+                        "izoterminis",
+                        "izobarinis",
+                        "izochorinis",
+                        "adiabatinis"
+                    ],
+                    "correctAnswer": "izobarinis"
+                },
+                {
+                    "question": "D -> A",
+                    "options": [
+                        "izoterminis",
+                        "izobarinis",
+                        "izochorinis",
+                        "adiabatinis"
+                    ],
+                    "correctAnswer": "izochorinis"
+                }
+            ]
+        }
+    ]
+}

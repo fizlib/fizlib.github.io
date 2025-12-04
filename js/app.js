@@ -885,6 +885,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="card-question">${formatQuestionText(ex.question)}</div>
+                    ${ex.description ? `<div class="exercise-description" style="margin-bottom: 1rem;">${ex.description}</div>` : ''}
                     ${mainContent}
                     <div class="simulation-questions">${questionsHTML}</div>
                 `;
