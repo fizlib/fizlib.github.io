@@ -4,7 +4,7 @@
     "category": "VBE-2025-2",
     "grade": 11,
     "topic": "Judėjimas ir jėgos",
-    "subtopic": "Jėgos.",
+    "subtopic": "Jėgos",
     "subsubtopic": "Trinties jėga",
     "question": "Kūno judėjimo horizontalia plokštuma tyrimas<div class=\"simulation-instructions\"><p>Paveiksle pavaizduotas 4 kg masės kūno judėjimas horizontaliu paviršiumi. Rimties trinties koeficientas 0,4, o slydimo trinties koeficientas 0,1. Laisvojo kritimo pagreitis 9,8 m/s². Kūno masė ir trinties koeficientai <strong>nekinta viso tyrimo metu</strong>. Naudodamiesi interaktyviu eksperimento įrankiu, pagal aprašytą situaciją keisdami kūną veikiančios tempimo jėgos dydį ir kryptį (kampą tarp tempimo jėgos ir judėjimo krypties), atlikite užduotis.</p><p><strong>Įrankio valdymas</strong></p><ul style=\"padding-left: 20px;\"><li>Tempimo jėga, masė, kampas, rimties ir slydimo trinties koeficientai keičiami, <strong>pele stumdant slankiklį</strong>. Patikslinti nustatytą vertę ± 1 arba atitinkamai ± 0,1 galima rodyklių klavišais, prieš tai spustelėjus reikiamą slankiklį. Klaviatūra verčių nerašykite.</li><li>Animacija paleidžiama mygtuku „Pradėti“, sustabdoma – „Sustabdyti“.</li><li>Svarbu: <strong>prieš keisdami tyrimo kintamųjų vertes ar sąlygas, būtinai paspauskite mygtuką „Atnaujinti“</strong>.</li></ul></div>",
     "simulationFile": "assets/simulations/force-simulation.ggb",
