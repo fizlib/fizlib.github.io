@@ -1,91 +1,202 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150">
-  <!-- Resistor symbol definition -->
-  <defs>
-    <g id="resistor">
-      <rect x="0" y="-10" width="40" height="20" fill="none" stroke="black" stroke-width="2" />
-    </g>
-    <marker id="dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
-      <circle cx="3" cy="3" r="2" fill="black" />
-    </marker>
-  </defs>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Resistor Symbol (Horizontal) -->
+                <!-- Width 60, Height 20, centered origin -->
+                <g id="resistor">
+                    <rect x="-30" y="-10" width="60" height="20" fill="white" stroke="black" stroke-width="3"/>
+                </g>
+                
+                <!-- Terminal Symbol -->
+                <g id="terminal">
+                    <circle cx="0" cy="0" r="4" fill="white" stroke="black" stroke-width="2"/>
+                    <line x1="-8" y1="0" x2="8" y2="0" stroke="black" stroke-width="2" />
+                    <line x1="6" y1="-6" x2="-6" y2="6" stroke="black" stroke-width="2" />
+                </g>
 
-  <!-- A: Series-Parallel combo? Image A looks like 2 parallel, one series? No, let's look at OCR/image.
-       Image descriptions might be vague.
-       Let's assume standard combinations of 3 identical resistors.
-       Combinations for 3 * 1 Ohm:
-       1. 3 in series = 3 Ohm
-       2. 3 in parallel = 1/3 Ohm
-       3. 2 parallel + 1 series = 0.5 + 1 = 1.5 Ohm (Matches question "lygi 1,5 Omega")
-       4. 2 series + 1 parallel = 2 || 1 = 2/3 Ohm
-       
-       So A, B, C, D correspond to these.
-       Let's draw 4 schematics roughly distributed.
-  -->
+                <!-- Terminal Node (Small dot) -->
+                <circle id="node" cx="0" cy="0" r="3" fill="black" />
+            </defs>
 
-  <!-- A: 2 parallel, 1 series -->
-  <g transform="translate(50, 50)">
-    <text x="20" y="80" font-family="Arial" font-size="14" font-weight="bold">A</text>
-    <!-- Parallel part -->
-    <line x1="0" y1="0" x2="20" y2="0" stroke="black" />
-    <line x1="20" y1="0" x2="20" y2="-20" stroke="black" />
-    <line x1="20" y1="0" x2="20" y2="20" stroke="black" />
-    
-    <use href="#resistor" x="20" y="-20" /> <!-- Top -->
-    <use href="#resistor" x="20" y="20" /> <!-- Bottom -->
-    
-    <line x1="60" y1="-20" x2="80" y2="-20" stroke="black" />
-    <line x1="60" y1="20" x2="80" y2="20" stroke="black" />
-    
-    <line x1="80" y1="-20" x2="80" y2="20" stroke="black" />
-    <line x1="80" y1="0" x2="100" y2="0" stroke="black" />
-    
-    <!-- Series part -->
-    <use href="#resistor" x="100" y="0" />
-    <line x1="140" y1="0" x2="160" y2="0" stroke="black" />
-  </g>
+            <!-- ================= DIAGRAM A ================= -->
+            <g transform="translate(100, 100)">
+                <!-- Left Terminal -->
+                <use href="#terminal" x="0" y="0" />
+                
+                <!-- Input Path -->
+                <line x1="8" y1="0" x2="30" y2="0" stroke="black" stroke-width="2" />
+                
+                <!-- R1 -->
+                <use href="#resistor" x="60" y="0" />
+                
+                <!-- Path after R1 to Split -->
+                <line x1="90" y1="0" x2="120" y2="0" stroke="black" stroke-width="2" />
+                <use href="#node" x="120" y="0" />
+                
+                <!-- Top Branch -->
+                <line x1="120" y1="0" x2="150" y2="0" stroke="black" stroke-width="2" />
+                <use href="#resistor" x="180" y="0" /> <!-- R2 -->
+                <line x1="210" y1="0" x2="240" y2="0" stroke="black" stroke-width="2" />
+                
+                <!-- Bottom Branch -->
+                <line x1="120" y1="0" x2="120" y2="60" stroke="black" stroke-width="2" />
+                <line x1="120" y1="60" x2="150" y2="60" stroke="black" stroke-width="2" />
+                <use href="#resistor" x="180" y="60" /> <!-- R3 -->
+                <line x1="210" y1="60" x2="240" y2="60" stroke="black" stroke-width="2" />
+                <line x1="240" y1="60" x2="240" y2="0" stroke="black" stroke-width="2" />
+                
+                <!-- Rejoin and Output -->
+                <use href="#node" x="240" y="0" />
+                <line x1="240" y1="0" x2="280" y2="0" stroke="black" stroke-width="2" />
+                <use href="#terminal" x="280" y="0" />
 
-  <!-- B: 3 in parallel -->
-  <g transform="translate(250, 50)">
-    <text x="20" y="80" font-family="Arial" font-size="14" font-weight="bold">B</text>
-    <line x1="0" y1="0" x2="20" y2="0" stroke="black" />
-    <line x1="20" y1="-30" x2="20" y2="30" stroke="black" />
-    
-    <use href="#resistor" x="30" y="-30" />
-    <use href="#resistor" x="30" y="0" />
-    <use href="#resistor" x="30" y="30" />
-    
-    <line x1="20" y1="-30" x2="30" y2="-30" stroke="black" />
-    <line x1="20" y1="0" x2="30" y2="0" stroke="black" />
-    <line x1="20" y1="30" x2="30" y2="30" stroke="black" />
+                <!-- Label -->
+                <text x="140" y="120" text-anchor="middle" font-size="24" font-weight="bold">A</text>
+            </g>
 
-    <line x1="70" y1="-30" x2="80" y2="-30" stroke="black" />
-    <line x1="70" y1="0" x2="80" y2="0" stroke="black" />
-    <line x1="70" y1="30" x2="80" y2="30" stroke="black" />
-    
-    <line x1="80" y1="-30" x2="80" y2="30" stroke="black" />
-    <line x1="80" y1="0" x2="100" y2="0" stroke="black" />
-  </g>
+            <!-- ================= DIAGRAM B ================= -->
+            <g transform="translate(500, 100)">
+                <!-- Dimensions: Width 200, Height 80 -->
+                
+                <!-- Input Terminal (Bottom Left) -->
+                <use href="#terminal" x="0" y="80" />
+                <line x1="8" y1="80" x2="40" y2="80" stroke="black" stroke-width="2" />
+                
+                <!-- Bottom Rail -->
+                <line x1="40" y1="80" x2="200" y2="80" stroke="black" stroke-width="2" />
+                
+                <!-- Top Rail -->
+                <line x1="40" y1="0" x2="200" y2="0" stroke="black" stroke-width="2" />
+                
+                <!-- Output Terminal (Top Right) -->
+                <line x1="200" y1="0" x2="232" y2="0" stroke="black" stroke-width="2" />
+                <use href="#terminal" x="240" y="0" />
+                
+                <!-- Vertical Resistors -->
+                <!-- R1 -->
+                <line x1="60" y1="0" x2="60" y2="10" stroke="black" stroke-width="2" />
+                <g transform="translate(60, 40) rotate(90)">
+                    <use href="#resistor" />
+                </g>
+                <line x1="60" y1="70" x2="60" y2="80" stroke="black" stroke-width="2" />
+                <use href="#node" x="60" y="80" />
+                <use href="#node" x="60" y="0" />
 
-  <!-- C: Delta connection or something else? Let's do 2 series parallel to 1 -->
-  <g transform="translate(450, 50)">
-    <text x="20" y="80" font-family="Arial" font-size="14" font-weight="bold">C</text>
-     <!-- Top branch 2 series -->
-    <line x1="0" y1="0" x2="20" y2="0" stroke="black" />
-    <line x1="20" y1="-20" x2="20" y2="20" stroke="black" />
-    
-    <line x1="20" y1="-20" x2="30" y2="-20" stroke="black" />
-    <use href="#resistor" x="30" y="-20" />
-    <line x1="70" y1="-20" x2="80" y2="-20" stroke="black" />
-    <use href="#resistor" x="80" y="-20" />
-    <line x1="120" y1="-20" x2="130" y2="-20" stroke="black" />
-    
-    <!-- Bottom branch 1 -->
-    <line x1="20" y1="20" x2="55" y2="20" stroke="black" />
-    <use href="#resistor" x="55" y="20" />
-    <line x1="95" y1="20" x2="130" y2="20" stroke="black" />
+                <!-- R2 -->
+                <line x1="120" y1="0" x2="120" y2="10" stroke="black" stroke-width="2" />
+                <g transform="translate(120, 40) rotate(90)">
+                    <use href="#resistor" />
+                </g>
+                <line x1="120" y1="70" x2="120" y2="80" stroke="black" stroke-width="2" />
+                <use href="#node" x="120" y="80" />
+                <use href="#node" x="120" y="0" />
 
-    <line x1="130" y1="-20" x2="130" y2="20" stroke="black" />
-    <line x1="130" y1="0" x2="150" y2="0" stroke="black" />
-  </g>
+                <!-- R3 -->
+                <line x1="180" y1="0" x2="180" y2="10" stroke="black" stroke-width="2" />
+                <g transform="translate(180, 40) rotate(90)">
+                    <use href="#resistor" />
+                </g>
+                <line x1="180" y1="70" x2="180" y2="80" stroke="black" stroke-width="2" />
+                <use href="#node" x="180" y="80" />
+                <use href="#node" x="180" y="0" />
 
-</svg>
+                <!-- Label -->
+                <text x="120" y="120" text-anchor="middle" font-size="24" font-weight="bold">B</text>
+            </g>
+
+            <!-- ================= DIAGRAM C ================= -->
+            <g transform="translate(100, 350)">
+                <!-- Layout: Triangle. Top side horizontal. -->
+                <!-- Vertices: Left(20,0), Right(180,0), Bottom(100, 80) -->
+                <!-- Input Term at Left Vertex, Output at Right Vertex -->
+                
+                <!-- Left Terminal -->
+                <use href="#terminal" x="-20" y="0" />
+                <line x1="-12" y1="0" x2="20" y2="0" stroke="black" stroke-width="2" />
+                <use href="#node" x="20" y="0" />
+
+                <!-- Top Resistor -->
+                <line x1="20" y1="0" x2="70" y2="0" stroke="black" stroke-width="2" />
+                <use href="#resistor" x="100" y="0" />
+                <line x1="130" y1="0" x2="180" y2="0" stroke="black" stroke-width="2" />
+
+                <!-- Right Terminal -->
+                <use href="#node" x="180" y="0" />
+                <line x1="180" y1="0" x2="212" y2="0" stroke="black" stroke-width="2" />
+                <use href="#terminal" x="220" y="0" />
+
+                <!-- Bottom Point -->
+                <!-- Left Diagonal Resistor -->
+                <!-- Path from (20,0) to (100,80) -->
+                <!-- Midpoint (60, 40). Angle approx 45 deg -->
+                <line x1="20" y1="0" x2="35" y2="15" stroke="black" stroke-width="2" /> 
+                <g transform="translate(55, 35) rotate(45)">
+                     <use href="#resistor" />
+                </g>
+                <line x1="75" y1="55" x2="100" y2="80" stroke="black" stroke-width="2" />
+
+                <!-- Right Diagonal Resistor -->
+                <!-- Path from (180,0) to (100,80) -->
+                <!-- Midpoint (140, 40). Angle -45 deg -->
+                <line x1="180" y1="0" x2="165" y2="15" stroke="black" stroke-width="2" />
+                <g transform="translate(145, 35) rotate(-45)">
+                     <use href="#resistor" />
+                </g>
+                <line x1="125" y1="55" x2="100" y2="80" stroke="black" stroke-width="2" />
+                
+                <use href="#node" x="100" y="80" />
+
+                <!-- Label -->
+                <text x="100" y="130" text-anchor="middle" font-size="24" font-weight="bold">C</text>
+            </g>
+
+            <!-- ================= DIAGRAM D ================= -->
+            <g transform="translate(500, 350)">
+                <!-- Left Terminal -->
+                <use href="#terminal" x="0" y="0" />
+                <line x1="8" y1="0" x2="40" y2="0" stroke="black" stroke-width="2" />
+                
+                <!-- Split Point -->
+                <use href="#node" x="40" y="0" />
+                
+                <!-- Main Line (Horizontal) -->
+                <!-- R1 -->
+                <use href="#resistor" x="70" y="0" />
+                <line x1="100" y1="0" x2="130" y2="0" stroke="black" stroke-width="2" /> <!-- Segment before R2 -->
+                
+                <!-- R2 (Top Right) -->
+                <use href="#resistor" x="160" y="0" />
+                <line x1="190" y1="0" x2="220" y2="0" stroke="black" stroke-width="2" />
+                
+                <!-- Bypass Line (Jumper) -->
+                <!-- From Split(40,0) go Up, Right, Jump Down, Connect to R3 -->
+                <line x1="40" y1="0" x2="40" y2="-40" stroke="black" stroke-width="2" /> <!-- Up -->
+                <line x1="40" y1="-40" x2="115" y2="-40" stroke="black" stroke-width="2" /> <!-- Right -->
+                <line x1="115" y1="-40" x2="115" y2="-10" stroke="black" stroke-width="2" /> <!-- Down to jump start -->
+                
+                <!-- Jump over horizontal line at y=0 -->
+                <path d="M 115,-10 A 10,10 0 0 1 115,10" fill="none" stroke="black" stroke-width="2" /> 
+                <!-- Note: '1' flag for sweep makes it convex relative to path direction? -->
+                <!-- Start -10. End 10. Radius 10. -->
+                <!-- If I want a hump "over" the wire, visually it breaks the vertical line. -->
+                <!-- Standard symbol: The line 'jumping' is the one that curves. -->
+                <!-- Path continues down -->
+                <line x1="115" y1="10" x2="115" y2="60" stroke="black" stroke-width="2" />
+                <line x1="115" y1="60" x2="130" y2="60" stroke="black" stroke-width="2" />
+                
+                <!-- R3 (Bottom Right) -->
+                <use href="#resistor" x="160" y="60" />
+                <line x1="190" y1="60" x2="220" y2="60" stroke="black" stroke-width="2" />
+                
+                <!-- Join R2 and R3 -->
+                <line x1="220" y1="60" x2="220" y2="0" stroke="black" stroke-width="2" />
+                <use href="#node" x="220" y="0" />
+                
+                <!-- Right Terminal -->
+                <line x1="220" y1="0" x2="252" y2="0" stroke="black" stroke-width="2" />
+                <use href="#terminal" x="260" y="0" />
+
+                <!-- Label -->
+                <text x="130" y="130" text-anchor="middle" font-size="24" font-weight="bold">D</text>
+            </g>
+
+        </svg>
