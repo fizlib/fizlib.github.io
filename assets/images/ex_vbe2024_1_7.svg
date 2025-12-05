@@ -1,0 +1,51 @@
+<svg width="500" height="350" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Arrowhead marker definition -->
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                </marker>
+            </defs>
+
+            <!-- Coordinate System Settings 
+                 Origin: (50, 250)
+                 X-axis length: 300 units (ends at 350)
+                 Peak Height: 125 units (y = 125)
+            -->
+
+            <!-- Axes -->
+            <!-- Y Axis -->
+            <line x1="50" y1="250" x2="50" y2="30" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+            <!-- X Axis -->
+            <line x1="50" y1="250" x2="380" y2="250" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+            <!-- Labels -->
+            <text x="50" y="20" font-family="Times New Roman, serif" font-size="16" fill="black" text-anchor="middle">greitis</text>
+            <text x="390" y="255" font-family="Times New Roman, serif" font-size="16" fill="black">laikas</text>
+            
+            <text x="35" y="270" font-family="Times New Roman, serif" font-size="16" fill="black">0</text>
+            <text x="300" y="270" font-family="Times New Roman, serif" font-size="16" fill="black">t</text>
+
+            <!-- Dots at 0 and t -->
+            <circle cx="50" cy="250" r="3" fill="black" />
+            <circle cx="300" cy="250" r="3" fill="black" />
+
+            <!-- CURVE I: Semicircle-like Parabola (Red) -->
+            <path d="M 50 250 Q 175 0 300 250" stroke="#D32F2F" stroke-width="2" fill="none" />
+            
+            <!-- Label I -->
+            <text x="90" y="150" font-family="Times New Roman, serif" font-size="20" font-weight="bold" fill="#D32F2F">I</text>
+
+            <!-- CURVE II: Triangle (Blue) -->
+            <path d="M 50 250 L 175 125 L 300 250" stroke="#1976D2" stroke-width="2" fill="none" />
+
+            <!-- Label II -->
+            <text x="115" y="170" font-family="Times New Roman, serif" font-size="20" font-weight="bold" fill="#1976D2">II</text>
+
+            <!-- CURVE III: Wavy Line (Green) -->
+            <path d="M 50 250 Q 87.5 190 125 250 Q 175 0 225 250 Q 262.5 190 300 250" stroke="#388E3C" stroke-width="2" fill="none" />
+
+            <!-- Label III -->
+            <text x="145" y="220" font-family="Times New Roman, serif" font-size="20" font-weight="bold" fill="#388E3C">III</text>
+
+        </svg>

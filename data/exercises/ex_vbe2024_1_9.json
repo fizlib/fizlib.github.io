@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_9",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Šiluminiai reiškiniai",
+    "subtopic": "Ryšys tarp mikro ir makro pasaulio",
+    "subsubtopic": "Mikro ir makro parametrai",
+    "type": "multiple_choice",
+    "question": "Nuo ko priklauso idealiųjų dujų sudedamųjų dalelių (atomų arba molekulių) greičio kvadrato vidurkis?",
+    "options": [
+        "Tik nuo dalelių masės",
+        "Nuo dalelių masės ir jų koncentracijos",
+        "Tik nuo dujų absoliučiosios temperatūros",
+        "Nuo dalelių masės ir dujų absoliučiosios temperatūros"
+    ],
+    "correctAnswer": "Nuo dalelių masės ir dujų absoliučiosios temperatūros",
+    "solution": "Vidutinis kvadratinis greitis išreiškiamas formule \\( \\bar{v^2} = \\frac{3kT}{m_0} \\). Jis priklauso nuo temperatūros \\( T \\) ir dalelės masės \\( m_0 \\)."
+}

@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_1_5",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas",
+    "subsubtopic": "Judėjimas plokštumoje",
+    "type": "multiple_choice",
+    "question": "Kuris fizikinis dydis nepakistų, rutuliukui krintant nuo stalo, jei padidintume rutuliuko greitį \\( v_0 \\) (žr. pav.)?",
+    "image": "assets/images/ex_vbe2024_1_5.svg",
+    "options": [
+        "Lėkio laikas",
+        "Lėkio nuotolis",
+        "Rutuliuko poslinkis",
+        "Greitis žemiausiame trajektorijos taške"
+    ],
+    "correctAnswer": "Lėkio laikas",
+    "solution": "Horizontaliai mesto kūno lėkio laikas priklauso tik nuo aukščio, iš kurio jis krinta: \\( t = \\sqrt{\\frac{2H}{g}} \\). Pradinis horizontalus greitis \\( v_0 \\) neturi įtakos kritimo trukmei vertikalia kryptimi."
+}

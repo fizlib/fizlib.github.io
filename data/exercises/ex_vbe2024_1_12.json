@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_12",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektros srovė metaluose",
+    "subsubtopic": "Grandinės ir dėsniai",
+    "type": "multiple_choice",
+    "question": "Norint nustatyti elektros lemputės varžą, lemputę reikia prijungti prie elementų baterijos kartu su matavimo prietaisais – ampermetru ir voltmetru. Kokiu būdu matavimo prietaisai turi būti jungiami prie lemputės?",
+    "options": [
+        "Ampermetras jungiamas lygiagrečiai, o voltmetras – nuosekliai.",
+        "Ampermetras jungiamas nuosekliai, o voltmetras – lygiagrečiai.",
+        "Abu matavimo prietaisai jungiami lygiagrečiai.",
+        "Abu matavimo prietaisai jungiami nuosekliai."
+    ],
+    "correctAnswer": "Ampermetras jungiamas nuosekliai, o voltmetras – lygiagrečiai.",
+    "solution": "Ampermetras matuoja srovės stiprį, todėl turi būti jungiamas nuosekliai, kad pro jį tekėtų ta pati srovė kaip ir pro lemputę. Voltmetras matuoja įtampą, todėl jungiamas lygiagrečiai prietaisui, kurio įtampą matuojame."
+}

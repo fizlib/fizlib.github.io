@@ -1,0 +1,68 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        
+        <!-- Definitions for arrowheads -->
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+            </marker>
+        </defs>
+
+        <!-- Y Axis -->
+        <line x1="50" y1="250" x2="50" y2="30" stroke="black" stroke-width="2" marker-end="url(#arrowhead)" />
+        
+        <!-- X Axis -->
+        <line x1="50" y1="250" x2="350" y2="250" stroke="black" stroke-width="2" marker-end="url(#arrowhead)" />
+
+        <!-- Dashed Guide Lines -->
+        <line x1="50" y1="100" x2="250" y2="100" stroke="#999" stroke-width="1.5" stroke-dasharray="5,3" />
+        <line x1="250" y1="250" x2="250" y2="100" stroke="#999" stroke-width="1.5" stroke-dasharray="5,3" />
+
+        <!-- Main Plot Line (Grey) -->
+        <line x1="50" y1="200" x2="250" y2="100" stroke="grey" stroke-width="3" />
+
+        <!-- Y Axis Ticks and Labels -->
+        <!-- 340 -->
+        <line x1="45" y1="200" x2="55" y2="200" stroke="black" stroke-width="1.5" />
+        <text x="40" y="205" text-anchor="end" font-size="18">340</text>
+        
+        <!-- 380 -->
+        <line x1="45" y1="150" x2="55" y2="150" stroke="black" stroke-width="1.5" />
+        <text x="40" y="155" text-anchor="end" font-size="18">380</text>
+        
+        <!-- 420 -->
+        <line x1="45" y1="100" x2="55" y2="100" stroke="black" stroke-width="1.5" />
+        <text x="40" y="105" text-anchor="end" font-size="18">420</text>
+
+        <!-- X Axis Ticks and Labels -->
+        <!-- 0 -->
+        <text x="50" y="275" text-anchor="middle" font-size="18">0</text>
+        
+        <!-- 20 Tick -->
+        <line x1="100" y1="245" x2="100" y2="255" stroke="black" stroke-width="1.5" />
+
+        <!-- 40 Tick & Label -->
+        <line x1="150" y1="245" x2="150" y2="255" stroke="black" stroke-width="1.5" />
+        <text x="150" y="275" text-anchor="middle" font-size="18">40</text>
+        
+        <!-- 60 Tick -->
+        <line x1="200" y1="245" x2="200" y2="255" stroke="black" stroke-width="1.5" />
+        
+        <!-- 80 Tick & Label -->
+        <line x1="250" y1="245" x2="250" y2="255" stroke="black" stroke-width="1.5" />
+        <text x="250" y="275" text-anchor="middle" font-size="18">80</text>
+
+        <!-- 100 Tick -->
+        <line x1="300" y1="245" x2="300" y2="255" stroke="black" stroke-width="1.5" />
+
+        <!-- Axis Titles -->
+        <!-- Y Axis Title: T, K -->
+        <text x="35" y="30" text-anchor="end" font-size="18">
+            <tspan font-style="italic">T</tspan>, K
+        </text>
+
+        <!-- X Axis Title: Q, kJ -->
+        <text x="350" y="275" text-anchor="middle" font-size="18">
+            <tspan font-style="italic">Q</tspan>, kJ
+        </text>
+
+    </svg>

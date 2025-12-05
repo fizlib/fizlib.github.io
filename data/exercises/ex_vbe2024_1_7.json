@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_1_7",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas",
+    "subsubtopic": "Judėjimo lygtys ir grafikai",
+    "type": "multiple_choice",
+    "question": "Paveiksle pavaizduota, kaip kinta tiese judančių kūnų (I, II ir III) momentinis greitis tam tikrame laiko intervale. Kurie fizikiniai dydžiai yra palyginti teisingai?",
+    "image": "assets/images/ex_vbe2024_1_7.svg",
+    "options": [
+        "Nueitas kelias: \\( s_\\text{I} < s_\\text{II} < s_\\text{III} \\)",
+        "Poslinkis: \\( \\vec{s}_\\text{I} = \\vec{s}_\\text{II} = \\vec{s}_\\text{III} \\)",
+        "Vidutinis greitis: \\( \\bar{v}_\\text{I} > \\bar{v}_\\text{II} > \\bar{v}_\\text{III} \\)",
+        "Visi trys fizikiniai dydžiai palyginti teisingai."
+    ],
+    "correctAnswer": "Vidutinis greitis: \\( \\bar{v}_\\text{I} > \\bar{v}_\\text{II} > \\bar{v}_\\text{III} \\)",
+    "solution": "Greičio grafiko ribojamas plotas atitinka nueitą kelią (ir poslinkį, kai judama viena kryptimi). Iš grafiko matyti, kad I kreivė riboja didžiausią plotą, II – mažesnį, III – mažiausią (dėl svyravimų žemyn). Taigi \\( s_\\text{I} > s_\\text{II} > s_\\text{III} \\). Vidutinis greitis \\( \\bar{v} = \\frac{s}{t} \\). Kadangi laikas \\( t \\) vienodas visiems, tai didesnį kelią atitinka didesnis vidutinis greitis: \\( \\bar{v}_\\text{I} > \\bar{v}_\\text{II} > \\bar{v}_\\text{III} \\)."
+}

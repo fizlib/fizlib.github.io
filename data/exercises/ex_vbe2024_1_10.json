@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_1_10",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Šiluminiai reiškiniai",
+    "subtopic": "Termodinamika",
+    "subsubtopic": "Šilumos kiekis ir faziniai virsmai",
+    "type": "multiple_choice",
+    "question": "Paveiksle pavaizduota 2 kg masės kūno temperatūros priklausomybė nuo jam suteikto šilumos kiekio. Kam lygi šio kūno savitoji šiluma?",
+    "image": "assets/images/ex_vbe2024_1_10.svg",
+    "options": [
+        "375 J/(kg·K)",
+        "420 J/(kg·K)",
+        "500 J/(kg·K)",
+        "714 J/(kg·K)"
+    ],
+    "correctAnswer": "500 J/(kg·K)",
+    "solution": "Savitoji šiluma \\( c = \\frac{Q}{m \\Delta T} \\). Iš grafiko: kai \\( Q = 80 \\text{ kJ} = 80000 \\text{ J} \\), temperatūra pakyla nuo 340 K iki 420 K, taigi \\( \\Delta T = 420 - 340 = 80 \\text{ K} \\). <br> \\( c = \\frac{80000}{2 \\cdot 80} = \\frac{80000}{160} = 500 \\text{ J/(kg·K)} \\)."
+}

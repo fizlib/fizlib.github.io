@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_1_13",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektros srovė metaluose",
+    "subsubtopic": "Grandinės ir dėsniai",
+    "type": "multiple_choice",
+    "question": "Trys 1 Ω varžos rezistoriai sujungti skirtingais būdais. Kuriuo atveju bendra rezistorių varža bus lygi 1,5 Ω?",
+    "image": "assets/images/ex_vbe2024_1_13.svg",
+    "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+    ],
+    "correctAnswer": "A",
+    "solution": "Bendra varža 1,5 Ω gaunama, kai du rezistoriai sujungti lygiagrečiai (jų atstojamoji varža 0,5 Ω), o trečiasis prijungtas nuosekliai (1 Ω). <br> \\( R_{lyg} = \\frac{1}{2} = 0{,}5 \\, \\Omega \\) <br> \\( R_{bend} = 0{,}5 + 1 = 1{,}5 \\, \\Omega \\). Tai atitinka A grandinės schemą."
+}

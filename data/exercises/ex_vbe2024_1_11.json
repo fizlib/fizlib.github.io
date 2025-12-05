@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_11",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Elektros srovė metaluose",
+    "subsubtopic": "Grandinės ir dėsniai",
+    "type": "multiple_choice",
+    "question": "Į 220 V elektros grandinę įjungtu prietaisu 15 s tekėjo 2 A stiprio elektros srovė. Apskaičiuokite elektros srovės atliktą darbą ir prietaiso galią.",
+    "options": [
+        "300 J, 40 W",
+        "660 J, 20 W",
+        "3000 J, 220 W",
+        "6600 J, 440 W"
+    ],
+    "correctAnswer": "6600 J, 440 W",
+    "solution": "Darbas \\( A = UIt = 220 \\cdot 2 \\cdot 15 = 6600 \\text{ J} \\). <br> Galia \\( P = UI = 220 \\cdot 2 = 440 \\text{ W} \\)."
+}

@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_6",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas",
+    "subsubtopic": "Tolygiai kintamas judėjimas",
+    "type": "multiple_choice",
+    "question": "Kūnas, pajudėjęs iš vietos, per penktąją judėjimo sekundę įveikia 9 m kelią. Kokio didumo pagreičiu kūnas greitėja?",
+    "options": [
+        "1 m/s²",
+        "2 m/s²",
+        "3 m/s²",
+        "5 m/s²"
+    ],
+    "correctAnswer": "2 m/s²",
+    "solution": "Kelias per \\( n \\)-tąją sekundę apskaičiuojamas kaip kelias per \\( n \\) sekundžių minus kelias per \\( n-1 \\) sekundę: \\( s_n = s(t) - s(t-1) = \\frac{at^2}{2} - \\frac{a(t-1)^2}{2} \\). Čia \\( t=5 \\). <br> \\( 9 = \\frac{a \\cdot 5^2}{2} - \\frac{a \\cdot 4^2}{2} \\) <br> \\( 9 = 12{,}5a - 8a = 4{,}5a \\) <br> \\( a = \\frac{9}{4{,}5} = 2 \\text{ m/s}^2 \\)."
+}

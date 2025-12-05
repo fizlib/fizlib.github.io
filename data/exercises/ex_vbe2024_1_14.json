@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_14",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Elektra ir magnetizmas",
+    "subtopic": "Magnetinis laukas",
+    "subsubtopic": "Lorenco jėga",
+    "type": "multiple_choice",
+    "question": "Kaip magnetinis laukas veikia krūvį turinčią dalelę, kuri į magnetinį lauką įskrieja taip, kad jos greičio vektorius su magnetinio lauko linijomis sudaro 40° kampą?",
+    "options": [
+        "Stabdo dalelės judėjimą.",
+        "Didina dalelės kinetinę energiją.",
+        "Nukreipia dalelę lygiagrečiai su magnetinio lauko linijomis.",
+        "Verčia dalelę judėti spiralės formos trajektorija."
+    ],
+    "correctAnswer": "Verčia dalelę judėti spiralės formos trajektorija.",
+    "solution": "Lorenco jėga veikia statmenai greičio vektoriui, todėl ji nekeičia greičio didumo (nei stabdo, nei greitina) ir neatlieka darbo (kinetinė energija nekinta). Kai dalelė įskrieja kampu (ne 0, ne 90 laipsnių), greitį galima išskaidyti į lygiagrecčią ir statmeną lauko linijoms dedamąsias. Statmenoji dedamoji sukelia sukimąsi apskritimu, o lygiagrečioji - judėjimą tiese. Sudėjus šiuos judesius gaunama spiralė."
+}

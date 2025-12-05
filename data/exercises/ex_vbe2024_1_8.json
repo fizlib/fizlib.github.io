@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_8",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Energija, darbas, galia",
+    "subtopic": "Naudingumo koeficientas",
+    "subsubtopic": "Naudingumo koeficiento taikymas",
+    "type": "multiple_choice",
+    "question": "Kam apytiksliai lygus maksimalus galimas šiluminės mašinos naudingumo koeficientas, jei kaitintuvo temperatūra lygi 927 °C, o aušintuvo temperatūra lygi 97 °C?",
+    "options": [
+        "10 %",
+        "35 %",
+        "69 %",
+        "90 %"
+    ],
+    "correctAnswer": "69 %",
+    "solution": "Maksimalus (Karno ciklo) naudingumo koeficientas skaičiuojamas naudojant absoliučiąsias temperatūras (kelvinais): <br> \\( T_1 = 927 + 273 = 1200 \\text{ K} \\) <br> \\( T_2 = 97 + 273 = 370 \\text{ K} \\) <br> \\( \\eta = \\frac{T_1 - T_2}{T_1} = \\frac{1200 - 370}{1200} = \\frac{830}{1200} \\approx 0{,}69 = 69\\% \\)"
+}

@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Source Hierarchy Definition
     const sourceHierarchy = {
-        "VBE": ["2025 (1)", "2025 (2)", "2024 (P)"],
+        "VBE": ["2025 (1)", "2025 (2)", "2024 (1)", "2024 (P)"],
         "Vadovėliai": [],
         "Uždavinynai": [],
         "Kita": []
@@ -130,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (ex.category === 'VBE-2024-P') {
             ex.source = "VBE";
             ex.subsource = "2024 (P)";
+        } else if (ex.category === 'VBE-2024-1') {
+            ex.source = "VBE";
+            ex.subsource = "2024 (1)";
         } else if (ex.grade === 11 || ex.grade === '11') {
             // Default generic 11th grade to VBE 2025 (1) if no specific category matches above
             ex.source = "VBE";

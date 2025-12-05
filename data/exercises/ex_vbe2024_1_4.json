@@ -1,0 +1,19 @@
+{
+    "id": "ex_vbe2024_1_4",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas",
+    "subsubtopic": "Kinematikos pagrindai",
+    "type": "multiple_choice",
+    "question": "Paveiksle pavaizduota požeminės traukinių stoties eskalatoriaus juosta, su horizontalia plokštuma sudaranti 30° kampą, juda aukštyn pastoviu greičiu \\( v \\). Kam lygus aukštis \\( h \\), į kurį per laiką \\( t \\) eskalatorius pakelia keleivius?",
+    "image": "assets/images/ex_vbe2024_1_4.svg",
+    "options": [
+        "\\( vt \\cdot \\sin 30^\\circ \\)",
+        "\\( vt \\cdot \\cos 30^\\circ \\)",
+        "\\( vt \\cdot \\text{tg} 30^\\circ \\)",
+        "\\( vt \\cdot \\text{tg} 60^\\circ \\)"
+    ],
+    "correctAnswer": "\\( vt \\cdot \\sin 30^\\circ \\)",
+    "solution": "Nueitas kelias eskalatoriumi yra \\( s = vt \\). Aukštis \\( h \\) yra statinis trikampio, esančio prieš 30° kampą, statinis. Pagal trigonometrijos formules: \\( \\sin \\alpha = \\frac{h}{s} \\), taigi \\( h = s \\cdot \\sin \\alpha = vt \\cdot \\sin 30^\\circ \\)."
+}

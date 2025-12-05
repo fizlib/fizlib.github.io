@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_2",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Energija, darbas, galia",
+    "subtopic": "Mechaninis darbas",
+    "subsubtopic": "Mechaninio darbo sąvoka",
+    "type": "multiple_choice",
+    "question": "Kurios iš išvardytų jėgų darbas nurodytoje situacijoje nelygus nuliui?",
+    "options": [
+        "Žemės traukos jėgos, palydovui skriejant apskritimine orbita",
+        "Atramos reakcijos jėgos, kūnui slystant nuožulniąja plokštuma",
+        "Lorenco jėgos, elektros krūviui judant magnetiniame lauke",
+        "Elektrostatinės stūmos jėgos, \\( \\alpha \\) dalelei artėjant prie atomo branduolio"
+    ],
+    "correctAnswer": "Elektrostatinės stūmos jėgos, \\( \\alpha \\) dalelei artėjant prie atomo branduolio",
+    "solution": "Darbas lygus nuliui, kai jėga yra statmena judėjimo krypčiai. Žemės traukos jėga (palydovui), atramos reakcijos jėga ir Lorenco jėga veikia statmenai greičio vektoriui. Elektrostatinės stūmos jėga veikia išilgai arba priešpriešiais judėjimo krypčiai (stabdydama dalelę), todėl jos darbas nelygus nuliui."
+}

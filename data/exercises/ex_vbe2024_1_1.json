@@ -1,0 +1,18 @@
+{
+    "id": "ex_vbe2024_1_1",
+    "category": "VBE-2024-1",
+    "grade": 11,
+    "topic": "Judėjimas ir jėgos",
+    "subtopic": "Judėjimas",
+    "subsubtopic": "Kinematikos pagrindai",
+    "type": "multiple_choice",
+    "question": "Kurios fizikinis dydis yra skaliaras?",
+    "options": [
+        "Poslinkis",
+        "Svoris",
+        "Galia",
+        "Judesio kiekis"
+    ],
+    "correctAnswer": "Galia",
+    "solution": "Skaliariniai dydžiai turi tik skaitinę vertę (neturi krypties). Poslinkis, svoris (jėga) ir judesio kiekis yra vektoriniai dydžiai. Galia yra skaliarinis dydis."
+}
