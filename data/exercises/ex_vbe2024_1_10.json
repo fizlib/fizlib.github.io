@@ -15,5 +15,5 @@
         "714 J/(kg·K)"
     ],
     "correctAnswer": "500 J/(kg·K)",
-    "solution": "Savitoji šiluma \\( c = \\frac{Q}{m \\Delta T} \\). Iš grafiko: kai \\( Q = 80 \\text{ kJ} = 80000 \\text{ J} \\), temperatūra pakyla nuo 340 K iki 420 K, taigi \\( \\Delta T = 420 - 340 = 80 \\text{ K} \\). <br> \\( c = \\frac{80000}{2 \\cdot 80} = \\frac{80000}{160} = 500 \\text{ J/(kg·K)} \\)."
+    "solution": "Savitoji šiluma \\( c = \\frac{Q}{m \\Delta T} \\). Iš grafiko: kai \\( Q = 80 \\text{ kJ} = 80000 \\text{ J} \\), temperatūra pakyla nuo 340 K iki 420 K, taigi \\( \\Delta T = 420 - 340 = 80 \\text{ K} \\). <br> \\( c = \\frac{80000}{2 \\cdot 80} = \\frac{80000}{160} = 500 \\text{ J/(kg} \\cdot \\text{K)} \\)."
 }
